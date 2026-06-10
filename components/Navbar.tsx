@@ -1,8 +1,17 @@
 'use client'
 
 import { useState } from 'react'
+import Link from 'next/link' // 1. Link import karein
 
-const navLinks = ['HOME', 'ABOUT US', 'OUR WORK', 'SERVICE', 'CASE STUDIES', 'CONTACT US']
+// 2. Links ko objects mein convert karein taake har link ka apna path ho
+const navLinks = [
+  { name: 'HOME', href: '/' },
+  { name: 'ABOUT US', href: '/about' },
+  { name: 'OUR WORK', href: '/work' },
+  { name: 'SERVICE', href: '/services' },
+  { name: 'CASE STUDIES', href: '/case-studies' },
+  { name: 'CONTACT US', href: '/contact' }
+]
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
@@ -24,9 +33,13 @@ export default function Navbar() {
         {/* Desktop Nav Links */}
         <div className="hidden lg:flex items-center gap-8 text-sm font-semibold text-gray-700">
           {navLinks.map((link) => (
-            <a key={link} href="#" className="nav-link hover:text-primary transition-colors">
-              {link}
-            </a>
+            <Link 
+              key={link.name} 
+              href={link.href} // 3. Yahan path use karein
+              className="nav-link hover:text-primary transition-colors"
+            >
+              {link.name}
+            </Link>
           ))}
         </div>
 
@@ -36,7 +49,6 @@ export default function Navbar() {
             GET A QUOTE
           </button>
 
-          {/* Hamburger – only mobile */}
           <button
             className="lg:hidden flex flex-col justify-center items-center w-9 h-9 gap-1.5 rounded hover:bg-gray-100 transition-colors"
             onClick={() => setIsOpen(!isOpen)}
@@ -53,14 +65,14 @@ export default function Navbar() {
       <div className={`lg:hidden overflow-hidden transition-all duration-300 ease-in-out ${isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
         <div className="px-6 pb-4 pt-2 flex flex-col gap-1 border-t border-gray-100">
           {navLinks.map((link) => (
-            <a
-              key={link}
-              href="#"
+            <Link
+              key={link.name}
+              href={link.href} // 4. Yahan bhi path update karein
               className="text-sm font-semibold text-gray-700 hover:text-primary hover:bg-primary/5 px-3 py-2.5 rounded transition-colors"
               onClick={() => setIsOpen(false)}
             >
-              {link}
-            </a>
+              {link.name}
+            </Link>
           ))}
         </div>
       </div>
