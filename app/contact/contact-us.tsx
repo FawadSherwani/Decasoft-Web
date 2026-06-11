@@ -200,6 +200,7 @@ export default function ContactPage() {
                   >
                     <option value="">Select</option>
                     <option>Web Development</option>
+                    <option>Web Fawad</option>
                     <option>Digital Marketing</option>
                     <option>SEO</option>
                     <option>E-Commerce</option>
