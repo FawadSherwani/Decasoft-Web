@@ -15,9 +15,46 @@ export default function ContactPage() {
     name: "", email: "", phone: "", company: "",
     service: "", budget: "", message: "", file: null as File | null,
   });
+  const [loading, setLoading] = useState(false);
+  const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async () => {
+    if (!formData.name || !formData.email || !formData.message) {
+      alert("Please fill in Name, Email and Message fields.");
+      return;
+    }
+    setLoading(true);
+    setStatus("idle");
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          company: formData.company,
+          service: formData.service,
+          budget: formData.budget,
+          message: formData.message,
+        }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        setStatus("success");
+        setFormData({ name: "", email: "", phone: "", company: "", service: "", budget: "", message: "", file: null });
+      } else {
+        setStatus("error");
+      }
+    } catch {
+      setStatus("error");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -211,8 +248,24 @@ export default function ContactPage() {
                   onError={(e) => ((e.currentTarget as HTMLImageElement).style.display = "none")} />
               </div>
 
+              {/* Status Messages */}
+              {status === "success" && (
+                <div style={{ background: "#e8f5e9", border: "1px solid #a5d6a7", borderRadius: 6, padding: "0.8rem 1rem", marginBottom: "1rem", color: "#2e7d32", fontSize: "0.88rem", fontWeight: 600 }}>
+                  ✅ Message sent successfully! We will get back to you soon.
+                </div>
+              )}
+              {status === "error" && (
+                <div style={{ background: "#ffebee", border: "1px solid #ef9a9a", borderRadius: 6, padding: "0.8rem 1rem", marginBottom: "1rem", color: "#c62828", fontSize: "0.88rem", fontWeight: 600 }}>
+                  ❌ Something went wrong. Please try again.
+                </div>
+              )}
+
               {/* Send Button */}
-              <button className="send-btn">Send</button>
+              <button className="send-btn" onClick={handleSubmit} disabled={loading}
+                style={{ opacity: loading ? 0.7 : 1, cursor: loading ? "not-allowed" : "pointer" }}
+              >
+                {loading ? "SENDING..." : "SEND"}
+              </button>
             </div>
           </div>
         </section>
