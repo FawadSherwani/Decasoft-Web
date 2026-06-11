@@ -1,0 +1,342 @@
+"use client";
+
+import React, { useState } from "react";
+
+// ─── Design Tokens ────────────────────────────────────────────────────────────
+const RED = "#c0392b";
+const DARK = "#1a1a2e";
+const WHITE = "#ffffff";
+const GRAY_TEXT = "#666";
+const LIGHT_BG = "#f9f9f9";
+const BORDER = "#e0e0e0";
+
+export default function ContactPage() {
+  const [formData, setFormData] = useState({
+    name: "", email: "", phone: "", company: "",
+    service: "", budget: "", message: "", file: null as File | null,
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  return (
+    <>
+      <style>{`
+        .contact-wrap * { box-sizing: border-box; }
+
+        /* ── INPUT / SELECT ── */
+        .cf-input {
+          width: 100%; border: 1px solid ${BORDER}; border-radius: 6px;
+          padding: 0.7rem 1rem; font-size: 0.88rem; color: ${DARK};
+          outline: none; transition: border-color 0.2s; background: ${WHITE};
+          font-family: inherit;
+        }
+        .cf-input:focus { border-color: ${RED}; }
+        .cf-input::placeholder { color: #aaa; }
+        .cf-label { font-size: 0.82rem; font-weight: 600; color: ${DARK}; margin-bottom: 0.35rem; display: block; }
+
+        /* ── FORM GRID ── */
+        .form-row   { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+        .form-full  { margin-bottom: 1rem; }
+
+        /* ── LOCATION CARDS ── */
+        .loc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin-bottom: 1.5rem; }
+        .loc-card { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 10px; padding: 1.5rem; }
+        .loc-row  { display: flex; align-items: flex-start; gap: 0.75rem; margin-bottom: 0.85rem; font-size: 0.88rem; color: rgba(255,255,255,0.92); }
+        .loc-row:last-child { margin-bottom: 0; }
+        .loc-icon { width: 36px; height: 36px; border-radius: 8px; background: rgba(255,255,255,0.12); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .loc-label { font-weight: 700; color: ${WHITE}; min-width: 100px; }
+
+        /* ── SOCIAL ICONS ── */
+        .social-ring { width: 44px; height: 44px; border-radius: 50%; border: 1.5px solid ${BORDER}; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.2s; color: ${DARK}; text-decoration: none; }
+        .social-ring:hover { background: ${RED}; border-color: ${RED}; color: ${WHITE}; }
+
+        /* ── SERVICES SECTION ── */
+        .services-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; max-width: 1200px; margin: 0 auto; }
+
+        /* ── SEND BUTTON ── */
+        .send-btn { width: 100%; background: ${RED}; color: ${WHITE}; border: none; padding: 1rem; border-radius: 6px; font-size: 1rem; font-weight: 800; letter-spacing: 2px; cursor: pointer; transition: opacity 0.2s; text-transform: uppercase; }
+        .send-btn:hover { opacity: 0.88; }
+
+        /* ════ RESPONSIVE ════ */
+        @media (max-width: 900px) {
+          .hero-contact-grid { flex-direction: column !important; }
+          .services-grid { grid-template-columns: 1fr; gap: 2rem; }
+          .loc-grid { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 600px) {
+          .form-row { grid-template-columns: 1fr; }
+          .hero-contact-grid { padding: 3rem 5% !important; }
+        }
+      `}</style>
+
+      <div className="contact-wrap" style={{ fontFamily: "'Segoe UI', Arial, sans-serif", color: DARK }}>
+
+        {/* ══════════════════════════════════════════════════
+            HERO + FORM SECTION
+        ══════════════════════════════════════════════════ */}
+        <section style={{ background: WHITE, padding: "5rem 6% 4rem" }}>
+          <div
+            className="hero-contact-grid"
+            style={{ maxWidth: 1200, margin: "0 auto", display: "flex", gap: "4rem", alignItems: "flex-start" }}
+          >
+            {/* ── LEFT: Text ── */}
+            <div style={{ flex: "1 1 340px", paddingTop: "1rem" }}>
+              <p style={{ color: RED, fontWeight: 700, fontSize: "0.82rem", marginBottom: "0.8rem" }}>
+                Contact us
+              </p>
+              {/* Red left border heading */}
+              <div style={{ borderLeft: `4px solid ${RED}`, paddingLeft: "1.2rem", marginBottom: "1.5rem" }}>
+                <h1 style={{ fontSize: "clamp(1.7rem, 2.8vw, 2.4rem)", fontWeight: 900, lineHeight: 1.2, color: DARK, margin: 0 }}>
+                  Let us help you achieve your dreams. Contact us today!
+                </h1>
+              </div>
+              <p style={{ color: GRAY_TEXT, lineHeight: 1.8, fontSize: "0.93rem", marginBottom: "2rem" }}>
+                We&apos;re dedicated to going above and beyond for you. Enhance your online performance and collaborate with our team, which genuinely supports your objectives and passion. Please get in touch with us. We can be followed on the aforementioned channels.
+              </p>
+
+              {/* Social Icons */}
+              <div style={{ display: "flex", gap: "0.75rem" }}>
+                {/* Facebook */}
+                <a href="#" className="social-ring" aria-label="Facebook">
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                  </svg>
+                </a>
+                {/* LinkedIn */}
+                <a href="#" className="social-ring" aria-label="LinkedIn">
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                    <rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>
+                  </svg>
+                </a>
+                {/* Instagram */}
+                <a href="#" className="social-ring" aria-label="Instagram">
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                  </svg>
+                </a>
+                {/* TikTok */}
+                <a href="#" className="social-ring" aria-label="TikTok">
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                    <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.75a4.84 4.84 0 0 1-1.01-.06z"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
+
+            {/* ── RIGHT: Form ── */}
+            <div style={{ flex: "1 1 420px" }}>
+              {/* Row 1 */}
+              <div className="form-row">
+                <div>
+                  <label className="cf-label">Your Name</label>
+                  <input className="cf-input" name="name" placeholder="Your Name" value={formData.name} onChange={handleChange} />
+                </div>
+                <div>
+                  <label className="cf-label">Email</label>
+                  <input className="cf-input" name="email" type="email" placeholder="Email" value={formData.email} onChange={handleChange} />
+                </div>
+              </div>
+
+              {/* Row 2 */}
+              <div className="form-row">
+                <div>
+                  <label className="cf-label">Phone Number</label>
+                  <input className="cf-input" name="phone" placeholder="Phone Number" value={formData.phone} onChange={handleChange} />
+                </div>
+                <div>
+                  <label className="cf-label">Company Name</label>
+                  <input className="cf-input" name="company" placeholder="Company Name" value={formData.company} onChange={handleChange} />
+                </div>
+              </div>
+
+              {/* Row 3 — Selects */}
+              <div className="form-row">
+                <div>
+                  <label className="cf-label">Select Your Service</label>
+                  <select className="cf-input" name="service" value={formData.service} onChange={handleChange}
+                    style={{ appearance: "none", backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23666' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E")`, backgroundRepeat: "no-repeat", backgroundPosition: "right 0.8rem center", paddingRight: "2.2rem" }}
+                  >
+                    <option value="">Select</option>
+                    <option>Web Development</option>
+                    <option>Digital Marketing</option>
+                    <option>SEO</option>
+                    <option>E-Commerce</option>
+                    <option>Mobile App</option>
+                    <option>Branding</option>
+                  </select>
+                </div>
+                <div>
+                  <label className="cf-label">Select Your Budget</label>
+                  <select className="cf-input" name="budget" value={formData.budget} onChange={handleChange}
+                    style={{ appearance: "none", backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23666' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E")`, backgroundRepeat: "no-repeat", backgroundPosition: "right 0.8rem center", paddingRight: "2.2rem" }}
+                  >
+                    <option value="">Select</option>
+                    <option>$500 - $1,000</option>
+                    <option>$1,000 - $5,000</option>
+                    <option>$5,000 - $10,000</option>
+                    <option>$10,000+</option>
+                  </select>
+                </div>
+              </div>
+
+              {/* Message */}
+              <div className="form-full">
+                <label className="cf-label">Message</label>
+                <textarea className="cf-input" name="message" placeholder="Message" rows={4}
+                  value={formData.message}
+                  onChange={handleChange}
+                  style={{ resize: "vertical", minHeight: 100 }}
+                />
+              </div>
+
+              {/* File Upload */}
+              <div className="form-full">
+                <label className="cf-label">File Upload ( txt or pdf )</label>
+                <input type="file" accept=".txt,.pdf"
+                  style={{ fontSize: "0.82rem", color: GRAY_TEXT }}
+                  onChange={(e) => setFormData({ ...formData, file: e.target.files?.[0] || null })}
+                />
+              </div>
+
+              {/* reCAPTCHA placeholder */}
+              <div style={{ border: `1px solid ${BORDER}`, borderRadius: 6, padding: "0.8rem 1rem", marginBottom: "1rem", background: "#f9f9f9", display: "flex", alignItems: "center", gap: "0.6rem" }}>
+                <input type="checkbox" id="robot" style={{ width: 18, height: 18, accentColor: RED }} />
+                <label htmlFor="robot" style={{ fontSize: "0.85rem", color: GRAY_TEXT, cursor: "pointer" }}>I&apos;m not a robot</label>
+                <img src="https://www.gstatic.com/recaptcha/api2/logo_48.png" alt="reCAPTCHA" style={{ width: 32, marginLeft: "auto", opacity: 0.6 }}
+                  onError={(e) => ((e.currentTarget as HTMLImageElement).style.display = "none")} />
+              </div>
+
+              {/* Send Button */}
+              <button className="send-btn">Send</button>
+            </div>
+          </div>
+        </section>
+
+        {/* ══════════════════════════════════════════════════
+            OUR LOCATIONS
+        ══════════════════════════════════════════════════ */}
+        <section
+          style={{
+            position: "relative",
+            overflow: "hidden",
+            padding: "5rem 6%",
+            color: WHITE,
+          }}
+        >
+          {/* Background image */}
+          <img
+            src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=1600&q=80"
+            alt=""
+            aria-hidden
+            style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", opacity: 1 }}
+          />
+          <div style={{ position: "absolute", inset: 0, background: "rgba(140,20,20,0.82)" }} />
+
+          <div style={{ maxWidth: 1200, margin: "0 auto", position: "relative", zIndex: 1 }}>
+            <h2 style={{ fontSize: "clamp(1.6rem, 2.5vw, 2.2rem)", fontWeight: 800, textAlign: "center", marginBottom: "2.5rem" }}>
+              Our Locations
+            </h2>
+
+            {/* Two office cards */}
+            <div className="loc-grid">
+              {/* Pakistan */}
+              <div className="loc-card">
+                <LocationRow icon="📞" label="Call Us" value="+923071116562" />
+                <LocationRow icon="✉️" label="Email" value="info@decasoft.test" />
+                <LocationRow icon="🕐" label="Working Hour" value="Monday to Saturday 9 Am to 5 Pm" />
+                <LocationRow icon="📍" label="Location" value="Block Z Madina Town, Faisalabad, 38000" />
+              </div>
+
+              {/* Dubai */}
+              <div className="loc-card">
+                <LocationRow icon="📞" label="Call Us" value="+971 55 9411204" />
+                <LocationRow icon="✉️" label="Email" value="ceodecasoft@gmail.com" />
+                <LocationRow icon="🕐" label="Working Hour" value="Monday to Friday 10 Am to 7 Pm (GMT-4)" />
+                <LocationRow icon="📍" label="Location" value="Dubai Municipality Building, Salah Al Din Street, Block A, 2nd floor, Office no 23, Al Muraqabat Deira, Dubai." />
+              </div>
+            </div>
+
+            {/* Google Map Embed */}
+            <div style={{ borderRadius: 12, overflow: "hidden", width: "100%", height: 320 }}>
+              <iframe
+                src="https://www.google.com/maps/d/embed?mid=1BHnGe9sHjxDdq5yv8kWfRnRcq1gfRtI&ehbc=2E312F"
+                width="100%"
+                height="320"
+                style={{ border: 0, display: "block" }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Office Locations"
+              />
+            </div>
+          </div>
+        </section>
+
+        {/* ══════════════════════════════════════════════════
+            RESULTS-DRIVEN SERVICES SECTION
+        ══════════════════════════════════════════════════ */}
+        <section style={{ background: WHITE, padding: "5rem 6%" }}>
+          <div className="services-grid">
+            {/* Left text */}
+            <div>
+              <h2 style={{ fontSize: "clamp(1.5rem, 2.5vw, 2rem)", fontWeight: 800, lineHeight: 1.25, marginBottom: "1.2rem", color: DARK }}>
+                Results-Driven Digital Marketing Services
+              </h2>
+              <p style={{ color: GRAY_TEXT, lineHeight: 1.85, fontSize: "0.93rem", marginBottom: "2rem" }}>
+                Your brand must have a strong online presence in order to stand out in the competitive online market of today. Our professional digital marketing services are intended to boost conversions, create leads, and increase traffic. We employ data-driven tactics to support the expansion of your company, from digital and social media marketing to PPC advertising and content production. Allow us to use creative and effective marketing solutions to elevate your brand to new heights. Get in touch with us now!
+              </p>
+              <a
+                href="#"
+                style={{
+                  display: "inline-block",
+                  background: RED,
+                  color: WHITE,
+                  padding: "0.8rem 1.8rem",
+                  borderRadius: 6,
+                  fontWeight: 700,
+                  textDecoration: "none",
+                  fontSize: "0.88rem",
+                  transition: "opacity 0.2s",
+                }}
+                onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.85")}
+                onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
+              >
+                Explore our Services
+              </a>
+            </div>
+
+            {/* Right image */}
+            <div style={{ borderRadius: 12, overflow: "hidden", height: 340 }}>
+              <img
+                src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80"
+                alt="Team working"
+                style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+              />
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </>
+  );
+}
+
+// ─── Location Row Helper ──────────────────────────────────────────────────────
+function LocationRow({ icon, label, value }: { icon: string; label: string; value: string }) {
+  return (
+    <div style={{ display: "flex", alignItems: "flex-start", gap: "0.75rem", marginBottom: "0.85rem" }}>
+      <div style={{ width: 36, height: 36, borderRadius: 8, background: "rgba(255,255,255,0.12)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, fontSize: "1rem" }}>
+        {icon}
+      </div>
+      <div style={{ fontSize: "0.88rem", color: "rgba(255,255,255,0.92)" }}>
+        <span style={{ fontWeight: 700, color: "#fff", marginRight: "0.5rem" }}>{label}</span>
+        {value}
+      </div>
+    </div>
+  );
+}
