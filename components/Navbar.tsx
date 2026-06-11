@@ -1,9 +1,9 @@
 'use client'
 
 import { useState } from 'react'
-import Link from 'next/link' // 1. Link import karein
+import Link from 'next/link'
+import Image from 'next/image' // 1. Image component import karein
 
-// 2. Links ko objects mein convert karein taake har link ka apna path ho
 const navLinks = [
   { name: 'HOME', href: '/' },
   { name: 'ABOUT US', href: '/about' },
@@ -20,22 +20,25 @@ export default function Navbar() {
     <nav className="bg-white shadow-sm sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
         
-        {/* Logo */}
-        <div className="flex items-center gap-2">
-          <div className="w-9 h-9 bg-primary rounded-full flex items-center justify-center">
-            <span className="text-white font-black text-sm">D</span>
-          </div>
-          <span className="font-black text-xl tracking-tight text-gray-900">
-            D&apos;<span className="text-primary">ECASOFT</span>
-          </span>
-        </div>
+        {/* Updated Logo Section */}
+<Link href="/" className="flex items-center gap-2">
+  <Image 
+    src="/Deca_logo.png" 
+    alt="D'ECASOFT Logo" 
+    width={200}         // Width barha dein (browser ise automatically resize kar lega)
+    height={100}        // Height barha dein
+    priority            // Yeh image ko load hone mein priority deta hai
+    quality={100}       // Highest quality ensure karne ke liye
+    className="w-auto h-12 object-contain" // Height adjust karein (h-10 se h-12)
+  />
+</Link>
 
         {/* Desktop Nav Links */}
         <div className="hidden lg:flex items-center gap-8 text-sm font-semibold text-gray-700">
           {navLinks.map((link) => (
             <Link 
               key={link.name} 
-              href={link.href} // 3. Yahan path use karein
+              href={link.href}
               className="nav-link hover:text-primary transition-colors"
             >
               {link.name}
@@ -67,7 +70,7 @@ export default function Navbar() {
           {navLinks.map((link) => (
             <Link
               key={link.name}
-              href={link.href} // 4. Yahan bhi path update karein
+              href={link.href}
               className="text-sm font-semibold text-gray-700 hover:text-primary hover:bg-primary/5 px-3 py-2.5 rounded transition-colors"
               onClick={() => setIsOpen(false)}
             >
