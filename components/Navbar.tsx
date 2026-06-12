@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { ChevronDown } from 'lucide-react' // Icon import kiya
+import { ChevronDown, X } from 'lucide-react'
 
 const navLinks = [
   { name: 'HOME', href: '/' },
@@ -39,7 +39,6 @@ export default function Navbar() {
                 <Link href={link.href}>{link.name}</Link>
                 {link.subMenu && <ChevronDown size={16} />}
               </div>
-              
               {link.subMenu && (
                 <div className="absolute top-full left-0 hidden group-hover:block bg-white shadow-lg border border-gray-100 rounded py-2 min-w-[150px]">
                   {link.subMenu.map((sub) => (
@@ -55,41 +54,43 @@ export default function Navbar() {
 
         {/* Right side: Button + Hamburger */}
         <div className="flex items-center gap-3">
-          <button className="hidden lg:block bg-primary hover:bg-primary-dark text-white text-sm font-bold px-6 py-2.5 rounded transition-colors">
-            GET A QUOTE
-          </button>
-
+          <button className="hidden lg:block bg-primary hover:bg-primary-dark text-white text-sm font-bold px-6 py-2.5 rounded transition-colors">GET A QUOTE</button>
+          
+          {/* Original Hamburger Icon */}
           <button
             className="lg:hidden flex flex-col justify-center items-center w-9 h-9 gap-1.5 rounded hover:bg-gray-100 transition-colors"
-            onClick={() => setIsOpen(!isOpen)}
+            onClick={() => setIsOpen(true)}
           >
-            <span className={`block h-0.5 w-5 bg-gray-700 transition-all ${isOpen ? 'rotate-45 translate-y-2' : ''}`} />
-            <span className={`block h-0.5 w-5 bg-gray-700 transition-all ${isOpen ? 'opacity-0' : ''}`} />
-            <span className={`block h-0.5 w-5 bg-gray-700 transition-all ${isOpen ? '-rotate-45 -translate-y-2' : ''}`} />
+            <span className="block h-0.5 w-5 bg-gray-700" />
+            <span className="block h-0.5 w-5 bg-gray-700" />
+            <span className="block h-0.5 w-5 bg-gray-700" />
           </button>
         </div>
       </div>
 
-      {/* Mobile Menu */}
-      <div className={`lg:hidden overflow-hidden transition-all duration-300 ${isOpen ? 'max-h-96' : 'max-h-0'}`}>
-        <div className="px-6 pb-4 pt-2 flex flex-col gap-1 border-t border-gray-100">
+      {/* Mobile Menu Overlay */}
+      <div className={`fixed inset-0 bg-white z-[100] transform transition-transform duration-300 ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}>
+        <div className="flex justify-end p-6">
+           <button onClick={() => setIsOpen(false)}><X size={28} className="text-gray-700"/></button>
+        </div>
+        
+        <div className="px-6 py-4 flex flex-col gap-6">
           {navLinks.map((link) => (
             <div key={link.name}>
-              <div className="flex justify-between items-center px-3 py-2.5 rounded hover:bg-gray-50">
-                <Link href={link.href} className="text-sm font-semibold text-gray-700" onClick={() => setIsOpen(false)}>
+              <div className="flex justify-between items-center">
+                <Link href={link.href} className="text-lg font-medium text-gray-600" onClick={() => setIsOpen(false)}>
                   {link.name}
                 </Link>
                 {link.subMenu && (
                   <button onClick={() => setIsMobileServiceOpen(!isMobileServiceOpen)}>
-                    <ChevronDown size={18} className={`transition-transform ${isMobileServiceOpen ? 'rotate-180' : ''}`} />
+                    <ChevronDown size={20} className={`transition-transform text-gray-500 ${isMobileServiceOpen ? 'rotate-180' : ''}`} />
                   </button>
                 )}
               </div>
-              
               {link.subMenu && isMobileServiceOpen && (
-                <div className="pl-6 pb-2">
+                <div className="pl-4 mt-3 flex flex-col gap-3">
                   {link.subMenu.map((sub) => (
-                    <Link key={sub.name} href={sub.href} className="block py-2 text-sm text-primary font-medium" onClick={() => setIsOpen(false)}>
+                    <Link key={sub.name} href={sub.href} className="text-base text-gray-500 font-normal" onClick={() => setIsOpen(false)}>
                       {sub.name}
                     </Link>
                   ))}
@@ -97,8 +98,8 @@ export default function Navbar() {
               )}
             </div>
           ))}
-          <div className="mt-4 px-3">
-            <button className="w-full bg-primary text-white text-sm font-bold px-6 py-3 rounded">GET A QUOTE</button>
+          <div className="mt-8">
+            <button className="w-full bg-primary text-white font-semibold py-3 rounded">GET A QUOTE</button>
           </div>
         </div>
       </div>
