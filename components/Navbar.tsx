@@ -8,14 +8,18 @@ const navLinks = [
   { name: 'HOME', href: '/' },
   { name: 'ABOUT US', href: '/about' },
   { name: 'OUR WORK', href: '/work' },
-  { name: 'SERVICE', href: '/services', subMenu: [{ name: 'VIDEOGRAPHY', href: '/services/videography' }] },
+  { 
+    name: 'SERVICE', 
+    href: '/services', 
+    subMenu: [{ name: 'VIDEOGRAPHY', href: '/services/videography' }] 
+  },
   { name: 'CASE STUDIES', href: '/case-studies' },
   { name: 'CONTACT US', href: '/contact' }
 ]
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
-  const [isServiceOpen, setIsServiceOpen] = useState(false) // Dropdown state
+  const [isMobileServiceOpen, setIsMobileServiceOpen] = useState(false) // Mobile ke liye alag state
 
   return (
     <nav className="bg-white shadow-sm sticky top-0 z-50">
@@ -31,7 +35,6 @@ export default function Navbar() {
               <Link href={link.href} className="nav-link hover:text-primary transition-colors">
                 {link.name}
               </Link>
-              {/* Dropdown for Desktop */}
               {link.subMenu && (
                 <div className="absolute top-full left-0 hidden group-hover:block bg-white shadow-lg border border-gray-100 rounded py-2 min-w-[150px]">
                   {link.subMenu.map((sub) => (
@@ -45,26 +48,38 @@ export default function Navbar() {
           ))}
         </div>
 
-        {/* Right side */}
-        <div className="flex items-center gap-3">
-          <button className="bg-primary hover:bg-primary-dark text-white text-sm font-bold px-6 py-2.5 rounded transition-colors">GET A QUOTE</button>
-          <button className="lg:hidden w-9 h-9" onClick={() => setIsOpen(!isOpen)}> {/* Hamburger button logic same */} </button>
-        </div>
+        {/* Hamburger Button */}
+        <button className="lg:hidden p-2" onClick={() => setIsOpen(!isOpen)}>
+          <span className="block h-0.5 w-6 bg-gray-700 mb-1.5" />
+          <span className="block h-0.5 w-6 bg-gray-700 mb-1.5" />
+          <span className="block h-0.5 w-6 bg-gray-700" />
+        </button>
       </div>
 
       {/* Mobile Menu Dropdown */}
-      <div className={`lg:hidden overflow-hidden transition-all duration-300 ${isOpen ? 'max-h-screen' : 'max-h-0'}`}>
-        <div className="px-6 pb-4 flex flex-col gap-1">
+      <div className={`lg:hidden bg-white border-t border-gray-100 overflow-hidden transition-all duration-300 ${isOpen ? 'max-h-screen' : 'max-h-0'}`}>
+        <div className="px-6 py-4 flex flex-col gap-4">
           {navLinks.map((link) => (
             <div key={link.name}>
-              <Link href={link.href} className="block px-3 py-2.5 font-semibold text-gray-700" onClick={() => !link.subMenu && setIsOpen(false)}>
-                {link.name}
-              </Link>
-              {link.subMenu && (
-                <div className="pl-6">
+              {link.subMenu ? (
+                <button 
+                  onClick={() => setIsMobileServiceOpen(!isMobileServiceOpen)}
+                  className="w-full text-left font-semibold text-gray-700 flex justify-between items-center"
+                >
+                  {link.name} <span>{isMobileServiceOpen ? '▲' : '▼'}</span>
+                </button>
+              ) : (
+                <Link href={link.href} className="block font-semibold text-gray-700" onClick={() => setIsOpen(false)}>
+                  {link.name}
+                </Link>
+              )}
+              
+              {/* Mobile Submenu */}
+              {link.subMenu && isMobileServiceOpen && (
+                <div className="pl-4 mt-2 flex flex-col gap-2 border-l border-gray-200">
                   {link.subMenu.map((sub) => (
-                    <Link key={sub.name} href={sub.href} className="block py-2 text-primary" onClick={() => setIsOpen(false)}>
-                      ↳ {sub.name}
+                    <Link key={sub.name} href={sub.href} className="text-sm text-gray-600 hover:text-primary" onClick={() => setIsOpen(false)}>
+                      {sub.name}
                     </Link>
                   ))}
                 </div>
