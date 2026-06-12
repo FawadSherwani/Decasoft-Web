@@ -3,11 +3,16 @@ export default function Hero() {
     <section className="hero-bg min-h-[580px] flex items-center">
       <div className="max-w-7xl mx-auto px-6 py-20 w-full">
         <div className="max-w-2xl">
-          <h1 className="text-5xl lg:text-6xl font-black text-white leading-tight mb-6">
+          {/* <h1 className="text-5xl lg:text-6xl font-black text-white leading-tight mb-6">
             Customer Focused.<br />
             Quality Driven&nbsp;&nbsp; ECommerce<br />
             Websites<span className="text-primary">.</span>
-          </h1>
+          </h1> */}
+          <h1 className="text-3xl md:text-5xl lg:text-6xl font-black text-white leading-tight mb-6">
+  Customer Focused.<br />
+  Quality Driven&nbsp;&nbsp; ECommerce<br />
+  Websites<span className="text-primary">.</span>
+</h1>
           <p className="text-gray-300 text-base mb-8 max-w-lg leading-relaxed">
             We Bind Together Creative Minds And Innovation To Assist Organizations With Filling In The Period Of Computerized Change.
           </p>

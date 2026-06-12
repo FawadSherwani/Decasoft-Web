@@ -15,10 +15,11 @@ export default function Footer() {
   return (
     <footer className="bg-gray-950 text-gray-300 pt-16 pb-8">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 mb-12">
+        {/* Layout change: grid columns ko adjust kiya */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
           
           {/* Brand */}
-          <div className="lg:col-span-2">
+          <div className="lg:col-span-1">
             <div className="flex items-center gap-2 mb-4">
               <Link href="/" className="flex items-center gap-2">
                 <Image 
@@ -56,27 +57,32 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Support + Social */}
-          <div>
-            <h4 className="text-white font-bold text-sm mb-4">Support</h4>
-            <ul className="space-y-2 text-xs text-gray-400 mb-6">
-              {support.map((s) => (
-                <li key={s}><a href="#" className="hover:text-primary transition-colors">{s}</a></li>
-              ))}
-            </ul>
-            <h4 className="text-white font-bold text-sm mb-3">Follow Us</h4>
-            <div className="flex flex-col gap-2 text-xs text-gray-400">
-              {social.map((s) => (
-                <a key={s.label} href="#" className="flex items-center gap-2 hover:text-primary transition-colors">
-                  <i className={`${s.icon} w-4`}></i> {s.label}
-                </a>
-              ))}
+          {/* Support & Follow Us */}
+          <div className="flex flex-col gap-8">
+            <div>
+              <h4 className="text-white font-bold text-sm mb-4">Support</h4>
+              <ul className="space-y-2 text-xs text-gray-400">
+                {support.map((s) => (
+                  <li key={s}><a href="#" className="hover:text-primary transition-colors">{s}</a></li>
+                ))}
+              </ul>
+            </div>
+            
+            <div>
+              <h4 className="text-white font-bold text-sm mb-4">Follow Us</h4>
+              <div className="flex flex-wrap gap-4 text-xs text-gray-400">
+                {social.map((s) => (
+                  <a key={s.label} href="#" className="flex items-center gap-2 hover:text-primary transition-colors">
+                    <i className={`${s.icon}`}></i> 
+                  </a>
+                ))}
+              </div>
             </div>
           </div>
         </div>
 
         <div className="border-t border-gray-800 pt-6 text-center">
-          <p className="text-gray-500 text-xs">Copyright &copy; 2024 Decasoft. All Rights Reserved</p>
+          <p className="text-gray-500 text-xs">Copyright &copy; 2026 Decasoft. All Rights Reserved</p>
         </div>
       </div>
     </footer>
