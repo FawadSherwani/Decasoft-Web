@@ -1,3 +1,6 @@
+import Link from 'next/link'
+import Image from 'next/image'
+
 const services = ['Web Design', 'Web Development', 'Ecommerce Website', 'Digital Marketing']
 const company = ['Home', 'About Us', 'Our Work', 'Service', 'Case Studies']
 const support = ['Contact Us', 'Privacy Policy', 'Terms Of Use']
@@ -13,15 +16,19 @@ export default function Footer() {
     <footer className="bg-gray-950 text-gray-300 pt-16 pb-8">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 mb-12">
+          
           {/* Brand */}
           <div className="lg:col-span-2">
             <div className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center">
-                <span className="text-white font-black text-sm">D</span>
-              </div>
-              <span className="font-black text-xl text-white">
-                DECA<span className="text-primary">SOFT</span>.
-              </span>
+              <Link href="/" className="flex items-center gap-2">
+                <Image 
+                  src="/Deca-Logo-white.png" 
+                  alt="D'ECASOFT Logo" 
+                  width={200} 
+                  height={100} 
+                  className="w-auto h-12 object-contain" 
+                />
+              </Link>
             </div>
             <p className="text-gray-400 text-xs leading-relaxed max-w-xs">
               Msnsoft Excels At Custom Design And Front End Development. We Love Taking On Design Challenges That
