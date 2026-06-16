@@ -32,7 +32,7 @@ export default function Footer() {
               </Link>
             </div>
             <p className="text-gray-400 text-xs leading-relaxed max-w-xs">
-              Msnsoft Excels At Custom Design And Front End Development. We Love Taking On Design Challenges That
+              Decasoft At Custom Design And Front End Development. We Love Taking On Design Challenges That
               Require Full-On Content Strategy, Thoughtful Design, Demanding Development, And Ongoing Marketing.
             </p>
           </div>
