@@ -5,19 +5,37 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { ChevronDown, X } from 'lucide-react'
 
+// const navLinks = [
+//   { name: 'HOME', href: '/' },
+//   { name: 'ABOUT US', href: '/about' },
+//   { name: 'OUR WORK', href: '/work' },
+//   { 
+//     name: 'SERVICE', 
+//     href: '/services', 
+//     subMenu: [{ name: 'VIDEOGRAPHY', href: '/services/videography' }]
+//     subMenu: [{ name: 'VIDEOGRAPHY1', href: '/services/videography1' }] 
+//   },
+//   { name: 'CASE STUDIES', href: '/case-studies' },
+//   { name: 'CONTACT US', href: '/contact' }
+// ]
 const navLinks = [
   { name: 'HOME', href: '/' },
   { name: 'ABOUT US', href: '/about' },
   { name: 'OUR WORK', href: '/work' },
   { 
-    name: 'SERVICE', 
+    name: 'SERVICES', 
     href: '/services', 
-    subMenu: [{ name: 'VIDEOGRAPHY', href: '/services/videography' }] 
+    subMenu: [
+      { name: 'WEB DEVELOPMENT', href: '/services/web-development' },
+      { name: 'DIGITAL MARKETING', href: '/services/digital-marketing' },
+      { name: 'SEO OPTIMIZATION', href: '/services/seo-optimization' },
+      { name: 'UI/UX DESIGN', href: '/services/ui-ux-design' },
+      { name: 'VIDEOGRAPHY', href: '/services/videography' },
+    ]
   },
   { name: 'CASE STUDIES', href: '/case-studies' },
   { name: 'CONTACT US', href: '/contact' }
 ]
-
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const [isMobileServiceOpen, setIsMobileServiceOpen] = useState(false)
@@ -40,7 +58,7 @@ export default function Navbar() {
                 {link.subMenu && <ChevronDown size={16} />}
               </div>
               {link.subMenu && (
-                <div className="absolute top-full left-0 hidden group-hover:block bg-white shadow-lg border border-gray-100 rounded py-2 min-w-[150px]">
+                <div className="absolute top-full left-0 hidden group-hover:block bg-white shadow-lg border border-gray-100 rounded py-2 min-w-[200px]">
                   {link.subMenu.map((sub) => (
                     <Link key={sub.name} href={sub.href} className="block px-4 py-2 hover:bg-gray-50 hover:text-primary text-xs">
                       {sub.name}
