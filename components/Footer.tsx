@@ -2,7 +2,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 
 const services = ['Web Design', 'Web Development', 'Ecommerce Website', 'Digital Marketing']
-const company = ['Home', 'About Us', 'Our Work', 'Service', 'Case Studies']
+const company = ['Home', 'About Us', 'Our Work', 'Service', 'Case Studies', 'Payment']
 const support = ['Contact Us', 'Privacy Policy', 'Terms Of Use']
 const social = [
   { icon: 'fa-brands fa-facebook', label: 'Facebook' },
