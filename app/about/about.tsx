@@ -360,6 +360,9 @@ export default function AboutUs() {
             ))}
           </div>
         </section>
+     
+{/* <script src="https://elfsightcdn.com/platform.js" async></script>
+<div class="elfsight-app-7a907c2b-baaa-46ba-bba0-e020d0e3464e" data-elfsight-app-lazy></div> */}
 
         {/* ══ COLLABORATE ══ */}
         <section id="contact" style={{ background: `linear-gradient(135deg, ${RED} 0%, #8b0000 100%)`, padding: "4rem 6%", color: WHITE, position: "relative", overflow: "hidden" }}>
