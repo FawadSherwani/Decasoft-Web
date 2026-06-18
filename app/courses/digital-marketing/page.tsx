@@ -7,7 +7,7 @@ import { useRef, useState } from 'react'
 const relatedCourses = [
   {
     title: 'SEO (Search Engine Optimization)',
-    desc: 'SEO Optimized Version – This course is perfect for anyone who wants to rank websites.',
+    desc: 'SEO Optimized Version – This course is perfect for anyone who wants to rank websites on Google.',
     href: '/courses/seo',
     img: 'https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?w=400&q=80',
   },
@@ -30,10 +30,10 @@ const relatedCourses = [
     img: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&q=80',
   },
   {
-    title: 'Digital Marketing',
-    desc: 'Master digital marketing strategies including social media, email, and paid ads.',
-    href: '/courses/digital-marketing',
-    img: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&q=80',
+    title: 'Web Development',
+    desc: 'Master HTML, CSS, JavaScript and WordPress to build responsive, modern websites from scratch.',
+    href: '/courses/web-development',
+    img: 'https://images.unsplash.com/photo-1593720219276-0b1eacd0aef4?w=400&q=80',
   },
   {
     title: 'UI/UX Design',
@@ -55,7 +55,7 @@ type FormData = {
 
 type FormStatus = 'idle' | 'loading' | 'success' | 'error'
 
-export default function WebDevCoursePage() {
+export default function DigitalMarketingCoursePage() {
   const scrollRef = useRef<HTMLDivElement>(null)
 
   const [formData, setFormData] = useState<FormData>({
@@ -119,13 +119,12 @@ export default function WebDevCoursePage() {
       <section className="max-w-7xl mx-auto px-6 py-16 flex flex-col lg:flex-row items-center gap-12">
         <div className="flex-1">
           <h1 className="text-4xl lg:text-5xl font-extrabold text-primary mb-5 leading-tight">
-            Web Development
+            Digital Marketing
           </h1>
           <p className="text-gray-600 text-sm leading-relaxed mb-8 max-w-lg">
-            Master the essentials of web development and WordPress with our beginner-friendly course.
-            Learn HTML, CSS, JavaScript, and dive into WordPress theme customization and development.
-            Build responsive websites, create custom themes, and launch real-world projects with
-            confidence — no prior coding experience needed!
+            Learn the essential skills of digital marketing with our beginner-friendly course.
+            Master SEO, social media, Google Ads, email marketing, and more to grow your brand
+            and drive online success.
           </p>
           <Link
             href="#enroll"
@@ -137,14 +136,14 @@ export default function WebDevCoursePage() {
 
         <div className="flex-1 relative">
           <Image
-            src="https://images.unsplash.com/photo-1593720219276-0b1eacd0aef4?w=700&q=80"
-            alt="Web Development Course"
+            src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=700&q=80"
+            alt="Digital Marketing Course"
             width={600}
             height={420}
             className="rounded-xl object-cover w-full h-auto shadow-md"
           />
           <div className="absolute top-4 right-4 flex gap-2 flex-wrap justify-end">
-            {['HTML', 'CSS', 'JS', 'PHP'].map((t) => (
+            {['SEO', 'PPC', 'SMM', 'Email'].map((t) => (
               <span key={t} className="bg-primary text-white text-xs font-bold px-3 py-1 rounded-full shadow">
                 {t}
               </span>
@@ -157,54 +156,62 @@ export default function WebDevCoursePage() {
       <section className="max-w-7xl mx-auto px-6 py-12 flex flex-col lg:flex-row gap-14">
         <div className="flex-1 text-sm leading-relaxed text-gray-700 space-y-5">
           <p>
-            Kickstart your journey in{' '}
-            <strong className="text-primary">Web Development</strong> with this beginner-friendly
-            course. Learn to build responsive, modern websites using{' '}
-            <strong>HTML</strong>, <strong>CSS</strong>, and <strong>JavaScript</strong>, then dive
-            into <strong>WordPress theme customization and development</strong>.
+            Unlock the skills to drive online success with our{' '}
+            <strong className="text-primary">Digital Marketing Course</strong>. Learn how to
+            attract, engage, and convert customers using the latest digital marketing strategies.
           </p>
 
           <div>
-            <p className="font-bold text-gray-800 mb-2">You&apos;ll Learn To:</p>
+            <p className="font-bold text-gray-800 mb-2">What You&apos;ll Learn:</p>
             <ul className="list-disc pl-5 space-y-1 text-gray-600">
-              <li>Structure &amp; style pages with HTML5 and CSS3</li>
-              <li>Add interactivity with JavaScript</li>
-              <li>Build mobile-friendly layouts</li>
-              <li>Customize WordPress themes &amp; use plugins</li>
-              <li>Develop &amp; launch your own WordPress website</li>
-              <li>Collaborate with Git &amp; GitHub</li>
+              <li>Improve rankings with <strong>SEO</strong></li>
+              <li>Grow audiences on <strong>social media</strong></li>
+              <li>Run <strong>Google Ads &amp; PPC</strong> campaigns</li>
+              <li>Create automated <strong>email marketing</strong> campaigns</li>
+              <li>Develop a strong <strong>content marketing</strong> strategy</li>
+              <li>Track and analyze results with <strong>Google Analytics</strong></li>
             </ul>
           </div>
 
           <div>
-            <p className="font-bold text-gray-800 mb-2">Perfect For:</p>
+            <p className="font-bold text-gray-800 mb-2">Course Modules:</p>
+            <ul className="list-disc pl-5 space-y-1 text-gray-600">
+              <li>SEO &amp; Social Media Marketing</li>
+              <li>Google Ads &amp; Email Marketing</li>
+              <li>Content Creation &amp; Influencer Marketing</li>
+              <li>Google Analytics &amp; Marketing Funnels</li>
+            </ul>
+          </div>
+
+          <div>
+            <p className="font-bold text-gray-800 mb-2">Who This Course Is For:</p>
             <ul className="list-disc pl-5 space-y-1 text-gray-600">
               <li>Beginners</li>
-              <li>Freelancers &amp; designers</li>
-              <li>Entrepreneurs &amp; content creators</li>
-              <li>Future WordPress developers</li>
+              <li>Entrepreneurs &amp; business owners</li>
+              <li>Aspiring marketers</li>
+              <li>Anyone wanting to grow their brand online</li>
             </ul>
           </div>
 
           <div>
-            <p className="font-bold text-gray-800 mb-2">What&apos;s Included:</p>
+            <p className="font-bold text-gray-800 mb-2">What You&apos;ll Get:</p>
             <ul className="list-disc pl-5 space-y-1 text-gray-600">
-              <li>Step-by-step video tutorials</li>
+              <li>Step-by-step tutorials</li>
               <li>Real-world projects</li>
               <li>Certificate of Completion</li>
-              <li>Lifetime access</li>
+              <li>Lifetime access to materials</li>
             </ul>
           </div>
 
           <p className="font-bold text-gray-900">
-            Master web design and WordPress development — no coding experience needed!
+            Master DM and grow your brand, business, or career!
           </p>
         </div>
 
         <div className="flex-1">
           <Image
-            src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=700&q=80"
-            alt="Developer working"
+            src="https://images.unsplash.com/photo-1533750349088-cd871a92f312?w=700&q=80"
+            alt="Digital Marketing strategies"
             width={580}
             height={420}
             className="rounded-xl object-cover w-full h-auto shadow-md"

@@ -7,7 +7,7 @@ import { useRef, useState } from 'react'
 const relatedCourses = [
   {
     title: 'SEO (Search Engine Optimization)',
-    desc: 'SEO Optimized Version – This course is perfect for anyone who wants to rank websites.',
+    desc: 'SEO Optimized Version – This course is perfect for anyone who wants to rank websites on Google.',
     href: '/courses/seo',
     img: 'https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?w=400&q=80',
   },
@@ -55,7 +55,7 @@ type FormData = {
 
 type FormStatus = 'idle' | 'loading' | 'success' | 'error'
 
-export default function WebDevCoursePage() {
+export default function GraphicDesigningCoursePage() {
   const scrollRef = useRef<HTMLDivElement>(null)
 
   const [formData, setFormData] = useState<FormData>({
@@ -119,13 +119,12 @@ export default function WebDevCoursePage() {
       <section className="max-w-7xl mx-auto px-6 py-16 flex flex-col lg:flex-row items-center gap-12">
         <div className="flex-1">
           <h1 className="text-4xl lg:text-5xl font-extrabold text-primary mb-5 leading-tight">
-            Web Development
+            Graphic Designing
           </h1>
           <p className="text-gray-600 text-sm leading-relaxed mb-8 max-w-lg">
-            Master the essentials of web development and WordPress with our beginner-friendly course.
-            Learn HTML, CSS, JavaScript, and dive into WordPress theme customization and development.
-            Build responsive websites, create custom themes, and launch real-world projects with
-            confidence — no prior coding experience needed!
+            Learn the art of visual storytelling with our Graphic Designing Course. Master tools
+            like Photoshop and Illustrator, create stunning designs, and build a portfolio that
+            stands out — perfect for beginners and creatives alike!
           </p>
           <Link
             href="#enroll"
@@ -137,14 +136,14 @@ export default function WebDevCoursePage() {
 
         <div className="flex-1 relative">
           <Image
-            src="https://images.unsplash.com/photo-1593720219276-0b1eacd0aef4?w=700&q=80"
-            alt="Web Development Course"
+            src="https://images.unsplash.com/photo-1588702547923-7093a6c3ba33?w=700&q=80"
+            alt="Graphic Designing Course"
             width={600}
             height={420}
             className="rounded-xl object-cover w-full h-auto shadow-md"
           />
           <div className="absolute top-4 right-4 flex gap-2 flex-wrap justify-end">
-            {['HTML', 'CSS', 'JS', 'PHP'].map((t) => (
+            {['PS', 'AI', 'ID', 'XD'].map((t) => (
               <span key={t} className="bg-primary text-white text-xs font-bold px-3 py-1 rounded-full shadow">
                 {t}
               </span>
@@ -157,54 +156,56 @@ export default function WebDevCoursePage() {
       <section className="max-w-7xl mx-auto px-6 py-12 flex flex-col lg:flex-row gap-14">
         <div className="flex-1 text-sm leading-relaxed text-gray-700 space-y-5">
           <p>
-            Kickstart your journey in{' '}
-            <strong className="text-primary">Web Development</strong> with this beginner-friendly
-            course. Learn to build responsive, modern websites using{' '}
-            <strong>HTML</strong>, <strong>CSS</strong>, and <strong>JavaScript</strong>, then dive
-            into <strong>WordPress theme customization and development</strong>.
+            Unlock your creative potential with our{' '}
+            <strong className="text-primary">Graphic Designing Course</strong>, a complete guide
+            to mastering visual communication. Whether you&apos;re starting from scratch or
+            enhancing your existing skills, this course teaches the tools, techniques, and design
+            principles needed to create stunning visuals for <strong>digital</strong> and print.
           </p>
 
           <div>
-            <p className="font-bold text-gray-800 mb-2">You&apos;ll Learn To:</p>
+            <p className="font-bold text-gray-800 mb-2">What You&apos;ll Learn:</p>
             <ul className="list-disc pl-5 space-y-1 text-gray-600">
-              <li>Structure &amp; style pages with HTML5 and CSS3</li>
-              <li>Add interactivity with JavaScript</li>
-              <li>Build mobile-friendly layouts</li>
-              <li>Customize WordPress themes &amp; use plugins</li>
-              <li>Develop &amp; launch your own WordPress website</li>
-              <li>Collaborate with Git &amp; GitHub</li>
+              <li>Core design principles: color theory, typography, layout, and composition</li>
+              <li>Mastery of tools like Adobe Photoshop, Illustrator, and InDesign</li>
+              <li>Designing logos, posters, brochures, social media content, and brand identities</li>
+              <li>Introduction to UI/UX for modern web and mobile design</li>
+              <li>Building a professional portfolio and freelancing tips</li>
             </ul>
           </div>
 
           <div>
-            <p className="font-bold text-gray-800 mb-2">Perfect For:</p>
+            <p className="font-bold text-gray-800 mb-2">Why Choose This Course:</p>
             <ul className="list-disc pl-5 space-y-1 text-gray-600">
-              <li>Beginners</li>
-              <li>Freelancers &amp; designers</li>
-              <li>Entrepreneurs &amp; content creators</li>
-              <li>Future WordPress developers</li>
+              <li>Hands-on projects and real-world assignments</li>
+              <li>Taught by experienced, professional designers</li>
+              <li>Beginner-friendly step-by-step lessons</li>
+              <li>Access to downloadable templates and resources</li>
+              <li>Certificate of completion and portfolio-worthy projects</li>
             </ul>
           </div>
 
           <div>
-            <p className="font-bold text-gray-800 mb-2">What&apos;s Included:</p>
+            <p className="font-bold text-gray-800 mb-2">Who Should Enroll Graphic Designing:</p>
             <ul className="list-disc pl-5 space-y-1 text-gray-600">
-              <li>Step-by-step video tutorials</li>
-              <li>Real-world projects</li>
-              <li>Certificate of Completion</li>
-              <li>Lifetime access</li>
+              <li>Aspiring graphic designers</li>
+              <li>Content creators, marketers, and entrepreneurs</li>
+              <li>Students and professionals learning visual design</li>
+              <li>Anyone looking to improve their creative appearance</li>
             </ul>
           </div>
 
           <p className="font-bold text-gray-900">
-            Master web design and WordPress development — no coding experience needed!
+            By the end of this course, you&apos;ll be equipped to create{' '}
+            <strong>professional, eye-catching designs</strong> that communicate effectively and
+            elevate your brand.
           </p>
         </div>
 
         <div className="flex-1">
           <Image
-            src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=700&q=80"
-            alt="Developer working"
+            src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=700&q=80"
+            alt="Graphic designer working"
             width={580}
             height={420}
             className="rounded-xl object-cover w-full h-auto shadow-md"
@@ -353,6 +354,7 @@ export default function WebDevCoursePage() {
                       <option value="Web Development">Web Development</option>
                       <option value="Digital Marketing">Digital Marketing</option>
                       <option value="Search Engine Optimization">Search Engine Optimization</option>
+                      <option value="Graphic Designing">Graphic Designing</option>
                       <option value="UI/UX Design">UI/UX Design</option>
                       <option value="Videography">Videography</option>
                       <option value="E-Commerce">E-Commerce</option>

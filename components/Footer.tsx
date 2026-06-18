@@ -224,7 +224,6 @@ const services = [
   { name: 'Web Development',            href: '/services/web-development' },
   { name: 'Digital Marketing',          href: '/services/digital-marketing' },
   { name: 'Search Engine Optimization', href: '/services/seo' },
-  { name: 'UI/UX Design',               href: '/services/uiux' },
   { name: 'Videography',                href: '/services/videography' },
   { name: 'E-Commerce',                 href: '/services/e-commerce' },
 ]
@@ -233,7 +232,6 @@ const courses = [
   { name: 'Web Development',            href: '/courses/web-development' },
   { name: 'Digital Marketing',          href: '/courses/digital-marketing' },
   { name: 'Search Engine Optimization', href: '/courses/seo' },
-  { name: 'UI/UX Design',               href: '/courses/uiux' },
   { name: 'Videography',                href: '/courses/videography' },
   { name: 'E-Commerce',                 href: '/courses/e-commerce' },
 ]

@@ -264,7 +264,7 @@ const navLinks = [
       { name: 'WEB DEVELOPMENT',              href: '/courses/web-development' },
       { name: 'DIGITAL MARKETING',            href: '/courses/digital-marketing' },
       { name: 'SEARCH ENGINE OPTIMIZATION',   href: '/courses/seo' },
-      { name: 'UI/UX DESIGN',                 href: '/courses/uiux' },
+      { name: 'GRAPHIC DESIGN',               href: '/courses/graphic-designing' },
       { name: 'VIDEOGRAPHY',                  href: '/courses/videography' },
       { name: 'E-COMMERCE',                   href: '/courses/e-commerce' },
     ]

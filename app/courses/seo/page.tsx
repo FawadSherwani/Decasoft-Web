@@ -6,12 +6,6 @@ import { useRef, useState } from 'react'
 
 const relatedCourses = [
   {
-    title: 'SEO (Search Engine Optimization)',
-    desc: 'SEO Optimized Version – This course is perfect for anyone who wants to rank websites.',
-    href: '/courses/seo',
-    img: 'https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?w=400&q=80',
-  },
-  {
     title: 'Freelancing',
     desc: 'This freelancing course is designed for individuals who want to start their online career.',
     href: '/courses/freelancing',
@@ -31,9 +25,15 @@ const relatedCourses = [
   },
   {
     title: 'Digital Marketing',
-    desc: 'Master digital marketing strategies including social media, email, and paid ads.',
+    desc: 'Unlock the skills to drive online success with our Digital Marketing Course. Learn how to grow your brand.',
     href: '/courses/digital-marketing',
     img: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&q=80',
+  },
+  {
+    title: 'Web Development',
+    desc: 'Master HTML, CSS, JavaScript and WordPress to build responsive, modern websites from scratch.',
+    href: '/courses/web-development',
+    img: 'https://images.unsplash.com/photo-1593720219276-0b1eacd0aef4?w=400&q=80',
   },
   {
     title: 'UI/UX Design',
@@ -55,7 +55,7 @@ type FormData = {
 
 type FormStatus = 'idle' | 'loading' | 'success' | 'error'
 
-export default function WebDevCoursePage() {
+export default function SEOCoursePage() {
   const scrollRef = useRef<HTMLDivElement>(null)
 
   const [formData, setFormData] = useState<FormData>({
@@ -118,14 +118,16 @@ export default function WebDevCoursePage() {
       {/* Hero */}
       <section className="max-w-7xl mx-auto px-6 py-16 flex flex-col lg:flex-row items-center gap-12">
         <div className="flex-1">
-          <h1 className="text-4xl lg:text-5xl font-extrabold text-primary mb-5 leading-tight">
-            Web Development
+          <h1 className="text-4xl lg:text-5xl font-extrabold text-primary mb-6 leading-tight">
+            SEO (Search Engine Optimization)
           </h1>
           <p className="text-gray-600 text-sm leading-relaxed mb-8 max-w-lg">
-            Master the essentials of web development and WordPress with our beginner-friendly course.
-            Learn HTML, CSS, JavaScript, and dive into WordPress theme customization and development.
-            Build responsive websites, create custom themes, and launch real-world projects with
-            confidence — no prior coding experience needed!
+            This course teaches you the fundamentals and advanced strategies of SEO to improve
+            website visibility on search engines like Google. You&apos;ll learn keyword research,
+            on-page and off-page optimization, technical SEO, link-building strategies, and how to
+            use tools like Google Analytics and Search Console. Perfect for marketers, business
+            owners, and content creators, this course helps you drive organic traffic and grow
+            your online presence effectively.
           </p>
           <Link
             href="#enroll"
@@ -137,14 +139,14 @@ export default function WebDevCoursePage() {
 
         <div className="flex-1 relative">
           <Image
-            src="https://images.unsplash.com/photo-1593720219276-0b1eacd0aef4?w=700&q=80"
-            alt="Web Development Course"
+            src="https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?w=700&q=80"
+            alt="SEO Search Engine Optimization"
             width={600}
             height={420}
             className="rounded-xl object-cover w-full h-auto shadow-md"
           />
           <div className="absolute top-4 right-4 flex gap-2 flex-wrap justify-end">
-            {['HTML', 'CSS', 'JS', 'PHP'].map((t) => (
+            {['SEO', 'Keywords', 'Backlinks', 'Analytics'].map((t) => (
               <span key={t} className="bg-primary text-white text-xs font-bold px-3 py-1 rounded-full shadow">
                 {t}
               </span>
@@ -153,58 +155,57 @@ export default function WebDevCoursePage() {
         </div>
       </section>
 
-      {/* Course Detail */}
+      {/* Course Detail — text left, image right */}
       <section className="max-w-7xl mx-auto px-6 py-12 flex flex-col lg:flex-row gap-14">
-        <div className="flex-1 text-sm leading-relaxed text-gray-700 space-y-5">
+        <div className="flex-1 text-sm leading-relaxed text-gray-700 space-y-6">
+
+          {/* SEO Optimized badge */}
+          <div className="flex items-center gap-2">
+            <h2 className="text-xl font-extrabold text-gray-900">SEO Optimized Version</h2>
+          </div>
+
           <p>
-            Kickstart your journey in{' '}
-            <strong className="text-primary">Web Development</strong> with this beginner-friendly
-            course. Learn to build responsive, modern websites using{' '}
-            <strong>HTML</strong>, <strong>CSS</strong>, and <strong>JavaScript</strong>, then dive
-            into <strong>WordPress theme customization and development</strong>.
+            This <strong>Course</strong> is ideal for anyone who wants to rank websites on search
+            engines like Google. SEO (Search Engine Optimization) is a powerful digital marketing
+            skill that drives organic (free) traffic to websites. In this course, you will learn
+            beginner to advanced Search Engine Optimization techniques in a simple, step-by-step
+            format. You&apos;ll gain hands-on experience in{' '}
+            <strong>on-page SEO, off-page SEO, keyword research, technical SEO, and backlink
+            building</strong>. You will also learn how to use essential search engine optimization
+            tools like{' '}
+            <strong>Google Search Console, SEMrush, Ahrefs, and Google Analytics</strong> to
+            improve website rankings.
           </p>
 
           <div>
-            <p className="font-bold text-gray-800 mb-2">You&apos;ll Learn To:</p>
+            <p className="font-bold text-gray-900 mb-2">What You Will Learn</p>
             <ul className="list-disc pl-5 space-y-1 text-gray-600">
-              <li>Structure &amp; style pages with HTML5 and CSS3</li>
-              <li>Add interactivity with JavaScript</li>
-              <li>Build mobile-friendly layouts</li>
-              <li>Customize WordPress themes &amp; use plugins</li>
-              <li>Develop &amp; launch your own WordPress website</li>
-              <li>Collaborate with Git &amp; GitHub</li>
+              <li>Introduction to Search Engine Optimization and how search engines work</li>
+              <li>Keyword research tools and strategy</li>
+              <li>On-page: titles, meta tags, content optimization</li>
+              <li>Off-page: backlinks, social signals, authority building</li>
+              <li>Technical: crawling, indexing, site speed, mobile search engine optimization</li>
+              <li>Local Search Engine Optimization for small businesses</li>
+              <li>Using Search Engine Optimization tools: Search Console, Google Analytics, SEMrush</li>
+              <li>Search Engine Optimization auditing and reporting</li>
             </ul>
           </div>
 
           <div>
-            <p className="font-bold text-gray-800 mb-2">Perfect For:</p>
+            <p className="font-bold text-gray-900 mb-2">Who Should Enroll</p>
             <ul className="list-disc pl-5 space-y-1 text-gray-600">
-              <li>Beginners</li>
-              <li>Freelancers &amp; designers</li>
-              <li>Entrepreneurs &amp; content creators</li>
-              <li>Future WordPress developers</li>
+              <li>Freelancers and digital marketers</li>
+              <li>Bloggers and content creators</li>
+              <li>Business owners wanting to increase traffic</li>
+              <li>Students pursuing digital marketing careers</li>
             </ul>
           </div>
-
-          <div>
-            <p className="font-bold text-gray-800 mb-2">What&apos;s Included:</p>
-            <ul className="list-disc pl-5 space-y-1 text-gray-600">
-              <li>Step-by-step video tutorials</li>
-              <li>Real-world projects</li>
-              <li>Certificate of Completion</li>
-              <li>Lifetime access</li>
-            </ul>
-          </div>
-
-          <p className="font-bold text-gray-900">
-            Master web design and WordPress development — no coding experience needed!
-          </p>
         </div>
 
         <div className="flex-1">
           <Image
-            src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=700&q=80"
-            alt="Developer working"
+            src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=700&q=80"
+            alt="SEO Analytics and Strategy"
             width={580}
             height={420}
             className="rounded-xl object-cover w-full h-auto shadow-md"
@@ -332,19 +333,19 @@ export default function WebDevCoursePage() {
                   </div>
                 </div>
 
-                {/* Row 2: Email + Phone */}
-                <div className="grid grid-cols-2 gap-4 mb-4">
-                  <div>
-                    <label className="block text-xs font-semibold text-gray-600 mb-1">Email</label>
-                    <input type="email" name="email" value={formData.email} onChange={handleChange} placeholder="Email" className={inputClass} />
-                  </div>
-                  <div>
-                    <label className="block text-xs font-semibold text-gray-600 mb-1">Phone Number</label>
-                    <input type="tel" name="phone" value={formData.phone} onChange={handleChange} placeholder="Phone Number" className={inputClass} />
-                  </div>
+                {/* Row 2: Email (full width) */}
+                <div className="mb-4">
+                  <label className="block text-xs font-semibold text-gray-600 mb-1">Email</label>
+                  <input type="email" name="email" value={formData.email} onChange={handleChange} placeholder="Email" className={inputClass} />
                 </div>
 
-                {/* Row 3: Course + Batch */}
+                {/* Row 3: Phone (full width) */}
+                <div className="mb-4">
+                  <label className="block text-xs font-semibold text-gray-600 mb-1">Phone Number</label>
+                  <input type="tel" name="phone" value={formData.phone} onChange={handleChange} placeholder="Phone Number" className={inputClass} />
+                </div>
+
+                {/* Row 4: Course + Batch */}
                 <div className="grid grid-cols-2 gap-4 mb-4">
                   <div>
                     <label className="block text-xs font-semibold text-gray-600 mb-1">Course</label>
@@ -353,6 +354,7 @@ export default function WebDevCoursePage() {
                       <option value="Web Development">Web Development</option>
                       <option value="Digital Marketing">Digital Marketing</option>
                       <option value="Search Engine Optimization">Search Engine Optimization</option>
+                      <option value="Graphic Designing">Graphic Designing</option>
                       <option value="UI/UX Design">UI/UX Design</option>
                       <option value="Videography">Videography</option>
                       <option value="E-Commerce">E-Commerce</option>
@@ -371,7 +373,7 @@ export default function WebDevCoursePage() {
                   </div>
                 </div>
 
-                {/* Row 4: Message */}
+                {/* Row 5: Message */}
                 <div className="mb-6">
                   <label className="block text-xs font-semibold text-gray-600 mb-1">Message</label>
                   <textarea name="message" value={formData.message} onChange={handleChange} placeholder="Message" rows={3} className={`${inputClass} resize-none`} />
