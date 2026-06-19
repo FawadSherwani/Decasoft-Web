@@ -249,6 +249,7 @@ const support = [
   { name: 'Contact Us',     href: '/contact' },
   { name: 'Privacy Policy', href: '/privacy' },
   { name: 'Terms Of Use',   href: '/terms' },
+  { name: 'Payments',  href: '/payments' },
 ]
 
 const social = [
