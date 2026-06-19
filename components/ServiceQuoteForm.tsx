@@ -379,10 +379,24 @@ export default function ServiceQuoteForm() {
                   <span>starting at {selectedService.price.toFixed(2)} AED</span>
                 </div> */}
 
-               <div className="sqf-amount-input-wrap">
+               {/* <div className="sqf-amount-input-wrap">
                   <span className="sqf-currency-badge">AED</span>
                   <input type="number" min={1} step="0.01" value={amount} onChange={(e) => setAmount(parseFloat(e.target.value) || 0)} />
-                </div>
+                </div> */}
+                // Yahan replace karein (approx line 186-188)
+<div className="sqf-amount-input-wrap">
+  <span className="sqf-currency-badge">AED</span>
+  <input 
+    type="number" 
+    min={1} 
+    step="0.01" 
+    value={amount === 0 ? "" : amount} 
+    onChange={(e) => {
+      const val = e.target.value;
+      setAmount(val === "" ? 0 : parseFloat(val));
+    }} 
+  />
+</div>
 
                 <button type="submit" className="sqf-submit-btn" disabled={step === "loading"}>
                   {step === "loading" ? "Please wait…" : "Send"}

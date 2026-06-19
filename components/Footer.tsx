@@ -31,7 +31,7 @@ const support = [
   { name: 'Privacy Policy', href: '/privacy' },
   { name: 'Terms Of Use',   href: '/terms' },
   { name: 'Payments',  href: '/payments' },
-  { name: 'FAQ',  href: '/faq' }
+
 ]
 
 const social = [
