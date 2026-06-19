@@ -128,3 +128,14 @@
 .whatsapp-pulse {
   animation: pulse-ring 2s infinite;
 }
+/* Stripe footer badge ko hide karne ke liye */
+.StripeElement--hide-badge, 
+.StripeElement--hidden {
+  display: none !important;
+}
+
+/* Agar ye kaam na kare, to specific selector use karein */
+#stripe-checkout-badge, 
+.stripe-footer-badge {
+  display: none !important;
+}

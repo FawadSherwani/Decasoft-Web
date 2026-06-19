@@ -379,7 +379,7 @@ export default function ServiceQuoteForm() {
                   <span>starting at {selectedService.price.toFixed(2)} AED</span>
                 </div> */}
 
-                <div className="sqf-amount-input-wrap">
+               <div className="sqf-amount-input-wrap">
                   <span className="sqf-currency-badge">AED</span>
                   <input type="number" min={1} step="0.01" value={amount} onChange={(e) => setAmount(parseFloat(e.target.value) || 0)} />
                 </div>
