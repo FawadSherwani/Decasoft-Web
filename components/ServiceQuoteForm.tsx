@@ -383,7 +383,7 @@ export default function ServiceQuoteForm() {
                   <span className="sqf-currency-badge">AED</span>
                   <input type="number" min={1} step="0.01" value={amount} onChange={(e) => setAmount(parseFloat(e.target.value) || 0)} />
                 </div> */}
-                // Yahan replace karein (approx line 186-188)
+                
 <div className="sqf-amount-input-wrap">
   <span className="sqf-currency-badge">AED</span>
   <input 
