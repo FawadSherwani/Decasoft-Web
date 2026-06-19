@@ -1,104 +1,8 @@
-// "use client";
-
-// import { useState } from "react";
-// import { PaymentElement, useStripe, useElements } from "@stripe/react-stripe-js";
-
-// const RED = "#c0392b";
-// const DARK = "#1a1a2e";
-// const WHITE = "#ffffff";
-
-// export default function CardPaymentForm({ amount }: { amount: number }) {
-//   const stripe = useStripe();
-//   const elements = useElements();
-//   const [submitting, setSubmitting] = useState(false);
-//   const [error, setError] = useState<string | null>(null);
-//   const [succeeded, setSucceeded] = useState(false);
-
-//   async function handleSubmit(e: React.FormEvent) {
-//     e.preventDefault();
-//     if (!stripe || !elements) return;
-
-//     setSubmitting(true);
-//     setError(null);
-
-//     const { error: confirmError } = await stripe.confirmPayment({
-//       elements,
-//       confirmParams: {
-//         // Change this to your real success page
-//         return_url: `${window.location.origin}/payment/success`,
-//       },
-//       redirect: "if_required",
-//     });
-
-//     if (confirmError) {
-//       setError(confirmError.message || "Payment failed. Please try again.");
-//       setSubmitting(false);
-//       return;
-//     }
-
-//     setSucceeded(true);
-//     setSubmitting(false);
-//   }
-
-//   if (succeeded) {
-//     return (
-//       <div style={{ textAlign: "center", padding: "2rem 0" }}>
-//         <div style={{ fontSize: "2.5rem", marginBottom: "0.5rem" }}>✅</div>
-//         <h3 style={{ color: DARK, fontWeight: 800, marginBottom: "0.4rem" }}>Payment Successful</h3>
-//         <p style={{ color: "#666", fontSize: "0.88rem" }}>Thank you! We&apos;ll be in touch shortly.</p>
-//       </div>
-//     );
-//   }
-
-//   return (
-//     <form onSubmit={handleSubmit}>
-//       <style>{`
-//         .cpf-element-wrap {
-//           border: 1px solid #e0e0e0;
-//           border-radius: 8px;
-//           padding: 1rem;
-//           margin-bottom: 1rem;
-//         }
-//         .cpf-error {
-//           color: ${RED};
-//           font-size: 0.8rem;
-//           margin-bottom: 0.8rem;
-//           background: #fff0ee;
-//           padding: 0.6rem 0.8rem;
-//           border-radius: 6px;
-//         }
-//         .cpf-pay-btn {
-//           width: 100%;
-//           background: linear-gradient(135deg, ${RED} 0%, #8b2418 100%);
-//           color: ${WHITE};
-//           border: none;
-//           padding: 0.9rem;
-//           border-radius: 8px;
-//           font-size: 0.92rem;
-//           font-weight: 700;
-//           cursor: pointer;
-//           transition: transform 0.15s, opacity 0.2s;
-//         }
-//         .cpf-pay-btn:hover:not(:disabled) { transform: translateY(-1px); }
-//         .cpf-pay-btn:disabled { opacity: 0.6; cursor: not-allowed; }
-//       `}</style>
-
-//       <div className="cpf-element-wrap">
-//         <PaymentElement options={{ layout: "tabs" }} />
-//       </div>
-
-//       {error && <div className="cpf-error">{error}</div>}
-
-//       <button type="submit" className="cpf-pay-btn" disabled={!stripe || submitting}>
-//         {submitting ? "Processing…" : `Pay ${amount.toFixed(2)} AED`}
-//       </button>
-//     </form>
-//   );
-// }
 "use client";
 
 import { useState } from "react";
 import { PaymentElement, useStripe, useElements } from "@stripe/react-stripe-js";
+import { motion } from "framer-motion";
 
 const RED = "#c0392b";
 const DARK = "#1a1a2e";
@@ -140,11 +44,34 @@ export default function CardPaymentForm({ amount }: { amount: number }) {
 
   if (succeeded) {
     return (
-      <div style={{ textAlign: "center", padding: "2rem 0" }}>
-        <div style={{ fontSize: "2.5rem", marginBottom: "0.5rem" }}>✅</div>
-        <h3 style={{ color: DARK, fontWeight: 800, marginBottom: "0.4rem" }}>Payment Successful</h3>
-        <p style={{ color: GRAY_TEXT, fontSize: "0.88rem" }}>Thank you! We&apos;ll be in touch shortly.</p>
-      </div>
+
+<div style={{ textAlign: "center", padding: "2rem 0" }}>
+  <motion.div
+    initial={{ scale: 0 }}
+    animate={{ scale: 1 }}
+    transition={{ type: "spring", stiffness: 260, damping: 20 }}
+    // "display: inline-block" yahan zaroori hai center karne ke liye
+    style={{ display: "inline-block", fontSize: "3rem", marginBottom: "0.5rem" }}
+  >
+    <svg 
+      width="40" 
+      height="40" 
+      viewBox="0 0 24 24" 
+      fill="none" 
+      stroke="#bf2227" 
+      strokeWidth="2" 
+      strokeLinecap="round" 
+      strokeLinejoin="round"
+      style={{ display: "block" }} // SVG ko bhi block kar dein
+    >
+       <circle cx="12" cy="12" r="10" />
+       <path d="M9 12l2 2 4-4" />
+    </svg>
+  </motion.div>
+  
+  <h3 style={{ color: DARK, fontWeight: 800, marginBottom: "0.4rem" }}>Payment Successful</h3>
+  <p style={{ color: GRAY_TEXT, fontSize: "0.88rem" }}>Thank you! We&apos;ll be in touch shortly.</p>
+</div>
     );
   }
 
