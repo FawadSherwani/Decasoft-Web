@@ -24,7 +24,10 @@ const navLinks = [
   {
      name: 'CASE STUDIES', href: '/case-studies',
      subMenu: [
-      { name: 'Social Media Marketing / Meta Ads',              href: '/case-studies/social-media-marketing-meta-ads' },
+      { name: 'Social Media Marketing / Meta Ads', href: '/case-studies/social-media-marketing-meta-ads' },
+      { name: 'Videography', href: '/case-studies/videography' },
+      { name: 'Graphic Design', href: '/case-studies/graphic-design' },
+      { name: 'Logo Design', href: '/case-studies/logo-design' },
     ],
   },
   { 
