@@ -1,5 +1,8 @@
+'use client'
+
 import Link from 'next/link'
 import Image from 'next/image'
+import { usePathname } from 'next/navigation'
 
 const services = [
   { name: 'Web Development',            href: '/services/web-development' },
@@ -41,7 +44,33 @@ const social = [
   { icon: 'fa-brands fa-linkedin',  label: 'LinkedIn',  href: '#' },
 ]
 
+function FooterLink({ name, href, pathname }: { name: string; href: string; pathname: string }) {
+  const isActive = pathname === href
+
+  return (
+    <Link
+      href={href}
+      className={`
+        group relative inline-flex items-center transition-colors
+        ${isActive ? 'text-primary' : 'text-gray-400 hover:text-primary'}
+      `}
+    >
+      <span
+        className={`
+          inline-block h-px bg-primary mr-0 transition-all duration-300 ease-out
+          ${isActive ? 'w-3 mr-2' : 'w-0 group-hover:w-3 group-hover:mr-2'}
+        `}
+      />
+      <span className="transition-transform duration-300 ease-out group-hover:translate-x-0.5">
+        {name}
+      </span>
+    </Link>
+  )
+}
+
 export default function Footer() {
+  const pathname = usePathname()
+
   return (
     <footer className="bg-gray-950 text-gray-300 pt-16 pb-8">
       <div className="max-w-7xl mx-auto px-6">
@@ -68,12 +97,10 @@ export default function Footer() {
           {/* Services */}
           <div>
             <h4 className="text-white font-bold text-sm mb-4">Services</h4>
-            <ul className="space-y-2 text-xs text-gray-400">
+            <ul className="space-y-2 text-xs">
               {services.map((s) => (
                 <li key={s.name}>
-                  <Link href={s.href} className="hover:text-primary transition-colors">
-                    {s.name}
-                  </Link>
+                  <FooterLink name={s.name} href={s.href} pathname={pathname} />
                 </li>
               ))}
             </ul>
@@ -82,12 +109,10 @@ export default function Footer() {
           {/* Courses */}
           <div>
             <h4 className="text-white font-bold text-sm mb-4">Courses</h4>
-            <ul className="space-y-2 text-xs text-gray-400">
+            <ul className="space-y-2 text-xs">
               {courses.map((c) => (
                 <li key={c.name}>
-                  <Link href={c.href} className="hover:text-primary transition-colors">
-                    {c.name}
-                  </Link>
+                  <FooterLink name={c.name} href={c.href} pathname={pathname} />
                 </li>
               ))}
             </ul>
@@ -96,12 +121,10 @@ export default function Footer() {
           {/* Company */}
           <div>
             <h4 className="text-white font-bold text-sm mb-4">Company</h4>
-            <ul className="space-y-2 text-xs text-gray-400">
+            <ul className="space-y-2 text-xs">
               {company.map((c) => (
                 <li key={c.name}>
-                  <Link href={c.href} className="hover:text-primary transition-colors">
-                    {c.name}
-                  </Link>
+                  <FooterLink name={c.name} href={c.href} pathname={pathname} />
                 </li>
               ))}
             </ul>
@@ -111,12 +134,10 @@ export default function Footer() {
           <div className="flex flex-col gap-8">
             <div>
               <h4 className="text-white font-bold text-sm mb-4">Support</h4>
-              <ul className="space-y-2 text-xs text-gray-400">
+              <ul className="space-y-2 text-xs">
                 {support.map((s) => (
                   <li key={s.name}>
-                    <Link href={s.href} className="hover:text-primary transition-colors">
-                      {s.name}
-                    </Link>
+                    <FooterLink name={s.name} href={s.href} pathname={pathname} />
                   </li>
                 ))}
               </ul>
@@ -142,7 +163,10 @@ export default function Footer() {
 
         <div className="border-t border-gray-800 pt-6 text-center">
           <p className="text-gray-500 text-xs">
-            Copyright &copy; 2026 Decasoft. All Rights Reserved
+            Copyright &copy; 2026 <a href="https://www.decasofts.com" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors text-primary">
+              Decasofts
+            </a>
+            . All Rights Reserved
           </p>
         </div>
       </div>
