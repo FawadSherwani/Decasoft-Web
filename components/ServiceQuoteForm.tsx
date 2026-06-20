@@ -298,7 +298,6 @@ export default function ServiceQuoteForm() {
           transition: background 0.2s;
         }
         .sqf-back-link:hover { background: #ebebeb; }
-
         @media (max-width: 800px) {
           .sqf-split-outer { grid-template-columns: 1fr; }
           .sqf-visual { min-height: 240px; padding: 2rem; }
