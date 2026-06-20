@@ -22,6 +22,11 @@ const montserrat = Montserrat({
 export const metadata: Metadata = {
   title: "D'ECASOFT – Customer Focused. Quality Driven.",
   description: 'Award-winning custom software and web development company.',
+  icons: {
+    icon: '/fav-icon.png',
+    shortcut: '/fav-icon.png',
+    apple: '/fav-icon.png',
+  },
 }
 
 export default function RootLayout({

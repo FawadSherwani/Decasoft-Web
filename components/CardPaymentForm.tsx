@@ -50,7 +50,6 @@ export default function CardPaymentForm({ amount }: { amount: number }) {
     initial={{ scale: 0 }}
     animate={{ scale: 1 }}
     transition={{ type: "spring", stiffness: 260, damping: 20 }}
-    // "display: inline-block" yahan zaroori hai center karne ke liye
     style={{ display: "inline-block", fontSize: "3rem", marginBottom: "0.5rem" }}
   >
     <svg 
