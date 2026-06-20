@@ -23,7 +23,7 @@ const courses = [
 const company = [
   { name: 'Home',         href: '/' },
   { name: 'About Us',     href: '/about' },
-  { name: 'Our Work',     href: '/work' },
+  // { name: 'Our Work',     href: '/work' },
   { name: 'Services',     href: '/services' },
   { name: 'Case Studies', href: '/case-studies' },
   { name: 'Contact Us',   href: '/contact' },
