@@ -1,6 +1,6 @@
 // "use client";
 
-// import { useState } from "react";
+// import { useState, useEffect } from "react";
 
 // const testimonials = [
 //   {
@@ -49,8 +49,13 @@
 // export default function Testimonials() {
 //   const [current, setCurrent] = useState(0)
 
-//   const prevSlide = () => setCurrent((c) => (c === 0 ? slides.length - 1 : c - 1))
-//   const nextSlide = () => setCurrent((c) => (c === slides.length - 1 ? 0 : c + 1))
+//   // auto scroll every 4 seconds
+//   useEffect(() => {
+//     const interval = setInterval(() => {
+//       setCurrent((c) => (c === slides.length - 1 ? 0 : c + 1))
+//     }, 4000)
+//     return () => clearInterval(interval)
+//   }, [])
 
 //   return (
 //     <section className="py-20 bg-white">
@@ -63,15 +68,6 @@
 //         </div>
 
 //         <div className="relative">
-//           {/* Left arrow */}
-//           <button
-//             onClick={prevSlide}
-//             aria-label="Previous testimonials"
-//             className="hidden md:flex absolute -left-12 top-1/2 -translate-y-1/2 z-10 w-9 h-9 items-center justify-center rounded border border-gray-300 text-primary hover:bg-primary hover:text-white transition-colors"
-//           >
-//             &lsaquo;
-//           </button>
-
 //           {/* Slide track */}
 //           <div className="overflow-hidden">
 //             <div
@@ -99,15 +95,6 @@
 //               ))}
 //             </div>
 //           </div>
-
-//           {/* Right arrow */}
-//           <button
-//             onClick={nextSlide}
-//             aria-label="Next testimonials"
-//             className="hidden md:flex absolute -right-12 top-1/2 -translate-y-1/2 z-10 w-9 h-9 items-center justify-center rounded border border-gray-300 text-primary hover:bg-primary hover:text-white transition-colors"
-//           >
-//             &rsaquo;
-//           </button>
 //         </div>
 
 //         {/* Dots */}
@@ -127,7 +114,6 @@
 //     </section>
 //   )
 // }
-
 "use client";
 
 import { useState, useEffect } from "react";
@@ -171,7 +157,7 @@ const testimonials = [
 ]
 
 // group into pairs — 2 cards per slide, same as your grid-cols-2
-const slides = []
+const slides: typeof testimonials[] = []
 for (let i = 0; i < testimonials.length; i += 2) {
   slides.push(testimonials.slice(i, i + 2))
 }
@@ -179,11 +165,11 @@ for (let i = 0; i < testimonials.length; i += 2) {
 export default function Testimonials() {
   const [current, setCurrent] = useState(0)
 
-  // auto scroll every 4 seconds
+  // auto scroll every 7 seconds
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrent((c) => (c === slides.length - 1 ? 0 : c + 1))
-    }, 4000)
+    }, 7000)
     return () => clearInterval(interval)
   }, [])
 
@@ -201,13 +187,20 @@ export default function Testimonials() {
           {/* Slide track */}
           <div className="overflow-hidden">
             <div
-              className="flex transition-transform duration-500 ease-in-out"
+              className="flex transition-transform duration-700 ease-in-out"
               style={{ transform: `translateX(-${current * 100}%)` }}
             >
               {slides.map((pair, slideIdx) => (
                 <div key={slideIdx} className="min-w-full grid grid-cols-1 md:grid-cols-2 gap-6">
                   {pair.map((t, i) => (
-                    <div key={i} className="testimonial-card bg-white shadow-lg rounded-xl p-8 relative">
+                    <div
+                      key={i}
+                      className="testimonial-card bg-white rounded-xl p-8 relative"
+                      style={{
+                        // boxShadow: "-4px 0 0 0 rgba(0,0,0,0.3)",
+                        borderLeft: "4px solid #c0392b",
+                      }}
+                    >
                       <div className="quote-icon absolute top-4 right-6">&ldquo;</div>
                       <p className="text-gray-500 text-sm leading-relaxed mb-6">{t.text}</p>
                       <div className="flex items-center gap-3">
