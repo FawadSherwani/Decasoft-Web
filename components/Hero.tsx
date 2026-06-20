@@ -16,9 +16,9 @@ export default function Hero() {
           <p className="text-gray-300 text-base mb-8 max-w-lg leading-relaxed">
             We Bind Together Creative Minds And Innovation To Assist Organizations With Filling In The Period Of Computerized Change.
           </p>
-          <button className="border-2 border-white text-white font-bold px-8 py-3 rounded hover:bg-white hover:text-primary transition-all text-sm tracking-wide">
-            BOOK APPOINTMENT
-          </button>
+          <a href="https://calendly.com/decasofts-appointment/meeting" target="_blank" rel="noopener noreferrer" className="border-2 border-white text-white font-bold px-8 py-3 rounded hover:bg-white hover:text-primary transition-all text-sm tracking-wide uppercase inline-block">
+  Book a consultation
+</a>
         </div>
 
         {/* Trust Badges */}

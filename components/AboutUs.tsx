@@ -11,8 +11,8 @@ export default function AboutUs() {
           {/* Red badge – top left */}
           <div className="bg-primary rounded-xl p-5 flex flex-col justify-center items-start min-h-[140px]">
             <i className="fa-solid fa-trophy text-white text-3xl mb-2"></i>
-            <p className="text-white font-bold text-base leading-tight">10 Years<br />Experience</p>
-            <p className="text-red-200 text-xs mt-1">Lorem ipsum dolor</p>
+            <p className="text-white font-bold text-base leading-tight">6 Years<br />Experience</p>
+            <p className="text-red-200 text-xs mt-1">in Web Development Graphics & Digital Marketing</p>
           </div>
 
           {/* Chart image – top right */}
@@ -52,10 +52,12 @@ export default function AboutUs() {
           {/* Chat with us button – bottom center */}
           <div className="absolute bottom-[-18px] left-1/2 -translate-x-1/2 bg-white shadow-xl rounded-full px-5 py-2.5 flex items-center gap-2 border border-gray-100 z-10 whitespace-nowrap">
             <i className="fa-brands fa-whatsapp text-green-500 text-xl"></i>
-            <span className="text-sm font-semibold text-gray-700">
-              Need Help?{' '}
-              <span className="text-xs font-normal text-gray-500">Chat with us</span>
-            </span>
+            <a href="https://wa.me/971559411204" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1">
+              <span className="text-sm font-semibold text-gray-700">
+                Need Help?{' '}
+                <span className="text-xs font-normal text-gray-500">Chat with us</span>
+              </span>
+            </a>
           </div>
         </div>
 
