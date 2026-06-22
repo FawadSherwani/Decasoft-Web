@@ -42,7 +42,7 @@ const navLinks = [
       { name: 'E-COMMERCE',                 href: '/courses/e-commerce' },
     ],
   },
-  { name: 'ABOUT US',   href: '/about' },
+  { name: 'ABOUT US',   href: '/about-us' },
   { name: 'CONTACT US', href: '/contact' },
 ]
 

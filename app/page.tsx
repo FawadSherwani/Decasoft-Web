@@ -9,6 +9,8 @@ import Projects from '@/components/Projects'
 import Testimonials from '@/components/Testimonials'
 import CTABanner from '@/components/CTABanner'
 import Footer from '@/components/Footer'
+import { useMemo } from 'react'
+
 
 export default function Home() {
   return (
