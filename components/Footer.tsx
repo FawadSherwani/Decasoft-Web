@@ -26,7 +26,7 @@ const company = [
   { name: 'About Us',     href: '/about-us' },
   { name: 'Services',     href: '/services' },
   { name: 'Case Studies', href: '/case-studies' },
-  { name: 'Contact Us',   href: '/contact' },
+  { name: 'Contact Us',   href: '/contact-us' },
 ]
 const support = [
   { name: 'Contact Us',     href: '/contact' },
