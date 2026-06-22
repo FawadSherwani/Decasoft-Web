@@ -17,7 +17,7 @@ const allProjects = [
     desc: "Ran a full-funnel Facebook & Instagram ad campaign that generated a 4.2x ROAS and grew followers by 60% in 90 days.",
     fullDesc: "Glow Beauty Co. came to us looking to scale their online presence and drive consistent, profitable sales through paid social. We built a full-funnel Meta advertising strategy spanning awareness, retargeting, and conversion campaigns across Facebook and Instagram. Creative testing, audience segmentation, and continuous optimization led to a 4.2x return on ad spend and a 60% growth in their organic follower base within 90 days.",
     tags: ["Meta Ads", "Instagram", "Creative"],
-    img: "https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?w=900&q=80",
+    img: "/ads-ss/1.jpeg",
     stats: [
       { label: "ROAS", value: "4.2x" },
       { label: "Follower Growth", value: "60%" },
@@ -30,7 +30,7 @@ const allProjects = [
     desc: "Designed and managed a content calendar across Instagram & TikTok, driving a 3x increase in organic reach.",
     fullDesc: "UrbanFit Apparel needed a consistent brand voice and visual identity across their social channels. We developed a content calendar covering Instagram and TikTok, mixing product showcases, behind-the-scenes content, and trend-driven reels. The result was a 3x increase in organic reach and a noticeably stronger, more recognizable brand presence.",
     tags: ["Content Strategy", "TikTok", "Instagram"],
-    img: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=900&q=80",
+    img: "/ads-ss/2.jpeg",
     stats: [
       { label: "Organic Reach", value: "+3x" },
       { label: "Platforms", value: "2" },
@@ -43,7 +43,7 @@ const allProjects = [
     desc: "Localized Meta ad campaign targeting nearby customers, resulting in a 38% increase in foot traffic.",
     fullDesc: "Bloom Cafe wanted to drive more local foot traffic and online orders. We ran a hyper-local Meta ad campaign using geo-targeting and dynamic creative tailored to nearby audiences. This resulted in a 38% increase in foot traffic and a measurable lift in online order volume within the first six weeks.",
     tags: ["Meta Ads", "Local Targeting", "Facebook"],
-    img: "https://images.unsplash.com/photo-1521017432531-fbd92d768814?w=900&q=80",
+    img: "/ads-ss/3.jpeg",
     stats: [
       { label: "Foot Traffic", value: "+38%" },
       { label: "Radius", value: "5km" },
@@ -56,7 +56,7 @@ const allProjects = [
     desc: "Built brand presence from scratch across Instagram and Facebook with reels and influencer collaborations.",
     fullDesc: "TechNest Gadgets launched with zero social presence. We built their brand from the ground up — visual identity, content pillars, reels strategy, and influencer partnerships across Instagram and Facebook. Within four months they had an engaged community and consistent product launch buzz.",
     tags: ["Branding", "Reels", "Influencer"],
-    img: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=900&q=80",
+    img: "/ads-ss/4.jpeg",
     stats: [
       { label: "Followers Gained", value: "15K+" },
       { label: "Influencers", value: "12" },
@@ -69,7 +69,7 @@ const allProjects = [
     desc: "Lead-generation ad funnel for gym membership sign-ups, achieving a 45% reduction in cost-per-lead.",
     fullDesc: "FitZone Gym needed a reliable system for filling membership sign-ups. We designed a lead-generation ad funnel on Meta with optimized creative and landing pages, cutting their cost-per-lead by 45% while increasing total lead volume month over month.",
     tags: ["Meta Ads", "Lead Gen", "Conversion"],
-    img: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=900&q=80",
+    img: "/ads-ss/5.jpeg",
     stats: [
       { label: "Cost Per Lead", value: "-45%" },
       { label: "Leads/Month", value: "300+" },
@@ -82,7 +82,7 @@ const allProjects = [
     desc: "Full social media management including content creation and influencer outreach across 3 platforms.",
     fullDesc: "PureSkin Cosmetics partnered with us for end-to-end social media management — content creation, community engagement, and influencer outreach across Instagram, TikTok, and Facebook. The result was a stronger brand community and steady month-over-month engagement growth.",
     tags: ["Community", "Content", "Strategy"],
-    img: "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=900&q=80",
+    img: "/ads-ss/6.jpeg",
     stats: [
       { label: "Platforms", value: "3" },
       { label: "Engagement", value: "+85%" },
@@ -95,7 +95,7 @@ const allProjects = [
     desc: "B2B lead generation campaign on LinkedIn & Meta, driving 200+ qualified leads in the first quarter.",
     fullDesc: "NovaTech Solutions needed qualified B2B leads for their SaaS product. We built a coordinated lead-gen campaign across LinkedIn and Meta with tailored messaging for each platform's audience, generating over 200 qualified leads in the first quarter alone.",
     tags: ["Meta Ads", "B2B", "Lead Gen"],
-    img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=900&q=80",
+    img: "/ads-ss/1.jpeg",
     stats: [
       { label: "Qualified Leads", value: "200+" },
       { label: "Platforms", value: "2" },
@@ -108,7 +108,7 @@ const allProjects = [
     desc: "Food photography and Instagram reels strategy that boosted reservations by 30% in two months.",
     fullDesc: "Spice Route Restaurant wanted their food to do the talking online. We produced professional food photography and a reels-first content strategy for Instagram, which boosted online reservations by 30% within two months of launch.",
     tags: ["Food Photography", "Reels", "Instagram"],
-    img: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=900&q=80",
+    img: "/ads-ss/2.jpeg",
     stats: [
       { label: "Reservations", value: "+30%" },
       { label: "Reels Produced", value: "25" },
@@ -121,7 +121,7 @@ const allProjects = [
     desc: "Visual-first Meta ad campaign for a furniture brand, increasing online store conversions by 52%.",
     fullDesc: "Luxe Interiors needed to turn social browsers into online buyers. We ran a visual-first Meta ad campaign showcasing their furniture collections with dynamic product ads, increasing online store conversions by 52% over the campaign period.",
     tags: ["Meta Ads", "E-commerce", "Visual"],
-    img: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=900&q=80",
+    img: "/ads-ss/3.jpeg",
     stats: [
       { label: "Conversions", value: "+52%" },
       { label: "Ad Sets", value: "8" },
