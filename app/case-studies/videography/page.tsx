@@ -12,12 +12,12 @@ const BORDER = "#e0e0e0";
 
 const allProjects = [
   {
-    title: "Horizon Films",
+    title: "AGM Saffari",
     category: "Event Videography",
-    desc: "Full-day corporate event coverage with multi-camera setup, drone footage, and same-day highlight reel delivery.",
+    desc: "Comprehensive event coverage with drones, multicam production, and highlights.",
     fullDesc: "Horizon Films needed comprehensive coverage for their annual corporate summit. We deployed a multi-camera crew alongside drone footage to capture every keynote, panel, and networking moment. A same-day highlight reel was delivered to keep momentum high on social media while the full edit followed within a week.",
     tags: ["Event Coverage", "Drone", "Multi-cam"],
-    img: "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=900&q=80",
+    img: "/video/1.mp4",
     stats: [
       { label: "Cameras Used", value: "5" },
       { label: "Footage Hours", value: "12+" },
@@ -25,12 +25,12 @@ const allProjects = [
     ],
   },
   {
-    title: "Bloom Beauty",
+    title: "Cherish Sports",
     category: "Brand Storytelling",
-    desc: "Cinematic brand film showcasing the founder's journey, production process, and product craftsmanship.",
+    desc: "Cinematic brand story capturing vision, passion, craftsmanship, and business.",
     fullDesc: "Bloom Beauty wanted a brand film that told their origin story authentically. We shot a cinematic narrative covering the founder's journey, behind-the-scenes production, and finished product shots — resulting in a piece used across their website, ads, and investor pitch decks.",
     tags: ["Brand Film", "Cinematic", "Storytelling"],
-    img: "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=900&q=80",
+    img: "/video/2.mp4",
     stats: [
       { label: "Final Runtime", value: "3:20" },
       { label: "Shoot Days", value: "2" },
@@ -38,12 +38,12 @@ const allProjects = [
     ],
   },
   {
-    title: "Velocity Motors",
+    title: "Eastech",
     category: "Product Videography",
-    desc: "High-energy automotive product video featuring slow-motion detail shots and dynamic drive sequences.",
+    desc: "High-energy product video featuring innovation, performance, precision, and technology.",
     fullDesc: "Velocity Motors needed a launch video that captured the thrill of their new model. We combined slow-motion macro shots of design details with dynamic on-road drive sequences, set to a custom sound mix that elevated the entire viewing experience.",
     tags: ["Product Video", "Automotive", "Slow-mo"],
-    img: "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=900&q=80",
+    img: "/video/3.mp4",
     stats: [
       { label: "Views (30 Days)", value: "1.5M" },
       { label: "Shoot Locations", value: "3" },
@@ -51,12 +51,12 @@ const allProjects = [
     ],
   },
   {
-    title: "Summit Wedding Co.",
+    title: "Green Wood",
     category: "Event Videography",
-    desc: "Emotional wedding film blending candid moments, drone aerials, and a custom cinematic narrative.",
+    desc: "Elegant wedding film capturing emotions, memories, celebrations, and romance.",
     fullDesc: "Summit Wedding Co. trusted us to document one of their clients' most important days. Our team captured candid emotional moments alongside sweeping drone aerials of the venue, weaving it all into a cinematic story film the couple will treasure for years.",
     tags: ["Wedding", "Drone", "Cinematic"],
-    img: "https://images.unsplash.com/photo-1519741497674-611481863552?w=900&q=80",
+    img: "/video/4.mp4",
     stats: [
       { label: "Final Runtime", value: "8:45" },
       { label: "Cameras Used", value: "4" },
@@ -64,12 +64,12 @@ const allProjects = [
     ],
   },
   {
-    title: "NovaTech Solutions",
+    title: "KBRE",
     category: "Corporate Videography",
-    desc: "Sleek explainer video and team interviews used for investor presentations and recruitment campaigns.",
+    desc: "Professional corporate videos featuring interviews, presentations, branding, and team highlights.",
     fullDesc: "NovaTech Solutions needed polished video assets for fundraising and recruitment. We produced a sleek animated explainer combined with authentic team interviews, giving them flexible content for investor decks, the careers page, and LinkedIn outreach.",
     tags: ["Corporate", "Explainer", "Interviews"],
-    img: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=900&q=80",
+    img: "/video/5.mp4",
     stats: [
       { label: "Interviews Filmed", value: "8" },
       { label: "Final Cuts", value: "3" },
@@ -77,12 +77,12 @@ const allProjects = [
     ],
   },
   {
-    title: "Spice Route Restaurant",
+    title: "Legend Autos",
     category: "Brand Storytelling",
-    desc: "Mouth-watering food videography series with macro shots and behind-the-kitchen storytelling for social media.",
+    desc: "Engaging automotive storytelling showcasing vehicles, performance, craftsmanship, and innovation.",
     fullDesc: "Spice Route Restaurant wanted scroll-stopping content for Instagram and TikTok. We produced a series of macro food videography shots paired with behind-the-kitchen storytelling, giving them a steady stream of high-performing reels.",
     tags: ["Food Video", "Social Reels", "Macro"],
-    img: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=900&q=80",
+    img: "/video/6.mp4",
     stats: [
       { label: "Reels Produced", value: "20" },
       { label: "Avg. Views/Reel", value: "85K" },
@@ -90,12 +90,12 @@ const allProjects = [
     ],
   },
   {
-    title: "Apex Fitness",
+    title: "Off Price Fashion",
     category: "Product Videography",
-    desc: "High-impact gym and equipment promo video with dynamic transitions and motivational pacing.",
+    desc: "Dynamic fashion promo video highlighting trends, products, style, and value.",
     fullDesc: "Apex Fitness needed a promo video to drive membership sign-ups. We filmed dynamic gym floor footage, equipment close-ups, and member testimonials, edited with fast-paced transitions and a motivational soundtrack that matched their brand energy.",
     tags: ["Promo Video", "Fitness", "Dynamic Edit"],
-    img: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=900&q=80",
+    img: "/video/7.mp4",
     stats: [
       { label: "Sign-up Lift", value: "+27%" },
       { label: "Final Runtime", value: "1:30" },
@@ -103,12 +103,12 @@ const allProjects = [
     ],
   },
   {
-    title: "Luxe Interiors",
+    title: "Service Zone",
     category: "Corporate Videography",
-    desc: "Elegant showroom walkthrough video highlighting furniture craftsmanship and interior design expertise.",
+    desc: "Professional showroom walkthrough showcasing services, expertise, quality, and customer experience.",
     fullDesc: "Luxe Interiors wanted to bring their showroom experience online. We produced an elegant walkthrough video with smooth gimbal movement, detail shots of craftsmanship, and ambient music — giving online shoppers a true sense of the in-store experience.",
     tags: ["Showroom", "Gimbal", "Interior"],
-    img: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=900&q=80",
+    img: "/video/8.mp4",
     stats: [
       { label: "Final Runtime", value: "4:10" },
       { label: "Online Engagement", value: "+45%" },
@@ -116,12 +116,25 @@ const allProjects = [
     ],
   },
   {
-    title: "GreenLeaf Organics",
+    title: "VS Tecnical",
     category: "Brand Storytelling",
     desc: "Farm-to-table documentary-style video capturing the sourcing, growing, and packaging process.",
     fullDesc: "GreenLeaf Organics wanted to highlight their sustainable farm-to-table process. We shot a documentary-style piece following the journey from farm sourcing to packaging, building trust and transparency with their growing customer base.",
     tags: ["Documentary", "Sustainability", "Brand Film"],
-    img: "https://images.unsplash.com/photo-1500937386664-56d1dfef3854?w=900&q=80",
+    img: "/video/9.mp4",
+    stats: [
+      { label: "Final Runtime", value: "5:30" },
+      { label: "Locations", value: "3" },
+      { label: "Shoot Days", value: "2" },
+    ],
+  },
+  {
+    title: "ZM Performance",
+    category: "Brand Storytelling",
+    desc: "Farm-to-table documentary-style video capturing the sourcing, growing, and packaging process.",
+    fullDesc: "GreenLeaf Organics wanted to highlight their sustainable farm-to-table process. We shot a documentary-style piece following the journey from farm sourcing to packaging, building trust and transparency with their growing customer base.",
+    tags: ["Documentary", "Sustainability", "Brand Film"],
+    img: "/video/10.mp4",
     stats: [
       { label: "Final Runtime", value: "5:30" },
       { label: "Locations", value: "3" },
@@ -132,9 +145,97 @@ const allProjects = [
 
 const PER_PAGE = 8;
 
+// ── Helpers ────────────────────────────────────────────────────────────────────
+
+function isVideo(src: string) {
+  return /\.(mp4|webm|ogg|mov)$/i.test(src);
+}
+
+// Thumbnail used inside each card
+function MediaThumb({ src, alt }: { src: string; alt: string }) {
+  if (isVideo(src)) {
+    return (
+      <video
+        src={src}
+        muted
+        loop
+        playsInline
+        style={{
+          width: "100%",
+          height: 130,
+          objectFit: "cover",
+          display: "block",
+          transition: "transform 0.3s",
+        }}
+        onMouseEnter={(e) => (e.currentTarget as HTMLVideoElement).play()}
+        onMouseLeave={(e) => {
+          const v = e.currentTarget as HTMLVideoElement;
+          v.pause();
+          v.currentTime = 0;
+        }}
+      />
+    );
+  }
+  return (
+    <img
+      src={src}
+      alt={alt}
+      style={{
+        width: "100%",
+        height: 130,
+        objectFit: "cover",
+        objectPosition: "center",
+        display: "block",
+        transition: "transform 0.3s",
+      }}
+    />
+  );
+}
+
+// Hero media used inside the modal
+function MediaHero({ src, alt }: { src: string; alt: string }) {
+  if (isVideo(src)) {
+    return (
+      <video
+        src={src}
+        controls
+        autoPlay
+        muted
+        loop
+        playsInline
+        style={{
+          width: "100%",
+          height: "auto",
+          maxHeight: "60vh",
+          objectFit: "contain",
+          display: "block",
+          background: "#000",
+          borderRadius: "16px 16px 0 0",
+        }}
+      />
+    );
+  }
+  return (
+    <img
+      src={src}
+      alt={alt}
+      style={{
+        width: "100%",
+        height: 280,
+        objectFit: "cover",
+        objectPosition: "center",
+        display: "block",
+        borderRadius: "16px 16px 0 0",
+      }}
+    />
+  );
+}
+
+// ── Page ───────────────────────────────────────────────────────────────────────
+
 export default function Page() {
   const [page, setPage] = useState(1);
-  const [selected, setSelected] = useState<typeof allProjects[0] | null>(null);
+  const [selected, setSelected] = useState<(typeof allProjects)[0] | null>(null);
 
   const totalPages = Math.ceil(allProjects.length / PER_PAGE);
   const start = (page - 1) * PER_PAGE;
@@ -203,13 +304,14 @@ export default function Page() {
           font-weight: 600;
         }
         .vp-card-img-wrap { position: relative; overflow: hidden; }
-        .vp-card img { width: 100%; height: 130px; object-fit: cover; object-position: center; display: block; transition: transform 0.3s; }
-        .vp-card:hover img { transform: scale(1.06); }
+        .vp-card:hover .vp-card-img-wrap img,
+        .vp-card:hover .vp-card-img-wrap video { transform: scale(1.06); }
         .vp-card-overlay {
           position: absolute; inset: 0;
           background: rgba(0,0,0,0.35);
           display: flex; align-items: center; justify-content: center;
           opacity: 0; transition: opacity 0.2s;
+          pointer-events: none;
         }
         .vp-card:hover .vp-card-overlay { opacity: 1; }
         .vp-card-overlay span {
@@ -250,7 +352,7 @@ export default function Page() {
         .vp-collab-inner { max-width: 80rem; margin: 0 auto; padding: 0 1.5rem; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 2rem; }
         .vp-collab-btn { background: ${WHITE}; color: ${BG_RED}; padding: 0.85rem 2.4rem; border-radius: 4px; font-weight: 800; text-decoration: none; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.5px; flex-shrink: 0; box-shadow: 0 4px 20px rgba(0,0,0,0.2); }
 
-        /* ══ MODAL ══ */
+        /* Modal */
         .vp-modal-backdrop {
           position: fixed; inset: 0;
           background: rgba(20,5,5,0.7);
@@ -290,12 +392,6 @@ export default function Page() {
           transition: background 0.2s;
         }
         .vp-modal-close:hover { background: ${BG_RED}; }
-        .vp-modal img {
-          width: 100%; height: 280px;
-          object-fit: cover; object-position: center;
-          display: block;
-          border-radius: 16px 16px 0 0;
-        }
         .vp-modal-body { padding: 1.8rem 2rem 2.2rem; }
         .vp-modal-tag {
           display: inline-block;
@@ -344,14 +440,13 @@ export default function Page() {
         @media (max-width: 500px) {
           .vp-grid { grid-template-columns: 1fr; }
           .vp-collab-inner { flex-direction: column; text-align: center; }
-          .vp-modal img { height: 200px; }
           .vp-modal-stats { grid-template-columns: 1fr 1fr; }
         }
       `}</style>
 
       <div className="vp" style={{ fontFamily: "'Segoe UI', Arial, sans-serif", color: DARK }}>
 
-        {/* ══ HERO ══ */}
+        {/* ── HERO ── */}
         <section style={{ background: LIGHT_BG, padding: "4rem 0 3rem" }}>
           <div className="vp-inner">
             <p style={{ color: BG_RED, fontWeight: 700, fontSize: "0.78rem", letterSpacing: 1, textTransform: "uppercase", marginBottom: "0.6rem" }}>
@@ -367,16 +462,19 @@ export default function Page() {
           </div>
         </section>
 
-        {/* ══ PROJECTS GRID ══ */}
+        {/* ── PROJECTS GRID ── */}
         <section style={{ background: WHITE, padding: "4rem 0 3rem" }}>
           <div className="vp-inner">
             <div className="vp-grid">
               {projects.map((p) => (
                 <button key={p.title} className="vp-card" onClick={() => setSelected(p)}>
                   <div className="vp-card-img-wrap">
-                    <img src={p.img} alt={p.title} />
+                    <MediaThumb src={p.img} alt={p.title} />
                     <div className="vp-card-overlay">
-                      <span><span className="vp-play-icon" /> Watch Case Study</span>
+                      <span>
+                        <span className="vp-play-icon" />
+                        {isVideo(p.img) ? "Watch Video" : "Watch Case Study"}
+                      </span>
                     </div>
                   </div>
                   <div className="vp-card-body">
@@ -407,7 +505,7 @@ export default function Page() {
           </div>
         </section>
 
-        {/* ══ COLLABORATE ══ */}
+        {/* ── COLLABORATE ── */}
         <section className="vp-collab">
           <div className="vp-collab-inner">
             <div style={{ flex: "1 1 340px", maxWidth: 580, color: WHITE }}>
@@ -426,12 +524,12 @@ export default function Page() {
           </div>
         </section>
 
-        {/* ══ MODAL ══ */}
+        {/* ── MODAL ── */}
         {selected && (
           <div className="vp-modal-backdrop" onClick={() => setSelected(null)}>
             <div className="vp-modal" onClick={(e) => e.stopPropagation()}>
               <button className="vp-modal-close" onClick={() => setSelected(null)} aria-label="Close">✕</button>
-              <img src={selected.img} alt={selected.title} />
+              <MediaHero src={selected.img} alt={selected.title} />
               <div className="vp-modal-body">
                 <span className="vp-modal-tag">{selected.category}</span>
                 <h2>{selected.title}</h2>
