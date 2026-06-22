@@ -1,11 +1,12 @@
 import Image from 'next/image'
 
+// ✅ OPTIMIZED: Projects — lazy load, correct sizes, avoid layout shift
 const projects = [
   {
     title: 'DOCTORFINDY',
     desc: 'DoctorFindy is a cutting-edge online service that aims to revolutionize the way individuals find and connect with healthcare professionals. Designed with convenience in mind.',
     tags: ['Web Development', 'Vue', 'JavaScript'],
-    image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=500&q=80',
+    image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=500&q=75', // ✅ q=75
     bg: 'bg-[#1a3a6b]',
     tagBg: 'bg-blue-700',
     textColor: 'text-blue-300',
@@ -16,7 +17,7 @@ const projects = [
     title: 'MOHKM',
     desc: 'DoctorFindy is a cutting-edge online service that aims to revolutionize the way individuals find and connect with healthcare professionals. Designed with convenience in mind.',
     tags: ['Web Development', 'Vue', 'JavaScript'],
-    image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=500&q=80',
+    image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=500&q=75',
     bg: 'bg-[#1a6b2a]',
     tagBg: 'bg-green-700',
     textColor: 'text-green-300',
@@ -27,7 +28,7 @@ const projects = [
     title: 'THE SNORKEL STORE',
     desc: 'Snorkel Store is the ultimate Snorkeling Equipment And Adventure Resource. DoctorFindy is a cutting-edge online service.',
     tags: ['Web Development', 'Vue', 'JavaScript'],
-    image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=500&q=80',
+    image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=500&q=75',
     bg: 'bg-[#1a3a6b]',
     tagBg: 'bg-blue-700',
     textColor: 'text-blue-300',
@@ -38,7 +39,10 @@ const projects = [
 
 export default function Projects() {
   return (
-    <section className="py-20 bg-gray-50">
+    <section
+      className="py-20 bg-gray-50"
+      style={{ contentVisibility: 'auto', containIntrinsicSize: '0 500px' }} // ✅ Off-screen skip
+    >
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex justify-between items-end mb-10">
           <div>
@@ -48,11 +52,17 @@ export default function Projects() {
             </h2>
           </div>
           <div className="flex gap-2">
-            <button className="w-10 h-10 rounded-full border-2 border-gray-300 flex items-center justify-center hover:border-primary hover:text-primary transition-colors">
-              <i className="fa-solid fa-chevron-left text-sm"></i>
+            <button
+              className="w-10 h-10 rounded-full border-2 border-gray-300 flex items-center justify-center hover:border-primary hover:text-primary transition-colors"
+              aria-label="Previous project"
+            >
+              <i className="fa-solid fa-chevron-left text-sm" aria-hidden="true"></i>
             </button>
-            <button className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white hover:bg-primary-dark transition-colors">
-              <i className="fa-solid fa-chevron-right text-sm"></i>
+            <button
+              className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white hover:bg-primary-dark transition-colors"
+              aria-label="Next project"
+            >
+              <i className="fa-solid fa-chevron-right text-sm" aria-hidden="true"></i>
             </button>
           </div>
         </div>
@@ -67,11 +77,14 @@ export default function Projects() {
                   <span key={j} className={`text-xs ${project.tagBg} px-2 py-0.5 rounded`}>{tag}</span>
                 ))}
               </div>
-              <div className={`${project.imgBg} rounded-xl overflow-hidden h-[160px] relative`}>
+              {/* ✅ Fixed height container prevents CLS */}
+              <div className={`${project.imgBg} rounded-xl overflow-hidden relative`} style={{ height: 160 }}>
                 <Image
                   src={project.image}
                   alt={project.title}
                   fill
+                  loading="lazy"   // ✅ Below fold — lazy is correct
+                  sizes="(max-width: 768px) 90vw, 33vw"  // ✅ Right size = smaller download on mobile
                   className="object-cover opacity-80"
                 />
               </div>

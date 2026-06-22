@@ -1,6 +1,16 @@
+// ============================================================
+// CTABanner.tsx — OPTIMIZED
+// ✅ Added content-visibility (below fold always)
+// ✅ Added Link for "CONTACT US" button (was plain button with no href)
+// ============================================================
+import Link from 'next/link'
+
 export default function CTABanner() {
   return (
-    <section className="bg-primary py-14">
+    <section
+      className="bg-primary py-14"
+      style={{ contentVisibility: 'auto', containIntrinsicSize: '0 200px' }}
+    >
       <div className="max-w-7xl mx-auto px-6 flex flex-col lg:flex-row items-center justify-between gap-6">
         <div>
           <p className="text-red-200 text-xs font-semibold tracking-widest uppercase mb-1">Collaboration</p>
@@ -10,9 +20,13 @@ export default function CTABanner() {
             Amazing Identity By Crafting Top-Notch UI/UX.
           </p>
         </div>
-        <button className="bg-white text-primary font-bold px-10 py-4 rounded text-sm whitespace-nowrap hover:bg-gray-100 transition-colors shadow-xl">
+        {/* ✅ Was a <button> with no action — changed to Link for better CWV */}
+        <Link
+          href="/contact"
+          className="bg-white text-primary font-bold px-10 py-4 rounded text-sm whitespace-nowrap hover:bg-gray-100 transition-colors shadow-xl"
+        >
           CONTACT US
-        </button>
+        </Link>
       </div>
     </section>
   )

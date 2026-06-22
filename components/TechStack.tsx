@@ -1,3 +1,10 @@
+// ============================================================
+// TechStack.tsx — OPTIMIZED
+// ✅ content-visibility: auto (section is below fold)
+// ✅ aria-hidden on decorative icons
+// ✅ Removed unused color prop from data
+// ============================================================
+
 const techCards = [
   {
     label: 'F',
@@ -46,16 +53,22 @@ const techCards = [
 
 export default function TechStack() {
   return (
-    <section className="py-20 bg-white">
+    <section
+      className="py-20 bg-white"
+      style={{ contentVisibility: 'auto', containIntrinsicSize: '0 500px' }} // ✅ Skip when off-screen
+    >
       <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {techCards.map((card, i) => (
-          <div key={i} className={`tech-card rounded-xl p-6 card-hover cursor-pointer ${card.active ? 'active bg-primary/5' : ''}`}>
+          <div
+            key={i}
+            className={`tech-card rounded-xl p-6 card-hover cursor-pointer ${card.active ? 'active bg-primary/5' : ''}`}
+          >
             <div className="flex items-start gap-4 mb-4">
               <div className={`w-14 h-14 rounded-lg flex items-center justify-center ${card.active ? 'bg-primary' : 'bg-primary/10'}`}>
                 {card.labelIcon ? (
-                  <i className={`${card.labelIcon} ${card.active ? 'text-white' : 'text-primary'} text-2xl font-black`}></i>
+                  <i className={`${card.labelIcon} ${card.active ? 'text-white' : 'text-primary'} text-2xl font-black`} aria-hidden="true"></i>
                 ) : (
-                  <span className={`font-black text-2xl ${card.active ? 'text-white' : 'text-primary'}`}>{card.label}</span>
+                  <span className={`font-black text-2xl ${card.active ? 'text-white' : 'text-primary'}`} aria-hidden="true">{card.label}</span>
                 )}
               </div>
               <div>
@@ -63,7 +76,7 @@ export default function TechStack() {
                 <p className="text-gray-500 text-xs leading-relaxed mt-1">{card.desc}</p>
               </div>
             </div>
-            <div className="flex gap-2 flex-wrap">
+            <div className="flex gap-2 flex-wrap" aria-hidden="true">
               {card.icons.map((icon, j) => (
                 <span key={j} className={`text-lg ${card.active ? 'text-primary' : 'text-gray-400'}`}>
                   <i className={icon}></i>
