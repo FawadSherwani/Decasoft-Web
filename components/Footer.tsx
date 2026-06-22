@@ -26,19 +26,18 @@ const company = [
   { name: 'About Us',     href: '/about-us' },
   { name: 'Services',     href: '/services' },
   { name: 'Case Studies', href: '/case-studies' },
-  { name: 'Contact Us',   href: '/contact-us' },
 ]
 const support = [
-  { name: 'Contact Us',     href: '/contact' },
+  { name: 'Contact Us',     href: '/contact-us' },
   { name: 'Privacy Policy', href: '/privacy' },
   { name: 'Terms Of Use',   href: '/terms' },
   { name: 'Payments',       href: '/payments' },
 ]
 const social = [
-  { icon: 'fa-brands fa-facebook',  label: 'Facebook',  href: '#' },
-  { icon: 'fa-brands fa-twitter',   label: 'Twitter',   href: '#' },
-  { icon: 'fa-brands fa-instagram', label: 'Instagram', href: '#' },
-  { icon: 'fa-brands fa-linkedin',  label: 'LinkedIn',  href: '#' },
+  { icon: 'fa-brands fa-facebook',  label: 'Facebook',  href: 'https://www.facebook.com' },
+  { icon: 'fa-brands fa-tiktok',    label: 'TikTok',    href: 'https://www.tiktok.com' },
+  { icon: 'fa-brands fa-instagram', label: 'Instagram', href: 'https://www.instagram.com' },
+  { icon: 'fa-brands fa-linkedin',  label: 'LinkedIn',  href: 'https://www.linkedin.com' },
 ]
 
 function FooterLink({ name, href, pathname }: { name: string; href: string; pathname: string }) {
