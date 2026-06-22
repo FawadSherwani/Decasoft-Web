@@ -17,7 +17,7 @@ const allProjects = [
     desc: "Comprehensive event coverage with drones, multicam production, and highlights.",
     fullDesc: "Horizon Films needed comprehensive coverage for their annual corporate summit. We deployed a multi-camera crew alongside drone footage to capture every keynote, panel, and networking moment. A same-day highlight reel was delivered to keep momentum high on social media while the full edit followed within a week.",
     tags: ["Event Coverage", "Drone", "Multi-cam"],
-    img: "/video/1.mp4",
+    img: "https://res.cloudinary.com/do2147b3j/video/upload/q_auto/f_auto/v1782126825/1_ptr6xc.mp4",
     stats: [
       { label: "Cameras Used", value: "5" },
       { label: "Footage Hours", value: "12+" },
@@ -30,7 +30,7 @@ const allProjects = [
     desc: "Cinematic brand story capturing vision, passion, craftsmanship, and business.",
     fullDesc: "Bloom Beauty wanted a brand film that told their origin story authentically. We shot a cinematic narrative covering the founder's journey, behind-the-scenes production, and finished product shots — resulting in a piece used across their website, ads, and investor pitch decks.",
     tags: ["Brand Film", "Cinematic", "Storytelling"],
-    img: "/video/2.mp4",
+    img: "https://res.cloudinary.com/do2147b3j/video/upload/q_auto/f_auto/v1782126834/2_zndyfk.mp4",
     stats: [
       { label: "Final Runtime", value: "3:20" },
       { label: "Shoot Days", value: "2" },
@@ -43,7 +43,7 @@ const allProjects = [
     desc: "High-energy product video featuring innovation, performance, precision, and technology.",
     fullDesc: "Velocity Motors needed a launch video that captured the thrill of their new model. We combined slow-motion macro shots of design details with dynamic on-road drive sequences, set to a custom sound mix that elevated the entire viewing experience.",
     tags: ["Product Video", "Automotive", "Slow-mo"],
-    img: "/video/3.mp4",
+    img: "https://res.cloudinary.com/do2147b3j/video/upload/q_auto/f_auto/v1782126822/3_jh0bjz.mp4",
     stats: [
       { label: "Views (30 Days)", value: "1.5M" },
       { label: "Shoot Locations", value: "3" },
@@ -56,7 +56,7 @@ const allProjects = [
     desc: "Elegant wedding film capturing emotions, memories, celebrations, and romance.",
     fullDesc: "Summit Wedding Co. trusted us to document one of their clients' most important days. Our team captured candid emotional moments alongside sweeping drone aerials of the venue, weaving it all into a cinematic story film the couple will treasure for years.",
     tags: ["Wedding", "Drone", "Cinematic"],
-    img: "/video/4.mp4",
+    img: "https://res.cloudinary.com/do2147b3j/video/upload/q_auto/f_auto/v1782126832/4_u5d87x.mp4",
     stats: [
       { label: "Final Runtime", value: "8:45" },
       { label: "Cameras Used", value: "4" },
@@ -64,12 +64,12 @@ const allProjects = [
     ],
   },
   {
-    title: "KBRE",
+    title: "KBRE 1",
     category: "Corporate Videography",
     desc: "Professional corporate videos featuring interviews, presentations, branding, and team highlights.",
     fullDesc: "NovaTech Solutions needed polished video assets for fundraising and recruitment. We produced a sleek animated explainer combined with authentic team interviews, giving them flexible content for investor decks, the careers page, and LinkedIn outreach.",
     tags: ["Corporate", "Explainer", "Interviews"],
-    img: "/video/5.mp4",
+    img: "https://res.cloudinary.com/do2147b3j/video/upload/q_auto/f_auto/v1782126818/5_cjaqop.mp4",
     stats: [
       { label: "Interviews Filmed", value: "8" },
       { label: "Final Cuts", value: "3" },
@@ -82,7 +82,7 @@ const allProjects = [
     desc: "Engaging automotive storytelling showcasing vehicles, performance, craftsmanship, and innovation.",
     fullDesc: "Spice Route Restaurant wanted scroll-stopping content for Instagram and TikTok. We produced a series of macro food videography shots paired with behind-the-kitchen storytelling, giving them a steady stream of high-performing reels.",
     tags: ["Food Video", "Social Reels", "Macro"],
-    img: "/video/6.mp4",
+    img: "https://res.cloudinary.com/do2147b3j/video/upload/q_auto/f_auto/v1782126816/6_ecplre.mp4",
     stats: [
       { label: "Reels Produced", value: "20" },
       { label: "Avg. Views/Reel", value: "85K" },
@@ -95,7 +95,7 @@ const allProjects = [
     desc: "Dynamic fashion promo video highlighting trends, products, style, and value.",
     fullDesc: "Apex Fitness needed a promo video to drive membership sign-ups. We filmed dynamic gym floor footage, equipment close-ups, and member testimonials, edited with fast-paced transitions and a motivational soundtrack that matched their brand energy.",
     tags: ["Promo Video", "Fitness", "Dynamic Edit"],
-    img: "/video/7.mp4",
+    img: "https://res.cloudinary.com/do2147b3j/video/upload/q_auto/f_auto/v1782126808/7_myvuoz.mp4",
     stats: [
       { label: "Sign-up Lift", value: "+27%" },
       { label: "Final Runtime", value: "1:30" },
@@ -108,7 +108,7 @@ const allProjects = [
     desc: "Professional showroom walkthrough showcasing services, expertise, quality, and customer experience.",
     fullDesc: "Luxe Interiors wanted to bring their showroom experience online. We produced an elegant walkthrough video with smooth gimbal movement, detail shots of craftsmanship, and ambient music — giving online shoppers a true sense of the in-store experience.",
     tags: ["Showroom", "Gimbal", "Interior"],
-    img: "/video/8.mp4",
+    img: "https://res.cloudinary.com/do2147b3j/video/upload/q_auto/f_auto/v1782126802/8_wkaxxc.mp4",
     stats: [
       { label: "Final Runtime", value: "4:10" },
       { label: "Online Engagement", value: "+45%" },
@@ -121,7 +121,7 @@ const allProjects = [
     desc: "Farm-to-table documentary-style video capturing the sourcing, growing, and packaging process.",
     fullDesc: "GreenLeaf Organics wanted to highlight their sustainable farm-to-table process. We shot a documentary-style piece following the journey from farm sourcing to packaging, building trust and transparency with their growing customer base.",
     tags: ["Documentary", "Sustainability", "Brand Film"],
-    img: "/video/9.mp4",
+    img: "https://res.cloudinary.com/do2147b3j/video/upload/q_auto/f_auto/v1782126828/9_conlcw.mp4",
     stats: [
       { label: "Final Runtime", value: "5:30" },
       { label: "Locations", value: "3" },
@@ -134,7 +134,7 @@ const allProjects = [
     desc: "Farm-to-table documentary-style video capturing the sourcing, growing, and packaging process.",
     fullDesc: "GreenLeaf Organics wanted to highlight their sustainable farm-to-table process. We shot a documentary-style piece following the journey from farm sourcing to packaging, building trust and transparency with their growing customer base.",
     tags: ["Documentary", "Sustainability", "Brand Film"],
-    img: "/video/10.mp4",
+    img: "https://res.cloudinary.com/do2147b3j/video/upload/q_auto/f_auto/v1782126825/10_nhpqaf.mp4",
     stats: [
       { label: "Final Runtime", value: "5:30" },
       { label: "Locations", value: "3" },
