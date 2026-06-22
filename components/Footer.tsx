@@ -34,9 +34,9 @@ const support = [
   { name: 'Payments',       href: '/payments' },
 ]
 const social = [
-  { icon: 'fa-brands fa-facebook',  label: 'Facebook',  href: 'https://www.facebook.com' },
-  { icon: 'fa-brands fa-tiktok',    label: 'TikTok',    href: 'https://www.tiktok.com' },
-  { icon: 'fa-brands fa-instagram', label: 'Instagram', href: 'https://www.instagram.com' },
+  { icon: 'fa-brands fa-facebook',  label: 'Facebook',  href: 'https://www.facebook.com/profile.php?id=61577630024292' },
+  { icon: 'fa-brands fa-tiktok',    label: 'TikTok',    href: 'https://www.tiktok.com/@decasoft.digital' },
+  { icon: 'fa-brands fa-instagram', label: 'Instagram', href: 'https://www.instagram.com/dec.asofts/' },
   { icon: 'fa-brands fa-linkedin',  label: 'LinkedIn',  href: 'https://www.linkedin.com' },
 ]
 
