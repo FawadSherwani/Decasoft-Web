@@ -208,7 +208,7 @@ export default function Page() {
           font-weight: 600;
         }
         .smp-card-img-wrap { position: relative; overflow: hidden; }
-        .smp-card img { width: 100%; height: 130px; object-fit: cover; object-position: center; display: block; transition: transform 0.3s; }
+        .smp-card img { width: 100%; height: 130px; object-fit: fill; object-position: center; display: block; transition: transform 0.3s; }
         .smp-card:hover img { transform: scale(1.06); }
         .smp-card-overlay {
           position: absolute; inset: 0;
@@ -290,7 +290,7 @@ export default function Page() {
         .smp-modal-close:hover { background: ${BG_RED}; }
         .smp-modal img {
           width: 100%; height: 280px;
-          object-fit: cover; object-position: center;
+          object-fit: fill; object-position: center;
           display: block;
           border-radius: 16px 16px 0 0;
         }
