@@ -12,7 +12,7 @@ const BORDER = "#e0e0e0";
 
 const allProjects = [
   {
-    title: "Bloom Beauty",
+    title: "Bloom Beauty 1",
     category: "Wordmark Logo",
     desc: "Elegant wordmark logo design with custom typography reflecting the brand's premium, feminine identity.",
     fullDesc: "Bloom Beauty needed a logo that felt premium and timeless. We crafted a custom wordmark with refined typography and subtle floral detailing, paired with a flexible color system that works across packaging, digital, and signage.",

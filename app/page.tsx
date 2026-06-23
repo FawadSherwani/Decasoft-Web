@@ -5,7 +5,7 @@ import AboutUs from '@/components/AboutUs'
 import Stats from '@/components/Stats'
 import Services from '@/components/Services'
 import TechStack from '@/components/TechStack'
-import Projects from '@/components/Projects'
+import CaseStudiesTabs from "@/components/CaseStudiesTabs";
 import Testimonials from '@/components/Testimonials'
 import CTABanner from '@/components/CTABanner'
 import Footer from '@/components/Footer'
@@ -22,7 +22,7 @@ export default function Home() {
       <Stats />
       <Services />
       <TechStack />
-      <Projects />
+      <CaseStudiesTabs />
       <Testimonials />
       <CTABanner />
       <Footer />

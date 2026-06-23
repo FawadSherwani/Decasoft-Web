@@ -141,6 +141,7 @@ const allProjects = [
       { label: "Shoot Days", value: "2" },
     ],
   },
+    
 ];
 
 const PER_PAGE = 8;
