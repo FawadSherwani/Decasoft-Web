@@ -46,12 +46,54 @@ const navLinks = [
   { name: 'CONTACT US', href: '/contact-us' },
 ]
 
+const socialLinks = [
+  {
+    name: 'Facebook',
+    href: 'https://www.facebook.com/profile.php?id=61577630024292',
+    icon: (
+      <svg width="18" height="18" fill="#fff" viewBox="0 0 24 24">
+        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+      </svg>
+    ),
+  },
+  {
+    name: 'Instagram',
+    href: 'https://www.instagram.com/dec.asofts/',
+    icon: (
+      <svg width="18" height="18" fill="none" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+        <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+        <circle cx="12" cy="12" r="4" />
+        <circle cx="17.5" cy="6.5" r="1" fill="#fff" stroke="none" />
+      </svg>
+    ),
+  },
+  {
+    name: 'LinkedIn',
+    href: 'https://www.linkedin.com/in/decasofts/',
+    icon: (
+      <svg width="18" height="18" fill="#fff" viewBox="0 0 24 24">
+        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+        <rect x="2" y="9" width="4" height="12" />
+        <circle cx="4" cy="4" r="2" />
+      </svg>
+    ),
+  },
+  {
+    name: 'TikTok',
+    href: 'https://www.tiktok.com/@decasoft.digital',
+    icon: (
+      <svg width="18" height="18" fill="#fff" viewBox="0 0 24 24">
+        <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.76a4.85 4.85 0 0 1-1.01-.07z" />
+      </svg>
+    ),
+  },
+]
+
 export default function Navbar() {
   const pathname = usePathname()
   const [isOpen, setIsOpen] = useState(false)
   const [mobileOpenMenu, setMobileOpenMenu] = useState<string | null>(null)
 
-  // ✅ useCallback prevents function recreation on every render
   const toggleMobileMenu = useCallback((name: string) =>
     setMobileOpenMenu((prev) => (prev === name ? null : name)), [])
 
@@ -63,7 +105,7 @@ export default function Navbar() {
     <nav className="bg-white shadow-sm sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
 
-        {/* Logo — ✅ priority correct (above fold) */}
+        {/* Logo */}
         <Link href="/" className="flex items-center gap-2">
           <Image
             src="/Deca_logo.png"
@@ -71,7 +113,7 @@ export default function Navbar() {
             width={200}
             height={100}
             priority
-            quality={85}  // ✅ was 100 — 85 is visually identical, ~30% smaller
+            quality={85}
             className="w-auto h-12 object-contain"
           />
         </Link>
@@ -136,7 +178,7 @@ export default function Navbar() {
             className="lg:hidden flex flex-col justify-center items-center w-9 h-9 gap-1.5 rounded hover:bg-gray-100 transition-colors"
             onClick={() => setIsOpen(true)}
             aria-label="Open menu"
-            aria-expanded={isOpen}  // ✅ accessibility
+            aria-expanded={isOpen}
           >
             <span className="block h-0.5 w-5 bg-gray-700" />
             <span className="block h-0.5 w-5 bg-gray-700" />
@@ -145,7 +187,7 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile Overlay — ✅ only renders in DOM when needed via conditional */}
+      {/* Mobile Overlay */}
       {isOpen && (
         <div
           onClick={closeMenu}
@@ -158,8 +200,9 @@ export default function Navbar() {
         className={`fixed top-0 right-0 h-full w-[350px] max-w-[88vw] bg-white z-[100] shadow-2xl transform transition-transform duration-500 ease-out flex flex-col ${
           isOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
-        aria-hidden={!isOpen}  // ✅ hide from screen readers when closed
+        aria-hidden={!isOpen}
       >
+        {/* Sidebar Header */}
         <div className="flex justify-between items-center px-5 py-5 bg-gradient-to-r from-primary to-red-700">
           <Link href="/" onClick={closeMenu}>
             <Image
@@ -167,7 +210,7 @@ export default function Navbar() {
               alt="D'ECASOFT Logo"
               width={140}
               height={60}
-              loading="lazy"   // ✅ Mobile logo in sidebar can be lazy
+              loading="lazy"
               className="w-auto h-8 object-contain brightness-0 invert"
             />
           </Link>
@@ -180,6 +223,7 @@ export default function Navbar() {
           </button>
         </div>
 
+        {/* Nav Links */}
         <div className="px-4 py-4 flex flex-col gap-1 overflow-y-auto flex-1">
           {navLinks.map((link) => (
             <div key={link.name}>
@@ -231,6 +275,29 @@ export default function Navbar() {
           ))}
         </div>
 
+        {/* Social Links */}
+        <div className="px-4 pt-3 pb-2 border-t border-gray-100">
+          <p className="text-[11px] font-semibold text-gray-400 uppercase tracking-widest mb-3">
+            Follow Us
+          </p>
+          <div className="flex items-center gap-2 flex-wrap">
+            {socialLinks.map((social) => (
+              <Link
+                key={social.name}
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={social.name}
+                style={{ borderRadius: '13px' }}
+                className="w-10 h-10 flex items-center justify-center bg-[#bf2227] hover:opacity-85 transition-opacity"
+              >
+                {social.icon}
+              </Link>
+            ))}
+          </div>
+        </div>
+
+        {/* CTA Button */}
         <div className="px-4 py-4 border-t border-gray-100">
           <Link
             href={isCoursesPage ? '/courses' : '/contact'}
