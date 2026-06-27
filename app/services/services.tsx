@@ -158,7 +158,7 @@ export default function ServicesPage() {
                 DecaSofts is a cutting-edge digital center that produces excellent websites and services. We are at the forefront of the industry thanks to our team of highly qualified professionals and excellent solutions.
               </p>
               <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
-                <a href="/contact" style={{ display: "inline-block", border: `2px solid ${RED}`, color: RED, background: "transparent", padding: "0.75rem 1.6rem", borderRadius: 50, fontWeight: 700, textDecoration: "none", fontSize: "0.82rem", letterSpacing: 1, textTransform: "uppercase", transition: "all 0.2s" }}
+                <a href="https://calendly.com/decasofts-appointment/meeting" style={{ display: "inline-block", border: `2px solid ${RED}`, color: RED, background: "transparent", padding: "0.75rem 1.6rem", borderRadius: 50, fontWeight: 700, textDecoration: "none", fontSize: "0.82rem", letterSpacing: 1, textTransform: "uppercase", transition: "all 0.2s" }}
                   onMouseEnter={(e) => { e.currentTarget.style.background = RED; e.currentTarget.style.color = WHITE; }}
                   onMouseLeave={(e) => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.color = RED; }}>
                   Book Appointment Know More
@@ -235,7 +235,7 @@ export default function ServicesPage() {
               <h2 style={{ fontSize: "clamp(1.6rem, 3vw, 2.6rem)", fontWeight: 900, lineHeight: 1.2, color: DARK, marginBottom: "2rem" }}>
                 Searching For A Reliable Digital Agency To Elevate Your Business?
               </h2>
-              <a href="/contact" style={{ display: "inline-block", border: `2px solid ${RED}`, color: RED, background: "transparent", padding: "0.8rem 2rem", borderRadius: 50, fontWeight: 700, textDecoration: "none", fontSize: "0.85rem", textTransform: "uppercase", letterSpacing: 1, transition: "all 0.2s" }}
+              <a href="https://calendly.com/decasofts-appointment/meeting" style={{ display: "inline-block", border: `2px solid ${RED}`, color: RED, background: "transparent", padding: "0.8rem 2rem", borderRadius: 50, fontWeight: 700, textDecoration: "none", fontSize: "0.85rem", textTransform: "uppercase", letterSpacing: 1, transition: "all 0.2s" }}
                 onMouseEnter={(e) => { e.currentTarget.style.background = RED; e.currentTarget.style.color = WHITE; }}
                 onMouseLeave={(e) => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.color = RED; }}>
                 Book A Free Consultation

@@ -11,148 +11,24 @@ const LIGHT_BG = "#f9f9f9";
 const BORDER = "#e0e0e0";
 
 const allProjects = [
-  {
-    title: "AGM Saffari",
-    category: "Event Videography",
-    desc: "Comprehensive event coverage with drones, multicam production, and highlights.",
-    fullDesc: "Horizon Films needed comprehensive coverage for their annual corporate summit. We deployed a multi-camera crew alongside drone footage to capture every keynote, panel, and networking moment. A same-day highlight reel was delivered to keep momentum high on social media while the full edit followed within a week.",
-    tags: ["Event Coverage", "Drone", "Multi-cam"],
-    img: "https://res.cloudinary.com/do2147b3j/video/upload/q_auto/f_auto/v1782126825/1_ptr6xc.mp4",
-    stats: [
-      { label: "Cameras Used", value: "5" },
-      { label: "Footage Hours", value: "12+" },
-      { label: "Delivery Time", value: "Same Day" },
-    ],
-  },
-  {
-    title: "Cherish Sports",
-    category: "Brand Storytelling",
-    desc: "Cinematic brand story capturing vision, passion, craftsmanship, and business.",
-    fullDesc: "Bloom Beauty wanted a brand film that told their origin story authentically. We shot a cinematic narrative covering the founder's journey, behind-the-scenes production, and finished product shots — resulting in a piece used across their website, ads, and investor pitch decks.",
-    tags: ["Brand Film", "Cinematic", "Storytelling"],
-    img: "https://res.cloudinary.com/do2147b3j/video/upload/q_auto/f_auto/v1782126834/2_zndyfk.mp4",
-    stats: [
-      { label: "Final Runtime", value: "3:20" },
-      { label: "Shoot Days", value: "2" },
-      { label: "Locations", value: "4" },
-    ],
-  },
-  {
-    title: "Eastech",
-    category: "Product Videography",
-    desc: "High-energy product video featuring innovation, performance, precision, and technology.",
-    fullDesc: "Velocity Motors needed a launch video that captured the thrill of their new model. We combined slow-motion macro shots of design details with dynamic on-road drive sequences, set to a custom sound mix that elevated the entire viewing experience.",
-    tags: ["Product Video", "Automotive", "Slow-mo"],
-    img: "https://res.cloudinary.com/do2147b3j/video/upload/q_auto/f_auto/v1782126822/3_jh0bjz.mp4",
-    stats: [
-      { label: "Views (30 Days)", value: "1.5M" },
-      { label: "Shoot Locations", value: "3" },
-      { label: "Edit Turnaround", value: "5 days" },
-    ],
-  },
-  {
-    title: "Green Wood",
-    category: "Event Videography",
-    desc: "Elegant wedding film capturing emotions, memories, celebrations, and romance.",
-    fullDesc: "Summit Wedding Co. trusted us to document one of their clients' most important days. Our team captured candid emotional moments alongside sweeping drone aerials of the venue, weaving it all into a cinematic story film the couple will treasure for years.",
-    tags: ["Wedding", "Drone", "Cinematic"],
-    img: "https://res.cloudinary.com/do2147b3j/video/upload/q_auto/f_auto/v1782126832/4_u5d87x.mp4",
-    stats: [
-      { label: "Final Runtime", value: "8:45" },
-      { label: "Cameras Used", value: "4" },
-      { label: "Coverage Hours", value: "10" },
-    ],
-  },
-  {
-    title: "KBRE 1",
-    category: "Corporate Videography",
-    desc: "Professional corporate videos featuring interviews, presentations, branding, and team highlights.",
-    fullDesc: "NovaTech Solutions needed polished video assets for fundraising and recruitment. We produced a sleek animated explainer combined with authentic team interviews, giving them flexible content for investor decks, the careers page, and LinkedIn outreach.",
-    tags: ["Corporate", "Explainer", "Interviews"],
-    img: "https://res.cloudinary.com/do2147b3j/video/upload/q_auto/f_auto/v1782126818/5_cjaqop.mp4",
-    stats: [
-      { label: "Interviews Filmed", value: "8" },
-      { label: "Final Cuts", value: "3" },
-      { label: "Timeline", value: "3 weeks" },
-    ],
-  },
-  {
-    title: "Legend Autos",
-    category: "Brand Storytelling",
-    desc: "Engaging automotive storytelling showcasing vehicles, performance, craftsmanship, and innovation.",
-    fullDesc: "Spice Route Restaurant wanted scroll-stopping content for Instagram and TikTok. We produced a series of macro food videography shots paired with behind-the-kitchen storytelling, giving them a steady stream of high-performing reels.",
-    tags: ["Food Video", "Social Reels", "Macro"],
-    img: "https://res.cloudinary.com/do2147b3j/video/upload/q_auto/f_auto/v1782126816/6_ecplre.mp4",
-    stats: [
-      { label: "Reels Produced", value: "20" },
-      { label: "Avg. Views/Reel", value: "85K" },
-      { label: "Shoot Days", value: "2" },
-    ],
-  },
-  {
-    title: "Off Price Fashion",
-    category: "Product Videography",
-    desc: "Dynamic fashion promo video highlighting trends, products, style, and value.",
-    fullDesc: "Apex Fitness needed a promo video to drive membership sign-ups. We filmed dynamic gym floor footage, equipment close-ups, and member testimonials, edited with fast-paced transitions and a motivational soundtrack that matched their brand energy.",
-    tags: ["Promo Video", "Fitness", "Dynamic Edit"],
-    img: "https://res.cloudinary.com/do2147b3j/video/upload/q_auto/f_auto/v1782126808/7_myvuoz.mp4",
-    stats: [
-      { label: "Sign-up Lift", value: "+27%" },
-      { label: "Final Runtime", value: "1:30" },
-      { label: "Shoot Day", value: "1" },
-    ],
-  },
-  {
-    title: "Service Zone",
-    category: "Corporate Videography",
-    desc: "Professional showroom walkthrough showcasing services, expertise, quality, and customer experience.",
-    fullDesc: "Luxe Interiors wanted to bring their showroom experience online. We produced an elegant walkthrough video with smooth gimbal movement, detail shots of craftsmanship, and ambient music — giving online shoppers a true sense of the in-store experience.",
-    tags: ["Showroom", "Gimbal", "Interior"],
-    img: "https://res.cloudinary.com/do2147b3j/video/upload/q_auto/f_auto/v1782126802/8_wkaxxc.mp4",
-    stats: [
-      { label: "Final Runtime", value: "4:10" },
-      { label: "Online Engagement", value: "+45%" },
-      { label: "Shoot Time", value: "1 day" },
-    ],
-  },
-  {
-    title: "VS Tecnical",
-    category: "Brand Storytelling",
-    desc: "Farm-to-table documentary-style video capturing the sourcing, growing, and packaging process.",
-    fullDesc: "GreenLeaf Organics wanted to highlight their sustainable farm-to-table process. We shot a documentary-style piece following the journey from farm sourcing to packaging, building trust and transparency with their growing customer base.",
-    tags: ["Documentary", "Sustainability", "Brand Film"],
-    img: "https://res.cloudinary.com/do2147b3j/video/upload/q_auto/f_auto/v1782126828/9_conlcw.mp4",
-    stats: [
-      { label: "Final Runtime", value: "5:30" },
-      { label: "Locations", value: "3" },
-      { label: "Shoot Days", value: "2" },
-    ],
-  },
-  {
-    title: "ZM Performance",
-    category: "Brand Storytelling",
-    desc: "Farm-to-table documentary-style video capturing the sourcing, growing, and packaging process.",
-    fullDesc: "GreenLeaf Organics wanted to highlight their sustainable farm-to-table process. We shot a documentary-style piece following the journey from farm sourcing to packaging, building trust and transparency with their growing customer base.",
-    tags: ["Documentary", "Sustainability", "Brand Film"],
-    img: "https://res.cloudinary.com/do2147b3j/video/upload/q_auto/f_auto/v1782126825/10_nhpqaf.mp4",
-    stats: [
-      { label: "Final Runtime", value: "5:30" },
-      { label: "Locations", value: "3" },
-      { label: "Shoot Days", value: "2" },
-    ],
-  },
-    
+  { title: "AGM Saffari",      img: "https://res.cloudinary.com/do2147b3j/video/upload/q_auto/f_auto/v1782126825/1_ptr6xc.mp4" },
+  { title: "Cherish Sports",   img: "https://res.cloudinary.com/do2147b3j/video/upload/q_auto/f_auto/v1782126834/2_zndyfk.mp4" },
+  { title: "Eastech",          img: "https://res.cloudinary.com/do2147b3j/video/upload/q_auto/f_auto/v1782126822/3_jh0bjz.mp4" },
+  { title: "Green Wood",       img: "https://res.cloudinary.com/do2147b3j/video/upload/q_auto/f_auto/v1782126832/4_u5d87x.mp4" },
+  { title: "KBRE 1",           img: "https://res.cloudinary.com/do2147b3j/video/upload/q_auto/f_auto/v1782126818/5_cjaqop.mp4" },
+  { title: "Legend Autos",     img: "https://res.cloudinary.com/do2147b3j/video/upload/q_auto/f_auto/v1782126816/6_ecplre.mp4" },
+  { title: "Off Price Fashion", img: "https://res.cloudinary.com/do2147b3j/video/upload/q_auto/f_auto/v1782126808/7_myvuoz.mp4" },
+  { title: "Service Zone",     img: "https://res.cloudinary.com/do2147b3j/video/upload/q_auto/f_auto/v1782126802/8_wkaxxc.mp4" },
+  { title: "VS Tecnical",      img: "https://res.cloudinary.com/do2147b3j/video/upload/q_auto/f_auto/v1782126828/9_conlcw.mp4" },
+  { title: "ZM Performance",   img: "https://res.cloudinary.com/do2147b3j/video/upload/q_auto/f_auto/v1782126825/10_nhpqaf.mp4" },
 ];
 
 const PER_PAGE = 8;
-
-// ── Helpers ────────────────────────────────────────────────────────────────────
 
 function isVideo(src: string) {
   return /\.(mp4|webm|ogg|mov)$/i.test(src);
 }
 
-// Thumbnail used inside each card
 function MediaThumb({ src, alt }: { src: string; alt: string }) {
   if (isVideo(src)) {
     return (
@@ -161,13 +37,7 @@ function MediaThumb({ src, alt }: { src: string; alt: string }) {
         muted
         loop
         playsInline
-        style={{
-          width: "100%",
-          height: 130,
-          objectFit: "cover",
-          display: "block",
-          transition: "transform 0.3s",
-        }}
+        style={{ width: "100%", height: 160, objectFit: "cover", display: "block", transition: "transform 0.3s" }}
         onMouseEnter={(e) => (e.currentTarget as HTMLVideoElement).play()}
         onMouseLeave={(e) => {
           const v = e.currentTarget as HTMLVideoElement;
@@ -181,19 +51,11 @@ function MediaThumb({ src, alt }: { src: string; alt: string }) {
     <img
       src={src}
       alt={alt}
-      style={{
-        width: "100%",
-        height: 130,
-        objectFit: "cover",
-        objectPosition: "center",
-        display: "block",
-        transition: "transform 0.3s",
-      }}
+      style={{ width: "100%", height: 160, objectFit: "cover", objectPosition: "center", display: "block", transition: "transform 0.3s" }}
     />
   );
 }
 
-// Hero media used inside the modal
 function MediaHero({ src, alt }: { src: string; alt: string }) {
   if (isVideo(src)) {
     return (
@@ -204,15 +66,7 @@ function MediaHero({ src, alt }: { src: string; alt: string }) {
         muted
         loop
         playsInline
-        style={{
-          width: "100%",
-          height: "auto",
-          maxHeight: "60vh",
-          objectFit: "contain",
-          display: "block",
-          background: "#000",
-          borderRadius: "16px 16px 0 0",
-        }}
+        style={{ width: "100%", height: "auto", maxHeight: "60vh", objectFit: "contain", display: "block", background: "#000", borderRadius: "16px 16px 0 0" }}
       />
     );
   }
@@ -220,19 +74,10 @@ function MediaHero({ src, alt }: { src: string; alt: string }) {
     <img
       src={src}
       alt={alt}
-      style={{
-        width: "100%",
-        height: 280,
-        objectFit: "cover",
-        objectPosition: "center",
-        display: "block",
-        borderRadius: "16px 16px 0 0",
-      }}
+      style={{ width: "100%", height: 280, objectFit: "cover", display: "block", borderRadius: "16px 16px 0 0" }}
     />
   );
 }
-
-// ── Page ───────────────────────────────────────────────────────────────────────
 
 export default function Page() {
   const [page, setPage] = useState(1);
@@ -282,28 +127,8 @@ export default function Page() {
           width: 100%;
         }
         .vp-card:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(191,34,39,0.3); }
-        .vp-card-body { padding: 1rem 1.1rem; }
-        .vp-card-tag {
-          display: inline-block;
-          background: rgba(255,255,255,0.18);
-          font-size: 0.6rem;
-          font-weight: 700;
-          padding: 3px 9px;
-          border-radius: 4px;
-          margin-bottom: 0.55rem;
-          text-transform: uppercase;
-          letter-spacing: 0.5px;
-        }
-        .vp-card-body h3 { font-size: 0.88rem; font-weight: 800; margin-bottom: 0.45rem; }
-        .vp-card-body p { font-size: 0.74rem; line-height: 1.5; opacity: 0.92; margin-bottom: 0.7rem; }
-        .vp-tags { display: flex; flex-wrap: wrap; gap: 5px; }
-        .vp-tags span {
-          background: rgba(255,255,255,0.15);
-          font-size: 0.6rem;
-          padding: 3px 7px;
-          border-radius: 4px;
-          font-weight: 600;
-        }
+        .vp-card-body { padding: 0.75rem 1rem; }
+        .vp-card-body h3 { font-size: 0.88rem; font-weight: 800; margin: 0; }
         .vp-card-img-wrap { position: relative; overflow: hidden; }
         .vp-card:hover .vp-card-img-wrap img,
         .vp-card:hover .vp-card-img-wrap video { transform: scale(1.06); }
@@ -329,7 +154,6 @@ export default function Page() {
           border-left: 8px solid ${BG_RED};
         }
 
-        /* Pagination */
         .vp-pagination { display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 3rem; }
         .vp-page-btn {
           width: 36px; height: 36px;
@@ -348,20 +172,16 @@ export default function Page() {
         .vp-page-btn.active { background: ${BG_RED}; border-color: ${BG_RED}; color: ${WHITE}; }
         .vp-page-info { text-align: center; margin-top: 0.8rem; font-size: 0.8rem; color: ${GRAY_TEXT}; }
 
-        /* Collab */
         .vp-collab { background: linear-gradient(135deg, ${BG_RED} 0%, #7a1518 100%); padding: 4rem 0; }
         .vp-collab-inner { max-width: 80rem; margin: 0 auto; padding: 0 1.5rem; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 2rem; }
         .vp-collab-btn { background: ${WHITE}; color: ${BG_RED}; padding: 0.85rem 2.4rem; border-radius: 4px; font-weight: 800; text-decoration: none; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.5px; flex-shrink: 0; box-shadow: 0 4px 20px rgba(0,0,0,0.2); }
 
-        /* Modal */
         .vp-modal-backdrop {
           position: fixed; inset: 0;
           background: rgba(20,5,5,0.7);
           backdrop-filter: blur(3px);
           z-index: 1000;
-          display: flex;
-          align-items: center;
-          justify-content: center;
+          display: flex; align-items: center; justify-content: center;
           padding: 1.5rem;
           animation: vpFadeIn 0.2s ease;
         }
@@ -393,41 +213,8 @@ export default function Page() {
           transition: background 0.2s;
         }
         .vp-modal-close:hover { background: ${BG_RED}; }
-        .vp-modal-body { padding: 1.8rem 2rem 2.2rem; }
-        .vp-modal-tag {
-          display: inline-block;
-          background: ${BG_RED};
-          color: ${WHITE};
-          font-size: 0.68rem;
-          font-weight: 700;
-          padding: 4px 12px;
-          border-radius: 4px;
-          margin-bottom: 0.8rem;
-          text-transform: uppercase;
-          letter-spacing: 0.5px;
-        }
-        .vp-modal-body h2 { font-size: 1.4rem; font-weight: 900; color: ${DARK}; margin-bottom: 0.9rem; }
-        .vp-modal-body p.desc { font-size: 0.9rem; line-height: 1.8; color: ${GRAY_TEXT}; margin-bottom: 1.5rem; }
-
-        .vp-modal-stats {
-          display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          gap: 0.8rem;
-          margin-bottom: 1.5rem;
-          padding: 1rem;
-          background: ${LIGHT_BG};
-          border-radius: 10px;
-        }
-        .vp-modal-stats .stat { text-align: center; }
-        .vp-modal-stats .stat .val { font-size: 1.2rem; font-weight: 900; color: ${BG_RED}; display: block; }
-        .vp-modal-stats .stat .lbl { font-size: 0.68rem; color: ${GRAY_TEXT}; text-transform: uppercase; letter-spacing: 0.5px; }
-
-        .vp-modal-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 1.6rem; }
-        .vp-modal-tags span {
-          background: #fdeceb; color: ${BG_RED};
-          font-size: 0.74rem; font-weight: 700;
-          padding: 5px 12px; border-radius: 20px;
-        }
+        .vp-modal-body { padding: 1.5rem 2rem 2rem; text-align: center; }
+        .vp-modal-body h2 { font-size: 1.4rem; font-weight: 900; color: ${DARK}; margin-bottom: 1.2rem; }
         .vp-modal-cta {
           display: inline-block;
           background: ${BG_RED}; color: ${WHITE};
@@ -441,13 +228,12 @@ export default function Page() {
         @media (max-width: 500px) {
           .vp-grid { grid-template-columns: 1fr; }
           .vp-collab-inner { flex-direction: column; text-align: center; }
-          .vp-modal-stats { grid-template-columns: 1fr 1fr; }
         }
       `}</style>
 
       <div className="vp" style={{ fontFamily: "'Segoe UI', Arial, sans-serif", color: DARK }}>
 
-        {/* ── HERO ── */}
+        {/* HERO */}
         <section style={{ background: LIGHT_BG, padding: "4rem 0 3rem" }}>
           <div className="vp-inner">
             <p style={{ color: BG_RED, fontWeight: 700, fontSize: "0.78rem", letterSpacing: 1, textTransform: "uppercase", marginBottom: "0.6rem" }}>
@@ -458,12 +244,12 @@ export default function Page() {
             </h1>
             <p style={{ color: GRAY_TEXT, fontSize: "0.92rem", maxWidth: 600, lineHeight: 1.8 }}>
               Explore our cinematic storytelling — from event coverage and brand films to product
-              videography that brings ideas to life. Click any project to see the full case study.
+              videography that brings ideas to life. Click any project to watch the video.
             </p>
           </div>
         </section>
 
-        {/* ── PROJECTS GRID ── */}
+        {/* PROJECTS GRID */}
         <section style={{ background: WHITE, padding: "4rem 0 3rem" }}>
           <div className="vp-inner">
             <div className="vp-grid">
@@ -474,17 +260,12 @@ export default function Page() {
                     <div className="vp-card-overlay">
                       <span>
                         <span className="vp-play-icon" />
-                        {isVideo(p.img) ? "Watch Video" : "Watch Case Study"}
+                        Watch Video
                       </span>
                     </div>
                   </div>
                   <div className="vp-card-body">
-                    <span className="vp-card-tag">{p.category}</span>
                     <h3>{p.title}</h3>
-                    <p>{p.desc}</p>
-                    <div className="vp-tags">
-                      {p.tags.map((t) => <span key={t}>{t}</span>)}
-                    </div>
                   </div>
                 </button>
               ))}
@@ -506,7 +287,7 @@ export default function Page() {
           </div>
         </section>
 
-        {/* ── COLLABORATE ── */}
+        {/* COLLABORATE */}
         <section className="vp-collab">
           <div className="vp-collab-inner">
             <div style={{ flex: "1 1 340px", maxWidth: 580, color: WHITE }}>
@@ -525,30 +306,14 @@ export default function Page() {
           </div>
         </section>
 
-        {/* ── MODAL ── */}
+        {/* MODAL */}
         {selected && (
           <div className="vp-modal-backdrop" onClick={() => setSelected(null)}>
             <div className="vp-modal" onClick={(e) => e.stopPropagation()}>
               <button className="vp-modal-close" onClick={() => setSelected(null)} aria-label="Close">✕</button>
               <MediaHero src={selected.img} alt={selected.title} />
               <div className="vp-modal-body">
-                <span className="vp-modal-tag">{selected.category}</span>
                 <h2>{selected.title}</h2>
-                <p className="desc">{selected.fullDesc}</p>
-
-                <div className="vp-modal-stats">
-                  {selected.stats.map((s) => (
-                    <div key={s.label} className="stat">
-                      <span className="val">{s.value}</span>
-                      <span className="lbl">{s.label}</span>
-                    </div>
-                  ))}
-                </div>
-
-                <div className="vp-modal-tags">
-                  {selected.tags.map((t) => <span key={t}>{t}</span>)}
-                </div>
-
                 <Link href="/contact" className="vp-modal-cta">Start a Similar Project</Link>
               </div>
             </div>
