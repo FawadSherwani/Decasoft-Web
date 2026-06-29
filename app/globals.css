@@ -168,3 +168,10 @@
 .hover-underline:hover::before {
   transform: scaleX(1);
 }
+.hvr-shutter-out-horizontal {
+  background: transparent !important; /* apna color */
+}
+
+.hvr-shutter-out-horizontal:before {
+  background: #bf2227 !important; /* hover color */
+}

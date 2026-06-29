@@ -3,6 +3,7 @@ import { Poppins, Montserrat } from 'next/font/google'
 import './globals.css'
 import { Analytics } from '@vercel/analytics/react'
 import WhatsappFloat from '@/components/WhatsappFloat'
+import "hover.css/css/hover-min.css";
 
 
 const poppins = Poppins({
