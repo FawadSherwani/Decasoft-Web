@@ -124,9 +124,10 @@ export default function Navbar() {
             <div key={link.name} className="relative group">
               {link.subMenu ? (
                 <div className="flex items-center gap-1 cursor-pointer">
+                  {/* ✅ hover-underline sirf <Link> text pe — ChevronDown exclude */}
                   <Link
                     href={link.href}
-                    className={`hover:text-primary transition-colors ${
+                    className={`hover-underline hover:text-primary transition-colors ${
                       pathname.startsWith(link.href) && link.href !== '/' ? 'text-primary' : ''
                     }`}
                   >
@@ -137,7 +138,9 @@ export default function Navbar() {
               ) : (
                 <Link
                   href={link.href}
-                  className={`hover:text-primary transition-colors ${pathname === link.href ? 'text-primary' : ''}`}
+                  className={`hover-underline hover:text-primary transition-colors ${
+                    pathname === link.href ? 'text-primary' : ''
+                  }`}
                 >
                   {link.name}
                 </Link>
@@ -151,7 +154,7 @@ export default function Navbar() {
                       <Link
                         key={sub.name}
                         href={sub.href}
-                        className={`block px-4 py-2.5 text-xs font-semibold hover:bg-red-50 hover:text-primary transition-colors border-l-2 ${
+                        className={`hover-underline block px-4 py-2.5 text-xs font-semibold hover:bg-red-50 hover:text-primary transition-colors border-l-2 ${
                           pathname === sub.href ? 'text-primary bg-red-50 border-primary' : 'border-transparent text-gray-600'
                         }`}
                       >
