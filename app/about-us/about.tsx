@@ -226,7 +226,7 @@ export default function AboutUs() {
               <p style={{ color: DARK, fontWeight: 600, marginBottom: "2rem", fontSize: "0.95rem" }}>
                 Allow us to assist you in efficiently and easily navigating the digital world.
               </p>
-              <a href="#contact" className="cta-btn" style={{ borderRadius: 4, letterSpacing: 0.5 }}
+              <a href="https://calendly.com/decasofts-appointment/meeting" className="cta-btn" style={{ borderRadius: 4, letterSpacing: 0.5 }}
                 onMouseEnter={(e) => { e.currentTarget.style.background = RED; e.currentTarget.style.color = WHITE; }}
                 onMouseLeave={(e) => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.color = RED; }}
               >Book Appointment</a>
@@ -246,7 +246,7 @@ export default function AboutUs() {
         <section style={{ background: LIGHT_BG, padding: "5rem 6%" }}>
           <div className="commit-grid">
             <div className="commit-img">
-              <img src="/about-illustration.png" alt="Illustration" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", minHeight: 240 }}
+              <img src="/about-img.png" alt="Illustration" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", minHeight: 240 }}
                 onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = "none"; }} />
             </div>
             <div className="commit-text">
