@@ -1,272 +1,3 @@
-// 'use client'
-
-// import Image from 'next/image'
-// import { useState } from 'react'
-
-// const allCaseStudies = [
-//   {
-//     title: '360 Finest',
-//     category: 'Web Development',
-//     desc: 'DoctorFindy is a cutting-edge online service that aims to revolutionize the way individuals find and connect with healthcare professionals. Designed with convenience in mind.',
-//     tags: ['Web Development', 'Vue', 'JavaScript'],
-//     image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=500&q=80',
-//     bg: 'bg-[#1a3a6b]', tagBg: 'bg-blue-700', textColor: 'text-blue-300', descColor: 'text-blue-200', imgBg: 'bg-blue-800',
-//   },
-//   {
-//     title: 'KBRE',
-//     category: 'Web Development',
-//     desc: 'A comprehensive digital platform designed to streamline government services and connect citizens with the right departments quickly and efficiently.',
-//     tags: ['Web Development', ' ', 'Node.js'],
-//     image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=500&q=80',
-//     bg: 'bg-[#1a6b2a]', tagBg: 'bg-green-700', textColor: 'text-green-300', descColor: 'text-green-200', imgBg: 'bg-green-800',
-//   },
-//   {
-//     title: 'THE SNORKEL STORE',
-//     category: 'e-Commerce',
-//     desc: 'Snorkel Store is the ultimate Snorkeling Equipment and Adventure Resource — a fully featured e-Commerce platform built for divers and ocean lovers worldwide.',
-//     tags: ['e-Commerce', 'Shopify', 'JavaScript'],
-//     image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=500&q=80',
-//     bg: 'bg-[#1a3a6b]', tagBg: 'bg-blue-700', textColor: 'text-blue-300', descColor: 'text-blue-200', imgBg: 'bg-blue-800',
-//   },
-//   {
-//     title: 'PROJECT ALPHA',
-//     category: 'UI/UX Design',
-//     desc: 'A complete UI/UX overhaul for a SaaS platform that increased user engagement by 40% and reduced churn through intuitive design and streamlined user flows.',
-//     tags: ['UI/UX', 'Figma', 'React'],
-//     image: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=500&q=80',
-//     bg: 'bg-[#6b1a3a]', tagBg: 'bg-pink-700', textColor: 'text-pink-300', descColor: 'text-pink-200', imgBg: 'bg-pink-800',
-//   },
-//   {
-//     title: 'PROJECT BETA',
-//     category: 'SEO Optimization',
-//     desc: 'A full-scale SEO strategy and implementation for a retail brand that tripled organic traffic within 6 months through technical SEO, content, and link building.',
-//     tags: ['SEO', 'Analytics', 'Content'],
-//     image: 'https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?w=500&q=80',
-//     bg: 'bg-[#6b4a1a]', tagBg: 'bg-amber-700', textColor: 'text-amber-300', descColor: 'text-amber-200', imgBg: 'bg-amber-800',
-//   },
-//   {
-//     title: 'PROJECT GAMMA',
-//     category: 'Digital Marketing',
-//     desc: 'End-to-end digital marketing campaign for a fashion brand — covering social media, paid ads, email marketing, and performance tracking across all channels.',
-//     tags: ['Marketing', 'Social Media', 'Ads'],
-//     image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500&q=80',
-//     bg: 'bg-[#1a6b6b]', tagBg: 'bg-teal-700', textColor: 'text-teal-300', descColor: 'text-teal-200', imgBg: 'bg-teal-800',
-//   },
-//   {
-//     title: 'DOCTORFINDY',
-//     category: 'Web Development',
-//     desc: 'DoctorFindy is a cutting-edge online service that aims to revolutionize the way individuals find and connect with healthcare professionals. Designed with convenience in mind.',
-//     tags: ['Web Development', 'Vue', 'JavaScript'],
-//     image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=500&q=80',
-//     bg: 'bg-[#1a3a6b]', tagBg: 'bg-blue-700', textColor: 'text-blue-300', descColor: 'text-blue-200', imgBg: 'bg-blue-800',
-//   },
-//   {
-//     title: 'MOHKM',
-//     category: 'Digital Marketing',
-//     desc: 'A comprehensive digital platform designed to streamline government services and connect citizens with the right departments quickly and efficiently.',
-//     tags: ['Web Development', 'React', 'Node.js'],
-//     image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=500&q=80',
-//     bg: 'bg-[#1a6b2a]', tagBg: 'bg-green-700', textColor: 'text-green-300', descColor: 'text-green-200', imgBg: 'bg-green-800',
-//   },
-//   {
-//     title: 'THE SNORKEL STORE',
-//     category: 'e-Commerce',
-//     desc: 'Snorkel Store is the ultimate Snorkeling Equipment and Adventure Resource — a fully featured e-Commerce platform built for divers and ocean lovers worldwide.',
-//     tags: ['e-Commerce', 'Shopify', 'JavaScript'],
-//     image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=500&q=80',
-//     bg: 'bg-[#1a3a6b]', tagBg: 'bg-blue-700', textColor: 'text-blue-300', descColor: 'text-blue-200', imgBg: 'bg-blue-800',
-//   },
-//   {
-//     title: 'PROJECT ALPHA',
-//     category: 'UI/UX Design',
-//     desc: 'A complete UI/UX overhaul for a SaaS platform that increased user engagement by 40% and reduced churn through intuitive design and streamlined user flows.',
-//     tags: ['UI/UX', 'Figma', 'React'],
-//     image: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=500&q=80',
-//     bg: 'bg-[#6b1a3a]', tagBg: 'bg-pink-700', textColor: 'text-pink-300', descColor: 'text-pink-200', imgBg: 'bg-pink-800',
-//   },
-//   {
-//     title: 'PROJECT BETA',
-//     category: 'SEO Optimization',
-//     desc: 'A full-scale SEO strategy and implementation for a retail brand that tripled organic traffic within 6 months through technical SEO, content, and link building.',
-//     tags: ['SEO', 'Analytics', 'Content'],
-//     image: 'https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?w=500&q=80',
-//     bg: 'bg-[#6b4a1a]', tagBg: 'bg-amber-700', textColor: 'text-amber-300', descColor: 'text-amber-200', imgBg: 'bg-amber-800',
-//   },
-//   {
-//     title: 'PROJECT GAMMA',
-//     category: 'Digital Marketing',
-//     desc: 'End-to-end digital marketing campaign for a fashion brand — covering social media, paid ads, email marketing, and performance tracking across all channels.',
-//     tags: ['Marketing', 'Social Media', 'Ads'],
-//     image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500&q=80',
-//     bg: 'bg-[#1a6b6b]', tagBg: 'bg-teal-700', textColor: 'text-teal-300', descColor: 'text-teal-200', imgBg: 'bg-teal-800',
-//   },
-//   {
-//     title: 'DOCTORFINDY',
-//     category: 'Web Development',
-//     desc: 'DoctorFindy is a cutting-edge online service that aims to revolutionize the way individuals find and connect with healthcare professionals. Designed with convenience in mind.',
-//     tags: ['Web Development', 'Vue', 'JavaScript'],
-//     image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=500&q=80',
-//     bg: 'bg-[#1a3a6b]', tagBg: 'bg-blue-700', textColor: 'text-blue-300', descColor: 'text-blue-200', imgBg: 'bg-blue-800',
-//   },
-//   {
-//     title: '360 Finest',
-//     category: 'Web Design & Development',
-//     desc: 'A comprehensive digital platform designed to streamline government services and connect citizens with the right departments quickly and efficiently.',
-//     tags: ['Web Development', 'React', 'Node.js'],
-//     image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=500&q=80',
-//     bg: 'bg-[#1a6b2a]', tagBg: 'bg-green-700', textColor: 'text-green-300', descColor: 'text-green-200', imgBg: 'bg-green-800',
-//   },
-//   {
-//     title: 'THE SNORKEL STORE',
-//     category: 'e-Commerce',
-//     desc: 'Snorkel Store is the ultimate Snorkeling Equipment and Adventure Resource — a fully featured e-Commerce platform built for divers and ocean lovers worldwide.',
-//     tags: ['e-Commerce', 'Shopify', 'JavaScript'],
-//     image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=500&q=80',
-//     bg: 'bg-[#1a3a6b]', tagBg: 'bg-blue-700', textColor: 'text-blue-300', descColor: 'text-blue-200', imgBg: 'bg-blue-800',
-//   },
-//   {
-//     title: 'PROJECT ALPHA',
-//     category: 'UI/UX Design',
-//     desc: 'A complete UI/UX overhaul for a SaaS platform that increased user engagement by 40% and reduced churn through intuitive design and streamlined user flows.',
-//     tags: ['UI/UX', 'Figma', 'React'],
-//     image: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=500&q=80',
-//     bg: 'bg-[#6b1a3a]', tagBg: 'bg-pink-700', textColor: 'text-pink-300', descColor: 'text-pink-200', imgBg: 'bg-pink-800',
-//   },
-//   {
-//     title: 'PROJECT BETA',
-//     category: 'SEO Optimization',
-//     desc: 'A full-scale SEO strategy and implementation for a retail brand that tripled organic traffic within 6 months through technical SEO, content, and link building.',
-//     tags: ['SEO', 'Analytics', 'Content'],
-//     image: 'https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?w=500&q=80',
-//     bg: 'bg-[#6b4a1a]', tagBg: 'bg-amber-700', textColor: 'text-amber-300', descColor: 'text-amber-200', imgBg: 'bg-amber-800',
-//   },
-//   {
-//     title: 'PROJECT GAMMA',
-//     category: 'Digital Marketing',
-//     desc: 'End-to-end digital marketing campaign for a fashion brand — covering social media, paid ads, email marketing, and performance tracking across all channels.',
-//     tags: ['Marketing', 'Social Media', 'Ads'],
-//     image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500&q=80',
-//     bg: 'bg-[#1a6b6b]', tagBg: 'bg-teal-700', textColor: 'text-teal-300', descColor: 'text-teal-200', imgBg: 'bg-teal-800',
-//   },
-// ]
-
-// const ITEMS_PER_PAGE = 12
-
-// export default function CaseStudies() {
-//   const [currentPage, setCurrentPage] = useState(1)
-
-//   const totalPages = Math.ceil(allCaseStudies.length / ITEMS_PER_PAGE)
-//   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE
-//   const currentItems = allCaseStudies.slice(startIndex, startIndex + ITEMS_PER_PAGE)
-
-//   const handlePageChange = (page: number) => {
-//     setCurrentPage(page)
-//     window.scrollTo({ top: 0, behavior: 'smooth' })
-//   }
-
-//   return (
-//     <section className="py-20 bg-gray-50">
-//       <div className="max-w-7xl mx-auto px-6">
-
-//         {/* Header */}
-//         <div className="mb-10">
-//           <p className="text-primary text-sm font-semibold mb-1">
-//             Learn How We Can Make A Real Impact
-//           </p>
-//           <h2 className="text-3xl lg:text-4xl font-black text-gray-900 leading-tight">
-//             Our <span className="text-primary">Case Studies</span>
-//           </h2>
-//           <p className="text-gray-500 text-sm mt-2 max-w-md">
-//             Check out some of the impactful work we&apos;ve done for our clients across various industries.
-//           </p>
-//         </div>
-
-//         {/* Cards Grid */}
-//         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-//           {currentItems.map((study, i) => (
-//             <div key={i} className={`${study.bg} rounded-2xl p-6 text-white`}>
-
-//               <p className={`text-xs font-bold tracking-widest ${study.textColor} mb-3`}>
-//                 {study.title}
-//               </p>
-
-//               <span className={`text-xs ${study.tagBg} px-2 py-0.5 rounded mb-3 inline-block`}>
-//                 {study.category}
-//               </span>
-
-//               <p className={`text-xs ${study.descColor} leading-relaxed mb-4`}>
-//                 {study.desc}
-//               </p>
-
-//               <div className="flex gap-1 mb-4 flex-wrap">
-//                 {study.tags.map((tag, j) => (
-//                   <span key={j} className={`text-xs ${study.tagBg} px-2 py-0.5 rounded`}>
-//                     {tag}
-//                   </span>
-//                 ))}
-//               </div>
-
-//               <div className={`${study.imgBg} rounded-xl overflow-hidden h-[160px] relative`}>
-//                 <Image
-//                   src={study.image}
-//                   alt={study.title}
-//                   fill
-//                   className="object-cover opacity-80"
-//                 />
-//               </div>
-
-//             </div>
-//           ))}
-//         </div>
-
-//         {/* Pagination */}
-//         <div className="flex items-center justify-center gap-2">
-
-//           {/* Prev button */}
-//           <button
-//             onClick={() => handlePageChange(currentPage - 1)}
-//             disabled={currentPage === 1}
-//             className="w-10 h-10 rounded-full border-2 border-gray-300 flex items-center justify-center hover:border-primary hover:text-primary transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
-//           >
-//             <i className="fa-solid fa-chevron-left text-sm"></i>
-//           </button>
-
-//           {/* Page numbers */}
-//           {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-//             <button
-//               key={page}
-//               onClick={() => handlePageChange(page)}
-//               className={`w-10 h-10 rounded-full text-sm font-bold transition-colors ${
-//                 currentPage === page
-//                   ? 'bg-primary text-white'
-//                   : 'border-2 border-gray-300 text-gray-600 hover:border-primary hover:text-primary'
-//               }`}
-//             >
-//               {page}
-//             </button>
-//           ))}
-
-//           {/* Next button */}
-//           <button
-//             onClick={() => handlePageChange(currentPage + 1)}
-//             disabled={currentPage === totalPages}
-//             className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white hover:bg-red-700 transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
-//           >
-//             <i className="fa-solid fa-chevron-right text-sm"></i>
-//           </button>
-
-//         </div>
-
-//         {/* Page info */}
-//         <p className="text-center text-gray-400 text-xs mt-4">
-//           Showing {startIndex + 1}–{Math.min(startIndex + ITEMS_PER_PAGE, allCaseStudies.length)} of {allCaseStudies.length} projects
-//         </p>
-
-//       </div>
-//     </section>
-//   )
-// }
-
 "use client";
 
 import { useState, useEffect } from "react";
@@ -281,13 +12,13 @@ const BORDER = "#e0e0e0";
 
 const allProjects = [
   {
-    title: "360 Finest",
+    title: "Green Wood Vacation Rentals",
     category: "Web Development",
-    desc: "DoctorFindy is a cutting-edge online service that aims to revolutionize the way individuals find and connect with healthcare professionals. Designed with convenience in mind.",
-    fullDesc: "360 Finest needed a modern, conversion-focused web platform to scale their online presence. We built a fast, responsive site using Vue and JavaScript, focused on intuitive navigation and clear calls-to-action that turned visitors into customers.",
+    desc: "Green Wood Vacation Homes Rental LLC brings a fresh, sophisticated edge to short-term rentals and holiday homes in Dubai.",
+    fullDesc: "Green Wood Vacation Homes Rental LLC brings a fresh, sophisticated edge to short-term rentals and holiday homes in Dubai. We offer a carefully curated portfolio of properties that combine luxury, comfort, and local flavor.Whether you’re staying for a week or a month, Green Wood delivers seamless hospitality, blending the best of hotel service with the intimacy of a private home.",
     tags: ["Web Development", "Vue", "JavaScript"],
-    img: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=900&q=80",
-    projectUrl: "https://example.com",
+    img: "/web/greenwood.png",
+    projectUrl: "https://gwvacationhomes.ae/",
     stats: [
       { label: "Load Time", value: "1.2s" },
       { label: "Conversion", value: "+34%" },
@@ -297,11 +28,11 @@ const allProjects = [
   {
     title: "KBRE",
     category: "Web Development",
-    desc: "A comprehensive digital platform designed to streamline government services and connect citizens with the right departments quickly and efficiently.",
-    fullDesc: "KBRE required a robust, scalable platform to handle government service requests. Built with Node.js and a streamlined UI, the platform reduced processing time and improved citizen satisfaction through clearer department routing.",
-    tags: ["Web Development", "Node.js"],
-    img: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=900&q=80",
-    projectUrl: "https://example.com",
+    desc: "Khalifa Bakhit Real Estate LLC is a premier real estate company headquartered in Dubai, UAE.",
+    fullDesc: "Khalifa Bakhit Real Estate LLC, established in 1998 is a premier real estate company headquartered in Dubai, UAE, built on a legacy of trust, innovation, and excellence. We specialize in property development, sales, leasing, and real estate investment consultancy, offering a full suite of services to clients across residential, commercial, and luxury sectors.",
+    tags: ["Web Development", "Wordpress"],
+    img: "/web/kbre.png",
+    projectUrl: "https://kbre.ae/",
     stats: [
       { label: "Processing Time", value: "-40%" },
       { label: "Departments", value: "12" },
@@ -309,13 +40,13 @@ const allProjects = [
     ],
   },
   {
-    title: "The Snorkel Store",
+    title: "Al Zahra Curtains",
     category: "e-Commerce",
-    desc: "Snorkel Store is the ultimate Snorkeling Equipment and Adventure Resource — a fully featured e-Commerce platform built for divers and ocean lovers worldwide.",
-    fullDesc: "The Snorkel Store needed a Shopify-powered e-commerce experience that could handle global shipping logistics and product variants. We built a fast, mobile-optimized storefront with JavaScript enhancements for cart and checkout flow.",
-    tags: ["e-Commerce", "Shopify", "JavaScript"],
-    img: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=900&q=80",
-    projectUrl: "https://example.com",
+    desc: "Al Zahra Curtains is a leading provider of high-quality window treatments and home decor solutions in the UAE.",
+    fullDesc: "Al Zahra Curtains needed a modern, responsive e-commerce platform to showcase their extensive range of products and improve the customer shopping experience. We developed a sleek, user-friendly website using Shopify and JavaScript enhancements.",
+    tags: ["e-Commerce", "Wordpress", "JavaScript"],
+    img: "/web/alzahracurtain.png",
+    projectUrl: "http://alzaharahcurtains.com/",
     stats: [
       { label: "Conversion Rate", value: "4.8%" },
       { label: "Countries Shipped", value: "30+" },
@@ -323,13 +54,13 @@ const allProjects = [
     ],
   },
   {
-    title: "Project Alpha",
+    title: "MH ALBADAR",
     category: "UI/UX Design",
-    desc: "A complete UI/UX overhaul for a SaaS platform that increased user engagement by 40% and reduced churn through intuitive design and streamlined user flows.",
-    fullDesc: "Project Alpha's SaaS dashboard suffered from a confusing user flow and high churn. We redesigned the entire UX from research to high-fidelity Figma prototypes, then implemented it in React — increasing engagement by 40% and cutting churn significantly.",
-    tags: ["UI/UX", "Figma", "React"],
-    img: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=900&q=80",
-    projectUrl: "https://example.com",
+    desc: "MH-Albadar, based in Pakistan, provides exceptional tours and travel services, specializing in Hajj and Umrah packages.",
+    fullDesc: "MH-Albadar is a premier tours and travel company based in Pakistan, dedicated to providing exceptional travel experiences. We specialize in offering comprehensive Hajj and Umrah packages, ensuring a spiritually fulfilling journey for our clients. Our commitment to quality service and customer satisfaction makes us a trusted choice for travelers. Whether you are embarking on a pilgrimage or exploring new destinations, MH-Albadar is here to make your travel dreams come true with our expertly crafted services and personalized care.",
+    tags: ["UI/UX", "Figma", "Wordpress"],
+    img: "/web/mhlbadar.png",
+    projectUrl: "https://mhalbadar.com.pk/",
     stats: [
       { label: "Engagement", value: "+40%" },
       { label: "Churn Reduced", value: "-25%" },
@@ -337,13 +68,13 @@ const allProjects = [
     ],
   },
   {
-    title: "Project Beta",
-    category: "SEO Optimization",
-    desc: "A full-scale SEO strategy and implementation for a retail brand that tripled organic traffic within 6 months through technical SEO, content, and link building.",
-    fullDesc: "Project Beta's retail site had stagnant organic traffic. We executed a full SEO overhaul covering technical fixes, content strategy, and a structured link-building campaign — tripling organic traffic within 6 months.",
+    title: "NayiZameen",
+    category: "Web Design & Development",
+    desc: "Best Property marketing place in PAKISTAN",
+    fullDesc: " Nayi Zameen we combine contemporary design thinking with respect for local architecture and community needs. From residential homes to commercial developments, our team focuses on quality, transparency and long-term value. We guide clients through every step — market research, property selection, financing options and after-sales support — so you get the right property with total confidence.",
     tags: ["SEO", "Analytics", "Content"],
-    img: "https://images.unsplash.com/photo-1562577309-4932fdd64cd1?w=900&q=80",
-    projectUrl: "https://example.com",
+    img: "/web/nayizameen.png",
+    projectUrl: "https://www.nayizameen.com",
     stats: [
       { label: "Organic Traffic", value: "+200%" },
       { label: "Keywords Ranked", value: "180+" },
@@ -351,13 +82,13 @@ const allProjects = [
     ],
   },
   {
-    title: "Project Gamma",
-    category: "Digital Marketing",
-    desc: "End-to-end digital marketing campaign for a fashion brand — covering social media, paid ads, email marketing, and performance tracking across all channels.",
-    fullDesc: "Project Gamma needed a unified digital marketing engine. We managed social media, paid ad campaigns, email flows, and performance tracking under one cohesive strategy, driving measurable growth across every channel.",
+    title: "Al Aweer Technical Services",
+    category: "Digital Marketing Web Development",
+    desc: "Noor Al Aweer Technical Services, we specialize in delivering innovative, high-quality glass and aluminum solutions tailored to meet the dynamic needs of modern architecture.",
+    fullDesc: "At Noor Al Aweer Technical Services, we specialize in delivering innovative, high-quality glass and aluminum solutions tailored to meet the dynamic needs of modern architecture. We provide services to residential, commercial, and industrial customers all over the United Arab Emirates with a strong commitment to craftsmanship, durability, and design excellence. Our skilled team is ready to bring your vision to life with precision and professionalism, whether you need sleek glass facades, bespoke aluminum frames, or complete structural glazing systems.",
     tags: ["Marketing", "Social Media", "Ads"],
-    img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=900&q=80",
-    projectUrl: "https://example.com",
+    img: "/web/nooralaweer.png",
+    projectUrl: "https://nooralaweertechnicalservices.ae/",
     stats: [
       { label: "Revenue Growth", value: "+65%" },
       { label: "Channels", value: "5" },
@@ -365,13 +96,13 @@ const allProjects = [
     ],
   },
   {
-    title: "DoctorFindy",
-    category: "Web Development",
-    desc: "DoctorFindy is a cutting-edge online service that aims to revolutionize the way individuals find and connect with healthcare professionals. Designed with convenience in mind.",
-    fullDesc: "DoctorFindy set out to simplify healthcare access. We built a Vue-powered web platform with real-time doctor search, appointment booking, and a clean, trustworthy interface that patients could navigate with confidence.",
-    tags: ["Web Development", "Vue", "JavaScript"],
-    img: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=900&q=80",
-    projectUrl: "https://example.com",
+    title: "Out Loud Fashion",
+    category: "Landing Page",
+    desc: "Out Loud Fashion delivers modern, trend-driven styles that empower self-expression. Designed for fashion-forward audiences, the brand combines creativity, confidence, elegance, and individuality.",
+    fullDesc: "Out Loud Fashion is a modern fashion brand focused on bold style, creativity, and self-expression. The landing page showcases trendy designs, helping fashion enthusiasts discover inspiring looks that make a statement with confidence and individuality.",
+    tags: ["Web Development", "WordPress"],
+    img: "/web/outloud.png",
+    projectUrl: "https://outloudfashion.com/",
     stats: [
       { label: "Doctors Listed", value: "500+" },
       { label: "Bookings/Month", value: "2K+" },
@@ -382,8 +113,8 @@ const allProjects = [
     title: "MOHKM",
     category: "Digital Marketing",
     desc: "A comprehensive digital platform designed to streamline government services and connect citizens with the right departments quickly and efficiently.",
-    fullDesc: "MOHKM needed a digital marketing push to raise awareness of their new citizen services platform. We ran a multi-channel campaign combining React-built landing pages with Node.js backend tracking to measure real engagement.",
-    tags: ["Web Development", "React", "Node.js"],
+    fullDesc: "MOHKM needed a digital marketing push to raise awareness of their new citizen services platform. We ran a multi-channel campaign combining React-built landing pages with Wordpress backend tracking to measure real engagement.",
+    tags: ["Web Development", "React", "Wordpress"],
     img: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=900&q=80",
     projectUrl: "https://example.com",
     stats: [

@@ -25,37 +25,57 @@ const tabData: Record<string, {
 }[]> = {
   "social-media": [
     {
-      title: "Glow Beauty Co.", category: "Meta Ads",
-      desc: "Full-funnel Facebook & Instagram ad campaign that generated a 4.2x ROAS and grew followers by 60% in 90 days.",
-      fullDesc: "Glow Beauty Co. came to us looking to scale their online presence. We built a full-funnel Meta advertising strategy spanning awareness, retargeting, and conversion campaigns, leading to a 4.2x ROAS and 60% follower growth in 90 days.",
-      tags: ["Meta Ads", "Instagram", "Creative"],
-      img: "https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?w=600&q=80",
-      stats: [{ label: "ROAS", value: "4.2x" }, { label: "Follower Growth", value: "60%" }, { label: "Duration", value: "90 days" }],
-    },
-    {
-      title: "UrbanFit Apparel", category: "Social Media",
-      desc: "Content calendar across Instagram & TikTok driving a 3x increase in organic reach within 2 months.",
-      fullDesc: "UrbanFit Apparel needed a consistent brand voice. We developed a content calendar for Instagram and TikTok, mixing product showcases and trend-driven reels resulting in a 3x increase in organic reach.",
-      tags: ["Content Strategy", "TikTok", "Instagram"],
-      img: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=600&q=80",
-      stats: [{ label: "Organic Reach", value: "+3x" }, { label: "Platforms", value: "2" }, { label: "Content Pieces", value: "120+" }],
-    },
-    {
-      title: "Bloom Cafe", category: "Meta Ads",
-      desc: "Localized Meta ad campaign targeting nearby customers, resulting in a 38% increase in foot traffic.",
-      fullDesc: "Bloom Cafe wanted to drive more local foot traffic. We ran a hyper-local Meta ad campaign using geo-targeting resulting in a 38% increase in foot traffic within the first six weeks.",
-      tags: ["Meta Ads", "Local Targeting", "Facebook"],
-      img: "https://images.unsplash.com/photo-1521017432531-fbd92d768814?w=600&q=80",
-      stats: [{ label: "Foot Traffic", value: "+38%" }, { label: "Radius", value: "5km" }, { label: "Campaign Length", value: "6 weeks" }],
-    },
-    {
-      title: "FitZone Gym", category: "Meta Ads",
-      desc: "Lead-generation ad funnel for gym membership sign-ups, achieving a 45% cost-per-lead reduction.",
-      fullDesc: "FitZone Gym needed a reliable system for filling membership sign-ups. We designed a lead-generation ad funnel on Meta, cutting their cost-per-lead by 45% while increasing total lead volume.",
-      tags: ["Meta Ads", "Lead Gen", "Conversion"],
-      img: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&q=80",
-      stats: [{ label: "Cost Per Lead", value: "-45%" }, { label: "Leads/Month", value: "300+" }, { label: "Conversion Rate", value: "12%" }],
-    },
+    title: "Glow Beauty Co.",
+    category: "Meta Ads",
+    desc: "Ran a full-funnel Facebook & Instagram ad campaign that generated a 4.2x ROAS and grew followers by 60% in 90 days.",
+    fullDesc: "Glow Beauty Co. came to us looking to scale their online presence and drive consistent, profitable sales through paid social. We built a full-funnel Meta advertising strategy spanning awareness, retargeting, and conversion campaigns across Facebook and Instagram. Creative testing, audience segmentation, and continuous optimization led to a 4.2x return on ad spend and a 60% growth in their organic follower base within 90 days.",
+    tags: ["Meta Ads", "Instagram", "Creative"],
+    img: "/ads-ss/1.jpeg",
+    stats: [
+      { label: "ROAS", value: "4.2x" },
+      { label: "Follower Growth", value: "60%" },
+      { label: "Duration", value: "90 days" },
+    ],
+  },
+  {
+    title: "UrbanFit Apparel",
+    category: "Social Media Portfolio",
+    desc: "Designed and managed a content calendar across Instagram & TikTok, driving a 3x increase in organic reach.",
+    fullDesc: "UrbanFit Apparel needed a consistent brand voice and visual identity across their social channels. We developed a content calendar covering Instagram and TikTok, mixing product showcases, behind-the-scenes content, and trend-driven reels. The result was a 3x increase in organic reach and a noticeably stronger, more recognizable brand presence.",
+    tags: ["Content Strategy", "TikTok", "Instagram"],
+    img: "/ads-ss/2.jpeg",
+    stats: [
+      { label: "Organic Reach", value: "+3x" },
+      { label: "Platforms", value: "2" },
+      { label: "Content Pieces", value: "120+" },
+    ],
+  },
+  {
+    title: "Bloom Cafe",
+    category: "Meta Ads",
+    desc: "Localized Meta ad campaign targeting nearby customers, resulting in a 38% increase in foot traffic.",
+    fullDesc: "Bloom Cafe wanted to drive more local foot traffic and online orders. We ran a hyper-local Meta ad campaign using geo-targeting and dynamic creative tailored to nearby audiences. This resulted in a 38% increase in foot traffic and a measurable lift in online order volume within the first six weeks.",
+    tags: ["Meta Ads", "Local Targeting", "Facebook"],
+    img: "/ads-ss/3.jpeg",
+    stats: [
+      { label: "Foot Traffic", value: "+38%" },
+      { label: "Radius", value: "5km" },
+      { label: "Campaign Length", value: "6 weeks" },
+    ],
+  },
+  {
+    title: "TechNest Gadgets",
+    category: "Social Media Portfolio",
+    desc: "Built brand presence from scratch across Instagram and Facebook with reels and influencer collaborations.",
+    fullDesc: "TechNest Gadgets launched with zero social presence. We built their brand from the ground up — visual identity, content pillars, reels strategy, and influencer partnerships across Instagram and Facebook. Within four months they had an engaged community and consistent product launch buzz.",
+    tags: ["Branding", "Reels", "Influencer"],
+    img: "/ads-ss/4.jpeg",
+    stats: [
+      { label: "Followers Gained", value: "15K+" },
+      { label: "Influencers", value: "12" },
+      { label: "Timeline", value: "4 months" },
+    ],
+  },
   ],
   "videography": [
     {
@@ -117,7 +137,7 @@ const tabData: Record<string, {
   ],
   "graphic-design": [
     {
-      title: "Velocity Motors", category: "Print Design",
+      title: "Bloom Beauty", category: "Poster Design ",
       desc: "Showroom brochures, billboard creatives, and print catalog for an automotive product launch.",
       fullDesc: "Velocity Motors needed high-impact print materials. We designed brochures, billboard creatives, and a full product catalog with bold typography.",
       tags: ["Print Design", "Catalog", "Billboard"],
