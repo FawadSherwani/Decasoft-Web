@@ -290,7 +290,7 @@ export default function Page() {
               </div>
               <div className="ld-modal-body">
                 <h2>{selected.title}</h2>
-                <Link href="/contact" className="ld-modal-cta">Start a Similar Project</Link>
+                <Link href="/contact-us" className="ld-modal-cta">Start a Similar Project</Link>
               </div>
             </div>
           </div>

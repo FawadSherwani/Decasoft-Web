@@ -57,7 +57,7 @@ export default function AboutUs() {
           </div>
 
           {/* WhatsApp button */}
-          <div className="absolute bottom-[-18px] left-1/2 -translate-x-1/2 bg-white shadow-xl rounded-full px-5 py-2.5 flex items-center gap-2 border border-gray-100 z-10 whitespace-nowrap">
+          <div className=" absolute bottom-[-18px] left-1/2 -translate-x-1/2 bg-white shadow-xl rounded-full px-5 py-2.5 flex items-center gap-2 border border-gray-100 z-10 whitespace-nowrap">
             <i className="fa-brands fa-whatsapp text-green-500 text-xl" aria-hidden="true"></i>
             <a href="https://wa.me/971559411204" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1">
               <span className="text-sm font-semibold text-gray-700">

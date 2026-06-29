@@ -302,7 +302,7 @@ export default function Page() {
                 drives results. Let&apos;s bring your vision to the screen.
               </p>
             </div>
-            <Link href="/contact" className="vp-collab-btn">Contact Us</Link>
+            <Link href="/contact-us" className="vp-collab-btn">Contact Us</Link>
           </div>
         </section>
 
@@ -314,7 +314,7 @@ export default function Page() {
               <MediaHero src={selected.img} alt={selected.title} />
               <div className="vp-modal-body">
                 <h2>{selected.title}</h2>
-                <Link href="/contact" className="vp-modal-cta">Start a Similar Project</Link>
+                <Link href="/contact-us" className="vp-modal-cta">Start a Similar Project</Link>
               </div>
             </div>
           </div>

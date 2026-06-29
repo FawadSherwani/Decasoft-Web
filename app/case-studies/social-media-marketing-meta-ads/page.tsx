@@ -447,7 +447,7 @@ export default function Page() {
                   {selected.tags.map((t) => <span key={t}>{t}</span>)}
                 </div>
 
-                <Link href="/contact" className="smp-modal-cta">Start a Similar Project</Link>
+                <Link href="/contact-us" className="smp-modal-cta">Start a Similar Project</Link>
               </div>
             </div>
           </div>

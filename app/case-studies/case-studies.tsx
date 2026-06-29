@@ -369,7 +369,7 @@ export default function Page() {
                   >
                     Visit {selected.title} ↗
                   </a>
-                  <Link href="/contact" className="cs-modal-cta">Start a Similar Project</Link>
+                  <Link href="/contact-us" className="cs-modal-cta">Start a Similar Project</Link>
                 </div>
               </div>
             </div>

@@ -268,7 +268,7 @@ export default function Page() {
               <img className="gd-modal-img" src={selected.img} alt={selected.title} />
               <div className="gd-modal-body">
                 <h2>{selected.title}</h2>
-                <Link href="/contact" className="gd-modal-cta">Start a Similar Project</Link>
+                <Link href="/contact-us" className="gd-modal-cta">Start a Similar Project</Link>
               </div>
             </div>
           </div>
