@@ -1,5 +1,6 @@
 "use client";
 
+import { link } from "fs";
 import React, { useState } from "react";
 
 const RED = "#c0392b";
@@ -23,42 +24,33 @@ const services = [
   {
     title: "Videography",
     items: ["Manage Delivery Model", "Enterprise Software Development", "Startups Software Development"],
+    link: "services/videography",
   },
-  {
-    title: "Photography",
-    items: ["Manage Delivery Model", "Enterprise Software Development", "Startups Software Development"],
-  },
-  {
-    title: "Content Writing",
-    items: ["Manage Delivery Model", "Enterprise Software Development", "Startups Software Development"],
-  },
+  
   {
     title: "Video Editing",
+    link: "services/services/videography",
     items: ["Manage Delivery Model", "Enterprise Software Development", "Startups Software Development"],
   },
   {
     title: "Graphic Designing",
     items: ["Manage Delivery Model", "Enterprise Software Development", "Startups Software Development"],
-  },
-  {
-    title: "Content Creation",
-    items: ["Manage Delivery Model", "Enterprise Software Development", "Startups Software Development"],
+    link: "services/uiux",
   },
   {
     title: "Digital Marketing",
     items: ["Manage Delivery Model", "Enterprise Software Development", "Startups Software Development"],
+    link: "services/digital-marketing",
   },
   {
     title: "Web Development",
     items: ["Manage Delivery Model", "Enterprise Software Development", "Startups Software Development"],
+    link: "services/e-commerce",
   },
   {
     title: "SEO Services",
     items: ["Manage Delivery Model", "Enterprise Software Development", "Startups Software Development"],
-  },
-  {
-    title: "Mobile Apps",
-    items: ["Manage Delivery Model", "Enterprise Software Development", "Startups Software Development"],
+    link: "services/seo",
   },
 ];
 
@@ -204,7 +196,7 @@ export default function ServicesPage() {
                     <li key={item} style={{ fontSize: "0.82rem", color: GRAY_TEXT, marginBottom: "0.3rem", lineHeight: 1.5 }}>{item}</li>
                   ))}
                 </ul>
-                <a href="#" className="read-more">Read More →</a>
+                <a href={s.link} className="read-more">Read More →</a>
               </div>
             ))}
           </div>

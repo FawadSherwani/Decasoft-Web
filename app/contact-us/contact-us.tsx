@@ -223,7 +223,7 @@ export default function ContactPage() {
               <p style={{ color: GRAY_TEXT, lineHeight: 1.85, fontSize: "0.93rem", marginBottom: "2rem" }}>
                 Your brand must have a strong online presence in order to stand out in the competitive online market of today. Our professional digital marketing services are intended to boost conversions, create leads, and increase traffic. We employ data-driven tactics to support the expansion of your company, from digital and social media marketing to PPC advertising and content production. Allow us to use creative and effective marketing solutions to elevate your brand to new heights. Get in touch with us now!
               </p>
-              <a href="#" style={{ display: "inline-block", background: RED, color: WHITE, padding: "0.8rem 1.8rem", borderRadius: 6, fontWeight: 700, textDecoration: "none", fontSize: "0.88rem" }}
+              <a href="/services" style={{ display: "inline-block", background: RED, color: WHITE, padding: "0.8rem 1.8rem", borderRadius: 6, fontWeight: 700, textDecoration: "none", fontSize: "0.88rem" }}
                 onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.85")} onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}>
                 Explore our Services
               </a>
