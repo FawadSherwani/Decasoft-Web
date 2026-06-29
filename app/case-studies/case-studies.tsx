@@ -109,20 +109,6 @@ const allProjects = [
       { label: "Uptime", value: "99.9%" },
     ],
   },
-  {
-    title: "MOHKM",
-    category: "Digital Marketing",
-    desc: "A comprehensive digital platform designed to streamline government services and connect citizens with the right departments quickly and efficiently.",
-    fullDesc: "MOHKM needed a digital marketing push to raise awareness of their new citizen services platform. We ran a multi-channel campaign combining React-built landing pages with Wordpress backend tracking to measure real engagement.",
-    tags: ["Web Development", "React", "Wordpress"],
-    img: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=900&q=80",
-    projectUrl: "https://example.com",
-    stats: [
-      { label: "Awareness Reach", value: "1.2M" },
-      { label: "Sign-ups", value: "45K+" },
-      { label: "Campaign Length", value: "3 months" },
-    ],
-  },
 ];
 
 const PER_PAGE = 9;
