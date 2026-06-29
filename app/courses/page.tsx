@@ -71,12 +71,6 @@ const courses = [
     href: "/courses/social-media-marketing",
   },
   {
-    title: "Shopify Store Development",
-    desc: "The Shopify Store Development Course is a complete, hands-on program designed to teach you how",
-    img: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&q=80",
-    href: "/courses/shopify-store-development",
-  },
-  {
     title: "SEO (Search Engine Optimization)",
     desc: "✅ SEO Optimized Version This Course is ideal for anyone who wants to rank websites",
     img: "https://images.unsplash.com/photo-1562577309-4932fdd64cd1?w=400&q=80",
@@ -88,12 +82,7 @@ const courses = [
     img: "https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=400&q=80",
     href: "/courses/graphic-designing",
   },
-  {
-    title: "Freelancing",
-    desc: "This freelancing course is designed for individuals who want to start their online career or",
-    img: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=400&q=80",
-    href: "/courses/freelancing",
-  },
+  
   {
     title: "Digital Marketing",
     desc: "Unlock the skills to drive online success with our Digital Marketing Course. Learn how to",
@@ -101,8 +90,8 @@ const courses = [
     href: "/courses/digital-marketing",
   },
   {
-    title: "Business Development",
-    desc: "This Business Development Course is perfect for anyone who wants to grow their business, improve",
+    title: "Video Editing",
+    desc: "Capture your story with professional videography services that create engaging, high-quality visuals for brands, events, and promotions.",
     img: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=400&q=80",
     href: "/courses/business-development",
   },
