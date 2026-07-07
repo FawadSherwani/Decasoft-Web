@@ -34,7 +34,7 @@ const support = [
 const social = [
   {
     label: 'Facebook',
-    href: 'https://www.facebook.com/profile.php?id=61577630024292',
+    href: 'https://www.facebook.com/decasofts',
     cls: 'social-fb',
     icon: (
       <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
