@@ -12,8 +12,8 @@ export async function POST(req: NextRequest) {
       const { firstName, lastName, email, phone, course, batch, message } = await req.json();
 
       const { error } = await resend.emails.send({
-        from: "Course Enrollment <onboarding@resend.dev>",
-        to: ["fawadsherwani@gmail.com"],
+        from: "Course Enrollment <info@decasofts.com>",
+        to: ["info@decasofts.com"],
         subject: `New Enrollment: ${course} - ${batch}`,
         html: `
           <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #e0e0e0; border-radius: 8px;">
@@ -44,7 +44,7 @@ export async function POST(req: NextRequest) {
 
       // Confirmation email to student
       await resend.emails.send({
-        from: "Decasofts <onboarding@resend.dev>",
+        from: "Decasofts <info@decasofts.com>",
         to: [email],
         subject: `Enrollment Received: ${course}`,
         html: `
@@ -105,7 +105,7 @@ export async function POST(req: NextRequest) {
     }
 
     const { error: adminError } = await resend.emails.send({
-      from: "Contact Form <onboarding@resend.dev>",
+      from: "Contact Form <info@decasofts.com>",
       to: ["fawadsherwani@gmail.com"],
       subject: `New Contact Form Submission from ${name}`,
       attachments,
@@ -140,7 +140,7 @@ export async function POST(req: NextRequest) {
     }
 
     await resend.emails.send({
-      from: "Decasofts <onboarding@resend.dev>",
+      from: "Decasofts <info@decasofts.com>",
       to: [email],
       subject: `Thank you for contacting Decasofts, ${name}!`,
       html: `
