@@ -26,8 +26,8 @@ const company = [
 ]
 const support = [
   { name: 'Contact Us',     href: '/contact-us' },
-  { name: 'Privacy Policy', href: '/privacy' },
-  { name: 'Terms Of Use',   href: '/terms' },
+  // { name: 'Privacy Policy', href: '/privacy' },
+  // { name: 'Terms Of Use',   href: '/terms' },
   { name: 'Payments',       href: '/payments' },
 ]
 
