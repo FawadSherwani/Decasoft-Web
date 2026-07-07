@@ -1,5 +1,4 @@
 "use client";
-
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 
@@ -67,7 +66,7 @@ function CounterItem({ value, suffix, label, started }: { value: number; suffix:
   const count = useCounter(value, 2000, started);
   return (
     <div style={{ textAlign: "center" }}>
-      <span style={{ display: "block", fontSize: "clamp(40px, 6vw, 64px)", fontWeight: 800, color: RED, lineHeight: 1 }}>{count}{suffix}</span>
+      <span style={{ display: "block", fontSize: "clamp(36px, 8vw, 64px)", fontWeight: 800, color: RED, lineHeight: 1 }}>{count}{suffix}</span>
       <span style={{ display: "block", fontSize: 14, color: GRAY_TEXT, marginTop: 8 }}>{label}</span>
     </div>
   );
@@ -87,13 +86,25 @@ export default function DigitalMarketingPage() {
     return () => obs.disconnect();
   }, []);
 
-  const inner: React.CSSProperties = { maxWidth: "80rem", margin: "0 auto", padding: "0 1.5rem" };
-  const col50: React.CSSProperties = { flex: "0 0 calc(50% - 1.5rem)", minWidth: 280 };
-
   return (
     <>
       <style>{`
         .dm * { box-sizing: border-box; }
+        .dm { overflow-x: hidden; }
+
+        .dm-inner { max-width: 80rem; margin: 0 auto; padding: 0 1.5rem; }
+
+        /* Section padding (desktop defaults) */
+        .dm-sec-xl { padding: 5rem 0 4rem; }
+        .dm-sec-lg { padding: 5rem 0; }
+        .dm-sec-md { padding: 4rem 0; }
+        .dm-cta-banner { padding: 3rem 0; }
+        .dm-collab { padding: 4rem 0; }
+
+        /* 50/50 split rows */
+        .dm-row-50 { display: flex; flex-wrap: wrap; align-items: center; gap: 3rem; }
+        .dm-col50 { flex: 1 1 420px; min-width: 0; }
+        .dm-col50 img { max-width: 100%; }
 
         /* Feature cards */
         .dm-features { display: flex; flex-wrap: wrap; gap: 2rem; }
@@ -106,8 +117,9 @@ export default function DigitalMarketingPage() {
 
         /* Process */
         .dm-process { display: flex; flex-wrap: wrap; gap: 3rem; align-items: start; }
+        .dm-proc-intro { flex: 1 1 260px; }
         .dm-proc-cards { flex: 2 1 500px; display: flex; flex-wrap: wrap; gap: 1.2rem; }
-        .dm-proc-card { flex: 1 1 140px; border: 1px solid ${BORDER}; border-radius: 10px; padding: 1.4rem; background: ${WHITE}; }
+        .dm-proc-card { flex: 1 1 220px; border: 1px solid ${BORDER}; border-radius: 10px; padding: 1.4rem; background: ${WHITE}; }
         .dm-proc-card h4 { font-size: 0.9rem; font-weight: 800; margin-bottom: 8px; color: ${DARK}; }
         .dm-proc-card p  { font-size: 0.82rem; line-height: 1.6; color: ${GRAY_TEXT}; }
 
@@ -117,45 +129,68 @@ export default function DigitalMarketingPage() {
         .dm-checklist li::before { content: "✓"; color: ${RED}; font-weight: 700; font-size: 15px; }
 
         /* Testimonials */
-        .dm-testi-grid { display: grid; grid-template-columns: 200px 1fr 1fr 1fr; gap: 1.2rem; align-items: start; }
-        .dm-testi-card { background: ${WHITE}; border: 1px solid ${BORDER}; border-radius: 10px; padding: 1.2rem; }
+        .dm-testi-grid { display: grid; grid-template-columns: minmax(160px, 200px) repeat(3, minmax(0, 1fr)); gap: 1.2rem; align-items: start; }
+        .dm-testi-card { background: ${WHITE}; border: 1px solid ${BORDER}; border-radius: 10px; padding: 1.2rem; min-width: 0; }
         .dm-avatar { width: 36px; height: 36px; border-radius: 50%; background: ${RED}; color: ${WHITE}; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; flex-shrink: 0; }
         .dm-stars { color: #f39c12; font-size: 16px; margin: 4px 0 8px; }
 
         /* CTA */
-        .dm-cta-banner { background: ${RED}; width: 100%; padding: 3rem 0; }
+        .dm-cta-banner { background: ${RED}; width: 100%; }
         .dm-cta-inner { max-width: 80rem; margin: 0 auto; padding: 0 1.5rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem; }
-        .dm-cta-btn { border: 2px solid ${WHITE}; color: ${WHITE}; background: transparent; padding: 0.8rem 2rem; border-radius: 4px; font-weight: 700; font-size: 0.85rem; letter-spacing: 1px; text-decoration: none; transition: all 0.2s; text-transform: uppercase; white-space: nowrap; }
+        .dm-cta-btn { border: 2px solid ${WHITE}; color: ${WHITE}; background: transparent; padding: 0.8rem 2rem; border-radius: 4px; font-weight: 700; font-size: 0.85rem; letter-spacing: 1px; text-decoration: none; transition: all 0.2s; text-transform: uppercase; white-space: nowrap; text-align: center; }
         .dm-cta-btn:hover { background: ${WHITE}; color: ${RED}; }
 
         /* Collab */
-        .dm-collab { background: linear-gradient(135deg, ${RED} 0%, #8b0000 100%); width: 100%; padding: 4rem 0; }
+        .dm-collab { background: linear-gradient(135deg, ${RED} 0%, #8b0000 100%); width: 100%; }
         .dm-collab-inner { max-width: 80rem; margin: 0 auto; padding: 0 1.5rem; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 2rem; }
+        .dm-collab-text { flex: 1 1 340px; max-width: 580px; color: ${WHITE}; }
+        .dm-collab-btn { display: inline-block; background: ${WHITE}; color: ${RED}; padding: 0.85rem 2.4rem; border-radius: 4px; font-weight: 800; text-decoration: none; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.5px; flex-shrink: 0; box-shadow: 0 4px 20px rgba(0,0,0,0.2); text-align: center; }
 
         /* Icon box */
         .icon-box { width: 48px; height: 48px; background: #fff0ee; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
 
-        @media (max-width: 900px) {
-          .dm-testi-grid { grid-template-columns: 1fr 1fr; }
+        /* ── Responsive breakpoints ── */
+        @media (max-width: 1024px) {
+          .dm-testi-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
         }
-        @media (max-width: 600px) {
+
+        @media (max-width: 768px) {
+          .dm-sec-xl { padding: 3.5rem 0 2.5rem; }
+          .dm-sec-lg { padding: 3.5rem 0; }
+          .dm-sec-md { padding: 2.75rem 0; }
+          .dm-cta-banner { padding: 2.25rem 0; }
+          .dm-collab { padding: 2.75rem 0; }
+          .dm-row-50 { gap: 2rem; }
+          .dm-process { gap: 2rem; }
+        }
+
+        @media (max-width: 640px) {
+          .dm-inner, .dm-cta-inner, .dm-collab-inner { padding: 0 1.25rem; }
           .dm-testi-grid { grid-template-columns: 1fr; }
           .dm-cta-inner { flex-direction: column; text-align: center; }
-          .dm-collab-inner { flex-direction: column; }
+          .dm-cta-btn { width: 100%; }
+          .dm-collab-inner { flex-direction: column; text-align: center; }
+          .dm-collab-btn { width: 100%; }
+          .dm-col50 { flex-basis: 100%; }
+          .dm-proc-card { flex: 1 1 100%; }
+        }
+
+        @media (max-width: 400px) {
+          .dm-inner, .dm-cta-inner, .dm-collab-inner { padding: 0 1rem; }
         }
       `}</style>
 
       <div className="dm" style={{ fontFamily: "'Segoe UI', Arial, sans-serif", color: DARK }}>
 
         {/* ══ HERO — 50/50 ══ */}
-        <section style={{ background: LIGHT_BG, padding: "5rem 0 4rem" }}>
-          <div style={inner}>
-            <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: "3rem" }}>
-              <div style={col50}>
+        <section className="dm-sec-xl" style={{ background: LIGHT_BG }}>
+          <div className="dm-inner">
+            <div className="dm-row-50">
+              <div className="dm-col50">
                 <p style={{ fontSize: "0.72rem", fontWeight: 700, color: RED, letterSpacing: 2, textTransform: "uppercase", marginBottom: 12 }}>
                   Digital Marketing Services
                 </p>
-                <h1 style={{ fontSize: "clamp(1.8rem, 3vw, 2.6rem)", fontWeight: 900, lineHeight: 1.2, marginBottom: "0.8rem", color: DARK }}>
+                <h1 style={{ fontSize: "clamp(1.6rem, 5vw, 2.6rem)", fontWeight: 900, lineHeight: 1.2, marginBottom: "0.8rem", color: DARK }}>
                   Decasofts – Data-Driven Digital Marketing for Maximum Growth
                 </h1>
                 <p style={{ color: GRAY_TEXT, lineHeight: 1.8, fontSize: "0.93rem", marginBottom: "2rem" }}>
@@ -168,7 +203,7 @@ export default function DigitalMarketingPage() {
                   Book a Free Consultation
                 </Link>
               </div>
-              <div style={col50}>
+              <div className="dm-col50">
                 <img
                   src={HERO_IMG}
                   alt="Digital Marketing"
@@ -180,8 +215,8 @@ export default function DigitalMarketingPage() {
         </section>
 
         {/* ══ FEATURE CARDS (3 services) ══ */}
-        <section style={{ background: WHITE, padding: "5rem 0" }}>
-          <div style={inner}>
+        <section className="dm-sec-lg" style={{ background: WHITE }}>
+          <div className="dm-inner">
             <div className="dm-features">
               {[
                 {
@@ -233,11 +268,11 @@ export default function DigitalMarketingPage() {
         </section>
 
         {/* ══ IMPACT — 50/50 ══ */}
-        <section style={{ background: LIGHT_BG, padding: "4rem 0" }}>
-          <div style={inner}>
-            <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: "3rem" }}>
-              <div style={col50}>
-                <h2 style={{ fontSize: "clamp(1.5rem, 2.5vw, 2rem)", fontWeight: 900, color: DARK, marginBottom: "1rem", lineHeight: 1.2 }}>
+        <section className="dm-sec-md" style={{ background: LIGHT_BG }}>
+          <div className="dm-inner">
+            <div className="dm-row-50">
+              <div className="dm-col50">
+                <h2 style={{ fontSize: "clamp(1.4rem, 4vw, 2rem)", fontWeight: 900, color: DARK, marginBottom: "1rem", lineHeight: 1.2 }}>
                   Digital Marketing Tailored for Business Growth
                 </h2>
                 <p style={{ fontSize: "0.93rem", lineHeight: 1.8, color: GRAY_TEXT, marginBottom: "0.5rem" }}>
@@ -277,7 +312,7 @@ export default function DigitalMarketingPage() {
                   ))}
                 </ul>
               </div>
-              <div style={col50}>
+              <div className="dm-col50">
                 <img
                   src={SECTION_IMG}
                   alt="Digital Marketing Growth"
@@ -289,8 +324,8 @@ export default function DigitalMarketingPage() {
         </section>
 
         {/* ══ COUNTERS ══ */}
-        <section style={{ background: WHITE, padding: "4rem 0" }} ref={counterRef}>
-          <div style={inner}>
+        <section className="dm-sec-md" style={{ background: WHITE }} ref={counterRef}>
+          <div className="dm-inner">
             <div style={{ display: "flex", justifyContent: "space-around", flexWrap: "wrap", gap: 32 }}>
               <CounterItem value={150} suffix="+" label="Delivered Successful Projects" started={counterStarted} />
               <CounterItem value={4}   suffix="+" label="Years of Experience"           started={counterStarted} />
@@ -300,11 +335,11 @@ export default function DigitalMarketingPage() {
         </section>
 
         {/* ══ PROCESS ══ */}
-        <section style={{ background: LIGHT_BG, padding: "5rem 0" }}>
-          <div style={inner}>
+        <section className="dm-sec-lg" style={{ background: LIGHT_BG }}>
+          <div className="dm-inner">
             <div className="dm-process">
-              <div style={{ flex: "1 1 260px" }}>
-                <h2 style={{ fontSize: "clamp(1.2rem, 2vw, 1.6rem)", fontWeight: 900, color: DARK, lineHeight: 1.3, marginBottom: "1rem" }}>
+              <div className="dm-proc-intro">
+                <h2 style={{ fontSize: "clamp(1.15rem, 3.5vw, 1.6rem)", fontWeight: 900, color: DARK, lineHeight: 1.3, marginBottom: "1rem" }}>
                   Digital Marketing – The Key to Your Brand's Online Success
                 </h2>
                 <p style={{ fontSize: "0.88rem", lineHeight: 1.75, color: GRAY_TEXT }}>
@@ -331,7 +366,7 @@ export default function DigitalMarketingPage() {
         {/* ══ CTA BANNER ══ */}
         <section className="dm-cta-banner">
           <div className="dm-cta-inner">
-            <h2 style={{ color: WHITE, fontWeight: 800, fontSize: "clamp(1.3rem, 2.5vw, 1.9rem)", margin: 0, maxWidth: 560 }}>
+            <h2 style={{ color: WHITE, fontWeight: 800, fontSize: "clamp(1.2rem, 4vw, 1.9rem)", margin: 0, maxWidth: 560 }}>
               Request A Free Complete Analysis Of Your Website
             </h2>
             <Link href="/contact" className="dm-cta-btn">Book a Free Consultation</Link>
@@ -339,10 +374,10 @@ export default function DigitalMarketingPage() {
         </section>
 
         {/* ══ REVIEW — 50/50 ══ */}
-        <section style={{ background: WHITE, padding: "5rem 0" }}>
-          <div style={inner}>
-            <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: "3rem" }}>
-              <div style={col50}>
+        <section className="dm-sec-lg" style={{ background: WHITE }}>
+          <div className="dm-inner">
+            <div className="dm-row-50">
+              <div className="dm-col50">
                 <img
                   src={REVIEW_IMG}
                   alt="Review illustration"
@@ -350,8 +385,8 @@ export default function DigitalMarketingPage() {
                   onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = "none"; }}
                 />
               </div>
-              <div style={col50}>
-                <h2 style={{ fontSize: "clamp(1.3rem, 2vw, 1.7rem)", fontWeight: 900, color: DARK, marginBottom: "1rem" }}>
+              <div className="dm-col50">
+                <h2 style={{ fontSize: "clamp(1.2rem, 3.5vw, 1.7rem)", fontWeight: 900, color: DARK, marginBottom: "1rem" }}>
                   Here is what we will review:
                 </h2>
                 <p style={{ fontSize: "0.88rem", lineHeight: 1.75, color: GRAY_TEXT, marginBottom: "1rem" }}>
@@ -368,9 +403,9 @@ export default function DigitalMarketingPage() {
         </section>
 
         {/* ══ TESTIMONIALS ══ */}
-        <section style={{ background: LIGHT_BG, padding: "5rem 0" }}>
-          <div style={inner}>
-            <h2 style={{ fontSize: "clamp(1.4rem, 2.5vw, 1.9rem)", fontWeight: 900, color: DARK, marginBottom: "2rem" }}>
+        <section className="dm-sec-lg" style={{ background: LIGHT_BG }}>
+          <div className="dm-inner">
+            <h2 style={{ fontSize: "clamp(1.3rem, 4vw, 1.9rem)", fontWeight: 900, color: DARK, marginBottom: "2rem" }}>
               Work Speak For Itself
             </h2>
             <div className="dm-testi-grid">
@@ -406,19 +441,16 @@ export default function DigitalMarketingPage() {
         {/* ══ COLLABORATE ══ */}
         <section className="dm-collab">
           <div className="dm-collab-inner">
-            <div style={{ flex: "1 1 340px", maxWidth: 580, color: WHITE }}>
+            <div className="dm-collab-text">
               <p style={{ fontSize: "0.72rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: 2.5, opacity: 0.8, marginBottom: "0.5rem" }}>Collaboration</p>
-              <h2 style={{ fontSize: "clamp(1.4rem, 2.5vw, 2rem)", fontWeight: 800, lineHeight: 1.3, marginBottom: "1rem" }}>
+              <h2 style={{ fontSize: "clamp(1.3rem, 4vw, 2rem)", fontWeight: 800, lineHeight: 1.3, marginBottom: "1rem" }}>
                 Did you get stuck in something?<br />Lets Collaborate &amp; Conquer :
               </h2>
               <p style={{ opacity: 0.88, fontSize: "0.88rem", lineHeight: 1.75, maxWidth: 480 }}>
                 Our creative team specializes in solving all your digital challenges. With the expertise of our UI/UX consultants, we're here to elevate your business and enhance user experiences.
               </p>
             </div>
-            <Link
-              href="/contact"
-              style={{ display: "inline-block", background: WHITE, color: RED, padding: "0.85rem 2.4rem", borderRadius: 4, fontWeight: 800, textDecoration: "none", fontSize: "0.9rem", textTransform: "uppercase", letterSpacing: 0.5, flexShrink: 0, boxShadow: "0 4px 20px rgba(0,0,0,0.2)" }}
-            >
+            <Link href="/contact" className="dm-collab-btn">
               Contact Us
             </Link>
           </div>
