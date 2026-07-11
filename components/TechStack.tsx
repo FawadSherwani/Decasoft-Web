@@ -57,11 +57,11 @@ export default function TechStack() {
       className="py-20 bg-white"
       style={{ contentVisibility: 'auto', containIntrinsicSize: '0 500px' }} // ✅ Skip when off-screen
     >
-      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {/* <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {techCards.map((card, i) => (
           <div
             key={i}
-            className={`tech-card rounded-xl p-6 card-hover cursor-pointer ${card.active ? 'active bg-primary/5' : ''}`}
+            className={`tech-card rounded-xl p-6 card-hover cursor-pointer ${card.active ? ' bg-primary/5' : ''}`}
           >
             <div className="flex items-start gap-4 mb-4">
               <div className={`w-14 h-14 rounded-lg flex items-center justify-center ${card.active ? 'bg-primary' : 'bg-primary/10'}`}>
@@ -72,7 +72,7 @@ export default function TechStack() {
                 )}
               </div>
               <div>
-                <h3 className="font-bold text-lg text-gray-900">{card.title}</h3>
+                <h3 className="font-bold text-lg text-gray-900 bg-primary/5">{card.title}</h3>
                 <p className="text-gray-500 text-xs leading-relaxed mt-1">{card.desc}</p>
               </div>
             </div>
@@ -85,7 +85,38 @@ export default function TechStack() {
             </div>
           </div>
         ))}
+      </div> */}
+      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+  {techCards.map((card, i) => (
+    <div
+      key={i}
+      className={`tech-card rounded-xl p-6 card-hover cursor-pointer bg-primary/5 border-2 transition-all duration-300 
+      ${card.active ? 'border-primary shadow-lg' : 'border-transparent'}`}
+    >
+      <div className="flex items-start gap-4 mb-4">
+        <div className={`w-14 h-14 rounded-lg flex items-center justify-center ${card.active ? 'bg-primary' : 'bg-primary/10'}`}>
+          {card.labelIcon ? (
+            <i className={`${card.labelIcon} ${card.active ? 'text-white' : 'text-primary'} text-2xl font-black`} aria-hidden="true"></i>
+          ) : (
+            <span className={`font-black text-2xl ${card.active ? 'text-white' : 'text-primary'}`} aria-hidden="true">{card.label}</span>
+          )}
+        </div>
+        <div>
+          {/* H3 se extra background hata diya hai */}
+          <h3 className="font-bold text-lg text-gray-900">{card.title}</h3>
+          <p className="text-gray-500 text-xs leading-relaxed mt-1">{card.desc}</p>
+        </div>
       </div>
+      <div className="flex gap-2 flex-wrap" aria-hidden="true">
+        {card.icons.map((icon, j) => (
+          <span key={j} className={`text-lg ${card.active ? 'text-primary' : 'text-gray-400'}`}>
+            <i className={icon}></i>
+          </span>
+        ))}
+      </div>
+    </div>
+  ))}
+</div>
     </section>
   )
 }
