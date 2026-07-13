@@ -232,7 +232,7 @@ export default function Page() {
                   Looking For High-Quality Courses To Boost Your Skills And Career?
                 </h2>
                 <Link
-                  href="/courses"
+                  href="/contact-us"
                   style={{ display: "inline-block", border: `2px solid ${RED}`, color: RED, background: "transparent", padding: "0.75rem 2rem", borderRadius: 50, fontWeight: 700, textDecoration: "none", fontSize: "0.85rem", textTransform: "uppercase", letterSpacing: 1, transition: "all 0.2s" }}
                 >
                   Enroll Now
@@ -271,7 +271,7 @@ export default function Page() {
                 Our creative team specializes in solving all your digital challenges. With the expertise of our UI/UX consultants, we&apos;re here to elevate your business and enhance user experiences.
               </p>
             </div>
-            <Link href="/contact" className="cp-collab-btn">Contact Us</Link>
+            <Link href="/contact-us" className="cp-collab-btn">Contact Us</Link>
           </div>
         </section>
 

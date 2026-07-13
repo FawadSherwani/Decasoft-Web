@@ -171,7 +171,7 @@ export default function Navbar() {
         {/* CTA + Hamburger */}
         <div className="flex items-center gap-3">
           <Link
-            href={isCoursesPage ? '/courses' : '/contact-us'}
+            href={isCoursesPage ? '/contact-us' : '/contact-us'}
             className="hidden lg:block bg-primary hover:bg-red-700 text-white text-sm font-bold px-6 py-2.5 rounded transition-colors"
           >
             {isCoursesPage ? 'ENROLL NOW' : 'GET A QUOTE'}
