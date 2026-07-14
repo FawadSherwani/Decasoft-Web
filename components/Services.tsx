@@ -1,17 +1,4 @@
 'use client'
-
-// ✅ REDESIGNED (v3 — refined from original card-grid structure, not the asymmetric layout)
-// WHAT CHANGED FROM THE ORIGINAL:
-// 1. Background: real photo kept, but treatment upgraded — darker cinematic grade +
-//    subtle red rim-light instead of flat tint, feels less "stock photo with overlay".
-// 2. Cards: glassmorphism upgrade — frosted blur + inner top highlight line so they read
-//    as physical panels floating over the photo, not flat tinted boxes.
-// 3. Icon rings now have a soft rotating conic-gradient ring on hover (signature detail).
-// 4. Number badges (01-04) moved to a cleaner corner-chip style instead of giant faint
-//    background numerals (those read as generic template filler).
-// 5. Title now has a thin animated underline accent instead of plain gradient text only.
-// 6. Stat strip redesigned as 3 compact glass tiles instead of one long bar.
-
 const services = [
   {
     icon: 'fa-solid fa-bullhorn',
@@ -249,7 +236,7 @@ export default function Services() {
                 key={i}
                 href={s.href}
                 data-idx={i}
-                className={`sv-card${s.featured ? ' featured' : ''}`}
+                className={`sv-card${s.featured ? ' ' : ''}`}
                 style={{ textDecoration: 'none' }}
               >
                 <div className="sv-chip">{s.number}</div>
