@@ -9,6 +9,8 @@ import CaseStudiesTabs from "@/components/CaseStudiesTabs";
 import Testimonials from '@/components/Testimonials'
 import CTABanner from '@/components/CTABanner'
 import Footer from '@/components/Footer'
+import { SpeedInsights } from "@vercel/speed-insights/next"
+
 import { useMemo } from 'react'
 
 
