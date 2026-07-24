@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Poppins, Montserrat } from 'next/font/google'
 import './globals.css'
 import { Analytics } from '@vercel/analytics/react'
+import { SpeedInsights } from '@vercel/speed-insights/next'
 import WhatsappFloat from '@/components/WhatsappFloat'
 import "hover.css/css/hover-min.css";
 
@@ -47,6 +48,7 @@ export default function RootLayout({
       <body className={`${poppins.variable} ${montserrat.variable} font-poppins bg-white text-gray-800 overflow-x-hidden`}>
         {children}
         <Analytics />
+        <SpeedInsights />
         <WhatsappFloat />
       </body>
     </html>
