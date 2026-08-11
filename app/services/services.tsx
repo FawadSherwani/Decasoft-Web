@@ -105,11 +105,11 @@ export default function ServicesPage() {
         .read-more:hover { color: ${RED}; }
 
         /* ── SCROLL SECTION ── */
-        .scroll-track { display: flex; gap: 1.2rem; overflow-x: auto; padding-bottom: 1rem; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; }
+        .scroll-track { display: flex; gap: 1.2rem; width: 100%; max-width: 1200px; min-width: 0; margin: 0 auto; overflow-x: auto; overflow-y: hidden; padding-bottom: 1rem; scroll-snap-type: x mandatory; scroll-padding-inline: 1px; overscroll-behavior-inline: contain; scrollbar-gutter: stable; -webkit-overflow-scrolling: touch; }
         .scroll-track::-webkit-scrollbar { height: 6px; }
         .scroll-track::-webkit-scrollbar-track { background: #f0f0f0; border-radius: 3px; }
         .scroll-track::-webkit-scrollbar-thumb { background: ${RED}; border-radius: 3px; }
-        .scroll-card { flex: 0 0 280px; border: 1px solid ${BORDER}; border-radius: 10px; padding: 1.5rem; background: ${WHITE}; scroll-snap-align: start; transition: box-shadow 0.2s; }
+        .scroll-card { flex: 0 0 calc((100% - 3.6rem) / 4); min-width: 250px; border: 1px solid ${BORDER}; border-radius: 10px; padding: 1.5rem; background: ${WHITE}; scroll-snap-align: start; transition: box-shadow 0.2s; }
         .scroll-card:hover { box-shadow: 0 8px 24px rgba(192,57,43,0.1); }
 
         /* ── CTA BANNER ── */
@@ -121,14 +121,19 @@ export default function ServicesPage() {
         .collab-inner { max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 2rem; position: relative; z-index: 1; }
 
         /* ════ RESPONSIVE ════ */
-        @media (max-width: 1024px) { .srv-grid { grid-template-columns: repeat(3, 1fr); } }
+        @media (max-width: 1024px) {
+          .srv-grid { grid-template-columns: repeat(3, 1fr); }
+          .scroll-card { flex-basis: calc((100% - 2.4rem) / 3); }
+        }
         @media (max-width: 900px) {
           .hero-srv { flex-direction: column; }
           .hero-srv-img { flex: 0 0 100%; width: 100%; }
           .srv-grid { grid-template-columns: repeat(2, 1fr); }
+          .scroll-card { flex-basis: calc((100% - 1.2rem) / 2); }
         }
         @media (max-width: 600px) {
           .srv-grid { grid-template-columns: 1fr; }
+          .scroll-card { flex-basis: min(85vw, 300px); min-width: 0; }
           .cta-banner { flex-direction: column; text-align: center; }
         }
       `}</style>
