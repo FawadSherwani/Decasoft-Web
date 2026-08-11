@@ -99,6 +99,32 @@
   100% { transform: translateX(-50%); }
 }
 
+.animate-marquee {
+  animation: marquee 50s linear infinite;
+}
+
+.text-gradient-brand {
+  background: linear-gradient(90deg, #e31e2b, #b8151f);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.underline-swash {
+  position: relative;
+}
+.underline-swash::after {
+  content: "";
+  position: absolute;
+  left: 2px;
+  right: 2px;
+  bottom: -6px;
+  height: 8px;
+  background: #e31e2b;
+  opacity: 0.25;
+  border-radius: 4px;
+}
+
 /* width */
 ::-webkit-scrollbar {
   width: 10px;
@@ -175,3 +201,4 @@
 .hvr-shutter-out-horizontal:before {
   background: #bf2227 !important; /* hover color */
 }
+

@@ -1,49 +1,99 @@
+import { Phone, Play, Star } from "lucide-react";
+import DashboardMock from "./DashboardMock";
+
 export default function Hero() {
   return (
-    <section className="hero-bg min-h-[480px] sm:min-h-[580px] flex items-center">
-      {/* ✅ Preload hint for hero background image - add this in your layout.tsx <head> too:
-          <link rel="preload" as="image" href="/hero-bg.jpg" fetchpriority="high" />
-      */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-20 w-full">
-        <div className="max-w-2xl">
-          {/* ✅ H1 font-size mobile pe 2xl se start */}
-          <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-black text-white leading-tight mb-4 sm:mb-6">
-            Customer Focused.<br />
-            Quality Driven&nbsp;&nbsp; ECommerce<br />
-            Websites<span className="text-primary">.</span>
+    <section
+      id="home"
+      className="relative overflow-hidden bg-gradient-to-b from-cream to-white pb-16 pt-14 sm:pb-24 sm:pt-20"
+    >
+      <div className="pointer-events-none absolute -top-24 right-0 h-96 w-96 rounded-full bg-brand/10 blur-3xl" />
+
+      <div className="relative mx-auto grid max-w-7xl gap-12 px-5 lg:grid-cols-[1fr_1.15fr] lg:items-center lg:gap-8 lg:px-8">
+        {/* Left column */}
+        <div>
+          <span className="inline-block rounded-md bg-brand px-3 py-1.5 text-[11px] font-bold tracking-wide text-white">
+            RESULTS DRIVEN DIGITAL MARKETING AGENCY
+          </span>
+
+          <h1 className="mt-5 text-[2.5rem] font-extrabold leading-[1.1] tracking-tight text-ink sm:text-5xl">
+            We Drive Traffic.
+            <br />
+            You Get
+            <br />
+            <span className="relative text-brand">
+              Real Growth.
+              <svg
+                className="absolute -bottom-2 left-0 w-40"
+                viewBox="0 0 160 10"
+                fill="none"
+              >
+                <path
+                  d="M2 7C40 2 100 2 158 7"
+                  stroke="#e31e2b"
+                  strokeWidth="4"
+                  strokeLinecap="round"
+                />
+              </svg>
+            </span>
           </h1>
-          <p className="text-gray-300 text-sm sm:text-base mb-6 sm:mb-8 max-w-lg leading-relaxed">
-            We Bind Together Creative Minds And Innovation To Assist Organizations With Filling In The Period Of Computerized Change.
+
+          <p className="mt-6 max-w-md text-[15px] leading-relaxed text-ink/60">
+            Performance marketing solutions that help your business rank
+            higher, get more leads and increase revenue.
           </p>
-          {/* ✅ Full width on mobile, inline on larger screens */}
-          <a
-            href="https://calendly.com/decasofts-appointment/meeting"
-            target="_blank"
-            rel="noopener noreferrer"
-            className=" hvr-shutter-out-horizontal block sm:inline-block text-center border-2 border-white text-white font-bold px-8 py-3 rounded hover:bg-white hover:text-primary transition-all text-sm tracking-wide uppercase trans-btn"
-          >
-            Book a consultation
-          </a>
+
+          <div className="mt-8 flex flex-wrap items-center gap-4">
+            <a
+              href="https://calendly.com/decasofts-appointment/meeting"
+              className="flex items-center gap-2 rounded-md bg-brand px-6 py-3.5 text-[13px] font-bold text-white shadow-lg shadow-brand/30 transition hover:bg-brand-dark"
+            >
+              GET A FREE STRATEGY CALL
+              <Phone className="h-4 w-4" />
+            </a>
+            <a
+              href="http://localhost:3000/case-studies"
+              className="flex items-center gap-2 rounded-md border border-black/10 px-6 py-3.5 text-[13px] font-bold text-ink transition hover:border-brand hover:text-brand"
+            >
+              VIEW CASE STUDIES
+              <Play className="h-4 w-4" />
+            </a>
+          </div>
+
+          <div className="mt-9 flex items-center gap-4">
+            <div className="flex -space-x-3">
+              {["A", "B", "C", "D"].map((letter, i) => (
+                <span
+                  key={letter}
+                  className="grid h-9 w-9 place-items-center rounded-full border-2 border-white bg-ink text-[11px] font-bold text-white"
+                  style={{ zIndex: 4 - i }}
+                >
+                  {letter}
+                </span>
+              ))}
+            </div>
+            <div>
+              <p className="text-[13px] font-bold text-ink">
+                600+ Happy Clients
+              </p>
+              <div className="flex items-center gap-1">
+                <div className="flex text-amber-400">
+                  {Array.from({ length: 5 }).map((_, i) => (
+                    <Star key={i} className="h-3.5 w-3.5 fill-amber-400" />
+                  ))}
+                </div>
+                <span className="text-[11px] font-semibold text-ink/50">
+                  4.9 (200+ Reviews)
+                </span>
+              </div>
+            </div>
+          </div>
         </div>
 
-        {/* ✅ Stack vertically on mobile, row on larger screens */}
-        <div className="mt-10 sm:mt-16 flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6">
-          <div>
-            <p className="text-gray-300 text-xs mb-1">Trusted By 200+ Enterprises And Startups</p>
-            <p className="text-gray-400 text-xs">Top Software Development Company</p>
-          </div>
-          <div className="flex items-center gap-3">
-            {['fa-brands fa-google', 'fa-solid fa-award', 'fa-solid fa-star'].map((icon, i) => (
-              <div
-                key={i}
-                className="w-10 h-10 sm:w-12 sm:h-12 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm"
-              >
-                <i className={`${icon} text-white text-base sm:text-lg`} aria-hidden="true"></i>
-              </div>
-            ))}
-          </div>
-        </div>
+        {/* Right column: dashboard mock */}
+        <DashboardMock />
       </div>
     </section>
-  )
+  );
 }
+

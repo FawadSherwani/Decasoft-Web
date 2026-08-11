@@ -1,33 +1,32 @@
-// ============================================================
-// CTABanner.tsx — OPTIMIZED
-// ✅ Added content-visibility (below fold always)
-// ✅ Added Link for "CONTACT US" button (was plain button with no href)
-// ============================================================
-import Link from 'next/link'
+import { Send, ArrowRight } from "lucide-react";
 
-export default function CTABanner() {
+export default function CtaBanner() {
   return (
-    <section
-      className="bg-primary py-14"
-      style={{ contentVisibility: 'auto', containIntrinsicSize: '0 200px' }}
-    >
-      <div className="max-w-7xl mx-auto px-6 flex flex-col lg:flex-row items-center justify-between gap-6">
-        <div>
-          <p className="text-red-200 text-xs font-semibold tracking-widest uppercase mb-1">Collaboration</p>
-          <h2 className="text-3xl lg:text-4xl font-black text-white">Got A Project? Let&apos;s Talk.</h2>
-          <p className="text-red-100 text-sm mt-2 max-w-lg">
-            We&apos;re A Team Of Creatives Who Are Excited About Unique Ideas And Help Fin-Tech Companies To Create
-            Amazing Identity By Crafting Top-Notch UI/UX.
-          </p>
+    <section className="px-5 pb-16 lg:px-8">
+      <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-6 rounded-2xl bg-brand px-8 py-10 sm:flex-row">
+        <div className="flex items-center gap-4 text-center sm:text-left">
+          <span className="hidden h-14 w-14 shrink-0 place-items-center rounded-full bg-white/15 sm:grid">
+            <Send className="h-6 w-6 text-white" />
+          </span>
+          <div>
+            <h3 className="text-xl font-extrabold text-white sm:text-2xl">
+              Ready to Grow Your Business?
+            </h3>
+            <p className="mt-1 text-[13px] text-white/80">
+              Book your FREE strategy call today and let&apos;s build a
+              growth engine for your brand.
+            </p>
+          </div>
         </div>
-        {/* ✅ Was a <button> with no action — changed to Link for better CWV */}
-        <Link
-          href="/contact"
-          className="bg-white text-primary font-bold px-10 py-4 rounded text-sm whitespace-nowrap hover:bg-gray-100 transition-colors shadow-xl"
+        <a
+          href="#contact"
+          className="flex shrink-0 items-center gap-2 rounded-md bg-white px-6 py-3.5 text-[13px] font-bold text-brand transition hover:bg-cream"
         >
-          CONTACT US
-        </Link>
+          GET A FREE PROPOSAL
+          <ArrowRight className="h-4 w-4" />
+        </a>
       </div>
     </section>
-  )
+  );
 }
+
