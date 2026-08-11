@@ -17,7 +17,7 @@ const navLinks = [
       { name: 'SEARCH ENGINE OPTIMIZATION', href: '/services/seo' },
       { name: 'UI/UX DESIGN',               href: '/services/uiux' },
       { name: 'VIDEO EDITING',                href: '/services/video-editing' },
-      { name: 'E-COMMERCE',                 href: '/services/e-commerce & Shopify' },
+      { name: 'E-COMMERCE',                 href: '/services/e-commerce' },
     ],
   },
   {
