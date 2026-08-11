@@ -1,6 +1,6 @@
 "use client";
 
-import { link } from "fs";
+import Link from "next/link";
 import React, { useState } from "react";
 
 const RED = "#c0392b";
@@ -24,33 +24,33 @@ const services = [
   {
     title: "Videography",
     items: ["Manage Delivery Model", "Enterprise Software Development", "Startups Software Development"],
-    link: "services/videography",
+    link: "/services/videography",
   },
   
   {
     title: "Video Editing",
-    link: "services/services/videography",
+    link: "/services/video-editing",
     items: ["Manage Delivery Model", "Enterprise Software Development", "Startups Software Development"],
   },
   {
     title: "Graphic Designing",
     items: ["Manage Delivery Model", "Enterprise Software Development", "Startups Software Development"],
-    link: "services/uiux",
+    link: "/services/uiux",
   },
   {
     title: "Digital Marketing",
     items: ["Manage Delivery Model", "Enterprise Software Development", "Startups Software Development"],
-    link: "services/digital-marketing",
+    link: "/services/digital-marketing",
   },
   {
     title: "Web Development",
     items: ["Manage Delivery Model", "Enterprise Software Development", "Startups Software Development"],
-    link: "services/e-commerce",
+    link: "/services/web-development",
   },
   {
     title: "SEO Services",
     items: ["Manage Delivery Model", "Enterprise Software Development", "Startups Software Development"],
-    link: "services/seo",
+    link: "/services/seo",
   },
 ];
 
@@ -196,7 +196,7 @@ export default function ServicesPage() {
                     <li key={item} style={{ fontSize: "0.82rem", color: GRAY_TEXT, marginBottom: "0.3rem", lineHeight: 1.5 }}>{item}</li>
                   ))}
                 </ul>
-                <a href={s.link} className="read-more">Read More →</a>
+                <Link href={s.link} className="read-more">Read More →</Link>
               </div>
             ))}
           </div>

@@ -1,17 +1,14 @@
 import Navbar from '@/components/Navbar'
 import Hero from '@/components/Hero'
-import BrandsMarquee from '@/components/BrandsMarquee'
-import AboutUs from '@/components/AboutUs'
+import LogoBar from '@/components/LogoBar'
 import Stats from '@/components/Stats'
 import Services from '@/components/Services'
-import TechStack from '@/components/TechStack'
-import CaseStudiesTabs from "@/components/CaseStudiesTabs";
+import Process from '@/components/Process'
+import CaseStudies from '@/components/CaseStudies'
 import Testimonials from '@/components/Testimonials'
-import CTABanner from '@/components/CTABanner'
+import CtaBanner from '@/components/CTABanner'
 import Footer from '@/components/Footer'
 import { SpeedInsights } from "@vercel/speed-insights/next"
-
-import { useMemo } from 'react'
 
 
 export default function Home() {
@@ -19,15 +16,16 @@ export default function Home() {
     <main>
       <Navbar />
       <Hero />
-      <BrandsMarquee />
-      <AboutUs />
+      <LogoBar />
       <Stats />
       <Services />
-      <TechStack />
-      <CaseStudiesTabs />
+      <Process />
+      <CaseStudies />
       <Testimonials />
-      <CTABanner />
+      <CtaBanner />
       <Footer />
+      <SpeedInsights />
     </main>
   )
 }
+

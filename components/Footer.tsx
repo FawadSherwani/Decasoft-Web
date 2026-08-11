@@ -8,15 +8,15 @@ const services = [
   { name: 'Web Development',            href: '/services/web-development' },
   { name: 'Digital Marketing',          href: '/services/digital-marketing' },
   { name: 'Search Engine Optimization', href: '/services/seo' },
-  { name: 'Videography',                href: '/services/videography' },
+  { name: 'Video Editing',                href: '/services/videography' },
   { name: 'E-Commerce',                 href: '/services/e-commerce' },
 ]
 const courses = [
   { name: 'Web Development',            href: '/courses/web-development' },
   { name: 'Digital Marketing',          href: '/courses/digital-marketing' },
   { name: 'Search Engine Optimization', href: '/courses/seo' },
-  { name: 'Videography',                href: '/courses/videography' },
-  { name: 'E-Commerce',                 href: '/courses/e-commerce' },
+  { name: 'Video Editing',                href: '/courses/videography' },
+  { name: 'e-Commerce & Shopify',                 href: '/courses/e-commerce' },
 ]
 const company = [
   { name: 'Home',         href: '/' },
@@ -26,8 +26,6 @@ const company = [
 ]
 const support = [
   { name: 'Contact Us',     href: '/contact-us' },
-  // { name: 'Privacy Policy', href: '/privacy' },
-  // { name: 'Terms Of Use',   href: '/terms' },
   { name: 'Payments',       href: '/payments' },
 ]
 
@@ -221,7 +219,7 @@ export default function Footer() {
             Copyright &copy; 2026{' '}
             <a href="https://www.decasofts.com" target="_blank" rel="noopener noreferrer" className="hover-underline hover:text-primary transition-colors text-primary">
               Decasofts
-            </a>. All Rights Reserved
+            </a>. All Rights Reserved by Decasofts
           </p>
         </div>
       </div>
