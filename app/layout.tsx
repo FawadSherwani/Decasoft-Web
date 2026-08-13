@@ -3,6 +3,7 @@ import { Poppins, Montserrat } from 'next/font/google'
 import './globals.css'
 import { Analytics } from '@vercel/analytics/react'
 import WhatsappFloat from '@/components/WhatsappFloat'
+import BotpressChat from '@/components/BotpressChat'
 import "hover.css/css/hover-min.css";
 
 const poppins = Poppins({
@@ -46,10 +47,10 @@ export default function RootLayout({
       <body className={`${poppins.variable} ${montserrat.variable} font-poppins bg-white text-gray-800 overflow-x-hidden`}>
         {children}
         <Analytics />
+        <BotpressChat />
         <WhatsappFloat />
       </body>
     </html>
   )
   
 }
-

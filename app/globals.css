@@ -154,6 +154,18 @@
 .whatsapp-pulse {
   animation: pulse-ring 2s infinite;
 }
+
+/* Botpress launcher: brand color is configured in BotpressChat.tsx. */
+.bpFabWrapper {
+  bottom: 30px !important;
+}
+
+.bpFab {
+  width: 40px !important;
+  height: 40px !important;
+  min-width: 40px !important;
+  min-height: 40px !important;
+}
 /* Stripe footer badge ko hide karne ke liye */
 .StripeElement--hide-badge, 
 .StripeElement--hidden {
@@ -201,4 +213,3 @@
 .hvr-shutter-out-horizontal:before {
   background: #bf2227 !important; /* hover color */
 }
-
