@@ -2,6 +2,7 @@ import Navbar from '@/components/Navbar'
 import Hero from '@/components/Hero'
 import LogoBar from '@/components/LogoBar'
 import Stats from '@/components/Stats'
+import HomeAbout from '@/components/HomeAbout'
 import Services from '@/components/Services'
 import Process from '@/components/Process'
 import CaseStudies from '@/components/CaseStudies'
@@ -18,6 +19,7 @@ export default function Home() {
       <Hero />
       <LogoBar />
       <Stats />
+      <HomeAbout />
       <Services />
       <Process />
       <CaseStudies />

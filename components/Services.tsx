@@ -13,17 +13,18 @@ import Link from "next/link";
 
 const services = [
   {
+    icon: MonitorSmartphone,
+    title: "Website Development",
+    desc: "Fast, responsive and SEO-friendly websites designed to convert visitors into customers.",
+    href: "/services/web-development",
+  },
+  {
     icon: Target,
     title: "Google Ads",
     desc: "Drive high-quality traffic and maximize returns with smart Google Ads campaigns.",
     href: "/services/digital-marketing",
   },
-  {
-    icon: InfinityIcon,
-    title: "Meta Advertising",
-    desc: "Generate quality leads and sales with highly targeted Facebook & Instagram ad campaigns.",
-    href: "/services/digital-marketing",
-  },
+  
   {
     icon: LineChart,
     title: "Search Engine Optimization",
@@ -35,12 +36,6 @@ const services = [
     title: "Social Media Marketing",
     desc: "Build brand awareness and engage your audience across all major social media platforms.",
     href: "/services/digital-marketing",
-  },
-  {
-    icon: MonitorSmartphone,
-    title: "Website Development",
-    desc: "Fast, responsive and SEO-friendly websites designed to convert visitors into customers.",
-    href: "/services/web-development",
   },
   {
     icon: PenTool,

@@ -1,101 +1,53 @@
 import Script from 'next/script'
 import BotpressLauncher from './BotpressLauncher'
 
-// This Botpress file is a public browser configuration asset. Keep the
-// environment variable as an override, but use the published configuration in
-// deployments where .env.local is unavailable (for example, Vercel builds).
-const botpressConfigUrl =
-  process.env.BOTPRESS_CONFIG_URL ??
-  'https://files.bpcontent.cloud/2026/08/13/09/20260813095519-WB23LWSH.js'
+const botpressConfig = {
+  botId: 'e6c4fabb-08b4-4bc3-bc8d-d12f35a88734',
+  clientId: 'e94be6cb-4df1-488d-b981-0c8230a19447',
+  toggleChatId: 'bp-toggle-chat',
+  configuration: {
+    version: 'v2',
+    botName: 'DECASOFT',
+    botAvatar: '',
+    color: '#bf2227',
+    website: {},
+    email: {},
+    phone: {},
+    termsOfService: {},
+    privacyPolicy: {},
+    feedbackEnabled: true,
+    footer: '[⚡ by Botpress](https://botpress.com/?from=webchat)',
+    allowFileUpload: true,
+    soundEnabled: true,
+    conversationHistory: true,
+    homePageEnabled: true,
+    welcomeHeading: 'Hi there, how can we help?',
+    welcomeSubtitle: 'Tap a starting point or ask in your own words.',
+    conversationStartersEnabled: true,
+    conversationStarters: [
+      { id: 'get_quote', text: 'Get a quote', title: 'Get a quote', icon: 'wallet', enabled: true },
+      {
+        id: 'book_consultation', text: 'Book consultation', title: 'Book consultation',
+        icon: 'calendar', enabled: true,
+      },
+      {
+        id: 'services_faq', text: 'Our services', title: 'Our services',
+        icon: 'sparkles', enabled: true,
+      },
+      { id: 'start_project', text: 'Start a project', title: 'Start a project', enabled: true },
+    ],
+    conversationStartersDisplayStyle: 'cards',
+    citationsEnabled: true,
+    agentPresenceEnabled: true,
+  },
+}
 
 export default function BotpressChat() {
-  if (!botpressConfigUrl) return null
-
   return (
     <>
-      <Script
-        src="https://cdn.botpress.cloud/webchat/v5.0/inject.js"
-        strategy="afterInteractive"
-      />
-      <Script
-        src={botpressConfigUrl}
-        strategy="afterInteractive"
-      />
-      <Script id="botpress-brand-theme" strategy="afterInteractive">
-        {`
-          (() => {
-            const setImportant = (element, property, value) => {
-              element?.style.setProperty(property, value, 'important')
-            }
-
-            const applyLauncherStyles = () => {
-              document
-                .querySelectorAll('iframe.bpClose[title*="Botpress"], iframe.bpClose[src*="botpress"]')
-                .forEach((frame) => {
-                  setImportant(frame, 'width', '35px')
-                  setImportant(frame, 'height', '35px')
-                  setImportant(frame, 'min-width', '35px')
-                  setImportant(frame, 'min-height', '35px')
-                  setImportant(frame, 'max-width', '35px')
-                  setImportant(frame, 'max-height', '35px')
-                  setImportant(frame, 'bottom', '30px')
-                  setImportant(frame, 'opacity', '0')
-                  setImportant(frame, 'pointer-events', 'none')
-                })
-
-              document.querySelectorAll('.bpFabWrapper').forEach((wrapper) => {
-                setImportant(wrapper, 'bottom', '30px')
-                setImportant(wrapper, 'margin-bottom', '0')
-              })
-
-              document
-                .querySelectorAll('.bpFab, .bpFabContainer, button[class*="bpFab"]')
-                .forEach((launcher) => {
-                  setImportant(launcher, 'width', '35px')
-                  setImportant(launcher, 'height', '35px')
-                  setImportant(launcher, 'min-width', '35px')
-                  setImportant(launcher, 'min-height', '35px')
-                  setImportant(launcher, 'max-width', '35px')
-                  setImportant(launcher, 'max-height', '35px')
-                  setImportant(launcher, 'padding', '0')
-                })
-
-              document.querySelectorAll('.bpFabIcon, .bpFabImage').forEach((icon) => {
-                setImportant(icon, 'width', '18px')
-                setImportant(icon, 'height', '18px')
-              })
-            }
-
-            const configureWebchat = () => {
-              window.botpress?.config({
-                configuration: { color: '#bf2227' }
-              })
-              applyLauncherStyles()
-            }
-
-            const observer = new MutationObserver(applyLauncherStyles)
-            observer.observe(document.body, {
-              attributes: true,
-              attributeFilter: ['class'],
-              childList: true,
-              subtree: true
-            })
-
-            let attempts = 0
-            const waitForBotpress = window.setInterval(() => {
-              attempts += 1
-              applyLauncherStyles()
-
-              if (window.botpress?.on) {
-                window.clearInterval(waitForBotpress)
-                window.botpress.on('webchat:initialized', configureWebchat)
-                configureWebchat()
-              } else if (attempts >= 100) {
-                window.clearInterval(waitForBotpress)
-              }
-            }, 100)
-          })()
-        `}
+      <Script src="https://cdn.botpress.cloud/webchat/v5.0/inject.js" strategy="afterInteractive" />
+      <Script id="botpress-config" strategy="afterInteractive">
+        {`window.botpress.init(${JSON.stringify(botpressConfig)})`}
       </Script>
       <BotpressLauncher />
     </>

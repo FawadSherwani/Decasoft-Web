@@ -161,19 +161,6 @@
   margin-bottom: 0 !important;
 }
 
-iframe.bpClose[title*="Botpress"],
-iframe.bpClose[src*="botpress"] {
-  bottom: 30px !important;
-  width: 35px !important;
-  height: 35px !important;
-  min-width: 35px !important;
-  min-height: 35px !important;
-  max-width: 35px !important;
-  max-height: 35px !important;
-  opacity: 0 !important;
-  pointer-events: none !important;
-}
-
 .bpFab,
 .bpFabContainer {
   width: 35px !important;

@@ -90,7 +90,7 @@ export default function ContactFloat() {
   ]
 
   return (
-    <div className="fixed bottom-24 right-6 z-50 flex flex-col items-end">
+    <div className="fixed bottom-[110px] right-6 z-50 flex flex-col items-end">
 
       {/* Contact Buttons */}
       <div
@@ -131,17 +131,20 @@ export default function ContactFloat() {
       {/* Main Button */}
       <button
         onClick={() => setOpen(!open)}
-        className="flex items-center gap-3 bg-[#bf2227] hover:bg-[#bf2227] text-white rounded-full h-13 w-13 px-5 shadow-xl transition-all duration-300 hover:scale-105"
+        className="group relative flex h-[60px] w-[60px] shrink-0 items-center justify-center rounded-full bg-[#bf2227] p-0 text-white shadow-lg transition-all duration-300 hover:scale-105 hover:bg-[#bf2227]"
+        aria-label={open ? 'Close contact options' : 'Open contact options'}
       >
-        
+        <span className="pointer-events-none absolute right-full mr-3 whitespace-nowrap rounded-lg bg-ink px-3 py-2 text-xs font-semibold text-white opacity-0 shadow-lg transition-opacity duration-200 group-hover:opacity-100 group-focus-visible:opacity-100">
+          Contact Us
+        </span>
 
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className={`transition-transform duration-300 ${
             open ? 'rotate-45' : ''
           }`}
-          width="22"
-          height="22"
+          width="28"
+          height="28"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
