@@ -158,13 +158,36 @@
 /* Botpress launcher: brand color is configured in BotpressChat.tsx. */
 .bpFabWrapper {
   bottom: 30px !important;
+  margin-bottom: 0 !important;
 }
 
-.bpFab {
-  width: 40px !important;
-  height: 40px !important;
-  min-width: 40px !important;
-  min-height: 40px !important;
+iframe.bpClose[title*="Botpress"],
+iframe.bpClose[src*="botpress"] {
+  bottom: 30px !important;
+  width: 35px !important;
+  height: 35px !important;
+  min-width: 35px !important;
+  min-height: 35px !important;
+  max-width: 35px !important;
+  max-height: 35px !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+.bpFab,
+.bpFabContainer {
+  width: 35px !important;
+  height: 35px !important;
+  min-width: 35px !important;
+  min-height: 35px !important;
+  max-width: 35px !important;
+  max-height: 35px !important;
+}
+
+.bpFabIcon,
+.bpFabImage {
+  width: 18px !important;
+  height: 18px !important;
 }
 /* Stripe footer badge ko hide karne ke liye */
 .StripeElement--hide-badge, 

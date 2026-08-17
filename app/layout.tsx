@@ -44,7 +44,10 @@ export default function RootLayout({
           crossOrigin="anonymous"
         />
       </head>
-      <body className={`${poppins.variable} ${montserrat.variable} font-poppins bg-white text-gray-800 overflow-x-hidden`}>
+      <body
+        suppressHydrationWarning
+        className={`${poppins.variable} ${montserrat.variable} font-poppins bg-white text-gray-800 overflow-x-hidden`}
+      >
         {children}
         <Analytics />
         <BotpressChat />
