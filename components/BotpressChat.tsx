@@ -1,7 +1,12 @@
 import Script from 'next/script'
 import BotpressLauncher from './BotpressLauncher'
 
-const botpressConfigUrl = process.env.BOTPRESS_CONFIG_URL
+// This Botpress file is a public browser configuration asset. Keep the
+// environment variable as an override, but use the published configuration in
+// deployments where .env.local is unavailable (for example, Vercel builds).
+const botpressConfigUrl =
+  process.env.BOTPRESS_CONFIG_URL ??
+  'https://files.bpcontent.cloud/2026/08/13/09/20260813095519-WB23LWSH.js'
 
 export default function BotpressChat() {
   if (!botpressConfigUrl) return null
