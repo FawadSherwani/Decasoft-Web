@@ -77,6 +77,14 @@ export default function BotpressChat() {
 
   return (
     <>
+      <style jsx global>{`
+        #fab-root,
+        .bpFabContainer,
+        .bpFabWrapper,
+        .bpFab {
+          display: none !important;
+        }
+      `}</style>
       <Script
         id="botpress-webchat"
         src="https://cdn.botpress.cloud/webchat/v5.0/inject.js"

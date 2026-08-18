@@ -16,7 +16,6 @@ const navLinks = [
       { name: 'WEB DEVELOPMENT',            href: '/services/web-development' },
       { name: 'MOBILE APP DEVELOPMENT',     href: '/services/mobile-app-development' },
       { name: 'DIGITAL MARKETING',          href: '/services/digital-marketing' },
-      { name: 'SEARCH ENGINE OPTIMIZATION', href: '/services/seo' },
       { name: 'UI/UX DESIGN',               href: '/services/uiux' },
       { name: 'VIDEO EDITING',              href: '/services/video-editing' },
       { name: 'e-COMMERCE / Shopify',       href: '/services/e-commerce' },
@@ -40,8 +39,8 @@ const navLinks = [
     subMenu: [
       { name: 'WEB DEVELOPMENT',            href: '/courses/web-development' },
       { name: 'DIGITAL MARKETING',          href: '/courses/digital-marketing' },
-      { name: 'SEARCH ENGINE OPTIMIZATION', href: '/courses/seo' },
       { name: 'GRAPHIC DESIGN',             href: '/courses/graphic-designing' },
+      { name: 'UI/UX DESIGN',               href: '/courses/uiux' },
       { name: 'VIDEO EDITING',                href: '/courses/videography' },
       { name: 'e-COMMERCE & Shopify',                 href: '/courses/e-commerce' },
     ],

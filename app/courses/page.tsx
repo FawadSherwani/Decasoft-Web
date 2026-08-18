@@ -1,6 +1,14 @@
 "use client";
 import { useState } from "react";
 import Link from "next/link";
+import {
+  Clapperboard,
+  Code2,
+  Megaphone,
+  Palette,
+  PanelsTopLeft,
+  TrendingUp,
+} from "lucide-react";
 
 const RED = "#bf2227";
 const DARK = "#080809";
@@ -9,7 +17,7 @@ const WHITE = "#ffffff";
 const courses = [
   {
     n: "01",
-    icon: "</>",
+    icon: Code2,
     accent: RED,
     title: "Web Development",
     desc: "Kickstart your journey in Web Development — build responsive, modern sites from scratch.",
@@ -18,25 +26,17 @@ const courses = [
   },
   {
     n: "02",
-    icon: "📣",
+    icon: Megaphone,
     accent: "#d4a017",
     title: "Social Media Marketing",
     desc: "Grow your own or your clients' pages and turn followers into paying customers.",
     tag: "6-Week Course",
     href: "/courses/social-media-marketing",
   },
+
   {
     n: "03",
-    icon: "🔍",
-    accent: "#2a9d8f",
-    title: "SEO (Search Engine Optimization)",
-    desc: "Ideal for anyone who wants to rank websites and drive consistent organic traffic.",
-    tag: "4-Week Course",
-    href: "/courses/seo",
-  },
-  {
-    n: "04",
-    icon: "🎨",
+    icon: Palette,
     accent: "#7c3aed",
     title: "Graphic Designing",
     desc: "Unlock your creative potential with a complete guide to mastering visual design.",
@@ -44,8 +44,8 @@ const courses = [
     href: "/courses/graphic-designing",
   },
   {
-    n: "05",
-    icon: "📈",
+    n: "04",
+    icon: TrendingUp,
     accent: "#2563eb",
     title: "Digital Marketing",
     desc: "Unlock the skills to drive online success and grow brands across channels.",
@@ -53,13 +53,22 @@ const courses = [
     href: "/courses/digital-marketing",
   },
   {
-    n: "06",
-    icon: "🎬",
+    n: "05",
+    icon: Clapperboard,
     accent: "#ea580c",
     title: "Video Editing",
     desc: "Capture your story with professional editing that creates engaging, high-quality visuals.",
     tag: "4-Week Course",
-    href: "/courses/video-editing",
+    href: "/courses/videography",
+  },
+  {
+    n: "06",
+    icon: PanelsTopLeft,
+    accent: "#bf2227",
+    title: "UI/UX Design",
+    desc: "Research, wireframe and prototype intuitive digital products using Figma.",
+    tag: "6-Week Course",
+    href: "/courses/uiux",
   },
 ];
 
@@ -157,6 +166,7 @@ export default function Page() {
         }
         .cp-hero-cards {
           display: flex; gap: 1.2rem;
+          justify-content: flex-start;
           overflow-x: auto;
           scroll-snap-type: x mandatory;
           -webkit-overflow-scrolling: touch;
@@ -210,6 +220,9 @@ export default function Page() {
           font-size: 0.7rem; color: rgba(255,255,255,0.4); margin-top: 0.6rem;
         }
 
+        @media (min-width: 1740px) {
+          .cp-hero-cards { justify-content: center; }
+        }
         @media (max-width: 600px) {
           .cp-hero-card { flex-basis: 230px; }
         }
@@ -363,10 +376,14 @@ export default function Page() {
 
           <div className="cp-hero-cards-wrap">
             <div className="cp-hero-cards">
-              {courses.map((c) => (
+              {courses.map((c) => {
+                const Icon = c.icon;
+                return (
                 <Link key={c.title} href={c.href} className="cp-hero-card" style={{ textDecoration: "none", display: "block" }}>
                   <div className="cp-hero-card-top">
-                    <div className="cp-hero-card-icon" style={{ background: c.accent }}>{c.icon}</div>
+                    <div className="cp-hero-card-icon" style={{ background: c.accent }}>
+                      <Icon size={20} strokeWidth={2.2} aria-hidden="true" />
+                    </div>
                     <span className="cp-hero-card-num">{c.n}</span>
                   </div>
                   <h3>{c.title}</h3>
@@ -376,7 +393,8 @@ export default function Page() {
                     <span className="cp-hero-card-link">View →</span>
                   </div>
                 </Link>
-              ))}
+                );
+              })}
             </div>
             <div className="cp-hero-scroll-hint">← swipe to see all courses →</div>
           </div>

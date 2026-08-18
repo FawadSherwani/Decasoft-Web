@@ -15,7 +15,7 @@ export default function BotpressLauncher({ isReady, onToggle }: BotpressLauncher
       title={isReady ? 'Open AI chat' : 'AI chat is loading'}
     >
       <span className="pointer-events-none absolute right-full mr-3 whitespace-nowrap rounded-lg bg-ink px-3 py-2 text-xs font-semibold text-white opacity-0 shadow-lg transition-opacity duration-200 group-hover:opacity-100 group-focus-visible:opacity-100">
-        AI Agent
+        Chat with AI
       </span>
       <svg
         xmlns="http://www.w3.org/2000/svg"
