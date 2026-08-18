@@ -55,6 +55,20 @@ const botpressConfig = {
   },
 }
 
+function hideNativeLauncher(attempt = 0) {
+  const fabRoot = document.getElementById('fab-root')
+  const fabWrapper = fabRoot?.shadowRoot?.querySelector<HTMLElement>('.bpFabWrapper')
+
+  if (fabWrapper) {
+    fabWrapper.style.display = 'none'
+    return
+  }
+
+  if (attempt < 20) {
+    window.setTimeout(() => hideNativeLauncher(attempt + 1), 100)
+  }
+}
+
 export default function BotpressChat() {
   const [isReady, setIsReady] = useState(false)
 
@@ -63,7 +77,10 @@ export default function BotpressChat() {
 
     if (!botpress) return
 
-    botpress.on('webchat:initialized', () => setIsReady(true))
+    botpress.on('webchat:initialized', () => {
+      setIsReady(true)
+      hideNativeLauncher()
+    })
 
     if (!window.__decasoftBotpressInitialized) {
       window.__decasoftBotpressInitialized = true
@@ -77,14 +94,6 @@ export default function BotpressChat() {
 
   return (
     <>
-      <style jsx global>{`
-        #fab-root,
-        .bpFabContainer,
-        .bpFabWrapper,
-        .bpFab {
-          display: none !important;
-        }
-      `}</style>
       <Script
         id="botpress-webchat"
         src="https://cdn.botpress.cloud/webchat/v5.0/inject.js"
