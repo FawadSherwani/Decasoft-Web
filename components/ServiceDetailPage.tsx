@@ -1,8 +1,8 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { ArrowRight, BadgeCheck, BarChart3, Boxes, Brush, Camera, Check, Code2, Film, Gauge, Globe2, Layers3, Megaphone, MonitorSmartphone, PackageOpen, Palette, PenTool, Search, ShoppingBag, Sparkles, Target, TrendingUp } from 'lucide-react'
+import { ArrowRight, BadgeCheck, BarChart3, Boxes, Brush, Camera, Check, Code2, Film, Gauge, Globe2, Layers3, Megaphone, MonitorSmartphone, PackageOpen, Palette, PenTool, Search, ShoppingBag, Smartphone, Sparkles, Target, TrendingUp } from 'lucide-react'
 
-const icons = { analytics: BarChart3, boxes: Boxes, camera: Camera, code: Code2, film: Film, gauge: Gauge, globe: Globe2, layers: Layers3, marketing: Megaphone, responsive: MonitorSmartphone, package: PackageOpen, palette: Palette, pen: PenTool, search: Search, shop: ShoppingBag, sparkles: Sparkles, target: Target, growth: TrendingUp }
+const icons = { analytics: BarChart3, boxes: Boxes, camera: Camera, code: Code2, film: Film, gauge: Gauge, globe: Globe2, layers: Layers3, marketing: Megaphone, mobile: Smartphone, responsive: MonitorSmartphone, package: PackageOpen, palette: Palette, pen: PenTool, search: Search, shop: ShoppingBag, sparkles: Sparkles, target: Target, growth: TrendingUp }
 type IconName = keyof typeof icons
 
 type Config = {
@@ -23,6 +23,12 @@ const configs = {
     intro: 'We design and develop fast, responsive, conversion-focused websites that give your business a stronger digital foundation and a better customer experience.', hero: '/web/outloud.png', heroAlt: 'Responsive website development project', feature: 'Fast, scalable, conversion-ready websites', sectionTitle: 'Modern web solutions built around your business.',
     services: [['code','Custom Development','Purpose-built websites and applications aligned with your workflows.'],['responsive','Responsive Experiences','Thoughtful interfaces that perform beautifully on every screen.'],['shop','E-commerce Development','Reliable online stores with intuitive, secure buying journeys.'],['gauge','Speed Optimization','Performance engineering for faster loading and stronger usability.'],['globe','CMS Solutions','Flexible systems that make publishing and content management easy.'],['boxes','Support & Maintenance','Ongoing updates, monitoring, improvements, and technical support.']],
     processTitle: 'A reliable website begins with the right technical plan.', workTitle: 'Digital experiences built to deliver results.', work: ['/web/outloud.png','/web/nooralaweer.png','/web/greenwood.png'], caseStudy: '/case-studies/website-development', cta: 'Ready to build a website that moves your business forward?',
+  },
+  'mobile-app-development': {
+    eyebrow: 'Mobile App Development', title: 'Mobile products designed to', accent: 'earn a place on every screen.',
+    intro: 'We design and develop reliable iOS and Android applications that feel intuitive, perform smoothly, and give your business a scalable mobile foundation.', hero: 'https://images.unsplash.com/photo-1551650975-87deedd944c3?w=1200&q=85', heroAlt: 'Mobile application displayed on a smartphone', feature: 'Native-quality experiences built around real users', sectionTitle: 'From product idea to polished mobile experience.',
+    services: [['mobile','iOS Development','Responsive, secure applications created for the Apple ecosystem.'],['responsive','Android Development','Reliable Android experiences optimized across devices and screen sizes.'],['code','Cross-platform Apps','Efficient React Native and Flutter builds with a consistent native feel.'],['palette','Mobile UI/UX','Clear navigation and accessible interfaces designed for touch-first use.'],['boxes','API & Integrations','Secure connections to payments, CRM, analytics, maps, and business systems.'],['gauge','App Optimization','Performance, stability, testing, store readiness, and ongoing improvements.']],
+    processTitle: 'Successful apps begin with the right product decisions.', workTitle: 'Mobile experiences shaped for everyday use.', work: ['https://images.unsplash.com/photo-1607252650355-f7fd0460ccdb?w=900&q=85','https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=900&q=85','https://images.unsplash.com/photo-1555774698-0b77e0d5fac6?w=900&q=85'], cta: 'Ready to turn your mobile app idea into a product people value?',
   },
   'digital-marketing': {
     eyebrow: 'Digital Marketing Services', title: 'Campaigns that reach people and', accent: 'move them to act.',

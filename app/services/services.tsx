@@ -12,6 +12,7 @@ import {
   Palette,
   Search,
   ShoppingBag,
+  Smartphone,
   Sparkles,
 } from 'lucide-react'
 
@@ -25,8 +26,16 @@ const services = [
     href: '/services/web-development',
   },
   {
-    icon: BarChart3,
+    icon: Smartphone,
     number: '02',
+    title: 'Mobile App Development',
+    description: 'Intuitive iOS, Android, and cross-platform applications built for performance and scale.',
+    tags: ['iOS apps', 'Android apps', 'Cross-platform'],
+    href: '/services/mobile-app-development',
+  },
+  {
+    icon: BarChart3,
+    number: '03',
     title: 'Digital Marketing',
     description: 'Focused campaigns that connect strategy, creative, media, and measurable growth.',
     tags: ['Paid advertising', 'Social media', 'Content strategy'],
@@ -34,7 +43,7 @@ const services = [
   },
   {
     icon: Search,
-    number: '03',
+    number: '04',
     title: 'SEO Services',
     description: 'Technical and content-led search strategies that build sustainable online visibility.',
     tags: ['Technical SEO', 'Content SEO', 'Local SEO'],
@@ -42,7 +51,7 @@ const services = [
   },
   {
     icon: Layers3,
-    number: '04',
+    number: '05',
     title: 'UI/UX Design',
     description: 'Clear, accessible product experiences shaped around real users and real outcomes.',
     tags: ['User research', 'Interface design', 'Design systems'],
@@ -50,7 +59,7 @@ const services = [
   },
   {
     icon: ShoppingBag,
-    number: '05',
+    number: '06',
     title: 'E-commerce & Shopify',
     description: 'Conversion-focused storefronts that make discovering and buying products effortless.',
     tags: ['Shopify stores', 'Custom commerce', 'Integrations'],
@@ -58,7 +67,7 @@ const services = [
   },
   {
     icon: Palette,
-    number: '06',
+    number: '07',
     title: 'Graphic Designing',
     description: 'Distinctive identities and campaign visuals that make brands credible and memorable.',
     tags: ['Brand identity', 'Social creative', 'Packaging'],
@@ -66,7 +75,7 @@ const services = [
   },
   {
     icon: Film,
-    number: '07',
+    number: '08',
     title: 'Video Editing',
     description: 'Raw footage transformed into polished stories built to hold audience attention.',
     tags: ['Post-production', 'Motion graphics', 'Social video'],
@@ -74,7 +83,7 @@ const services = [
   },
   {
     icon: Camera,
-    number: '08',
+    number: '09',
     title: 'Videography',
     description: 'Professional video production that captures products, people, and stories with purpose.',
     tags: ['Brand films', 'Commercials', 'Event coverage'],
