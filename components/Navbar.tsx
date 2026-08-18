@@ -17,8 +17,10 @@ const navLinks = [
       { name: 'DIGITAL MARKETING',          href: '/services/digital-marketing' },
       { name: 'SEARCH ENGINE OPTIMIZATION', href: '/services/seo' },
       { name: 'UI/UX DESIGN',               href: '/services/uiux' },
-      { name: 'VIDEO EDITING',                href: '/services/video-editing' },
-      { name: 'E-COMMERCE',                 href: '/services/e-commerce' },
+      { name: 'VIDEO EDITING',              href: '/services/video-editing' },
+      { name: 'e-COMMERCE / Shopify',       href: '/services/e-commerce' },
+      { name: 'Graphic Designing',          href: '/services/graphic-desiging' },
+      { name: 'Video Graphy',               href: '/services/videography' },
     ],
   },
   {

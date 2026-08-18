@@ -1,10 +1,18 @@
-export default function BotpressLauncher() {
+type BotpressLauncherProps = {
+  isReady: boolean
+  onToggle: () => void
+}
+
+export default function BotpressLauncher({ isReady, onToggle }: BotpressLauncherProps) {
   return (
     <button
       id="bp-toggle-chat"
       type="button"
+      onClick={onToggle}
       className="group fixed bottom-[30px] right-6 z-[60] flex h-[60px] w-[60px] shrink-0 items-center justify-center rounded-full bg-[#bf2227] p-0 text-white shadow-lg transition-all duration-300 hover:scale-105 hover:bg-[#bf2227]"
       aria-label="Open AI chat"
+      aria-disabled={!isReady}
+      title={isReady ? 'Open AI chat' : 'AI chat is loading'}
     >
       <span className="pointer-events-none absolute right-full mr-3 whitespace-nowrap rounded-lg bg-ink px-3 py-2 text-xs font-semibold text-white opacity-0 shadow-lg transition-opacity duration-200 group-hover:opacity-100 group-focus-visible:opacity-100">
         AI Agent

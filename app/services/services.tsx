@@ -1,294 +1,231 @@
-"use client";
-
-import Link from "next/link";
-import React, { useState } from "react";
-
-const RED = "#c0392b";
-const DARK = "#1a1a2e";
-const WHITE = "#ffffff";
-const GRAY_TEXT = "#666";
-const LIGHT_BG = "#f9f9f9";
-const BORDER = "#e0e0e0";
-
-// ─── Data ─────────────────────────────────────────────────────────────────────
-const heroServices = [
-  "Ecommerce Websites",
-  "Web Development",
-  "Digital Marketing",
-  "SEO Services",
-  "Mobile Apps",
-  "Graphic Design",
-];
+import Image from 'next/image'
+import Link from 'next/link'
+import {
+  ArrowRight,
+  BadgeCheck,
+  BarChart3,
+  Camera,
+  Check,
+  Code2,
+  Film,
+  Layers3,
+  Palette,
+  Search,
+  ShoppingBag,
+  Sparkles,
+} from 'lucide-react'
 
 const services = [
   {
-    title: "Videography",
-    items: ["Manage Delivery Model", "Enterprise Software Development", "Startups Software Development"],
-    link: "/services/videography",
-  },
-  
-  {
-    title: "Video Editing",
-    link: "/services/video-editing",
-    items: ["Manage Delivery Model", "Enterprise Software Development", "Startups Software Development"],
+    icon: Code2,
+    number: '01',
+    title: 'Web Development',
+    description: 'Fast, responsive websites and web applications engineered around your business goals.',
+    tags: ['Custom websites', 'Web applications', 'Maintenance'],
+    href: '/services/web-development',
   },
   {
-    title: "Graphic Designing",
-    items: ["Manage Delivery Model", "Enterprise Software Development", "Startups Software Development"],
-    link: "/services/uiux",
+    icon: BarChart3,
+    number: '02',
+    title: 'Digital Marketing',
+    description: 'Focused campaigns that connect strategy, creative, media, and measurable growth.',
+    tags: ['Paid advertising', 'Social media', 'Content strategy'],
+    href: '/services/digital-marketing',
   },
   {
-    title: "Digital Marketing",
-    items: ["Manage Delivery Model", "Enterprise Software Development", "Startups Software Development"],
-    link: "/services/digital-marketing",
+    icon: Search,
+    number: '03',
+    title: 'SEO Services',
+    description: 'Technical and content-led search strategies that build sustainable online visibility.',
+    tags: ['Technical SEO', 'Content SEO', 'Local SEO'],
+    href: '/services/seo',
   },
   {
-    title: "Web Development",
-    items: ["Manage Delivery Model", "Enterprise Software Development", "Startups Software Development"],
-    link: "/services/web-development",
+    icon: Layers3,
+    number: '04',
+    title: 'UI/UX Design',
+    description: 'Clear, accessible product experiences shaped around real users and real outcomes.',
+    tags: ['User research', 'Interface design', 'Design systems'],
+    href: '/services/uiux',
   },
   {
-    title: "SEO Services",
-    items: ["Manage Delivery Model", "Enterprise Software Development", "Startups Software Development"],
-    link: "/services/seo",
+    icon: ShoppingBag,
+    number: '05',
+    title: 'E-commerce & Shopify',
+    description: 'Conversion-focused storefronts that make discovering and buying products effortless.',
+    tags: ['Shopify stores', 'Custom commerce', 'Integrations'],
+    href: '/services/e-commerce',
   },
-];
+  {
+    icon: Palette,
+    number: '06',
+    title: 'Graphic Designing',
+    description: 'Distinctive identities and campaign visuals that make brands credible and memorable.',
+    tags: ['Brand identity', 'Social creative', 'Packaging'],
+    href: '/services/graphic-desiging',
+  },
+  {
+    icon: Film,
+    number: '07',
+    title: 'Video Editing',
+    description: 'Raw footage transformed into polished stories built to hold audience attention.',
+    tags: ['Post-production', 'Motion graphics', 'Social video'],
+    href: '/services/video-editing',
+  },
+  {
+    icon: Camera,
+    number: '08',
+    title: 'Videography',
+    description: 'Professional video production that captures products, people, and stories with purpose.',
+    tags: ['Brand films', 'Commercials', 'Event coverage'],
+    href: '/services/videography',
+  },
+]
 
-const heroTitles = heroServices;
-let currentIndex = 0;
+const process = [
+  { number: '01', title: 'Understand', text: 'We learn your business, audience, challenges, and definition of success.' },
+  { number: '02', title: 'Strategize', text: 'We turn the findings into a focused roadmap with clear priorities.' },
+  { number: '03', title: 'Create', text: 'Our specialists execute, review, and refine every deliverable collaboratively.' },
+  { number: '04', title: 'Grow', text: 'We launch, measure, improve, and support the next stage of your growth.' },
+]
 
-// ─── Service Icon SVG ─────────────────────────────────────────────────────────
-const ServiceIcon = () => (
-  <svg viewBox="0 0 48 48" width="48" height="48" fill="none">
-    <rect width="48" height="48" rx="8" fill="#fff0ee"/>
-    <rect x="8" y="10" width="32" height="22" rx="3" fill="none" stroke={RED} strokeWidth="2"/>
-    <rect x="13" y="15" width="10" height="8" rx="1" fill={RED} opacity="0.15"/>
-    <rect x="13" y="15" width="10" height="8" rx="1" stroke={RED} strokeWidth="1.5"/>
-    <line x1="26" y1="17" x2="34" y2="17" stroke={RED} strokeWidth="1.5" strokeLinecap="round"/>
-    <line x1="26" y1="20" x2="34" y2="20" stroke={RED} strokeWidth="1.5" strokeLinecap="round"/>
-    <line x1="26" y1="23" x2="30" y2="23" stroke={RED} strokeWidth="1.5" strokeLinecap="round"/>
-    <line x1="13" y1="27" x2="35" y2="27" stroke={RED} strokeWidth="1.5" strokeLinecap="round"/>
-    <path d="M20 32 L24 36 L28 32" stroke={RED} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
-  </svg>
-);
-
-// ─── Main Component ───────────────────────────────────────────────────────────
 export default function ServicesPage() {
-  const [heroTitle, setHeroTitle] = useState(heroServices[0]);
-
-  // Auto rotate hero title
-  React.useEffect(() => {
-    const interval = setInterval(() => {
-      currentIndex = (currentIndex + 1) % heroTitles.length;
-      setHeroTitle(heroTitles[currentIndex]);
-    }, 2500);
-    return () => clearInterval(interval);
-  }, []);
-
   return (
-    <>
-      <style>{`
-        .srv-wrap * { box-sizing: border-box; }
-
-        /* ── HERO ── */
-        .hero-srv { display: flex; flex-wrap: wrap; align-items: center; gap: 3rem; max-width: 1200px; margin: 0 auto; }
-        .hero-srv-text { flex: 1 1 360px; }
-        .hero-srv-img  { flex: 0 0 420px; }
-
-        /* ── SERVICES GRID ── */
-        .srv-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; max-width: 1200px; margin: 0 auto; }
-        .srv-card { border: 1px solid ${BORDER}; border-radius: 10px; padding: 1.5rem; background: ${WHITE}; transition: box-shadow 0.2s, transform 0.2s; cursor: pointer; }
-        .srv-card:hover { box-shadow: 0 8px 30px rgba(192,57,43,0.12); transform: translateY(-3px); }
-        .srv-card ul { padding-left: 1.2rem; margin: 0.8rem 0; }
-        .srv-card ul li { font-size: 0.82rem; color: ${GRAY_TEXT}; margin-bottom: 0.3rem; line-height: 1.5; }
-        .read-more { font-size: 0.82rem; color: ${DARK}; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 0.3rem; margin-top: 0.5rem; transition: color 0.2s; }
-        .read-more:hover { color: ${RED}; }
-
-        /* ── SCROLL SECTION ── */
-        .scroll-track { display: flex; gap: 1.2rem; width: 100%; max-width: 1200px; min-width: 0; margin: 0 auto; overflow-x: auto; overflow-y: hidden; padding-bottom: 1rem; scroll-snap-type: x mandatory; scroll-padding-inline: 1px; overscroll-behavior-inline: contain; scrollbar-gutter: stable; -webkit-overflow-scrolling: touch; }
-        .scroll-track::-webkit-scrollbar { height: 6px; }
-        .scroll-track::-webkit-scrollbar-track { background: #f0f0f0; border-radius: 3px; }
-        .scroll-track::-webkit-scrollbar-thumb { background: ${RED}; border-radius: 3px; }
-        .scroll-card { flex: 0 0 calc((100% - 3.6rem) / 4); min-width: 250px; border: 1px solid ${BORDER}; border-radius: 10px; padding: 1.5rem; background: ${WHITE}; scroll-snap-align: start; transition: box-shadow 0.2s; }
-        .scroll-card:hover { box-shadow: 0 8px 24px rgba(192,57,43,0.1); }
-
-        /* ── CTA BANNER ── */
-        .cta-banner { background: ${RED}; padding: 3rem 6%; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem; position: relative; overflow: hidden; }
-        .cta-btn-outline { border: 2px solid ${WHITE}; color: ${WHITE}; background: transparent; padding: 0.8rem 2rem; border-radius: 50px; font-weight: 700; font-size: 0.88rem; letter-spacing: 1px; cursor: pointer; text-decoration: none; transition: all 0.2s; text-transform: uppercase; }
-        .cta-btn-outline:hover { background: ${WHITE}; color: ${RED}; }
-
-        /* ── COLLAB ── */
-        .collab-inner { max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 2rem; position: relative; z-index: 1; }
-
-        /* ════ RESPONSIVE ════ */
-        @media (max-width: 1024px) {
-          .srv-grid { grid-template-columns: repeat(3, 1fr); }
-          .scroll-card { flex-basis: calc((100% - 2.4rem) / 3); }
-        }
-        @media (max-width: 900px) {
-          .hero-srv { flex-direction: column; }
-          .hero-srv-img { flex: 0 0 100%; width: 100%; }
-          .srv-grid { grid-template-columns: repeat(2, 1fr); }
-          .scroll-card { flex-basis: calc((100% - 1.2rem) / 2); }
-        }
-        @media (max-width: 600px) {
-          .srv-grid { grid-template-columns: 1fr; }
-          .scroll-card { flex-basis: min(85vw, 300px); min-width: 0; }
-          .cta-banner { flex-direction: column; text-align: center; }
-        }
-      `}</style>
-
-      <div className="srv-wrap" style={{ fontFamily: "'Segoe UI', Arial, sans-serif", color: DARK }}>
-
-        {/* ══ HERO ══ */}
-        <section style={{ background: LIGHT_BG, padding: "5rem 6% 4rem" }}>
-          <div className="hero-srv">
-            {/* Left */}
-            <div className="hero-srv-text">
-              <h1 style={{ fontSize: "clamp(1.8rem, 3vw, 2.6rem)", fontWeight: 900, lineHeight: 1.2, marginBottom: "0.5rem", color: DARK }}>
-                The Ultimate Destination For All Your Services Needs:
-              </h1>
-              <h2 style={{ fontSize: "clamp(1.3rem, 2vw, 1.8rem)", fontWeight: 800, color: RED, marginBottom: "1.2rem" }}>
-                {heroTitle}
-              </h2>
-              <p style={{ color: GRAY_TEXT, lineHeight: 1.8, fontSize: "0.93rem", marginBottom: "2rem", maxWidth: 480 }}>
-                DecaSofts is a cutting-edge digital center that produces excellent websites and services. We are at the forefront of the industry thanks to our team of highly qualified professionals and excellent solutions.
-              </p>
-              <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
-                <a href="https://calendly.com/decasofts-appointment/meeting" style={{ display: "inline-block", border: `2px solid ${RED}`, color: RED, background: "transparent", padding: "0.75rem 1.6rem", borderRadius: 50, fontWeight: 700, textDecoration: "none", fontSize: "0.82rem", letterSpacing: 1, textTransform: "uppercase", transition: "all 0.2s" }}
-                  onMouseEnter={(e) => { e.currentTarget.style.background = RED; e.currentTarget.style.color = WHITE; }}
-                  onMouseLeave={(e) => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.color = RED; }}>
-                  Book Appointment Know More
-                </a>
-                <a href="/contact" style={{ display: "inline-block", border: `2px solid ${DARK}`, color: DARK, background: "transparent", padding: "0.75rem 1.6rem", borderRadius: 50, fontWeight: 700, textDecoration: "none", fontSize: "0.82rem", letterSpacing: 1, textTransform: "uppercase", transition: "all 0.2s" }}
-                  onMouseEnter={(e) => { e.currentTarget.style.background = DARK; e.currentTarget.style.color = WHITE; }}
-                  onMouseLeave={(e) => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.color = DARK; }}>
-                  Get In Touch
-                </a>
-              </div>
+    <main className="overflow-hidden bg-white text-[#191922]">
+      <section className="relative isolate bg-[#f8f5f3] px-5 py-20 sm:px-8 lg:py-28">
+        <div className="absolute -left-32 top-20 -z-10 h-72 w-72 rounded-full bg-[#bf2227]/10 blur-3xl" />
+        <div className="absolute -right-20 -top-20 -z-10 h-96 w-96 rounded-full bg-[#bf2227]/10 blur-3xl" />
+        <div className="mx-auto grid max-w-7xl items-center gap-16 lg:grid-cols-[1.08fr_.92fr]">
+          <div>
+            <div className="inline-flex items-center gap-2 rounded-full border border-[#bf2227]/20 bg-white px-4 py-2 text-xs font-bold uppercase tracking-[.2em] text-[#bf2227]">
+              <Sparkles size={15} /> Digital services for ambitious brands
             </div>
-
-            {/* Right illustration */}
-            <div className="hero-srv-img">
-              <img
-                src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80"
-                alt="Services"
-                style={{ width: "100%", borderRadius: 16, objectFit: "cover", maxHeight: 340 }}
-              />
+            <h1 className="mt-7 max-w-3xl font-montserrat text-4xl font-black leading-[1.12] tracking-tight sm:text-5xl lg:text-6xl">
+              One expert team to turn your ideas into <span className="text-[#bf2227]">measurable growth.</span>
+            </h1>
+            <p className="mt-6 max-w-2xl text-base leading-8 text-gray-600 sm:text-lg">
+              Strategy, design, technology, and marketing—connected under one roof to build stronger brands and better digital experiences.
+            </p>
+            <div className="mt-9 flex flex-wrap gap-4">
+              <Link href="/contact-us" className="inline-flex items-center gap-2 rounded-full bg-[#bf2227] px-7 py-3.5 text-sm font-extrabold text-white shadow-lg shadow-red-900/15 transition hover:-translate-y-0.5 hover:bg-[#a91d22]">
+                Discuss your project <ArrowRight size={17} />
+              </Link>
+              <Link href="#services-grid" className="rounded-full border border-gray-300 bg-white px-7 py-3.5 text-sm font-extrabold transition hover:border-[#bf2227] hover:text-[#bf2227]">
+                Explore services
+              </Link>
+            </div>
+            <div className="mt-10 flex flex-wrap gap-x-7 gap-y-3 text-sm font-semibold text-gray-600">
+              {['Strategy-first thinking', 'Specialist delivery teams', 'Transparent communication'].map((item) => (
+                <span key={item} className="flex items-center gap-2"><BadgeCheck size={18} className="text-[#bf2227]" />{item}</span>
+              ))}
             </div>
           </div>
-        </section>
 
-        {/* ══ TRANSFORM SECTION ══ */}
-        <section style={{ background: WHITE, padding: "5rem 6%" }}>
-          <div style={{ textAlign: "center", marginBottom: "3rem" }}>
-            <h2 style={{ fontSize: "clamp(1.5rem, 2.5vw, 2.1rem)", fontWeight: 900, color: DARK, marginBottom: "0.8rem" }}>
-              Let Us Transform Your World With Flawless Digital Solutions.
-            </h2>
-            <p style={{ color: GRAY_TEXT, fontSize: "0.93rem", maxWidth: 680, margin: "0 auto" }}>
-              DecaSofts offers premier services that efficiently solve your digital challenges. Explore our smart solutions and take a step toward excellence.
+          <div className="relative mx-auto w-full max-w-xl">
+            <div className="absolute -right-5 -top-5 h-full w-full rounded-[2rem] border-2 border-[#bf2227]/20" />
+            <div className="relative aspect-[4/3] overflow-hidden rounded-[2rem] bg-[#202027] shadow-2xl">
+              <Image
+                src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&q=85"
+                alt="Digital agency team planning a client project"
+                fill
+                priority
+                sizes="(max-width: 1024px) 100vw, 45vw"
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/5 to-transparent" />
+              <div className="absolute inset-x-0 bottom-0 grid grid-cols-3 divide-x divide-white/20 p-6 text-white sm:p-8">
+                <div><p className="text-2xl font-black sm:text-3xl">600+</p><p className="mt-1 text-[10px] uppercase tracking-wider text-white/65 sm:text-xs">Projects</p></div>
+                <div className="pl-5"><p className="text-2xl font-black sm:text-3xl">450+</p><p className="mt-1 text-[10px] uppercase tracking-wider text-white/65 sm:text-xs">Clients</p></div>
+                <div className="pl-5"><p className="text-2xl font-black sm:text-3xl">7+</p><p className="mt-1 text-[10px] uppercase tracking-wider text-white/65 sm:text-xs">Years</p></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="services-grid" className="scroll-mt-24 px-5 py-20 sm:px-8 lg:py-28">
+        <div className="mx-auto max-w-7xl">
+          <div className="grid gap-8 lg:grid-cols-[.7fr_1.3fr] lg:items-end">
+            <div>
+              <p className="text-sm font-bold uppercase tracking-[.2em] text-[#bf2227]">Our capabilities</p>
+              <h2 className="mt-3 font-montserrat text-3xl font-black leading-tight sm:text-4xl">Built to solve the whole digital challenge.</h2>
+            </div>
+            <p className="max-w-2xl text-base leading-8 text-gray-600 lg:justify-self-end">
+              Choose a focused service or bring us a complex challenge. Our teams collaborate across disciplines so every touchpoint feels consistent and works toward the same outcome.
             </p>
           </div>
 
-          {/* Services — horizontal scroll all services */}
-          <div className="scroll-track">
-            {services.map((s) => (
-              <div key={s.title} className="scroll-card">
-                <div style={{ marginBottom: "1rem" }}><ServiceIcon /></div>
-                <h3 style={{ fontWeight: 800, fontSize: "1rem", marginBottom: "0.8rem", color: DARK }}>{s.title}</h3>
-                <ul style={{ paddingLeft: "1.2rem", margin: "0 0 1rem 0" }}>
-                  {s.items.map((item) => (
-                    <li key={item} style={{ fontSize: "0.82rem", color: GRAY_TEXT, marginBottom: "0.3rem", lineHeight: 1.5 }}>{item}</li>
-                  ))}
-                </ul>
-                <Link href={s.link} className="read-more">Read More →</Link>
-              </div>
+          <div className="mt-14 grid overflow-hidden rounded-[2rem] border border-gray-200 bg-gray-200 gap-px sm:grid-cols-2 lg:grid-cols-4">
+            {services.map(({ icon: Icon, number, title, description, tags, href }) => (
+              <Link key={title} href={href} className="group flex min-h-[330px] flex-col bg-white p-7 transition duration-300 hover:bg-[#1d1c24] sm:p-8">
+                <div className="flex items-start justify-between">
+                  <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-red-50 text-[#bf2227] transition group-hover:bg-[#bf2227] group-hover:text-white"><Icon size={23} /></span>
+                  <span className="text-xs font-black tracking-[.18em] text-gray-300 group-hover:text-white/30">{number}</span>
+                </div>
+                <h3 className="mt-8 text-xl font-black transition group-hover:text-white">{title}</h3>
+                <p className="mt-3 text-sm leading-7 text-gray-600 transition group-hover:text-white/60">{description}</p>
+                <div className="mt-6 flex flex-wrap gap-2">
+                  {tags.map((tag) => <span key={tag} className="rounded-full bg-gray-100 px-3 py-1.5 text-[10px] font-bold uppercase tracking-wide text-gray-500 transition group-hover:bg-white/10 group-hover:text-white/60">{tag}</span>)}
+                </div>
+                <span className="mt-auto flex items-center gap-2 pt-7 text-sm font-extrabold text-[#bf2227] transition group-hover:text-red-300">Explore service <ArrowRight size={16} className="transition group-hover:translate-x-1" /></span>
+              </Link>
             ))}
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* ══ CTA BANNER ══ */}
-        <section className="cta-banner">
-          {/* BG circuit pattern */}
-          <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200&q=60" alt="" aria-hidden
-            style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", opacity: 0.12 }} />
-          <div style={{ position: "relative", zIndex: 1 }}>
-            <h2 style={{ color: WHITE, fontWeight: 800, fontSize: "clamp(1.3rem, 2.5vw, 1.9rem)", margin: 0 }}>
-              Have a Blasting Tech start-up Idea?
-            </h2>
-          </div>
-          <a href="/contact" className="cta-btn-outline" style={{ position: "relative", zIndex: 1 }}>
-            Get In Touch
-          </a>
-        </section>
-
-        {/* ══ CTA DISCOVER ══ */}
-        <section style={{ background: WHITE, padding: "5rem 6%" }}>
-          <div style={{ maxWidth: 1200, margin: "0 auto", display: "flex", flexWrap: "wrap", alignItems: "center", gap: "3rem" }}>
-            <div style={{ flex: "1 1 360px" }}>
-              <p style={{ color: DARK, fontWeight: 800, fontSize: "0.75rem", letterSpacing: 2, textTransform: "uppercase", marginBottom: "0.8rem" }}>
-                Discover How We Can Create A True Impact
-              </p>
-              <h2 style={{ fontSize: "clamp(1.6rem, 3vw, 2.6rem)", fontWeight: 900, lineHeight: 1.2, color: DARK, marginBottom: "2rem" }}>
-                Searching For A Reliable Digital Agency To Elevate Your Business?
-              </h2>
-              <a href="https://calendly.com/decasofts-appointment/meeting" style={{ display: "inline-block", border: `2px solid ${RED}`, color: RED, background: "transparent", padding: "0.8rem 2rem", borderRadius: 50, fontWeight: 700, textDecoration: "none", fontSize: "0.85rem", textTransform: "uppercase", letterSpacing: 1, transition: "all 0.2s" }}
-                onMouseEnter={(e) => { e.currentTarget.style.background = RED; e.currentTarget.style.color = WHITE; }}
-                onMouseLeave={(e) => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.color = RED; }}>
-                Book A Free Consultation
-              </a>
+      <section className="bg-[#1d1c24] px-5 py-20 text-white sm:px-8 lg:py-24">
+        <div className="mx-auto max-w-7xl">
+          <div className="grid gap-10 lg:grid-cols-[.72fr_1.28fr]">
+            <div>
+              <p className="text-sm font-bold uppercase tracking-[.2em] text-red-300">How we work</p>
+              <h2 className="mt-3 font-montserrat text-3xl font-black leading-tight sm:text-4xl">A clear process. No unnecessary complexity.</h2>
+              <p className="mt-5 max-w-md leading-7 text-white/60">You always know what we are doing, why it matters, and what comes next.</p>
             </div>
-            <div style={{ flex: "0 0 auto", width: 380 }}>
-              <img
-                src="https://cdni.iconscout.com/illustration/premium/thumb/mobile-dashboard-illustration-download-in-svg-png-gif-file-formats--analytics-business-report-finance-pack-illustrations-3723849.png"
-                alt="Dashboard"
-                style={{ width: "100%", objectFit: "contain" }}
-                onError={(e) => ((e.currentTarget as HTMLImageElement).style.display = "none")}
-              />
+            <div className="grid gap-px overflow-hidden rounded-2xl bg-white/10 sm:grid-cols-2">
+              {process.map((item) => (
+                <article key={item.number} className="bg-[#25242d] p-7 sm:p-8">
+                  <span className="text-sm font-black text-[#e95459]">{item.number}</span>
+                  <h3 className="mt-4 text-xl font-extrabold">{item.title}</h3>
+                  <p className="mt-3 text-sm leading-7 text-white/60">{item.text}</p>
+                </article>
+              ))}
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* ══ COLLABORATE ══ */}
-        <section style={{ background: `linear-gradient(135deg, ${RED} 0%, #8b0000 100%)`, padding: "4rem 6%", color: WHITE, position: "relative", overflow: "hidden" }}>
-          <img src="/collaborate-bg.jpg" alt="" aria-hidden
-            style={{ position: "absolute", right: 0, top: 0, height: "100%", width: "35%", objectFit: "cover", opacity: 0.25 }}
-            onError={(e) => ((e.currentTarget as HTMLImageElement).style.display = "none")} />
-          <div className="collab-inner">
-            <div style={{ flex: "1 1 340px", maxWidth: 580 }}>
-              <p style={{ fontSize: "0.72rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: 2.5, opacity: 0.8, marginBottom: "0.5rem" }}>Collaboration</p>
-              <h2 style={{ fontSize: "clamp(1.4rem, 2.5vw, 2rem)", fontWeight: 800, lineHeight: 1.3, marginBottom: "1rem" }}>
-                Did you get stuck in something?<br />Lets Collaborate &amp; Conquer :
-              </h2>
-              <p style={{ opacity: 0.88, fontSize: "0.88rem", lineHeight: 1.75, maxWidth: 480 }}>
-                Our creative team specializes in solving all your digital challenges. With the expertise of our UI/UX consultants, we&apos;re here to elevate your business and enhance user experiences.
-              </p>
-            </div>
-            <a href="/contact" style={{ display: "inline-block", background: WHITE, color: RED, padding: "0.85rem 2.4rem", borderRadius: 4, fontWeight: 800, textDecoration: "none", fontSize: "0.9rem", textTransform: "uppercase", letterSpacing: 0.5, flexShrink: 0, boxShadow: "0 4px 20px rgba(0,0,0,0.2)", transition: "transform 0.2s" }}
-              onMouseEnter={(e) => (e.currentTarget.style.transform = "translateY(-2px)")}
-              onMouseLeave={(e) => (e.currentTarget.style.transform = "translateY(0)")}>
-              Contact Us
-            </a>
+      <section className="px-5 py-20 sm:px-8 lg:py-28">
+        <div className="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-2">
+          <div className="relative aspect-[4/3] overflow-hidden rounded-[2rem] bg-gray-100">
+            <Image src="/web/outloud.png" alt="A website project delivered by Decasoft" fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover" />
           </div>
-        </section>
+          <div className="lg:pl-8">
+            <p className="text-sm font-bold uppercase tracking-[.2em] text-[#bf2227]">Why Decasoft</p>
+            <h2 className="mt-3 font-montserrat text-3xl font-black leading-tight sm:text-4xl">One accountable partner from strategy to delivery.</h2>
+            <p className="mt-5 leading-8 text-gray-600">Instead of coordinating multiple vendors, work with a connected team that understands the complete customer journey and keeps every decision aligned.</p>
+            <ul className="mt-7 grid gap-4 sm:grid-cols-2">
+              {['Senior specialist talent', 'Business-focused recommendations', 'Responsive project management', 'Scalable long-term support'].map((item) => (
+                <li key={item} className="flex items-center gap-3 text-sm font-bold"><span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-red-50 text-[#bf2227]"><Check size={15} /></span>{item}</li>
+              ))}
+            </ul>
+            <Link href="/about-us" className="mt-8 inline-flex items-center gap-2 text-sm font-extrabold text-[#bf2227]">Learn more about us <ArrowRight size={17} /></Link>
+          </div>
+        </div>
+      </section>
 
-      </div>
-    </>
-  );
-}
-
-// ─── Service Card ─────────────────────────────────────────────────────────────
-function ServiceCard({ service }: { service: { title: string; items: string[] } }) {
-  return (
-    <div className="srv-card">
-      <div style={{ marginBottom: "1rem" }}><ServiceIcon /></div>
-      <h3 style={{ fontWeight: 800, fontSize: "1rem", marginBottom: "0.8rem", color: DARK }}>{service.title}</h3>
-      <ul>
-        {service.items.map((item) => (
-          <li key={item}>{item}</li>
-        ))}
-      </ul>
-      <a href="#" className="read-more">Read More →</a>
-    </div>
-  );
+      <section className="px-5 pb-20 sm:px-8 lg:pb-28">
+        <div className="relative mx-auto max-w-7xl overflow-hidden rounded-[2rem] bg-[#bf2227] px-6 py-12 text-white sm:px-12 lg:flex lg:items-center lg:justify-between lg:px-16 lg:py-16">
+          <div className="absolute -right-16 -top-24 h-72 w-72 rounded-full border-[40px] border-white/5" />
+          <div className="relative max-w-2xl">
+            <p className="text-sm font-bold uppercase tracking-[.2em] text-white/70">Start a conversation</p>
+            <h2 className="mt-3 font-montserrat text-3xl font-black leading-tight sm:text-4xl">Have a challenge in mind? Let&apos;s find the right way forward.</h2>
+          </div>
+          <Link href="/contact-us" className="relative mt-8 inline-flex shrink-0 items-center gap-2 rounded-full bg-white px-7 py-3.5 text-sm font-extrabold text-[#bf2227] transition hover:-translate-y-0.5 lg:ml-10 lg:mt-0">
+            Book a free consultation <ArrowRight size={17} />
+          </Link>
+        </div>
+      </section>
+    </main>
+  )
 }
