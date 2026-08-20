@@ -1,24 +1,24 @@
 import type { Metadata } from 'next'
-import { Poppins, Montserrat } from 'next/font/google'
+import '@fontsource/poppins/300.css'
+import '@fontsource/poppins/400.css'
+import '@fontsource/poppins/500.css'
+import '@fontsource/poppins/600.css'
+import '@fontsource/poppins/700.css'
+import '@fontsource/poppins/800.css'
+import '@fontsource/poppins/900.css'
+import '@fontsource/montserrat/400.css'
+import '@fontsource/montserrat/600.css'
+import '@fontsource/montserrat/700.css'
+import '@fontsource/montserrat/800.css'
+import '@fontsource/montserrat/900.css'
 import './globals.css'
 import { Analytics } from '@vercel/analytics/react'
 import WhatsappFloat from '@/components/WhatsappFloat'
 import BotpressChat from '@/components/BotpressChat'
+import LanguageProvider from '@/components/LanguageProvider'
+import { headers } from 'next/headers'
+import { isLocale } from '@/lib/i18n'
 import "hover.css/css/hover-min.css";
-
-const poppins = Poppins({
-  subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700', '800', '900'],
-  variable: '--font-poppins',
-  display: 'swap',
-})
-
-const montserrat = Montserrat({
-  subsets: ['latin'],
-  weight: ['400', '600', '700', '800', '900'],
-  variable: '--font-montserrat',
-  display: 'swap',
-})
 
 export const metadata: Metadata = {
   title: "D'ECASOFT – Customer Focused. Quality Driven.",
@@ -30,13 +30,16 @@ export const metadata: Metadata = {
   },
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
+  const localeHeader = (await headers()).get('x-locale') ?? 'en'
+  const locale = isLocale(localeHeader) ? localeHeader : 'en'
+
   return (
-    <html lang="en">
+    <html lang={locale} dir={locale === 'ar' ? 'rtl' : 'ltr'}>
       <head>
         <link
           rel="stylesheet"
@@ -46,12 +49,14 @@ export default function RootLayout({
       </head>
       <body
         suppressHydrationWarning
-        className={`${poppins.variable} ${montserrat.variable} font-poppins bg-white text-gray-800 overflow-x-hidden`}
+        className="font-poppins bg-white text-gray-800 overflow-x-hidden"
       >
-        {children}
-        <Analytics />
-        <BotpressChat />
-        <WhatsappFloat />
+        <LanguageProvider locale={locale}>
+          {children}
+          <Analytics />
+          <BotpressChat />
+          <WhatsappFloat />
+        </LanguageProvider>
       </body>
     </html>
   )

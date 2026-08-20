@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import CourseAutoTranslate from "@/components/CourseAutoTranslate";
 
 const BG_RED = "#bf2227";
 const DARK = "#1a1a2e";
@@ -217,6 +218,7 @@ export default function Page() {
       `}</style>
 
       <div className="gd" style={{ fontFamily: "'Segoe UI', Arial, sans-serif", color: DARK }}>
+        <CourseAutoTranslate />
 
         {/* HERO */}
         <section style={{ background: LIGHT_BG, padding: "4rem 0 3rem" }}>
@@ -228,8 +230,7 @@ export default function Page() {
               Graphic Design <span style={{ color: BG_RED }}>Portfolio</span>
             </h1>
             <p style={{ color: GRAY_TEXT, fontSize: "0.92rem", maxWidth: 600, lineHeight: 1.8 }}>
-              Explore our creative design work — from brand identities and packaging to UI/UX and
-              print collateral that brings ideas to life. Click any project to view it.
+              {"Explore our creative design work — from brand identities and packaging to UI/UX and print collateral that brings ideas to life. Click any project to view it."}
             </p>
           </div>
         </section>
@@ -278,8 +279,7 @@ export default function Page() {
                 Ready to bring your brand to life?<br />Lets Collaborate &amp; Conquer :
               </h2>
               <p style={{ opacity: 0.88, fontSize: "0.88rem", lineHeight: 1.75, maxWidth: 480 }}>
-                Our creative team specializes in striking visual design that makes your brand
-                unforgettable. Let&apos;s craft something great together.
+                {"Our creative team specializes in striking visual design that makes your brand unforgettable. Let’s craft something great together."}
               </p>
             </div>
             <Link href="/contact" className="gd-collab-btn">Contact Us</Link>

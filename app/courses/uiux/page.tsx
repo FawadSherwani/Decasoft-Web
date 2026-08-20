@@ -7,6 +7,8 @@ import {
   FileStack, Frame, GraduationCap, Layers3, MousePointer2, PenTool,
   Search, Smartphone, Sparkles, Users, WandSparkles,
 } from 'lucide-react'
+import CourseAutoTranslate from '@/components/CourseAutoTranslate'
+import CourseCaptcha from '@/components/CourseCaptcha'
 
 const skills = [
   { icon: Search, title: 'User Research', text: 'Discover user needs through interviews, surveys, and competitor analysis.' },
@@ -53,27 +55,30 @@ type Status = 'idle' | 'loading' | 'success' | 'error'
 
 export default function UiUxCoursePage() {
   const [status, setStatus] = useState<Status>('idle')
+  const [captchaToken, setCaptchaToken] = useState('')
+  const [captchaReset, setCaptchaReset] = useState(0)
   const [form, setForm] = useState({ firstName: '', lastName: '', email: '', phone: '', course: 'UI/UX Design', batch: '', message: '' })
   const update = (name: keyof typeof form, value: string) => setForm((current) => ({ ...current, [name]: value }))
 
   const submit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
+    if (!captchaToken) { alert('Please confirm that you are not a robot.'); return }
     setStatus('loading')
     try {
       const response = await fetch('/api/contact', {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
+        body: JSON.stringify({ ...form, captchaToken }),
       })
       if (!response.ok) throw new Error('Request failed')
       setStatus('success')
       setForm({ firstName: '', lastName: '', email: '', phone: '', course: 'UI/UX Design', batch: '', message: '' })
-    } catch { setStatus('error') }
+    } catch { setStatus('error'); setCaptchaReset((value) => value + 1) }
   }
 
   const inputClass = 'w-full border border-[#E4DFD4] bg-white rounded-lg px-4 py-3 text-sm text-[#1A1B23] placeholder:text-[#A6A29A] focus:outline-none focus:ring-2 focus:ring-[#bf2227]/30 focus:border-[#bf2227] transition-all'
 
   return (
-    <main className="overflow-hidden bg-[#faf8f3] text-[#171820]">
+    <main className="overflow-hidden bg-[#faf8f3] text-[#171820]"><CourseAutoTranslate />
       <section className="relative">
         <div className="absolute inset-x-0 top-0 h-[520px] bg-[radial-gradient(circle_at_80%_20%,rgba(191,34,39,0.12),transparent_38%)]" />
         <div className="relative mx-auto grid max-w-7xl items-center gap-14 px-6 pb-20 pt-16 lg:grid-cols-[0.9fr_1.1fr] lg:pt-24">
@@ -172,6 +177,7 @@ export default function UiUxCoursePage() {
                 <label className="text-xs font-semibold text-[#5B5A66]">Message
                   <textarea required className={`${inputClass} mt-1.5 resize-none`} placeholder="Message" rows={3} value={form.message} onChange={(e) => update('message', e.target.value)} />
                 </label>
+                <div className="mt-4"><CourseCaptcha onVerify={setCaptchaToken} resetKey={captchaReset} /></div>
                 {status === 'error' && <p className="mt-3 text-xs text-red-500">Something went wrong. Please try again.</p>}
                 <button type="submit" disabled={status === 'loading'} className="mt-6 w-full rounded-lg bg-[#bf2227] py-3.5 text-sm font-semibold text-white shadow-[0_8px_24px_-8px_rgba(255,68,56,0.5)] transition-colors hover:bg-[#E63A2F] disabled:opacity-60">
                   {status === 'loading' ? 'Sending...' : 'Send Message'}

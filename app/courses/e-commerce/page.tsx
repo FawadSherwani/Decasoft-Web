@@ -607,6 +607,8 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRef, useState } from 'react'
+import { useLanguage } from '@/components/LanguageProvider'
+import CourseCaptcha from '@/components/CourseCaptcha'
 import {
   Store,
   Package,
@@ -738,6 +740,7 @@ type FormStatus = 'idle' | 'loading' | 'success' | 'error'
 
 export default function EcommerceCoursePage() {
   const scrollRef = useRef<HTMLDivElement>(null)
+  const { t, href, isRtl } = useLanguage()
 
   const [formData, setFormData] = useState<FormData>({
     firstName: '',
@@ -750,6 +753,8 @@ export default function EcommerceCoursePage() {
   })
 
   const [status, setStatus] = useState<FormStatus>('idle')
+  const [captchaToken, setCaptchaToken] = useState('')
+  const [captchaReset, setCaptchaReset] = useState(0)
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -761,9 +766,10 @@ export default function EcommerceCoursePage() {
     const { firstName, lastName, email, phone, course, batch, message } = formData
 
     if (!firstName || !lastName || !email || !phone || !course || !batch || !message) {
-      alert('Please fill in all fields.')
+      alert(t('Please fill in all fields.'))
       return
     }
+    if (!captchaToken) { alert(t('Please confirm that you are not a robot.')); return }
 
     setStatus('loading')
 
@@ -771,7 +777,7 @@ export default function EcommerceCoursePage() {
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({ ...formData, captchaToken }),
       })
 
       if (res.ok) {
@@ -779,6 +785,7 @@ export default function EcommerceCoursePage() {
         setFormData({ firstName: '', lastName: '', email: '', phone: '', course: '', batch: '', message: '' })
       } else {
         setStatus('error')
+        setCaptchaReset((value) => value + 1)
       }
     } catch {
       setStatus('error')
@@ -795,7 +802,7 @@ export default function EcommerceCoursePage() {
     'w-full border border-[#E4DFD4] bg-white rounded-lg px-4 py-3 text-sm text-[#1A1B23] placeholder:text-[#A6A29A] focus:outline-none focus:ring-2 focus:ring-[#bf2227]/30 focus:border-[#bf2227] transition-all'
 
   return (
-    <main className="bg-[#FAF8F3] text-[#1A1B23]" style={{ fontFamily: "'Inter', sans-serif" }}>
+    <main dir={isRtl ? 'rtl' : 'ltr'} className="bg-[#FAF8F3] text-[#1A1B23]" style={{ fontFamily: "'Inter', sans-serif" }}>
       <style jsx global>{`
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
         .font-display {
@@ -818,18 +825,19 @@ export default function EcommerceCoursePage() {
         <div>
           <span className="inline-flex items-center gap-2 text-[11px] font-semibold tracking-[0.18em] uppercase text-[#bf2227] bg-[#bf2227]/10 px-3 py-1.5 rounded-full mb-6">
             <Sparkles className="w-3.5 h-3.5" />
-            Beginner&nbsp;Friendly&nbsp;Course
+            {t('Beginner Friendly Course')}
           </span>
 
           <h1 className="font-display text-5xl lg:text-6xl font-bold leading-[1.05] mb-6 text-[#13141C]">
-            E-Commerce<span className="text-[#bf2227]">.</span>
+            {t('E-Commerce')}<span className="text-[#bf2227]">.</span>
           </h1>
 
           <p className="text-[#5B5A66] text-base leading-relaxed mb-9 max-w-md">
+            {isRtl ? 'أطلق متجرك الإلكتروني ووسّعه من خلال دورتنا الشاملة في التجارة الإلكترونية. تعلّم إعداد المتجر واختيار المنتجات وإدارة المخزون وتشغيل الإعلانات المستهدفة وتقديم تجربة عملاء استثنائية، وكل ما تحتاجه لبناء مشروع إلكتروني مربح من الصفر.' : <>
             Launch and scale your own online store with our comprehensive E-Commerce course.
             Learn how to set up a store, source products, manage inventory, run targeted ads,
             and deliver exceptional customer experiences — everything you need to build a
-            profitable online business from scratch.
+            profitable online business from scratch.</>}
           </p>
 
           <div className="flex flex-wrap items-center gap-4">
@@ -837,14 +845,14 @@ export default function EcommerceCoursePage() {
               href="#enroll"
               className="inline-flex items-center gap-2 bg-[#bf2227] hover:bg-[#E63A2F] text-white font-semibold px-8 py-3.5 rounded-lg transition-colors text-sm shadow-[0_8px_24px_-8px_rgba(255,68,56,0.6)]"
             >
-              Enroll Now
+              {t('Enroll Now')}
               <ArrowRight className="w-4 h-4" />
             </Link>
             <Link
               href="#curriculum"
               className="inline-flex items-center gap-2 text-[#13141C] font-semibold px-2 py-3.5 text-sm hover:text-[#bf2227] transition-colors"
             >
-              View Curriculum
+              {t('View Curriculum')}
             </Link>
           </div>
         </div>
@@ -853,16 +861,16 @@ export default function EcommerceCoursePage() {
           <div className="absolute -inset-4 bg-gradient-to-br from-[#bf2227]/10 via-transparent to-[#129E8F]/10 rounded-[2rem] -z-10" />
           <Image
             src="https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=700&q=80"
-            alt="E-Commerce Course"
+            alt={t('E-Commerce Course')}
             width={600}
             height={420}
             className="rounded-2xl object-cover w-full h-auto shadow-xl"
           />
           <div className="absolute -bottom-6 left-6 right-6 bg-[#13141C] rounded-xl px-5 py-4 flex items-center gap-3 shadow-xl flex-wrap">
-            {['Shopify', 'Amazon', 'Dropship', 'Ads'].map((t, i) => (
-              <span key={t} className="flex items-center gap-2 text-white text-xs font-semibold">
+            {['Shopify', 'Amazon', 'Dropship', 'Ads'].map((tag, i) => (
+              <span key={tag} className="flex items-center gap-2 text-white text-xs font-semibold">
                 {i > 0 && <span className="w-1 h-1 rounded-full bg-white/30" />}
-                {t}
+                {t(tag)}
               </span>
             ))}
           </div>
@@ -877,7 +885,7 @@ export default function EcommerceCoursePage() {
               key={i}
               className="font-display text-sm font-semibold text-white/80 px-8 flex items-center gap-8"
             >
-              {m}
+              {t(m)}
               <span className="w-1.5 h-1.5 rounded-full bg-[#bf2227]" />
             </span>
           ))}
@@ -888,16 +896,17 @@ export default function EcommerceCoursePage() {
       <section id="curriculum" className="max-w-7xl mx-auto px-6 py-20">
         <div className="mb-12 max-w-2xl">
           <p className="text-xs font-semibold tracking-[0.18em] uppercase text-[#129E8F] mb-3">
-            What You&apos;ll Learn
+            {t("What You'll Learn")}
           </p>
           <h2 className="font-display text-3xl lg:text-4xl font-bold text-[#13141C]">
-            Build, launch, and scale a profitable online store
+            {t('Build, launch, and scale a profitable online store')}
           </h2>
           <p className="text-[#5B5A66] text-sm leading-relaxed mt-4">
+            {isRtl ? 'سواء أردت البيع محلياً أو الوصول إلى عملاء حول العالم، تمنحك دورة التجارة الإلكترونية الأدوات الكاملة لبناء متجر ناجح وإدارته وتنميته خطوة بخطوة، مع أمثلة واقعية ومشاريع عملية.' : <>
             Whether you want to sell locally or reach customers worldwide, our{' '}
             <strong className="text-[#13141C]">E-Commerce Course</strong> gives you the complete
             toolkit to build, manage, and grow a successful online store — step by step, with
-            real-world examples and hands-on projects.
+            real-world examples and hands-on projects.</>}
           </p>
         </div>
 
@@ -910,8 +919,8 @@ export default function EcommerceCoursePage() {
               <div className="w-11 h-11 rounded-xl bg-[#bf2227]/10 flex items-center justify-center mb-4 group-hover:bg-[#bf2227] transition-colors">
                 <Icon className="w-5 h-5 text-[#bf2227] group-hover:text-white transition-colors" />
               </div>
-              <h3 className="font-display font-semibold text-[#13141C] mb-1">{title}</h3>
-              <p className="text-xs text-[#7A7872] leading-relaxed">{desc}</p>
+              <h3 className="font-display font-semibold text-[#13141C] mb-1">{t(title)}</h3>
+              <p className="text-xs text-[#7A7872] leading-relaxed">{t(desc)}</p>
             </div>
           ))}
         </div>
@@ -921,7 +930,7 @@ export default function EcommerceCoursePage() {
       <section className="max-w-7xl mx-auto px-6 pb-20 grid grid-cols-1 lg:grid-cols-2 gap-14 items-start">
         <div>
           <p className="text-xs font-semibold tracking-[0.18em] uppercase text-[#129E8F] mb-3">
-            Course Modules
+            {t('Course Modules')}
           </p>
           <div className="divide-y divide-[#ECE7DB] border-y border-[#ECE7DB]">
             {modules.map((m) => (
@@ -930,8 +939,8 @@ export default function EcommerceCoursePage() {
                   {m.num}
                 </span>
                 <div>
-                  <h4 className="font-display font-semibold text-[#13141C] mb-1">{m.title}</h4>
-                  <p className="text-xs text-[#7A7872] leading-relaxed">{m.desc}</p>
+                  <h4 className="font-display font-semibold text-[#13141C] mb-1">{t(m.title)}</h4>
+                  <p className="text-xs text-[#7A7872] leading-relaxed">{t(m.desc)}</p>
                 </div>
               </div>
             ))}
@@ -941,7 +950,7 @@ export default function EcommerceCoursePage() {
         <div className="relative">
           <Image
             src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=700&q=80"
-            alt="E-Commerce order packaging and fulfillment"
+            alt={t('E-Commerce order packaging and fulfillment')}
             width={580}
             height={420}
             className="rounded-2xl object-cover w-full h-auto shadow-lg"
@@ -952,28 +961,28 @@ export default function EcommerceCoursePage() {
       {/* Who it's for + What you'll get */}
       <section className="max-w-7xl mx-auto px-6 pb-20 grid grid-cols-1 lg:grid-cols-2 gap-8">
         <div className="bg-white border border-[#ECE7DB] rounded-2xl p-8">
-          <h3 className="font-display font-bold text-lg text-[#13141C] mb-5">Who This Course Is For</h3>
+          <h3 className="font-display font-bold text-lg text-[#13141C] mb-5">{t('Who This Course Is For')}</h3>
           <div className="space-y-4">
             {forWhom.map(({ icon: Icon, label }) => (
               <div key={label} className="flex items-center gap-3 text-sm text-[#5B5A66]">
                 <span className="w-8 h-8 rounded-lg bg-[#129E8F]/10 flex items-center justify-center shrink-0">
                   <Icon className="w-4 h-4 text-[#129E8F]" />
                 </span>
-                {label}
+                {t(label)}
               </div>
             ))}
           </div>
         </div>
 
         <div className="bg-[#13141C] rounded-2xl p-8">
-          <h3 className="font-display font-bold text-lg text-white mb-5">What You&apos;ll Get</h3>
+          <h3 className="font-display font-bold text-lg text-white mb-5">{t("What You'll Get")}</h3>
           <div className="space-y-4">
             {getItems.map(({ icon: Icon, label }) => (
               <div key={label} className="flex items-center gap-3 text-sm text-white/80">
                 <span className="w-8 h-8 rounded-lg bg-[#bf2227]/15 flex items-center justify-center shrink-0">
                   <Icon className="w-4 h-4 text-[#bf2227]" />
                 </span>
-                {label}
+                {t(label)}
               </div>
             ))}
           </div>
@@ -982,7 +991,7 @@ export default function EcommerceCoursePage() {
 
       <section className="max-w-7xl mx-auto px-6 pb-20">
         <p className="font-display text-xl lg:text-2xl font-semibold text-center text-[#13141C]">
-          Start your e-commerce journey today and build a business that earns while you sleep.
+          {t('Start your e-commerce journey today and build a business that earns while you sleep.')}
         </p>
       </section>
 
@@ -992,22 +1001,22 @@ export default function EcommerceCoursePage() {
           <div className="flex items-end justify-between mb-10">
             <div>
               <p className="text-xs font-semibold tracking-[0.18em] uppercase text-[#129E8F] mb-3">
-                Keep Going
+                {t('Keep Going')}
               </p>
-              <h2 className="font-display text-3xl font-bold text-[#13141C]">Related Courses</h2>
+              <h2 className="font-display text-3xl font-bold text-[#13141C]">{t('Related Courses')}</h2>
             </div>
             <div className="hidden sm:flex gap-2">
               <button
                 onClick={() => scroll('left')}
                 className="bg-[#FAF8F3] border border-[#ECE7DB] rounded-full w-10 h-10 flex items-center justify-center hover:bg-[#13141C] hover:text-white transition-colors"
-                aria-label="Scroll left"
+                aria-label={t('Scroll left')}
               >
                 <ChevronLeft className="w-4 h-4" />
               </button>
               <button
                 onClick={() => scroll('right')}
                 className="bg-[#FAF8F3] border border-[#ECE7DB] rounded-full w-10 h-10 flex items-center justify-center hover:bg-[#13141C] hover:text-white transition-colors"
-                aria-label="Scroll right"
+                aria-label={t('Scroll right')}
               >
                 <ChevronRight className="w-4 h-4" />
               </button>
@@ -1021,30 +1030,30 @@ export default function EcommerceCoursePage() {
           >
             {relatedCourses.map((course) => (
               <Link
-                href={course.href}
+                href={href(course.href)}
                 key={course.title}
                 className="group min-w-[260px] max-w-[260px] bg-white border border-[#ECE7DB] rounded-2xl flex-shrink-0 overflow-hidden hover:shadow-[0_16px_36px_-16px_rgba(0,0,0,0.18)] hover:-translate-y-1 transition-all duration-300"
               >
                 <div className="relative h-36 overflow-hidden">
                   <Image
                     src={course.img}
-                    alt={course.title}
+                    alt={t(course.title)}
                     fill
                     className="object-cover group-hover:scale-110 transition-transform duration-500"
                   />
                   <span className="absolute top-3 left-3 bg-white/90 backdrop-blur text-[10px] font-semibold tracking-wide uppercase text-[#13141C] px-2.5 py-1 rounded-full">
-                    {course.tag}
+                    {t(course.tag)}
                   </span>
                 </div>
                 <div className="p-5">
                   <h3 className="font-display text-sm font-semibold text-[#13141C] mb-1.5 leading-snug">
-                    {course.title}
+                    {t(course.title)}
                   </h3>
                   <p className="text-xs text-[#7A7872] leading-relaxed line-clamp-2 mb-4">
-                    {course.desc}
+                    {t(course.desc)}
                   </p>
                   <span className="text-xs font-semibold text-[#bf2227] flex items-center gap-1 group-hover:gap-2 transition-all">
-                    Read More <ArrowUpRight className="w-3.5 h-3.5" />
+                    {t('Read More')} <ArrowUpRight className="w-3.5 h-3.5" />
                   </span>
                 </div>
               </Link>
@@ -1060,19 +1069,19 @@ export default function EcommerceCoursePage() {
           <div className="p-10 lg:p-12 text-white relative overflow-hidden">
             <div className="absolute -top-20 -right-20 w-64 h-64 bg-[#bf2227]/10 rounded-full blur-3xl" />
             <p className="text-xs font-semibold tracking-[0.18em] uppercase text-[#bf2227] mb-3 relative">
-              Trusted Partner
+              {t('Trusted Partner')}
             </p>
-            <h3 className="font-display text-2xl font-bold mb-7 relative">Why Decasofts?</h3>
+            <h3 className="font-display text-2xl font-bold mb-7 relative">{t('Why Decasofts?')}</h3>
             <ul className="space-y-3.5 text-sm text-white/80 relative">
               {whyDecasofts.map((item) => (
                 <li key={item} className="flex items-center gap-3">
                   <CheckCircle2 className="w-4 h-4 text-[#bf2227] shrink-0" />
-                  {item}
+                  {t(item)}
                 </li>
               ))}
             </ul>
             <button className="mt-9 border border-white/30 text-white text-xs font-bold px-6 py-3 rounded-lg hover:bg-white hover:text-[#13141C] transition-colors relative">
-              BOOK A FREE CONSULTATION
+              {t('BOOK A FREE CONSULTATION')}
             </button>
           </div>
 
@@ -1083,75 +1092,68 @@ export default function EcommerceCoursePage() {
                 <div className="w-16 h-16 rounded-full bg-[#129E8F]/10 flex items-center justify-center mb-5">
                   <CheckCircle2 className="w-8 h-8 text-[#129E8F]" />
                 </div>
-                <h3 className="font-display text-lg font-bold text-[#13141C] mb-2">Message Sent!</h3>
-                <p className="text-sm text-[#7A7872]">We&apos;ll get back to you shortly.</p>
+                <h3 className="font-display text-lg font-bold text-[#13141C] mb-2">{t('Message Sent!')}</h3>
+                <p className="text-sm text-[#7A7872]">{t("We'll get back to you shortly.")}</p>
                 <button
                   onClick={() => setStatus('idle')}
                   className="mt-6 text-xs text-[#bf2227] font-semibold underline"
                 >
-                  Send another message
+                  {t('Send another message')}
                 </button>
               </div>
             ) : (
               <>
-                <h3 className="font-display text-lg font-bold text-[#13141C] mb-6">Get in touch</h3>
+                <h3 className="font-display text-lg font-bold text-[#13141C] mb-6">{t('Get in touch')}</h3>
 
                 <div className="grid grid-cols-2 gap-4 mb-4">
                   <div>
-                    <label className="block text-xs font-semibold text-[#5B5A66] mb-1.5">First Name</label>
-                    <input type="text" name="firstName" value={formData.firstName} onChange={handleChange} placeholder="First Name" className={inputClass} />
+                    <label className="block text-xs font-semibold text-[#5B5A66] mb-1.5">{t('First Name')}</label>
+                    <input type="text" name="firstName" value={formData.firstName} onChange={handleChange} placeholder={t('First Name')} className={inputClass} />
                   </div>
                   <div>
-                    <label className="block text-xs font-semibold text-[#5B5A66] mb-1.5">Last Name</label>
-                    <input type="text" name="lastName" value={formData.lastName} onChange={handleChange} placeholder="Last Name" className={inputClass} />
+                    <label className="block text-xs font-semibold text-[#5B5A66] mb-1.5">{t('Last Name')}</label>
+                    <input type="text" name="lastName" value={formData.lastName} onChange={handleChange} placeholder={t('Last Name')} className={inputClass} />
                   </div>
                 </div>
 
                 <div className="grid grid-cols-2 gap-4 mb-4">
                   <div>
-                    <label className="block text-xs font-semibold text-[#5B5A66] mb-1.5">Email</label>
-                    <input type="email" name="email" value={formData.email} onChange={handleChange} placeholder="Email" className={inputClass} />
+                    <label className="block text-xs font-semibold text-[#5B5A66] mb-1.5">{t('Email')}</label>
+                    <input type="email" name="email" value={formData.email} onChange={handleChange} placeholder={t('Email')} className={inputClass} />
                   </div>
                   <div>
-                    <label className="block text-xs font-semibold text-[#5B5A66] mb-1.5">Phone Number</label>
-                    <input type="tel" name="phone" value={formData.phone} onChange={handleChange} placeholder="Phone Number" className={inputClass} />
+                    <label className="block text-xs font-semibold text-[#5B5A66] mb-1.5">{t('Phone Number')}</label>
+                    <input type="tel" name="phone" value={formData.phone} onChange={handleChange} placeholder={t('Phone Number')} className={inputClass} />
                   </div>
                 </div>
 
                 <div className="grid grid-cols-2 gap-4 mb-4">
                   <div>
-                    <label className="block text-xs font-semibold text-[#5B5A66] mb-1.5">Course</label>
+                    <label className="block text-xs font-semibold text-[#5B5A66] mb-1.5">{t('Course')}</label>
                     <select name="course" value={formData.course} onChange={handleChange} className={inputClass}>
-                      <option value="">Select Course</option>
-                      <option value="Web Development">Web Development</option>
-                      <option value="Digital Marketing">Digital Marketing</option>
-                      <option value="Search Engine Optimization">Search Engine Optimization</option>
-                      <option value="Graphic Designing">Graphic Designing</option>
-                      <option value="UI/UX Design">UI/UX Design</option>
-                      <option value="Videography">Videography</option>
-                      <option value="E-Commerce">E-Commerce</option>
-                      <option value="Freelancing">Freelancing</option>
-                      <option value="Shopify Store Development">Shopify Store Development</option>
-                      <option value="Business Development">Business Development</option>
+                      <option value="">{t('Select Course')}</option>
+                      {['Web Development','Digital Marketing','Search Engine Optimization','Graphic Designing','UI/UX Design','Videography','E-Commerce','Freelancing','Shopify Store Development','Business Development'].map(course => <option key={course} value={course}>{t(course)}</option>)}
                     </select>
                   </div>
                   <div>
-                    <label className="block text-xs font-semibold text-[#5B5A66] mb-1.5">Batch</label>
+                    <label className="block text-xs font-semibold text-[#5B5A66] mb-1.5">{t('Batch')}</label>
                     <select name="batch" value={formData.batch} onChange={handleChange} className={inputClass}>
-                      <option value="">Select Batch</option>
-                      <option value="Morning Batch">Morning Batch</option>
-                      <option value="Evening Batch">Evening Batch</option>
+                      <option value="">{t('Select Batch')}</option>
+                      <option value="Morning Batch">{t('Morning Batch')}</option>
+                      <option value="Evening Batch">{t('Evening Batch')}</option>
                     </select>
                   </div>
                 </div>
 
                 <div className="mb-6">
-                  <label className="block text-xs font-semibold text-[#5B5A66] mb-1.5">Message</label>
-                  <textarea name="message" value={formData.message} onChange={handleChange} placeholder="Message" rows={3} className={`${inputClass} resize-none`} />
+                  <label className="block text-xs font-semibold text-[#5B5A66] mb-1.5">{t('Message')}</label>
+                  <textarea name="message" value={formData.message} onChange={handleChange} placeholder={t('Message')} rows={3} className={`${inputClass} resize-none`} />
                 </div>
 
+                <CourseCaptcha onVerify={setCaptchaToken} resetKey={captchaReset} />
+
                 {status === 'error' && (
-                  <p className="text-xs text-red-500 mb-3">Something went wrong. Please try again.</p>
+                  <p className="text-xs text-red-500 mb-3">{t('Something went wrong. Please try again.')}</p>
                 )}
 
                 <button
@@ -1159,7 +1161,7 @@ export default function EcommerceCoursePage() {
                   disabled={status === 'loading'}
                   className="w-full bg-[#bf2227] hover:bg-[#E63A2F] disabled:opacity-60 text-white font-semibold py-3.5 rounded-lg text-sm transition-colors shadow-[0_8px_24px_-8px_rgba(255,68,56,0.5)]"
                 >
-                  {status === 'loading' ? 'Sending...' : 'Send Message'}
+                  {status === 'loading' ? t('Sending...') : t('Send Message')}
                 </button>
               </>
             )}
@@ -1173,32 +1175,30 @@ export default function EcommerceCoursePage() {
         <div className="flex flex-col lg:flex-row items-center justify-between px-10 py-14 gap-8 relative">
           <div className="text-white flex-1">
             <p className="text-xs font-semibold uppercase tracking-[0.18em] mb-3 text-white/80">
-              Collaboration
+              {t('Collaboration')}
             </p>
             <h2 className="font-display text-2xl lg:text-3xl font-bold leading-tight mb-4">
-              Did you get stuck in something?
+              {t('Did you get stuck in something?')}
               <br />
-              Let&apos;s collaborate &amp; conquer.
+              {t("Let's collaborate & conquer.")}
             </h2>
             <p className="text-sm text-white/85 leading-relaxed max-w-md">
-              Our creative team specializes in solving all your digital challenges. With the
-              expertise of our UI/UX consultants, we&apos;re here to elevate your business and
-              enhance user experiences.
+              {t("Our creative team specializes in solving all your digital challenges. With the expertise of our UI/UX consultants, we're here to elevate your business and enhance user experiences.")}
             </p>
           </div>
           <div className="flex flex-col items-center gap-6 flex-shrink-0 relative">
             <Image
               src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=300&q=80"
-              alt="Collaboration"
+              alt={t('Collaboration')}
               width={220}
               height={220}
               className="rounded-full object-cover w-40 h-40 border-4 border-white/30"
             />
             <Link
-              href="/contact"
+              href={href('/contact-us')}
               className="bg-white text-[#bf2227] font-bold px-8 py-3 rounded-full text-sm hover:bg-[#FAF8F3] transition-colors inline-flex items-center gap-2"
             >
-              Contact Us <ArrowRight className="w-4 h-4" />
+              {t('Contact Us')} <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
         </div>

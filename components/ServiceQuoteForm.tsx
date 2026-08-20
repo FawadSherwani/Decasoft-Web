@@ -14,6 +14,7 @@ import { Elements } from "@stripe/react-stripe-js";
 import type { StripeElementsOptions } from "@stripe/stripe-js";
 import { getStripe } from "@/lib/stripe";
 import CardPaymentForm from "@/components/CardPaymentForm";
+import { useLanguage } from "@/components/LanguageProvider";
 
 const RED = "#c0392b";
 const DARK = "#1a1a2e";
@@ -39,6 +40,7 @@ const cardLayers = [
 type Step = "form" | "loading" | "payment";
 
 export default function ServiceQuoteForm() {
+  const { t, isRtl, locale } = useLanguage();
   const [step, setStep] = useState<Step>("form");
   const [clientSecret, setClientSecret] = useState<string | null>(null);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
@@ -65,8 +67,8 @@ export default function ServiceQuoteForm() {
   async function handleSend(e: React.FormEvent) {
     e.preventDefault();
     setErrorMsg(null);
-    if (!fields.email) { setErrorMsg("Email address is required."); return; }
-    if (!amount || amount <= 0) { setErrorMsg("Please enter a valid amount."); return; }
+    if (!fields.email) { setErrorMsg(t("Email address is required.")); return; }
+    if (!amount || amount <= 0) { setErrorMsg(t("Please enter a valid amount.")); return; }
     setStep("loading");
     try {
       const res = await fetch("/api/create-payment-intent", {
@@ -79,11 +81,11 @@ export default function ServiceQuoteForm() {
         }),
       });
       const data = await res.json();
-      if (!res.ok) throw new Error(data.error || "Could not start payment");
+      if (!res.ok) throw new Error(data.error || t("Could not start payment"));
       setClientSecret(data.clientSecret);
       setStep("payment");
     } catch (err: any) {
-      setErrorMsg(err.message || "Something went wrong. Please try again.");
+      setErrorMsg(err.message || t("Something went wrong. Please try again."));
       setStep("form");
     }
   }
@@ -93,6 +95,7 @@ export default function ServiceQuoteForm() {
     if (!clientSecret) return undefined;
     return {
       clientSecret,
+      locale: locale === "ar" ? "ar" : "en",
       appearance: {
         theme: "stripe",
         variables: {
@@ -110,7 +113,7 @@ export default function ServiceQuoteForm() {
         },
       },
     };
-  }, [clientSecret]);
+  }, [clientSecret, locale]);
 
   // ✅ Card stack — reusable to avoid duplication
   const CardStack = () => (
@@ -130,7 +133,7 @@ export default function ServiceQuoteForm() {
         >
           <div className="brand">{c.brand}</div>
           <div className="num">4455 5491 6118 6164</div>
-          <div className="name">{fields.name || "Card Holder"}</div>
+          <div className="name">{fields.name || t("Card Holder")}</div>
         </div>
       ))}
     </div>
@@ -151,8 +154,11 @@ export default function ServiceQuoteForm() {
         .sqf-select-wrap { position: relative; }
         .sqf-select-wrap::after { content: "▾"; position: absolute; right: 1rem; top: 50%; transform: translateY(-50%); color: ${GRAY_TEXT}; pointer-events: none; }
         .sqf-select-wrap select { appearance: none; cursor: pointer; padding-right: 2.2rem; }
+        .sqf[dir="rtl"] .sqf-select-wrap::after { right: auto; left: 1rem; }
+        .sqf[dir="rtl"] .sqf-select-wrap select { padding-right: 1rem; padding-left: 2.2rem; }
         .sqf-amount-input-wrap { display: flex; align-items: stretch; border: 1px solid ${BORDER}; border-radius: 8px; overflow: hidden; margin-bottom: 1.6rem; }
         .sqf-currency-badge { background: #f5f5f5; color: ${GRAY_TEXT}; padding: 0.7rem 1rem; font-size: 0.9rem; display: flex; align-items: center; border-right: 1px solid ${BORDER}; }
+        .sqf[dir="rtl"] .sqf-currency-badge { border-right: 0; border-left: 1px solid ${BORDER}; }
         .sqf-amount-input-wrap input { border: none; flex: 1; padding: 0.7rem 1rem; font-size: 0.9rem; outline: none; font-family: inherit; }
         .sqf-submit-btn { width: 100%; background: ${RED}; color: ${WHITE}; border: none; padding: 0.9rem; border-radius: 8px; font-size: 0.92rem; font-weight: 700; cursor: pointer; transition: background 0.2s, transform 0.15s; }
         .sqf-submit-btn:hover:not(:disabled) { background: #a93226; transform: translateY(-1px); }
@@ -164,7 +170,7 @@ export default function ServiceQuoteForm() {
         .sqf-cards-stack { position: relative; width: 100%; max-width: 280px; height: 220px; }
         .sqf-mini-card { position: absolute; width: 100%; aspect-ratio: 1.586/1; border-radius: 14px; padding: 1.1rem 1.3rem; color: ${WHITE}; box-shadow: 0 12px 30px rgba(0,0,0,0.35); }
         .sqf-mini-card .brand { font-weight: 900; font-size: 0.95rem; letter-spacing: 1px; margin-bottom: 1.6rem; }
-        .sqf-mini-card .num { font-size: 0.95rem; letter-spacing: 2px; font-weight: 600; margin-bottom: 4px; }
+        .sqf-mini-card .num { font-size: 0.95rem; letter-spacing: 2px; font-weight: 600; margin-bottom: 4px; direction: ltr; unicode-bidi: isolate; }
         .sqf-mini-card .name { font-size: 0.65rem; opacity: 0.85; letter-spacing: 0.5px; }
         .sqf-form-panel { padding: 2.8rem 2.6rem; }
         .sqf-form-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
@@ -181,7 +187,7 @@ export default function ServiceQuoteForm() {
         }
       `}</style>
 
-      <div className="sqf">
+      <div className="sqf" dir={isRtl ? "rtl" : "ltr"}>
         <div className="sqf-page">
 
           {step !== "payment" && (
@@ -193,26 +199,26 @@ export default function ServiceQuoteForm() {
                 <form onSubmit={handleSend}>
                   {errorMsg && <div className="sqf-error-banner" role="alert">{errorMsg}</div>}
                   <div className="sqf-field">
-                    <label>Name <span className="opt">(optional)</span></label>
+                    <label>{t("Name")} <span className="opt">{t("(optional)")}</span></label>
                     <input type="text" value={fields.name} onChange={(e) => updateField("name", e.target.value)} />
                   </div>
                   <div className="sqf-field">
-                    <label>Business Name <span className="opt">(optional)</span></label>
-                    <input type="text" value={fields.businessName} onChange={(e) => updateField("businessName", e.target.value)} placeholder="Business Name" />
+                    <label>{t("Business Name")} <span className="opt">{t("(optional)")}</span></label>
+                    <input type="text" value={fields.businessName} onChange={(e) => updateField("businessName", e.target.value)} placeholder={t("Business Name")} />
                   </div>
                   <div className="sqf-field">
-                    <label>Phone <span className="opt">(optional)</span></label>
+                    <label>{t("Phone")} <span className="opt">{t("(optional)")}</span></label>
                     <input type="tel" value={fields.phone} onChange={(e) => updateField("phone", e.target.value)} />
                   </div>
                   <div className="sqf-field">
-                    <label>Email Address</label>
+                    <label>{t("Email Address")}</label>
                     <input type="email" required value={fields.email} onChange={(e) => updateField("email", e.target.value)} />
                   </div>
                   <div className="sqf-field">
-                    <label>Select Services</label>
+                    <label>{t("Select Services")}</label>
                     <div className="sqf-select-wrap">
                       <select value={fields.service} onChange={(e) => updateField("service", e.target.value)}>
-                        {services.map((s) => <option key={s.name} value={s.name}>{s.name}</option>)}
+                        {services.map((s) => <option key={s.name} value={s.name}>{t(s.name)}</option>)}
                       </select>
                     </div>
                   </div>
@@ -222,11 +228,11 @@ export default function ServiceQuoteForm() {
                       type="number" min={1} step="0.01"
                       value={amount === 0 ? "" : amount}
                       onChange={(e) => { const val = e.target.value; setAmount(val === "" ? 0 : parseFloat(val)); }}
-                      aria-label="Amount in AED"
+                      aria-label={t("Amount in AED")}
                     />
                   </div>
                   <button type="submit" className="sqf-submit-btn" disabled={step === "loading"}>
-                    {step === "loading" ? "Please wait…" : "Send"}
+                    {step === "loading" ? t("Please wait…") : t("Send")}
                   </button>
                 </form>
               </div>
@@ -240,10 +246,10 @@ export default function ServiceQuoteForm() {
               </div>
               <div className="sqf-form-panel">
                 <div className="sqf-form-header">
-                  <h2>Payment details</h2>
+                  <h2>{t("Payment details")}</h2>
                 </div>
                 <div className="sqf-payment-summary">
-                  <span className="svc">{fields.service}</span>
+                  <span className="svc">{t(fields.service)}</span>
                   <span className="amt">{amount.toFixed(2)} AED</span>
                 </div>
                 <Elements stripe={getStripe()} options={elementsOptions}>

@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import CourseAutoTranslate from "@/components/CourseAutoTranslate";
 
 const BG_RED = "#bf2227";
 const DARK = "#1a1a2e";
@@ -348,6 +349,7 @@ export default function Page() {
       `}</style>
 
       <div className="smp" style={{ fontFamily: "'Segoe UI', Arial, sans-serif", color: DARK }}>
+        <CourseAutoTranslate />
 
         {/* ══ HERO ══ */}
         <section style={{ background: LIGHT_BG, padding: "4rem 0 3rem" }}>
@@ -359,9 +361,7 @@ export default function Page() {
               Social Media Portfolio &amp; <span style={{ color: BG_RED }}>Meta Ads</span>
             </h1>
             <p style={{ color: GRAY_TEXT, fontSize: "0.92rem", maxWidth: 600, lineHeight: 1.8 }}>
-              Explore our results-driven social media campaigns and Meta advertising work — from
-              brand-building content strategies to high-performing ad funnels that deliver real ROI.
-              Click any project to see the full case study.
+              {"Explore our results-driven social media campaigns and Meta advertising work — from brand-building content strategies to high-performing ad funnels that deliver real ROI. Click any project to see the full case study."}
             </p>
           </div>
         </section>
@@ -415,8 +415,7 @@ export default function Page() {
                 Ready to grow your brand on social?<br />Lets Collaborate &amp; Conquer :
               </h2>
               <p style={{ opacity: 0.88, fontSize: "0.88rem", lineHeight: 1.75, maxWidth: 480 }}>
-                Our creative team specializes in building high-performing social media and Meta ad
-                campaigns. Let&apos;s craft a strategy that gets results for your brand.
+                {"Our creative team specializes in building high-performing social media and Meta ad campaigns. Let’s craft a strategy that gets results for your brand."}
               </p>
             </div>
             <Link href="/contact" className="smp-collab-btn">Contact Us</Link>

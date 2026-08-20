@@ -449,6 +449,8 @@
 'use client'
 
 import Image from 'next/image'
+import CourseAutoTranslate from '@/components/CourseAutoTranslate'
+import CourseCaptcha from '@/components/CourseCaptcha'
 import Link from 'next/link'
 import { useRef, useState } from 'react'
 import {
@@ -594,6 +596,8 @@ export default function VideographyCoursePage() {
   })
 
   const [status, setStatus] = useState<FormStatus>('idle')
+  const [captchaToken, setCaptchaToken] = useState('')
+  const [captchaReset, setCaptchaReset] = useState(0)
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -608,6 +612,7 @@ export default function VideographyCoursePage() {
       alert('Please fill in all fields.')
       return
     }
+    if (!captchaToken) { alert('Please confirm that you are not a robot.'); return }
 
     setStatus('loading')
 
@@ -615,7 +620,7 @@ export default function VideographyCoursePage() {
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({ ...formData, captchaToken }),
       })
 
       if (res.ok) {
@@ -623,6 +628,7 @@ export default function VideographyCoursePage() {
         setFormData({ firstName: '', lastName: '', email: '', phone: '', course: '', batch: '', message: '' })
       } else {
         setStatus('error')
+        setCaptchaReset((value) => value + 1)
       }
     } catch {
       setStatus('error')
@@ -639,7 +645,7 @@ export default function VideographyCoursePage() {
     'w-full border border-[#E4DFD4] bg-white rounded-lg px-4 py-3 text-sm text-[#1A1B23] placeholder:text-[#A6A29A] focus:outline-none focus:ring-2 focus:ring-[#bf2227]/30 focus:border-[#bf2227] transition-all'
 
   return (
-    <main className="bg-[#FAF8F3] text-[#1A1B23]" style={{ fontFamily: "'Inter', sans-serif" }}>
+    <main className="bg-[#FAF8F3] text-[#1A1B23]" style={{ fontFamily: "'Inter', sans-serif" }}><CourseAutoTranslate />
       <style jsx global>{`
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
         .font-display {
@@ -993,6 +999,8 @@ export default function VideographyCoursePage() {
                   <label className="block text-xs font-semibold text-[#5B5A66] mb-1.5">Message</label>
                   <textarea name="message" value={formData.message} onChange={handleChange} placeholder="Message" rows={3} className={`${inputClass} resize-none`} />
                 </div>
+
+                <CourseCaptcha onVerify={setCaptchaToken} resetKey={captchaReset} />
 
                 {status === 'error' && (
                   <p className="text-xs text-red-500 mb-3">Something went wrong. Please try again.</p>

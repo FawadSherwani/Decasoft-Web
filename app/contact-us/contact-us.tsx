@@ -1,6 +1,30 @@
 "use client";
 
 import React, { useState, useRef, useEffect } from "react";
+import Script from "next/script";
+import { useLanguage } from "@/components/LanguageProvider";
+
+const ar: Record<string, string> = {
+  "Contact us": "اتصل بنا", "Let us help you achieve your dream project": "دعنا نساعدك على تحقيق مشروع أحلامك",
+  "Have a project in mind or a question for our team? Fill out the form, and we'll get back to you as soon as possible.": "هل لديك مشروع أو سؤال لفريقنا؟ املأ النموذج وسنتواصل معك في أقرب وقت ممكن.",
+  "Contact Details": "بيانات الاتصال", "UAE": "الإمارات العربية المتحدة", "Pakistan": "باكستان", "Follow Us": "تابعنا",
+  "Your Name *": "الاسم *", "Your Email *": "البريد الإلكتروني *", "Phone Number": "رقم الهاتف", "Company Name": "اسم الشركة",
+  "Select Service": "اختر الخدمة", "Web Development": "تطوير المواقع", "Digital Marketing": "التسويق الرقمي", "SEO": "تحسين محركات البحث",
+  "E-Commerce": "التجارة الإلكترونية", "Mobile App": "تطبيقات الجوال", "Branding": "الهوية التجارية", "Budget Range": "نطاق الميزانية",
+  "Your Message *": "رسالتك *", "Upload File (Optional)": "إرفاق ملف (اختياري)", "PDF, DOC, JPG or PNG (Max. 5MB)": "PDF أو DOC أو JPG أو PNG (بحد أقصى 5 ميجابايت)",
+  "Please fill in Name, Email and Message fields.": "يرجى إدخال الاسم والبريد الإلكتروني والرسالة.", "SENDING...": "جارٍ الإرسال...", "SEND MESSAGE": "إرسال الرسالة",
+  "Our Locations": "مواقعنا", "UAE Office": "مكتب الإمارات", "Pakistan Office": "مكتب باكستان", "View on Map": "عرض على الخريطة",
+  "Dubai Municipality Building, Salah Al Din Street, Block A, 2nd floor, Office no 23, Al Muraqabat, Deira, Dubai": "مبنى بلدية دبي، شارع صلاح الدين، المبنى A، الطابق الثاني، مكتب 23، المرقبات، ديرة، دبي",
+  "Block Z, Madina Town, Faisalabad, 38000, Punjab, Pakistan": "بلوك Z، المدينة المنورة، فيصل آباد 38000، البنجاب، باكستان",
+  "Our Services": "خدماتنا", "We provide the best service for your business": "نقدم أفضل الخدمات لأعمالك",
+  "From web development to digital marketing, we offer a complete range of services to help your business grow.": "من تطوير المواقع إلى التسويق الرقمي، نقدم مجموعة متكاملة من الخدمات لمساعدة أعمالك على النمو.",
+  "EXPLORE SERVICES": "استكشف الخدمات", "Message sent successfully! We will get back to you soon.": "تم إرسال رسالتك بنجاح! سنتواصل معك قريباً.",
+  "Something went wrong. Please try again.": "حدث خطأ ما. يرجى المحاولة مرة أخرى.",
+  "Please confirm that you are not a robot.": "يرجى تأكيد أنك لست برنامجاً آلياً.",
+  "Captcha is not configured. Please contact the site administrator.": "لم يتم إعداد رمز التحقق. يرجى التواصل مع مدير الموقع.",
+  "Please enter a valid email address.": "يرجى إدخال بريد إلكتروني صحيح.",
+  "Please enter a valid phone number for the selected country.": "يرجى إدخال رقم هاتف صحيح للدولة المحددة.",
+};
 
 const RED = "#bf2227";
 const DARK = "#0b0b12";
@@ -9,7 +33,31 @@ const GRAY_TEXT = "#6b6b6b";
 const BORDER = "#e4e4e4";
 const LIGHT_BG = "#f7f7f8";
 
+const phoneCountries = [
+  { code: "pk", flag: "🇵🇰", name: "Pakistan", dial: "+92" },
+  { code: "ae", flag: "🇦🇪", name: "United Arab Emirates", dial: "+971" },
+  { code: "sa", flag: "🇸🇦", name: "Saudi Arabia", dial: "+966" },
+  { code: "qa", flag: "🇶🇦", name: "Qatar", dial: "+974" },
+  { code: "kw", flag: "🇰🇼", name: "Kuwait", dial: "+965" },
+  { code: "om", flag: "🇴🇲", name: "Oman", dial: "+968" },
+  { code: "bh", flag: "🇧🇭", name: "Bahrain", dial: "+973" },
+  { code: "gb", flag: "🇬🇧", name: "United Kingdom", dial: "+44" },
+  { code: "us", flag: "🇺🇸", name: "United States", dial: "+1" },
+  { code: "ca", flag: "🇨🇦", name: "Canada", dial: "+1" },
+  { code: "in", flag: "🇮🇳", name: "India", dial: "+91" },
+  { code: "au", flag: "🇦🇺", name: "Australia", dial: "+61" },
+];
+
+const phoneLengths: Record<string, number[]> = {
+  pk: [10], ae: [9], sa: [9], qa: [8], kw: [8], om: [8], bh: [8],
+  gb: [10], us: [10], ca: [10], in: [10], au: [9],
+};
+
+const isValidEmail = (email: string) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i.test(email.trim());
+
 export default function ContactPage() {
+  const { locale, isRtl, href } = useLanguage();
+  const tr = (text: string) => locale === "ar" ? ar[text] ?? text : text;
   const [formData, setFormData] = useState({
     name: "", email: "", phone: "", company: "",
     service: "", budget: "", message: "", file: null as File | null,
@@ -17,8 +65,93 @@ export default function ContactPage() {
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
   const [fileName, setFileName] = useState("");
+  const [phoneCountry, setPhoneCountry] = useState("pk");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [captchaToken, setCaptchaToken] = useState("");
+  const [captchaError, setCaptchaError] = useState(false);
+  const [fieldErrors, setFieldErrors] = useState({ email: "", phone: "" });
   const mapRef = useRef<HTMLDivElement | null>(null);
   const mapInstanceRef = useRef<any>(null);
+  const captchaRef = useRef<HTMLDivElement | null>(null);
+  const captchaWidgetRef = useRef<number | null>(null);
+  const phoneCountryManuallySelected = useRef(false);
+  const captchaSiteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
+  const selectedPhoneCountry = phoneCountries.find((country) => country.code === phoneCountry) ?? phoneCountries[0];
+
+  const updatePhone = (countryCode: string, localNumber: string) => {
+    const country = phoneCountries.find((item) => item.code === countryCode) ?? phoneCountries[0];
+    const cleanedNumber = localNumber.replace(/[^0-9()\-\s]/g, "");
+    setPhoneCountry(country.code);
+    setPhoneNumber(cleanedNumber);
+    setFieldErrors((previous) => ({ ...previous, phone: "" }));
+    setFormData((previous) => ({
+      ...previous,
+      phone: cleanedNumber.trim() ? `${country.dial} ${cleanedNumber.trim()}` : "",
+    }));
+  };
+
+  const renderCaptcha = () => {
+    const grecaptcha = (window as any).grecaptcha;
+    if (!grecaptcha || !captchaRef.current || !captchaSiteKey || captchaWidgetRef.current !== null) return;
+    grecaptcha.ready(() => {
+      if (!captchaRef.current || captchaWidgetRef.current !== null) return;
+      try {
+        captchaWidgetRef.current = grecaptcha.render(captchaRef.current, {
+          sitekey: captchaSiteKey,
+          callback: (token: string) => {
+            setCaptchaToken(token);
+            setCaptchaError(false);
+          },
+          "expired-callback": () => setCaptchaToken(""),
+          "error-callback": () => {
+            setCaptchaToken("");
+            setCaptchaError(true);
+          },
+          theme: "light",
+        });
+        setCaptchaError(false);
+      } catch (error) {
+        console.error("Unable to render reCAPTCHA", error);
+        setCaptchaError(true);
+      }
+    });
+  };
+
+  useEffect(() => {
+    setCaptchaToken("");
+    renderCaptcha();
+  }, [locale, captchaSiteKey]);
+
+  useEffect(() => {
+    const controller = new AbortController();
+
+    const detectPhoneCountry = async () => {
+      try {
+        const response = await fetch("https://ipwho.is/?fields=success,country_code", {
+          cache: "no-store",
+          signal: controller.signal,
+        });
+        if (!response.ok) return;
+        const location = await response.json() as { success?: boolean; country_code?: string };
+        const detectedCode = location.country_code?.toLowerCase();
+        if (
+          location.success !== false &&
+          detectedCode &&
+          phoneCountries.some((country) => country.code === detectedCode) &&
+          !phoneCountryManuallySelected.current
+        ) {
+          updatePhone(detectedCode, phoneNumber);
+        }
+      } catch (error) {
+        if ((error as Error).name !== "AbortError") {
+          console.warn("Unable to detect phone country", error);
+        }
+      }
+    };
+
+    detectPhoneCountry();
+    return () => controller.abort();
+  }, []);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -62,14 +195,14 @@ export default function ContactPage() {
 
       L.control
         .layers(
-          { Satellite: satelliteGroup, Streets: streetLayer },
+          { [locale === "ar" ? "قمر صناعي" : "Satellite"]: satelliteGroup, [locale === "ar" ? "شوارع" : "Streets"]: streetLayer },
           {},
           { position: "topright" }
         )
         .addTo(map);
 
-      L.marker([25.2048, 55.2708]).addTo(map).bindPopup("UAE Office");
-      L.marker([31.4504, 73.0751]).addTo(map).bindPopup("Pakistan Office");
+      L.marker([25.2048, 55.2708]).addTo(map).bindPopup(tr("UAE Office"));
+      L.marker([31.4504, 73.0751]).addTo(map).bindPopup(tr("Pakistan Office"));
 
       mapInstanceRef.current = map;
     };
@@ -101,15 +234,34 @@ export default function ContactPage() {
         mapInstanceRef.current = null;
       }
     };
-  }, []);
+  }, [locale]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+    if (e.target.name === "email") setFieldErrors((previous) => ({ ...previous, email: "" }));
   };
 
   const handleSubmit = async () => {
     if (!formData.name || !formData.email || !formData.message) {
-      alert("Please fill in Name, Email and Message fields.");
+      alert(tr("Please fill in Name, Email and Message fields."));
+      return;
+    }
+    const localPhoneDigits = phoneNumber.replace(/\D/g, "").replace(/^0/, "");
+    const emailError = isValidEmail(formData.email) ? "" : tr("Please enter a valid email address.");
+    const allowedPhoneLengths = phoneLengths[phoneCountry] ?? [];
+    const phoneError = phoneNumber.trim() && !allowedPhoneLengths.includes(localPhoneDigits.length)
+      ? tr("Please enter a valid phone number for the selected country.")
+      : "";
+    if (emailError || phoneError) {
+      setFieldErrors({ email: emailError, phone: phoneError });
+      return;
+    }
+    if (!captchaSiteKey) {
+      alert(tr("Captcha is not configured. Please contact the site administrator."));
+      return;
+    }
+    if (!captchaToken) {
+      alert(tr("Please confirm that you are not a robot."));
       return;
     }
     setLoading(true);
@@ -123,6 +275,7 @@ export default function ContactPage() {
       fd.append("service", formData.service);
       fd.append("budget", formData.budget);
       fd.append("message", formData.message);
+      fd.append("captchaToken", captchaToken);
       if (formData.file) {
         fd.append("file", formData.file);
       }
@@ -137,12 +290,18 @@ export default function ContactPage() {
         setStatus("success");
         setFormData({ name: "", email: "", phone: "", company: "", service: "", budget: "", message: "", file: null });
         setFileName("");
+        setPhoneCountry("pk");
+        setPhoneNumber("");
+        setCaptchaToken("");
       } else {
         setStatus("error");
       }
     } catch {
       setStatus("error");
     } finally {
+      const grecaptcha = (window as any).grecaptcha;
+      if (grecaptcha && captchaWidgetRef.current !== null) grecaptcha.reset(captchaWidgetRef.current);
+      setCaptchaToken("");
       setLoading(false);
     }
   };
@@ -151,14 +310,36 @@ export default function ContactPage() {
 
   return (
     <>
+      {captchaSiteKey && (
+        <Script
+          key={locale}
+          src={`https://www.google.com/recaptcha/api.js?render=explicit&hl=${locale}`}
+          strategy="afterInteractive"
+          onReady={renderCaptcha}
+          onError={() => setCaptchaError(true)}
+        />
+      )}
       <style>{`
         .contact-wrap * { box-sizing: border-box; }
         .cf-input { width: 100%; border: 1px solid ${BORDER}; border-radius: 8px; padding: 0.85rem 1rem 0.85rem 2.6rem; font-size: 0.88rem; color: ${DARK}; outline: none; transition: border-color 0.2s; background: ${WHITE}; font-family: inherit; }
         .cf-input:focus { border-color: ${RED}; }
+        .cf-input[aria-invalid="true"], .phone-field.invalid { border-color: #c62828; }
+        .field-error { display: block; margin-top: 0.35rem; color: #c62828; font-size: 0.74rem; line-height: 1.35; }
         .cf-input::placeholder { color: #999; }
         .cf-field { position: relative; }
         .cf-icon { position: absolute; left: 0.9rem; top: 1rem; color: #999; pointer-events: none; }
+        .contact-wrap[dir="rtl"] .cf-input { padding: 0.85rem 2.6rem 0.85rem 1rem; text-align: right; }
+        .contact-wrap[dir="rtl"] .cf-icon { left: auto; right: 0.9rem; }
+        .contact-wrap[dir="rtl"] .call-btn { margin-left: 0; margin-right: auto; }
         .cf-textarea-icon { top: 1rem; }
+        .phone-field { display: flex; width: 100%; border: 1px solid ${BORDER}; border-radius: 8px; background: ${WHITE}; transition: border-color 0.2s; overflow: hidden; }
+        .phone-field:focus-within { border-color: ${RED}; }
+        .phone-country-wrap { width: 92px; flex: 0 0 92px; position: relative; display: flex; align-items: center; background: #fafafa; border-right: 1px solid ${BORDER}; direction: ltr; }
+        .phone-country-flag { position: absolute; left: 0.55rem; width: 20px; height: 14px; object-fit: cover; border-radius: 2px; box-shadow: 0 0 0 1px rgba(0,0,0,0.08); pointer-events: none; z-index: 1; }
+        .phone-country { width: 100%; height: 100%; border: 0; padding: 0 0.2rem 0 2rem; background: transparent; color: ${DARK}; font-family: inherit; font-size: 0.8rem; outline: none; cursor: pointer; }
+        .phone-number { width: 100%; min-width: 0; border: 0; padding: 0.85rem 0.8rem; outline: none; background: transparent; color: ${DARK}; font: inherit; font-size: 0.88rem; }
+        .phone-number::placeholder { color: #999; }
+        .contact-wrap[dir="rtl"] .phone-country-wrap { border-right: 0; border-left: 1px solid ${BORDER}; }
         .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
         .form-full { margin-bottom: 1rem; }
 
@@ -176,6 +357,7 @@ export default function ContactPage() {
 
         .upload-box { border: 1px dashed ${BORDER}; border-radius: 8px; padding: 1rem 1.1rem; display: flex; align-items: center; gap: 0.9rem; cursor: pointer; background: ${WHITE}; }
         .upload-box input { display: none; }
+        .captcha-wrap { min-height: 78px; display: flex; align-items: center; overflow-x: auto; }
 
         .send-btn { width: 100%; background: ${RED}; color: ${WHITE}; border: none; padding: 1rem; border-radius: 8px; font-size: 0.92rem; font-weight: 800; letter-spacing: 1.5px; cursor: pointer; transition: opacity 0.2s; text-transform: uppercase; }
         .send-btn:hover { opacity: 0.9; }
@@ -212,6 +394,9 @@ export default function ContactPage() {
         .services-text { padding-right: 100px; }
         .support-badge { position: absolute; top: -46px; right: -10px; width: 90px; height: 90px; }
         .support-badge-chat { position: absolute; top: -6px; right: -6px; width: 24px; height: 24px; border-radius: 50%; background: ${RED}; color: ${WHITE}; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 6px rgba(0,0,0,0.15); }
+        .contact-wrap[dir="rtl"] .services-text { padding-right: 0; padding-left: 100px; }
+        .contact-wrap[dir="rtl"] .support-badge { right: auto; left: -10px; }
+        .contact-wrap[dir="rtl"] .support-badge-chat { right: auto; left: -6px; }
 
         .hero-section { padding: 5rem 6% 4rem; }
         .locations-section { padding: 5rem 6%; }
@@ -223,6 +408,7 @@ export default function ContactPage() {
           .loc-grid { grid-template-columns: 1fr; }
           .services-img { height: 260px; }
           .services-text { padding-right: 0; }
+          .contact-wrap[dir="rtl"] .services-text { padding-left: 0; }
           .support-badge { position: static; margin-bottom: 1.2rem; }
         }
 
@@ -243,7 +429,7 @@ export default function ContactPage() {
         }
       `}</style>
 
-      <div className="contact-wrap" style={{ fontFamily: "'Segoe UI', Arial, sans-serif", color: DARK }}>
+      <div className="contact-wrap" dir={isRtl ? "rtl" : "ltr"} style={{ fontFamily: "'Segoe UI', Arial, sans-serif", color: DARK }}>
 
         {/* ══ HERO + FORM ══ */}
         <section className="hero-section" style={{ background: WHITE }}>
@@ -251,23 +437,23 @@ export default function ContactPage() {
 
             {/* LEFT */}
             <div style={{ flex: "1 1 340px", paddingTop: "0.5rem" }}>
-              <p style={{ color: RED, fontWeight: 700, fontSize: "0.82rem", marginBottom: "0.8rem" }}>Contact us</p>
-              <div style={{ borderLeft: `4px solid ${RED}`, paddingLeft: "1.2rem", marginBottom: "1.5rem" }}>
+              <p style={{ color: RED, fontWeight: 700, fontSize: "0.82rem", marginBottom: "0.8rem" }}>{tr("Contact us")}</p>
+              <div style={{ borderInlineStart: `4px solid ${RED}`, paddingInlineStart: "1.2rem", marginBottom: "1.5rem" }}>
                 <h1 style={{ fontSize: "clamp(1.8rem, 2.8vw, 2.5rem)", fontWeight: 900, lineHeight: 1.2, color: DARK, margin: 0 }}>
-                  Let us help you achieve your dream project
+                  {tr("Let us help you achieve your dream project")}
                 </h1>
               </div>
               <p style={{ color: GRAY_TEXT, lineHeight: 1.8, fontSize: "0.93rem", marginBottom: "1.8rem" }}>
-                Have a project in mind or a question for our team? Fill out the form, and we&apos;ll get back to you as soon as possible.
+                {tr("Have a project in mind or a question for our team? Fill out the form, and we'll get back to you as soon as possible.")}
               </p>
 
               <div className="contact-card">
-                <p style={{ fontWeight: 800, fontSize: "0.92rem", marginBottom: "0.8rem" }}>Contact Details</p>
+                <p style={{ fontWeight: 800, fontSize: "0.92rem", marginBottom: "0.8rem" }}>{tr("Contact Details")}</p>
 
                 <div className="contact-row">
                   <div className="flag-box"><img src="https://flagcdn.com/w80/ae.png" alt="UAE flag" /></div>
                   <div>
-                    <div style={{ fontWeight: 700, fontSize: "0.86rem" }}>UAE</div>
+                    <div style={{ fontWeight: 700, fontSize: "0.86rem" }}>{tr("UAE")}</div>
                     <a href="tel:+971559411204" style={{ color: RED, fontWeight: 700, fontSize: "0.85rem", textDecoration: "none" }}>+971 55 941 1204</a>
                     <div style={{ color: GRAY_TEXT, fontSize: "0.8rem" }}>marketing@decasofts.com</div>
                   </div>
@@ -279,7 +465,7 @@ export default function ContactPage() {
                 <div className="contact-row">
                   <div className="flag-box"><img src="https://flagcdn.com/w80/pk.png" alt="Pakistan flag" /></div>
                   <div>
-                    <div style={{ fontWeight: 700, fontSize: "0.86rem" }}>Pakistan</div>
+                    <div style={{ fontWeight: 700, fontSize: "0.86rem" }}>{tr("Pakistan")}</div>
                     <a href="tel:+923071116562" style={{ color: RED, fontWeight: 700, fontSize: "0.85rem", textDecoration: "none" }}>+92 307 111 6562</a>
                     <div style={{ color: GRAY_TEXT, fontSize: "0.8rem" }}>info@decasoft.test</div>
                   </div>
@@ -289,7 +475,7 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              <p style={{ fontWeight: 800, fontSize: "0.88rem", marginBottom: "0.8rem" }}>Follow Us</p>
+              <p style={{ fontWeight: 800, fontSize: "0.88rem", marginBottom: "0.8rem" }}>{tr("Follow Us")}</p>
               <div className="social-row">
                 <a href="https://www.facebook.com/decasofts" className="social-ring" aria-label="Facebook">
                   <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
@@ -311,42 +497,72 @@ export default function ContactPage() {
               <div className="form-row">
                 <div className="cf-field">
                   <span className="cf-icon"><UserIcon /></span>
-                  <input className="cf-input" name="name" placeholder="Your Name *" value={formData.name} onChange={handleChange} />
+                  <input className="cf-input" name="name" placeholder={tr("Your Name *")} value={formData.name} onChange={handleChange} />
                 </div>
                 <div className="cf-field">
                   <span className="cf-icon"><MailIcon /></span>
-                  <input className="cf-input" name="email" type="email" placeholder="Your Email *" value={formData.email} onChange={handleChange} />
+                  <input className="cf-input" name="email" type="email" inputMode="email" autoComplete="email" aria-invalid={Boolean(fieldErrors.email)} placeholder={tr("Your Email *")} value={formData.email} onChange={handleChange} />
+                  {fieldErrors.email && <span className="field-error">{fieldErrors.email}</span>}
                 </div>
               </div>
               <div className="form-row">
-                <div className="cf-field">
-                  <span className="cf-icon"><PhoneIconGray /></span>
-                  <input className="cf-input" name="phone" placeholder="Phone Number" value={formData.phone} onChange={handleChange} />
+                <div>
+                <div className={`cf-field phone-field${fieldErrors.phone ? " invalid" : ""}`}>
+                  <div className="phone-country-wrap">
+                    <img
+                      className="phone-country-flag"
+                      src={`https://flagcdn.com/w40/${selectedPhoneCountry.code}.png`}
+                      alt={`${selectedPhoneCountry.name} flag`}
+                    />
+                    <select
+                      className="phone-country"
+                      value={phoneCountry}
+                      onChange={(event) => {
+                        phoneCountryManuallySelected.current = true;
+                        updatePhone(event.target.value, phoneNumber);
+                      }}
+                      aria-label="Phone country"
+                      title={selectedPhoneCountry.name}
+                    >
+                      {phoneCountries.map((country) => (
+                        <option key={country.code} value={country.code}>
+                          {country.dial}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                  <input
+                    className="phone-number"
+                    name="phoneLocal"
+                    type="tel"
+                    inputMode="tel"
+                    autoComplete="tel-national"
+                    placeholder={tr("Phone Number")}
+                    value={phoneNumber}
+                    onChange={(event) => updatePhone(phoneCountry, event.target.value)}
+                  />
+                </div>
+                {fieldErrors.phone && <span className="field-error">{fieldErrors.phone}</span>}
                 </div>
                 <div className="cf-field">
                   <span className="cf-icon"><BuildingIcon /></span>
-                  <input className="cf-input" name="company" placeholder="Company Name" value={formData.company} onChange={handleChange} />
+                  <input className="cf-input" name="company" placeholder={tr("Company Name")} value={formData.company} onChange={handleChange} />
                 </div>
               </div>
               <div className="form-row">
                 <div className="cf-field">
                   <span className="cf-icon"><ServiceIcon /></span>
                   <select className="cf-input" name="service" value={formData.service} onChange={handleChange}
-                    style={{ appearance: "none", backgroundImage: selectArrow, backgroundRepeat: "no-repeat", backgroundPosition: "right 0.8rem center", color: formData.service ? DARK : "#999" }}>
-                    <option value="">Select Service</option>
-                    <option>Web Development</option>
-                    <option>Digital Marketing</option>
-                    <option>SEO</option>
-                    <option>E-Commerce</option>
-                    <option>Mobile App</option>
-                    <option>Branding</option>
+                    style={{ appearance: "none", backgroundImage: selectArrow, backgroundRepeat: "no-repeat", backgroundPosition: `${isRtl ? "left" : "right"} 0.8rem center`, color: formData.service ? DARK : "#999" }}>
+                    <option value="">{tr("Select Service")}</option>
+                    {["Web Development", "Digital Marketing", "SEO", "E-Commerce", "Mobile App", "Branding"].map(value => <option key={value} value={value}>{tr(value)}</option>)}
                   </select>
                 </div>
                 <div className="cf-field">
                   <span className="cf-icon"><BudgetIcon /></span>
                   <select className="cf-input" name="budget" value={formData.budget} onChange={handleChange}
-                    style={{ appearance: "none", backgroundImage: selectArrow, backgroundRepeat: "no-repeat", backgroundPosition: "right 0.8rem center", color: formData.budget ? DARK : "#999" }}>
-                    <option value="">Budget Range</option>
+                    style={{ appearance: "none", backgroundImage: selectArrow, backgroundRepeat: "no-repeat", backgroundPosition: `${isRtl ? "left" : "right"} 0.8rem center`, color: formData.budget ? DARK : "#999" }}>
+                    <option value="">{tr("Budget Range")}</option>
                     <option>$500 - $1,000</option>
                     <option>$1,000 - $5,000</option>
                     <option>$5,000 - $10,000</option>
@@ -356,7 +572,7 @@ export default function ContactPage() {
               </div>
               <div className="form-full cf-field">
                 <span className="cf-icon cf-textarea-icon"><EditIcon /></span>
-                <textarea className="cf-input" name="message" placeholder="Your Message *" rows={4} value={formData.message} onChange={handleChange} style={{ resize: "vertical", minHeight: 110 }} />
+                <textarea className="cf-input" name="message" placeholder={tr("Your Message *")} rows={4} value={formData.message} onChange={handleChange} style={{ resize: "vertical", minHeight: 110 }} />
               </div>
 
               <div className="form-full">
@@ -364,9 +580,9 @@ export default function ContactPage() {
                   <span style={{ color: "#999" }}><PaperclipIcon /></span>
                   <span>
                     <span style={{ display: "block", fontWeight: 600, fontSize: "0.86rem", color: DARK }}>
-                      {fileName || "Upload File (Optional)"}
+                      {fileName || tr("Upload File (Optional)")}
                     </span>
-                    <span style={{ fontSize: "0.76rem", color: GRAY_TEXT }}>PDF, DOC, JPG or PNG (Max. 5MB)</span>
+                    <span style={{ fontSize: "0.76rem", color: GRAY_TEXT }}>{tr("PDF, DOC, JPG or PNG (Max. 5MB)")}</span>
                   </span>
                   <input
                     type="file"
@@ -380,19 +596,36 @@ export default function ContactPage() {
                 </label>
               </div>
 
+              <div className="form-full captcha-wrap">
+                {captchaSiteKey ? (
+                  <div>
+                    <div ref={captchaRef} />
+                    {captchaError && (
+                      <span style={{ display: "block", color: "#c62828", fontSize: "0.82rem", marginTop: "0.5rem" }}>
+                        {tr("Something went wrong. Please try again.")}
+                      </span>
+                    )}
+                  </div>
+                ) : (
+                  <span style={{ color: "#c62828", fontSize: "0.82rem" }}>
+                    {tr("Captcha is not configured. Please contact the site administrator.")}
+                  </span>
+                )}
+              </div>
+
               {status === "success" && (
                 <div style={{ background: "#e8f5e9", border: "1px solid #a5d6a7", borderRadius: 6, padding: "0.8rem 1rem", marginBottom: "1rem", color: "#2e7d32", fontSize: "0.88rem", fontWeight: 600 }}>
-                  ✅ Message sent successfully! We will get back to you soon.
+                  ✅ {tr("Message sent successfully! We will get back to you soon.")}
                 </div>
               )}
               {status === "error" && (
                 <div style={{ background: "#ffebee", border: "1px solid #ef9a9a", borderRadius: 6, padding: "0.8rem 1rem", marginBottom: "1rem", color: "#c62828", fontSize: "0.88rem", fontWeight: 600 }}>
-                  ❌ Something went wrong. Please try again.
+                  ❌ {tr("Something went wrong. Please try again.")}
                 </div>
               )}
 
               <button className="send-btn" onClick={handleSubmit} disabled={loading} style={{ opacity: loading ? 0.7 : 1, cursor: loading ? "not-allowed" : "pointer" }}>
-                {loading ? "SENDING..." : "SEND MESSAGE"}
+                {loading ? tr("SENDING...") : tr("SEND MESSAGE")}
               </button>
             </div>
           </div>
@@ -402,7 +635,7 @@ export default function ContactPage() {
         <section className="locations-section" style={{ background: LIGHT_BG }}>
           <div style={{ maxWidth: 1200, margin: "0 auto" }}>
             <div style={{ textAlign: "center", marginBottom: "2.5rem" }}>
-              <h2 style={{ fontSize: "clamp(1.6rem, 2.5vw, 2.2rem)", fontWeight: 800, color: DARK, marginBottom: "0.6rem" }}>Our Locations</h2>
+              <h2 style={{ fontSize: "clamp(1.6rem, 2.5vw, 2.2rem)", fontWeight: 800, color: DARK, marginBottom: "0.6rem" }}>{tr("Our Locations")}</h2>
               <div style={{ width: 50, height: 3, background: RED, margin: "0 auto" }} />
             </div>
 
@@ -410,9 +643,9 @@ export default function ContactPage() {
               <div className="loc-office-card">
                 <div style={{ display: "flex", alignItems: "center", gap: "0.6rem", marginBottom: "1rem" }}>
                   <div className="flag-box"><img src="https://flagcdn.com/w80/ae.png" alt="UAE flag" /></div>
-                  <span style={{ fontWeight: 800, fontSize: "0.95rem" }}>UAE Office</span>
+                  <span style={{ fontWeight: 800, fontSize: "0.95rem" }}>{tr("UAE Office")}</span>
                 </div>
-                <div className="loc-detail-row"><LocationIcon /><span>Dubai Municipality Building, Salah Al Din Street, Block A, 2nd floor, Office no 23, Al Muraqabat, Deira, Dubai</span></div>
+                <div className="loc-detail-row"><LocationIcon /><span>{tr("Dubai Municipality Building, Salah Al Din Street, Block A, 2nd floor, Office no 23, Al Muraqabat, Deira, Dubai")}</span></div>
                 <div className="loc-detail-row"><PhoneIconGray /><span>+971 55 941 1204</span></div>
                 <div className="loc-detail-row"><MailIcon /><span>marketing@decasofts.com</span></div>
                 <a
@@ -421,16 +654,16 @@ export default function ContactPage() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  View on Map <LocationIcon />
+                  {tr("View on Map")} <LocationIcon />
                 </a>
               </div>
 
               <div className="loc-office-card">
                 <div style={{ display: "flex", alignItems: "center", gap: "0.6rem", marginBottom: "1rem" }}>
                   <div className="flag-box"><img src="https://flagcdn.com/w80/pk.png" alt="Pakistan flag" /></div>
-                  <span style={{ fontWeight: 800, fontSize: "0.95rem" }}>Pakistan Office</span>
+                  <span style={{ fontWeight: 800, fontSize: "0.95rem" }}>{tr("Pakistan Office")}</span>
                 </div>
-                <div className="loc-detail-row"><LocationIcon /><span>Block Z, Madina Town, Faisalabad, 38000, Punjab, Pakistan</span></div>
+                <div className="loc-detail-row"><LocationIcon /><span>{tr("Block Z, Madina Town, Faisalabad, 38000, Punjab, Pakistan")}</span></div>
                 <div className="loc-detail-row"><PhoneIconGray /><span>+92 307 111 6562</span></div>
                 <div className="loc-detail-row"><MailIcon /><span>info@decasoft.test</span></div>
                 <a
@@ -439,7 +672,7 @@ export default function ContactPage() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  View on Map <LocationIcon />
+                  {tr("View on Map")} <LocationIcon />
                 </a>
               </div>
 
@@ -458,15 +691,15 @@ export default function ContactPage() {
                 <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80" alt="Team analyzing business data" />
               </div>
               <div className="services-text" style={{ position: "relative" }}>
-                <p style={{ color: RED, fontWeight: 700, fontSize: "0.82rem", marginBottom: "0.6rem" }}>Our Services</p>
+                <p style={{ color: RED, fontWeight: 700, fontSize: "0.82rem", marginBottom: "0.6rem" }}>{tr("Our Services")}</p>
                 <h2 style={{ fontSize: "clamp(1.5rem, 2.5vw, 2rem)", fontWeight: 800, lineHeight: 1.25, marginBottom: "1rem", color: DARK }}>
-                  We provide the best service for your business
+                  {tr("We provide the best service for your business")}
                 </h2>
                 <p style={{ color: GRAY_TEXT, lineHeight: 1.85, fontSize: "0.93rem", marginBottom: "1.8rem" }}>
-                  From web development to digital marketing, we offer a complete range of services to help your business grow.
+                  {tr("From web development to digital marketing, we offer a complete range of services to help your business grow.")}
                 </p>
-                <a href="/services" className="send-btn" style={{ display: "inline-flex", alignItems: "center", gap: "0.6rem", width: "auto", padding: "0.85rem 1.6rem", textDecoration: "none" }}>
-                  EXPLORE SERVICES <ArrowIcon />
+                <a href={href("/services")} className="send-btn" style={{ display: "inline-flex", alignItems: "center", gap: "0.6rem", width: "auto", padding: "0.85rem 1.6rem", textDecoration: "none" }}>
+                  {tr("EXPLORE SERVICES")} <ArrowIcon />
                 </a>
 
                 <div className="support-badge">

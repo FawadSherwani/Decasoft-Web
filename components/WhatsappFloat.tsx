@@ -90,7 +90,12 @@ export default function ContactFloat() {
   ]
 
   return (
-    <div className="fixed bottom-[110px] right-6 z-50 flex flex-col items-end">
+    <div
+      dir="ltr"
+      data-floating-control="contact"
+      className="fixed bottom-[110px] z-50 flex w-[220px] max-w-[calc(100vw-3rem)] flex-col items-end"
+      style={{ right: '1.5rem', left: 'auto', contain: 'layout style' }}
+    >
 
       {/* Contact Buttons */}
       <div
@@ -112,7 +117,7 @@ export default function ContactFloat() {
               transitionDelay: open ? `${index * 80}ms` : '0ms',
             }}
           >
-            <span className="w-32 text-center bg-white text-gray-800 text-sm font-medium py-2 px-4 rounded-full shadow-lg">
+            <span className="w-32 text-center bg-white text-gray-800 text-sm font-medium py-2 px-4 rounded-full shadow-lg" dir="auto">
               {item.label}
             </span>
 
@@ -134,7 +139,7 @@ export default function ContactFloat() {
         className="group relative flex h-[60px] w-[60px] shrink-0 items-center justify-center rounded-full bg-[#bf2227] p-0 text-white shadow-lg transition-all duration-300 hover:scale-105 hover:bg-[#bf2227]"
         aria-label={open ? 'Close contact options' : 'Open contact options'}
       >
-        <span className="pointer-events-none absolute right-full mr-3 whitespace-nowrap rounded-lg bg-ink px-3 py-2 text-xs font-semibold text-white opacity-0 shadow-lg transition-opacity duration-200 group-hover:opacity-100 group-focus-visible:opacity-100">
+        <span className="pointer-events-none absolute right-full mr-3 whitespace-nowrap rounded-lg bg-ink px-3 py-2 text-xs font-semibold text-white opacity-0 shadow-lg transition-opacity duration-200 group-hover:opacity-100 group-focus-visible:opacity-100" dir="auto">
           Contact Us
         </span>
 

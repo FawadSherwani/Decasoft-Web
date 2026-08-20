@@ -3,8 +3,10 @@
 import { useState, useCallback } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { ChevronDown, X } from 'lucide-react'
+import { ChevronDown, Languages, X } from 'lucide-react'
 import { usePathname } from 'next/navigation'
+import { useLanguage } from './LanguageProvider'
+import { stripLocale } from '@/lib/i18n'
 
 const navLinks = [
   { name: 'HOME', href: '/' },
@@ -92,7 +94,9 @@ const socialLinks = [
 ]
 
 export default function Navbar() {
-  const pathname = usePathname()
+  const localizedPathname = usePathname()
+  const pathname = stripLocale(localizedPathname)
+  const { locale, isRtl, t, href, switchLocale } = useLanguage()
   const [isOpen, setIsOpen] = useState(false)
   const [mobileOpenMenu, setMobileOpenMenu] = useState<string | null>(null)
 
@@ -104,11 +108,11 @@ export default function Navbar() {
   const isCoursesPage = pathname.startsWith('/courses')
 
   return (
-    <nav className="bg-white shadow-sm sticky top-0 z-50">
+    <nav dir={isRtl ? 'rtl' : 'ltr'} className="bg-white shadow-sm sticky top-0 z-50" aria-label={t('Main navigation')}>
       <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
 
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2">
+        <Link href={href('/')} className="flex items-center gap-2">
           <Image
             src="/Deca_logo.png"
             alt="D'ECASOFT Logo"
@@ -128,39 +132,39 @@ export default function Navbar() {
                 <div className="flex items-center gap-1 cursor-pointer">
                   {/* ✅ hover-underline sirf <Link> text pe — ChevronDown exclude */}
                   <Link
-                    href={link.href}
+                    href={href(link.href)}
                     className={`hover-underline hover:text-primary transition-colors ${
                       pathname.startsWith(link.href) && link.href !== '/' ? 'text-primary' : ''
                     }`}
                   >
-                    {link.name}
+                    {t(link.name)}
                   </Link>
                   <ChevronDown size={16} className="group-hover:rotate-180 transition-transform duration-200 text-gray-500" />
                 </div>
               ) : (
                 <Link
-                  href={link.href}
+                  href={href(link.href)}
                   className={`hover-underline hover:text-primary transition-colors ${
                     pathname === link.href ? 'text-primary' : ''
                   }`}
                 >
-                  {link.name}
+                  {t(link.name)}
                 </Link>
               )}
 
               {link.subMenu && (
                 <>
-                  <div className="absolute top-full left-0 hidden group-hover:block w-full h-3" />
-                  <div className="absolute top-[calc(100%+0.75rem)] left-0 hidden group-hover:block bg-white shadow-xl border border-gray-100 rounded-lg py-2 min-w-[250px] z-50">
+                  <div className={`absolute top-full hidden group-hover:block w-full h-3 ${isRtl ? 'right-0' : 'left-0'}`} />
+                  <div className={`absolute top-[calc(100%+0.75rem)] hidden group-hover:block bg-white shadow-xl border border-gray-100 rounded-lg py-2 min-w-[250px] z-50 ${isRtl ? 'right-0' : 'left-0'}`}>
                     {link.subMenu.map((sub) => (
                       <Link
                         key={sub.name}
-                        href={sub.href}
+                        href={href(sub.href)}
                         className={`hover-underline block px-4 py-2.5 text-xs font-semibold hover:bg-red-50 hover:text-primary transition-colors border-l-2 ${
                           pathname === sub.href ? 'text-primary bg-red-50 border-primary' : 'border-transparent text-gray-600'
                         }`}
                       >
-                        {sub.name}
+                        {t(sub.name)}
                       </Link>
                     ))}
                   </div>
@@ -172,17 +176,26 @@ export default function Navbar() {
 
         {/* CTA + Hamburger */}
         <div className="flex items-center gap-3">
+          <button
+            type="button"
+            onClick={() => switchLocale(locale === 'en' ? 'ar' : 'en')}
+            className="inline-flex items-center gap-1.5 rounded-md border border-gray-200 px-3 py-2 text-xs font-bold text-gray-700 transition hover:border-primary hover:text-primary"
+            aria-label={locale === 'en' ? 'Switch to Arabic' : 'التبديل إلى الإنجليزية'}
+          >
+            <Languages size={16} />
+            {locale === 'en' ? 'العربية' : 'English'}
+          </button>
           <Link
-            href={isCoursesPage ? '/contact-us' : '/contact-us'}
+            href={href('/contact-us')}
             className="hidden lg:block bg-primary hover:bg-red-700 text-white text-sm font-bold px-6 py-2.5 rounded transition-colors"
           >
-            {isCoursesPage ? 'ENROLL NOW' : 'GET A QUOTE'}
+            {t(isCoursesPage ? 'ENROLL NOW' : 'GET A QUOTE')}
           </Link>
 
           <button
             className="lg:hidden flex flex-col justify-center items-center w-9 h-9 gap-1.5 rounded hover:bg-gray-100 transition-colors"
             onClick={() => setIsOpen(true)}
-            aria-label="Open menu"
+            aria-label={t('Open menu')}
             aria-expanded={isOpen}
           >
             <span className="block h-0.5 w-5 bg-gray-700" />
@@ -202,14 +215,14 @@ export default function Navbar() {
 
       {/* Mobile Sidebar */}
       <div
-        className={`fixed top-0 right-0 h-full w-[350px] max-w-[88vw] bg-white z-[100] shadow-2xl transform transition-transform duration-500 ease-out flex flex-col ${
-          isOpen ? 'translate-x-0' : 'translate-x-full'
+        className={`fixed top-0 h-full w-[350px] max-w-[88vw] bg-white z-[100] shadow-2xl transform transition-transform duration-500 ease-out flex flex-col ${isRtl ? 'left-0' : 'right-0'} ${
+          isOpen ? 'translate-x-0' : isRtl ? '-translate-x-full' : 'translate-x-full'
         }`}
         aria-hidden={!isOpen}
       >
         {/* Sidebar Header */}
         <div className="flex justify-between items-center px-5 py-5 bg-gradient-to-r from-primary to-red-700">
-          <Link href="/" onClick={closeMenu}>
+          <Link href={href('/')} onClick={closeMenu}>
             <Image
               src="/Deca_logo.png"
               alt="D'ECASOFT Logo"
@@ -221,7 +234,7 @@ export default function Navbar() {
           </Link>
           <button
             onClick={closeMenu}
-            aria-label="Close menu"
+            aria-label={t('Close menu')}
             className="w-9 h-9 flex items-center justify-center rounded-full bg-white/15 hover:bg-white/25 transition-colors"
           >
             <X size={20} className="text-white" />
@@ -234,13 +247,13 @@ export default function Navbar() {
             <div key={link.name}>
               <div className={`flex justify-between items-center rounded-lg px-3 transition-colors ${mobileOpenMenu === link.name ? 'bg-red-50' : ''}`}>
                 <Link
-                  href={link.href}
+                  href={href(link.href)}
                   className={`flex-1 py-3.5 text-[15px] font-semibold tracking-wide transition-colors ${
                     pathname === link.href ? 'text-primary' : 'text-gray-700'
                   }`}
                   onClick={() => !link.subMenu && closeMenu()}
                 >
-                  {link.name}
+                  {t(link.name)}
                 </Link>
                 {link.subMenu && (
                   <button
@@ -258,19 +271,19 @@ export default function Navbar() {
 
               {link.subMenu && (
                 <div className={`overflow-hidden transition-all duration-300 ease-in-out ${mobileOpenMenu === link.name ? 'max-h-[600px] opacity-100' : 'max-h-0 opacity-0'}`}>
-                  <div className="pl-4 pr-1 py-1 flex flex-col gap-0.5 mb-1">
+                  <div className="ps-4 pe-1 py-1 flex flex-col gap-0.5 mb-1">
                     {link.subMenu.map((sub) => (
                       <Link
                         key={sub.name}
-                        href={sub.href}
-                        className={`relative py-2.5 pl-4 pr-3 text-[13px] font-medium rounded-md border-l-2 transition-colors ${
+                        href={href(sub.href)}
+                        className={`relative py-2.5 ps-4 pe-3 text-[13px] font-medium rounded-md border-s-2 transition-colors ${
                           pathname === sub.href
                             ? 'text-primary bg-red-50 border-primary font-semibold'
                             : 'border-gray-200 text-gray-500 hover:text-primary hover:bg-red-50 hover:border-primary'
                         }`}
                         onClick={closeMenu}
                       >
-                        {sub.name}
+                        {t(sub.name)}
                       </Link>
                     ))}
                   </div>
@@ -283,7 +296,7 @@ export default function Navbar() {
         {/* Social Links */}
         <div className="px-4 pt-3 pb-2 border-t border-gray-100">
           <p className="text-[11px] font-semibold text-gray-400 uppercase tracking-widest mb-3">
-            Follow Us
+            {t('Follow Us')}
           </p>
           <div className="flex items-center gap-2 flex-wrap">
             {socialLinks.map((social) => (
@@ -305,11 +318,11 @@ export default function Navbar() {
         {/* CTA Button */}
         <div className="px-4 py-4 border-t border-gray-100">
           <Link
-            href={isCoursesPage ? '/courses' : '/contact'}
+            href={href(isCoursesPage ? '/courses' : '/contact-us')}
             className="w-full bg-primary hover:bg-red-700 text-white font-bold py-3.5 rounded-lg text-center block shadow-md shadow-red-200 transition-colors"
             onClick={closeMenu}
           >
-            {isCoursesPage ? 'ENROLL NOW' : 'GET A QUOTE'}
+            {t(isCoursesPage ? 'ENROLL NOW' : 'GET A QUOTE')}
           </Link>
         </div>
       </div>

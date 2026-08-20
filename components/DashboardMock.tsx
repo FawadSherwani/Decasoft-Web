@@ -216,7 +216,7 @@ export default function DashboardMock() {
                       style={{ backgroundColor: t.color }}
                     />
                     {t.name}
-                    <span className="ml-auto font-semibold text-ink">
+                    <span className="ms-auto font-semibold text-ink">
                       {t.value}%
                     </span>
                   </li>

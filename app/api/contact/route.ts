@@ -9,7 +9,25 @@ export async function POST(req: NextRequest) {
 
     // ── Courses enrollment form (JSON) ──
     if (contentType.includes("application/json")) {
-      const { firstName, lastName, email, phone, course, batch, message } = await req.json();
+      const { firstName, lastName, email, phone, course, batch, message, captchaToken } = await req.json();
+
+      const enrollmentEmailIsValid = typeof email === "string" && /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i.test(email.trim());
+      const enrollmentPhoneDigits = typeof phone === "string" ? phone.replace(/\D/g, "") : "";
+      if (!enrollmentEmailIsValid || enrollmentPhoneDigits.length < 7 || enrollmentPhoneDigits.length > 15) {
+        return NextResponse.json({ success: false, error: "Invalid email or phone number" }, { status: 400 });
+      }
+
+      const captchaSecret = process.env.RECAPTCHA_SECRET_KEY;
+      if (!captchaSecret) return NextResponse.json({ success: false, error: "Captcha is not configured" }, { status: 503 });
+      if (!captchaToken) return NextResponse.json({ success: false, error: "Captcha is required" }, { status: 400 });
+      const captchaResponse = await fetch("https://www.google.com/recaptcha/api/siteverify", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams({ secret: captchaSecret, response: captchaToken }),
+        cache: "no-store",
+      });
+      const captchaResult = await captchaResponse.json() as { success?: boolean };
+      if (!captchaResult.success) return NextResponse.json({ success: false, error: "Captcha verification failed" }, { status: 400 });
 
       const { error } = await resend.emails.send({
         from: "Course Enrollment <info@decasofts.com>",
@@ -94,6 +112,34 @@ export async function POST(req: NextRequest) {
     const budget  = formData.get("budget")  as string;
     const message = formData.get("message") as string;
     const file    = formData.get("file")    as File | null;
+    const captchaToken = formData.get("captchaToken") as string | null;
+
+    const emailIsValid = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i.test(email.trim());
+    const phoneDigits = phone.replace(/\D/g, "");
+    const phoneIsValid = !phone || (phone.startsWith("+") && phoneDigits.length >= 8 && phoneDigits.length <= 15);
+    if (!emailIsValid || !phoneIsValid) {
+      return NextResponse.json({ success: false, error: "Invalid email or phone number" }, { status: 400 });
+    }
+
+    const captchaSecret = process.env.RECAPTCHA_SECRET_KEY;
+    if (!captchaSecret) {
+      console.error("RECAPTCHA_SECRET_KEY is not configured");
+      return NextResponse.json({ success: false, error: "Captcha is not configured" }, { status: 503 });
+    }
+    if (!captchaToken) {
+      return NextResponse.json({ success: false, error: "Captcha is required" }, { status: 400 });
+    }
+
+    const verificationResponse = await fetch("https://www.google.com/recaptcha/api/siteverify", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams({ secret: captchaSecret, response: captchaToken }),
+      cache: "no-store",
+    });
+    const verification = await verificationResponse.json() as { success?: boolean };
+    if (!verification.success) {
+      return NextResponse.json({ success: false, error: "Captcha verification failed" }, { status: 400 });
+    }
 
     const attachments: { filename: string; content: Buffer }[] = [];
     if (file && file.size > 0) {

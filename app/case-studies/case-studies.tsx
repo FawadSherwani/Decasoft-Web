@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import CourseAutoTranslate from "@/components/CourseAutoTranslate";
 
 const BG_RED = "#bf2227";
 const DARK = "#1a1a2e";
@@ -282,6 +283,7 @@ export default function Page() {
       `}</style>
 
       <div className="cs" style={{ fontFamily: "'Segoe UI', Arial, sans-serif", color: DARK }}>
+        <CourseAutoTranslate />
 
         {/* ══ HERO ══ */}
         <section style={{ background: LIGHT_BG, padding: "4rem 0 3rem" }}>
@@ -293,8 +295,7 @@ export default function Page() {
               Our <span style={{ color: BG_RED }}>Case Studies</span>
             </h1>
             <p style={{ color: GRAY_TEXT, fontSize: "0.92rem", maxWidth: 600, lineHeight: 1.8 }}>
-              Check out some of the impactful work we&apos;ve done for our clients across various
-              industries. Click any project to read the full case study.
+              {"Check out some of the impactful work we've done for our clients across various industries. Click any project to read the full case study."}
             </p>
           </div>
         </section>

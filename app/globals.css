@@ -2,9 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+html,
+body {
+  max-width: 100%;
+  overflow-x: clip;
+}
+
 @layer base {
   * {
-    font-family: var(--font-poppins), sans-serif;
+    font-family: 'Poppins', sans-serif;
   }
 }
 
@@ -20,7 +26,7 @@
   }
 
   .stat-num {
-    font-family: var(--font-montserrat), sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-weight: 800;
     color: #bf2227;
   }
@@ -222,4 +228,76 @@
 
 .hvr-shutter-out-horizontal:before {
   background: #bf2227 !important; /* hover color */
+}
+
+html[dir='rtl'] body {
+  font-family: Tahoma, Arial, sans-serif;
+  direction: rtl;
+  text-align: right;
+}
+
+html[dir='rtl'] .uppercase {
+  letter-spacing: 0 !important;
+}
+
+html[dir='rtl'] svg.lucide-arrow-right,
+html[dir='rtl'] svg.lucide-arrow-left,
+html[dir='rtl'] svg.lucide-chevron-right,
+html[dir='rtl'] svg.lucide-chevron-left {
+  transform: scaleX(-1);
+}
+
+html[dir='rtl'] .text-left {
+  text-align: right !important;
+}
+
+html[dir='rtl'] .text-right {
+  text-align: left !important;
+}
+
+[dir='rtl'] input,
+[dir='rtl'] textarea,
+[dir='rtl'] select {
+  text-align: right;
+}
+
+/* Logical fallbacks for legacy sections that still use physical CSS. */
+html[dir='rtl'] .contact-wrap .cf-input {
+  padding-right: 2.6rem;
+  padding-left: 1rem;
+}
+
+html[dir='rtl'] .contact-wrap .cf-icon {
+  right: 0.9rem;
+  left: auto;
+}
+
+html[dir='rtl'] .contact-wrap .call-btn {
+  margin-right: auto;
+  margin-left: 0;
+}
+
+html[dir='rtl'] .cp-hero-cards,
+html[dir='rtl'] .cp-faq-q,
+html[dir='rtl'] .cst-card,
+html[dir='rtl'] .cs-card,
+html[dir='rtl'] .gd-card,
+html[dir='rtl'] .ld-card,
+html[dir='rtl'] .smp-card,
+html[dir='rtl'] .vp-card {
+  text-align: right !important;
+}
+
+html[dir='rtl'] .cp-marquee-track--left {
+  animation-name: cpScrollRight;
+}
+
+html[dir='rtl'] .cp-marquee-track--right {
+  animation-name: cpScrollLeft;
+}
+
+[data-floating-control] {
+  direction: ltr !important;
+  text-align: left;
+  max-inline-size: calc(100vw - 3rem);
 }

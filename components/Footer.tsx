@@ -3,6 +3,8 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
+import { useLanguage } from './LanguageProvider'
+import { stripLocale } from '@/lib/i18n'
 
 const services = [
   { name: 'Web Development',            href: '/services/web-development' },
@@ -83,16 +85,17 @@ function FooterLink({ name, href, pathname }: { name: string; href: string; path
       href={href}
       className={`group relative inline-flex items-center transition-colors ${isActive ? 'text-primary' : 'text-gray-400 hover:text-primary'}`}
     >
-      <span className={`inline-block h-px bg-primary mr-0 transition-all duration-300 ease-out ${isActive ? 'w-3 mr-2' : 'w-0 group-hover:w-3 group-hover:mr-2'}`} />
+      <span className={`inline-block h-px bg-primary me-0 transition-all duration-300 ease-out ${isActive ? 'w-3 me-2' : 'w-0 group-hover:w-3 group-hover:me-2'}`} />
       <span className="transition-transform duration-300 ease-out group-hover:translate-x-0.5">{name}</span>
     </Link>
   )
 }
 
 export default function Footer() {
-  const pathname = usePathname()
+  const pathname = stripLocale(usePathname())
+  const { t, href, isRtl } = useLanguage()
   return (
-    <footer className="bg-gray-950 text-gray-300 pt-16 pb-8" style={{ contentVisibility: 'auto', containIntrinsicSize: '0 400px' }}>
+    <footer dir={isRtl ? 'rtl' : 'ltr'} className="bg-gray-950 text-gray-300 pt-16 pb-8" style={{ contentVisibility: 'auto', containIntrinsicSize: '0 400px' }}>
 
       <style>{`
         .social-btn {
@@ -143,7 +146,7 @@ export default function Footer() {
 
           {/* Brand */}
           <div className="lg:col-span-1">
-            <Link href="/" className="flex items-center gap-2 mb-4">
+            <Link href={href('/')} className="flex items-center gap-2 mb-4">
               <Image
                 src="/Deca-Logo-white.png"
                 alt="D'ECASOFT Logo"
@@ -155,45 +158,45 @@ export default function Footer() {
               />
             </Link>
             <p className="text-gray-400 text-xs leading-relaxed max-w-xs">
-              Decasoft specializes in custom design and front-end development. We love taking on design challenges that require full-on content strategy, thoughtful design, and ongoing marketing.
+              {t('Decasoft specializes in custom design and front-end development. We love taking on design challenges that require full-on content strategy, thoughtful design, and ongoing marketing.')}
             </p>
           </div>
 
           {/* Services */}
           <div>
-            <h4 className="text-white font-bold text-sm mb-4">Services</h4>
+            <h4 className="text-white font-bold text-sm mb-4">{t('Services')}</h4>
             <ul className="space-y-2 text-xs">
-              {services.map((s) => <li key={s.name}><FooterLink name={s.name} href={s.href} pathname={pathname} /></li>)}
+              {services.map((s) => <li key={s.name}><FooterLink name={t(s.name)} href={href(s.href)} pathname={href(pathname)} /></li>)}
             </ul>
           </div>
 
           {/* Courses */}
           <div>
-            <h4 className="text-white font-bold text-sm mb-4">Courses</h4>
+            <h4 className="text-white font-bold text-sm mb-4">{t('Courses')}</h4>
             <ul className="space-y-2 text-xs">
-              {courses.map((c) => <li key={c.name}><FooterLink name={c.name} href={c.href} pathname={pathname} /></li>)}
+              {courses.map((c) => <li key={c.name}><FooterLink name={t(c.name)} href={href(c.href)} pathname={href(pathname)} /></li>)}
             </ul>
           </div>
 
           {/* Company */}
           <div>
-            <h4 className="text-white font-bold text-sm mb-4">Company</h4>
+            <h4 className="text-white font-bold text-sm mb-4">{t('Company')}</h4>
             <ul className="space-y-2 text-xs">
-              {company.map((c) => <li key={c.name}><FooterLink name={c.name} href={c.href} pathname={pathname} /></li>)}
+              {company.map((c) => <li key={c.name}><FooterLink name={t(c.name)} href={href(c.href)} pathname={href(pathname)} /></li>)}
             </ul>
           </div>
 
           {/* Support + Social */}
           <div className="flex flex-col gap-8">
             <div>
-              <h4 className="text-white font-bold text-sm mb-4">Support</h4>
+              <h4 className="text-white font-bold text-sm mb-4">{t('Support')}</h4>
               <ul className="space-y-2 text-xs">
-                {support.map((s) => <li key={s.name}><FooterLink name={s.name} href={s.href} pathname={pathname} /></li>)}
+                {support.map((s) => <li key={s.name}><FooterLink name={t(s.name)} href={href(s.href)} pathname={href(pathname)} /></li>)}
               </ul>
             </div>
 
             <div>
-              <h4 className="text-white font-bold text-sm mb-4">Follow Us</h4>
+              <h4 className="text-white font-bold text-sm mb-4">{t('Follow Us')}</h4>
               <div className="flex gap-3 flex-wrap">
                 {social.map((s) => (
                   <a
@@ -219,7 +222,7 @@ export default function Footer() {
             Copyright &copy; 2026{' '}
             <a href="https://www.decasofts.com" target="_blank" rel="noopener noreferrer" className="hover-underline hover:text-primary transition-colors text-primary">
               Decasofts
-            </a>. All Rights Reserved by Decasofts
+            </a>. {t('All Rights Reserved by Decasofts')}
           </p>
         </div>
       </div>

@@ -9,6 +9,7 @@
 
 import { useState } from "react";
 import { PaymentElement, useStripe, useElements } from "@stripe/react-stripe-js";
+import { useLanguage } from "@/components/LanguageProvider";
 
 const RED = "#c0392b";
 const DARK = "#1a1a2e";
@@ -17,6 +18,7 @@ const GRAY_TEXT = "#666";
 const BORDER = "#e0e0e0";
 
 export default function CardPaymentForm({ amount }: { amount: number }) {
+  const { t } = useLanguage();
   const stripe = useStripe();
   const elements = useElements();
   const [submitting, setSubmitting] = useState(false);
@@ -36,7 +38,7 @@ export default function CardPaymentForm({ amount }: { amount: number }) {
     });
 
     if (confirmError) {
-      setError(confirmError.message || "Payment failed. Please try again.");
+      setError(confirmError.message || t("Payment failed. Please try again."));
       setSubmitting(false);
       return;
     }
@@ -70,8 +72,8 @@ export default function CardPaymentForm({ amount }: { amount: number }) {
               <path d="M9 12l2 2 4-4" />
             </svg>
           </div>
-          <h3 style={{ color: DARK, fontWeight: 800, marginBottom: "0.4rem" }}>Payment Successful</h3>
-          <p style={{ color: GRAY_TEXT, fontSize: "0.88rem" }}>Thank you! We&apos;ll be in touch shortly.</p>
+          <h3 style={{ color: DARK, fontWeight: 800, marginBottom: "0.4rem" }}>{t("Payment Successful")}</h3>
+          <p style={{ color: GRAY_TEXT, fontSize: "0.88rem" }}>{t("Thank you! We'll be in touch shortly.")}</p>
         </div>
       </>
     );
@@ -98,12 +100,12 @@ export default function CardPaymentForm({ amount }: { amount: number }) {
       {error && <div className="cpf-error" role="alert">{error}</div>}
 
       <div className="cpf-total-row">
-        <span className="label">Total Amount:</span>
+        <span className="label">{t("Total Amount:")}</span>
         <span className="amount">{amount.toFixed(2)} AED</span>
       </div>
 
       <button type="submit" className="cpf-pay-btn" disabled={!stripe || submitting}>
-        {submitting ? "Processing…" : `Pay ${amount.toFixed(2)} AED`}
+        {submitting ? t("Processing…") : `${t("Pay")} ${amount.toFixed(2)} AED`}
       </button>
     </form>
   );

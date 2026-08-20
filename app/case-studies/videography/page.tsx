@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import CourseAutoTranslate from "@/components/CourseAutoTranslate";
 
 const BG_RED = "#bf2227";
 const DARK = "#1a1a2e";
@@ -232,6 +233,7 @@ export default function Page() {
       `}</style>
 
       <div className="vp" style={{ fontFamily: "'Segoe UI', Arial, sans-serif", color: DARK }}>
+        <CourseAutoTranslate />
 
         {/* HERO */}
         <section style={{ background: LIGHT_BG, padding: "4rem 0 3rem" }}>
@@ -243,8 +245,7 @@ export default function Page() {
               Videography <span style={{ color: BG_RED }}>Portfolio</span>
             </h1>
             <p style={{ color: GRAY_TEXT, fontSize: "0.92rem", maxWidth: 600, lineHeight: 1.8 }}>
-              Explore our cinematic storytelling — from event coverage and brand films to product
-              videography that brings ideas to life. Click any project to watch the video.
+              {"Explore our cinematic storytelling — from event coverage and brand films to product videography that brings ideas to life. Click any project to watch the video."}
             </p>
           </div>
         </section>
@@ -298,8 +299,7 @@ export default function Page() {
                 Ready to tell your brand&apos;s story?<br />Lets Collaborate &amp; Conquer :
               </h2>
               <p style={{ opacity: 0.88, fontSize: "0.88rem", lineHeight: 1.75, maxWidth: 480 }}>
-                Our creative team specializes in cinematic videography that captures attention and
-                drives results. Let&apos;s bring your vision to the screen.
+                {"Our creative team specializes in cinematic videography that captures attention and drives results. Let’s bring your vision to the screen."}
               </p>
             </div>
             <Link href="/contact-us" className="vp-collab-btn">Contact Us</Link>

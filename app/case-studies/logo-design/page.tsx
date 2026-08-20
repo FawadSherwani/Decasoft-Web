@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import CourseAutoTranslate from "@/components/CourseAutoTranslate";
 
 const BG_RED = "#bf2227";
 const DARK = "#1a1a2e";
@@ -211,6 +212,7 @@ export default function Page() {
       `}</style>
 
       <div className="ld" style={{ fontFamily: "'Segoe UI', Arial, sans-serif", color: DARK }}>
+        <CourseAutoTranslate />
 
         {/* HERO */}
         <section style={{ background: LIGHT_BG, padding: "4rem 0 3rem" }}>

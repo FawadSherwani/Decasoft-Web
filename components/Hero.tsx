@@ -1,30 +1,35 @@
+'use client'
+
 import { Phone, Play, Star } from "lucide-react";
 import DashboardMock from "./DashboardMock";
+import { useLanguage } from './LanguageProvider'
 
 export default function Hero() {
+  const { t, href, isRtl } = useLanguage()
   return (
     <section
+      dir={isRtl ? 'rtl' : 'ltr'}
       id="home"
       className="relative overflow-hidden bg-gradient-to-b from-cream to-white pb-16 pt-14 sm:pb-24 sm:pt-20"
     >
-      <div className="pointer-events-none absolute -top-24 right-0 h-96 w-96 rounded-full bg-brand/10 blur-3xl" />
+      <div className="pointer-events-none absolute -top-24 end-0 h-96 w-96 rounded-full bg-brand/10 blur-3xl" />
 
       <div className="relative mx-auto grid max-w-7xl gap-12 px-5 lg:grid-cols-[1fr_1.15fr] lg:items-center lg:gap-8 lg:px-8">
         {/* Left column */}
         <div>
           <span className="inline-block rounded-md bg-brand px-3 py-1.5 text-[11px] font-bold tracking-wide text-white">
-            RESULTS DRIVEN DIGITAL MARKETING AGENCY
+            {t('RESULTS DRIVEN DIGITAL MARKETING AGENCY')}
           </span>
 
           <h1 className="mt-5 text-[2.5rem] font-extrabold leading-[1.1] tracking-tight text-ink sm:text-5xl">
-            We Drive Traffic.
+            {t('We Drive Traffic.')}
             <br />
-            You Get
+            {t('You Get')}
             <br />
             <span className="relative text-brand">
-              Real Growth.
+              {t('Real Growth.')}
               <svg
-                className="absolute -bottom-2 left-0 w-40"
+                className="absolute -bottom-2 start-0 w-40"
                 viewBox="0 0 160 10"
                 fill="none"
               >
@@ -39,8 +44,7 @@ export default function Hero() {
           </h1>
 
           <p className="mt-6 max-w-md text-[15px] leading-relaxed text-ink/60">
-            Performance marketing solutions that help your business rank
-            higher, get more leads and increase revenue.
+            {t('Performance marketing solutions that help your business rank higher, get more leads and increase revenue.')}
           </p>
 
           <div className="mt-8 flex flex-wrap items-center gap-4">
@@ -48,14 +52,14 @@ export default function Hero() {
               href="https://calendly.com/decasofts-appointment/meeting"
               className="flex items-center gap-2 rounded-md bg-brand px-6 py-3.5 text-[13px] font-bold text-white shadow-lg shadow-brand/30 transition hover:bg-brand-dark"
             >
-              GET A FREE STRATEGY CALL
+              {t('GET A FREE STRATEGY CALL')}
               <Phone className="h-4 w-4" />
             </a>
             <a
-              href="http://localhost:3000/case-studies"
+              href={href('/case-studies')}
               className="flex items-center gap-2 rounded-md border border-black/10 px-6 py-3.5 text-[13px] font-bold text-ink transition hover:border-brand hover:text-brand"
             >
-              VIEW CASE STUDIES
+              {t('VIEW CASE STUDIES')}
               <Play className="h-4 w-4" />
             </a>
           </div>
@@ -74,7 +78,7 @@ export default function Hero() {
             </div>
             <div>
               <p className="text-[13px] font-bold text-ink">
-                600+ Happy Clients
+                {t('600+ Happy Clients')}
               </p>
               <div className="flex items-center gap-1">
                 <div className="flex text-amber-400">
@@ -83,7 +87,7 @@ export default function Hero() {
                   ))}
                 </div>
                 <span className="text-[11px] font-semibold text-ink/50">
-                  4.9 (200+ Reviews)
+                  {t('4.9 (200+ Reviews)')}
                 </span>
               </div>
             </div>
@@ -96,4 +100,3 @@ export default function Hero() {
     </section>
   );
 }
-

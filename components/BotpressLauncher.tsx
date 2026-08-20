@@ -6,10 +6,13 @@ type BotpressLauncherProps = {
 export default function BotpressLauncher({ isReady, onToggle }: BotpressLauncherProps) {
   return (
     <button
+      dir="ltr"
+      data-floating-control="chat"
       id="bp-toggle-chat"
       type="button"
       onClick={onToggle}
-      className="group fixed bottom-[30px] right-6 z-[60] flex h-[60px] w-[60px] shrink-0 items-center justify-center rounded-full bg-[#bf2227] p-0 text-white shadow-lg transition-all duration-300 hover:scale-105 hover:bg-[#bf2227]"
+      className="group fixed bottom-[30px] z-[60] flex h-[60px] w-[60px] shrink-0 items-center justify-center rounded-full bg-[#bf2227] p-0 text-white shadow-lg transition-all duration-300 hover:scale-105 hover:bg-[#bf2227]"
+      style={{ right: '1.5rem', left: 'auto', contain: 'layout style' }}
       aria-label="Open AI chat"
       aria-disabled={!isReady}
       title={isReady ? 'Open AI chat' : 'AI chat is loading'}

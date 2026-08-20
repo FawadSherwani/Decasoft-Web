@@ -1,3 +1,5 @@
+'use client'
+
 import {
   Target,
   MonitorSmartphone,
@@ -11,6 +13,7 @@ import {
   ArrowRight,
 } from "lucide-react";
 import Link from "next/link";
+import { useLanguage } from './LanguageProvider'
 
 const services = [
   {
@@ -64,18 +67,18 @@ const services = [
 ];
 
 export default function Services() {
+  const { t, href: localizedHref, isRtl } = useLanguage()
   return (
-    <section id="services" className="mx-auto max-w-7xl px-5 py-24 lg:px-8">
+    <section dir={isRtl ? 'rtl' : 'ltr'} id="services" className="mx-auto max-w-7xl px-5 py-24 lg:px-8">
       <div className="mx-auto max-w-2xl text-center">
         <span className="text-[11px] font-bold tracking-[0.2em] text-brand">
-          OUR SERVICES
+          {t('OUR SERVICES')}
         </span>
         <h2 className="mt-3 text-3xl font-extrabold text-ink sm:text-4xl">
-          Smart Solutions. <span className="text-brand">Real Results.</span>
+          {t('Smart Solutions.')} <span className="text-brand">{t('Real Results.')}</span>
         </h2>
         <p className="mt-3 text-[15px] text-ink/55">
-          We offer a complete range of digital marketing services to help
-          your business grow and dominate online.
+          {t('We offer a complete range of digital marketing services to help your business grow and dominate online.')}
         </p>
       </div>
 
@@ -88,12 +91,12 @@ export default function Services() {
             <span className="grid h-11 w-11 place-items-center rounded-lg bg-brand/10 text-brand transition group-hover:bg-brand group-hover:text-white">
               <Icon className="h-5 w-5" />
             </span>
-            <h3 className="mt-4 text-[15px] font-bold text-ink">{title}</h3>
+            <h3 className="mt-4 text-[15px] font-bold text-ink">{t(title)}</h3>
             <p className="mt-2 text-[13px] leading-relaxed text-ink/55">
-              {desc}
+              {t(desc)}
             </p>
             <Link
-              href={href}
+              href={localizedHref(href)}
               className="mt-4 inline-flex h-8 w-8 items-center justify-center rounded-full border border-brand/30 text-brand transition group-hover:bg-brand group-hover:text-white"
               aria-label={`Learn more about ${title}`}
             >
@@ -105,10 +108,10 @@ export default function Services() {
 
       <div className="mt-10 text-center">
         <Link
-          href="/services"
+          href={localizedHref('/services')}
           className="inline-flex items-center gap-2 rounded-full bg-brand px-6 py-3 text-sm font-bold text-white transition hover:-translate-y-0.5 hover:shadow-lg"
         >
-          View All Services
+          {t('View All Services')}
           <ArrowRight className="h-4 w-4" />
         </Link>
       </div>

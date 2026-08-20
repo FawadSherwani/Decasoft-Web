@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import Link from "next/link";
+import CourseAutoTranslate from "@/components/CourseAutoTranslate";
 import {
   Clapperboard,
   Code2,
@@ -357,6 +358,7 @@ export default function Page() {
       `}</style>
 
       <div className="cp" style={{ fontFamily: "'Segoe UI', Arial, sans-serif", color: DARK }}>
+        <CourseAutoTranslate />
 
         {/* ══ HERO — dark, pill badge, scrollable course cards ══ */}
         <section className="cp-hero">
@@ -364,9 +366,7 @@ export default function Page() {
             <span className="cp-pill cp-pill--dark">Explore Our Tracks</span>
             <h1>Courses That <span>Build</span> Careers.</h1>
             <p>
-              At <strong style={{ color: WHITE }}>DecaSofts</strong>, we provide industry-focused courses in technology, development, and digital
-              innovation. Whether you&apos;re a beginner or a pro, our expert-led training offers hands-on learning
-              with real-world applications.
+              {"At DecaSofts, we provide industry-focused courses in technology, development, and digital innovation. Whether you're a beginner or a pro, our expert-led training offers hands-on learning with real-world applications."}
             </p>
             <div className="cp-hero-ctas">
               <Link href="/contact-us" className="cp-hero-btn-primary">Enroll Now</Link>
@@ -410,10 +410,7 @@ export default function Page() {
               <span className="cp-pill">About DecaSoft</span>
               <h2>Building career-ready <span>digital talent</span> through practical training.</h2>
               <p>
-                DecaSofts is a digital agency and training studio helping students, freelancers and
-                business owners turn modern digital skills into real careers — through hands-on
-                courses in web development, marketing, design, and content creation, taught by
-                the same team that builds real client projects.
+                {"DecaSofts is a digital agency and training studio helping students, freelancers and business owners turn modern digital skills into real careers — through hands-on courses in web development, marketing, design, and content creation, taught by the same team that builds real client projects."}
               </p>
               <div className="cp-about-stats">
                 <div className="cp-about-stat">

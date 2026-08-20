@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import CourseAutoTranslate from '@/components/CourseAutoTranslate'
 import {
   ArrowRight,
   BadgeCheck,
@@ -101,9 +102,10 @@ const process = [
 export default function ServicesPage() {
   return (
     <main className="overflow-hidden bg-white text-[#191922]">
+      <CourseAutoTranslate />
       <section className="relative isolate bg-[#f8f5f3] px-5 py-20 sm:px-8 lg:py-28">
-        <div className="absolute -left-32 top-20 -z-10 h-72 w-72 rounded-full bg-[#bf2227]/10 blur-3xl" />
-        <div className="absolute -right-20 -top-20 -z-10 h-96 w-96 rounded-full bg-[#bf2227]/10 blur-3xl" />
+        <div className="absolute -start-32 top-20 -z-10 h-72 w-72 rounded-full bg-[#bf2227]/10 blur-3xl" />
+        <div className="absolute -end-20 -top-20 -z-10 h-96 w-96 rounded-full bg-[#bf2227]/10 blur-3xl" />
         <div className="mx-auto grid max-w-7xl items-center gap-16 lg:grid-cols-[1.08fr_.92fr]">
           <div>
             <div className="inline-flex items-center gap-2 rounded-full border border-[#bf2227]/20 bg-white px-4 py-2 text-xs font-bold uppercase tracking-[.2em] text-[#bf2227]">
@@ -131,7 +133,7 @@ export default function ServicesPage() {
           </div>
 
           <div className="relative mx-auto w-full max-w-xl">
-            <div className="absolute -right-5 -top-5 h-full w-full rounded-[2rem] border-2 border-[#bf2227]/20" />
+            <div className="absolute -end-5 -top-5 h-full w-full rounded-[2rem] border-2 border-[#bf2227]/20" />
             <div className="relative aspect-[4/3] overflow-hidden rounded-[2rem] bg-[#202027] shadow-2xl">
               <Image
                 src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&q=85"
@@ -143,9 +145,9 @@ export default function ServicesPage() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/5 to-transparent" />
               <div className="absolute inset-x-0 bottom-0 grid grid-cols-3 divide-x divide-white/20 p-6 text-white sm:p-8">
-                <div><p className="text-2xl font-black sm:text-3xl">600+</p><p className="mt-1 text-[10px] uppercase tracking-wider text-white/65 sm:text-xs">Projects</p></div>
-                <div className="pl-5"><p className="text-2xl font-black sm:text-3xl">450+</p><p className="mt-1 text-[10px] uppercase tracking-wider text-white/65 sm:text-xs">Clients</p></div>
-                <div className="pl-5"><p className="text-2xl font-black sm:text-3xl">7+</p><p className="mt-1 text-[10px] uppercase tracking-wider text-white/65 sm:text-xs">Years</p></div>
+                <div className="text-center"><p className="text-2xl font-black sm:text-3xl">600+</p><p className="mt-1 text-[10px] uppercase tracking-wider text-white/65 sm:text-xs">Projects</p></div>
+                <div className="text-center"><p className="text-2xl font-black sm:text-3xl">450+</p><p className="mt-1 text-[10px] uppercase tracking-wider text-white/65 sm:text-xs">Clients</p></div>
+                <div className="text-center"><p className="text-2xl font-black sm:text-3xl">7+</p><p className="mt-1 text-[10px] uppercase tracking-wider text-white/65 sm:text-xs">Years</p></div>
               </div>
             </div>
           </div>
@@ -209,7 +211,7 @@ export default function ServicesPage() {
           <div className="relative aspect-[4/3] overflow-hidden rounded-[2rem] bg-gray-100">
             <Image src="/web/outloud.png" alt="A website project delivered by Decasoft" fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover" />
           </div>
-          <div className="lg:pl-8">
+          <div className="lg:ps-8">
             <p className="text-sm font-bold uppercase tracking-[.2em] text-[#bf2227]">Why Decasoft</p>
             <h2 className="mt-3 font-montserrat text-3xl font-black leading-tight sm:text-4xl">One accountable partner from strategy to delivery.</h2>
             <p className="mt-5 leading-8 text-gray-600">Instead of coordinating multiple vendors, work with a connected team that understands the complete customer journey and keeps every decision aligned.</p>
@@ -225,12 +227,12 @@ export default function ServicesPage() {
 
       <section className="px-5 pb-20 sm:px-8 lg:pb-28">
         <div className="relative mx-auto max-w-7xl overflow-hidden rounded-[2rem] bg-[#bf2227] px-6 py-12 text-white sm:px-12 lg:flex lg:items-center lg:justify-between lg:px-16 lg:py-16">
-          <div className="absolute -right-16 -top-24 h-72 w-72 rounded-full border-[40px] border-white/5" />
+          <div className="absolute -end-16 -top-24 h-72 w-72 rounded-full border-[40px] border-white/5" />
           <div className="relative max-w-2xl">
             <p className="text-sm font-bold uppercase tracking-[.2em] text-white/70">Start a conversation</p>
             <h2 className="mt-3 font-montserrat text-3xl font-black leading-tight sm:text-4xl">Have a challenge in mind? Let&apos;s find the right way forward.</h2>
           </div>
-          <Link href="/contact-us" className="relative mt-8 inline-flex shrink-0 items-center gap-2 rounded-full bg-white px-7 py-3.5 text-sm font-extrabold text-[#bf2227] transition hover:-translate-y-0.5 lg:ml-10 lg:mt-0">
+          <Link href="/contact-us" className="relative mt-8 inline-flex shrink-0 items-center gap-2 rounded-full bg-white px-7 py-3.5 text-sm font-extrabold text-[#bf2227] transition hover:-translate-y-0.5 lg:ms-10 lg:mt-0">
             Book a free consultation <ArrowRight size={17} />
           </Link>
         </div>

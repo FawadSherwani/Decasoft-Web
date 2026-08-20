@@ -1,6 +1,9 @@
+'use client'
+
 import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowRight, BadgeCheck, Lightbulb, Users } from 'lucide-react'
+import { useLanguage } from './LanguageProvider'
 
 const strengths = [
   {
@@ -21,10 +24,11 @@ const strengths = [
 ]
 
 export default function HomeAbout() {
+  const { t, href, isRtl } = useLanguage()
   return (
-    <section className="relative overflow-hidden bg-cream py-20 sm:py-24">
-      <div className="pointer-events-none absolute -left-24 top-12 h-72 w-72 rounded-full bg-brand/5 blur-3xl" />
-      <div className="pointer-events-none absolute -right-24 bottom-0 h-80 w-80 rounded-full bg-brand/10 blur-3xl" />
+    <section dir={isRtl ? 'rtl' : 'ltr'} className="relative overflow-hidden bg-cream py-20 sm:py-24">
+      <div className="pointer-events-none absolute -start-24 top-12 h-72 w-72 rounded-full bg-brand/5 blur-3xl" />
+      <div className="pointer-events-none absolute -end-24 bottom-0 h-80 w-80 rounded-full bg-brand/10 blur-3xl" />
 
       <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-5 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16 lg:px-8">
         <div className="relative mx-auto w-full max-w-xl lg:mx-0">
@@ -39,23 +43,21 @@ export default function HomeAbout() {
             <div className="absolute inset-0 bg-gradient-to-t from-ink/35 via-transparent to-transparent" />
           </div>
 
-          <div className="absolute -bottom-6 right-4 rounded-2xl border border-white/70 bg-white/95 px-6 py-4 shadow-xl backdrop-blur sm:right-8">
-            <p className="text-2xl font-black text-brand">7+ Years</p>
-            <p className="text-xs font-semibold text-ink/55">Creating digital impact</p>
+          <div className="absolute -bottom-6 end-4 rounded-2xl border border-white/70 bg-white/95 px-6 py-4 shadow-xl backdrop-blur sm:end-8">
+            <p className="text-2xl font-black text-brand">{t('7+ Years')}</p>
+            <p className="text-xs font-semibold text-ink/55">{t('Creating digital impact')}</p>
           </div>
         </div>
 
         <div className="pt-5 lg:pt-0">
           <span className="text-[11px] font-bold uppercase tracking-[0.22em] text-brand">
-            Who We Are
+            {t('Who We Are')}
           </span>
           <h2 className="mt-3 text-3xl font-extrabold leading-tight text-ink sm:text-4xl">
-            About <span className="text-brand">Decasoft</span>
+            {t('About')} <span className="text-brand">Decasoft</span>
           </h2>
           <p className="mt-5 max-w-2xl text-[15px] leading-7 text-ink/60">
-            We are a customer-focused digital agency helping ambitious businesses turn ideas into
-            effective online experiences. From strategy and design to development and marketing,
-            our team combines creativity with practical technology to produce measurable results.
+            {t('We are a customer-focused digital agency helping ambitious businesses turn ideas into effective online experiences. From strategy and design to development and marketing, our team combines creativity with practical technology to produce measurable results.')}
           </p>
 
           <div className="mt-8 grid gap-5 sm:grid-cols-3">
@@ -64,17 +66,17 @@ export default function HomeAbout() {
                 <span className="grid h-10 w-10 place-items-center rounded-xl bg-brand/10 text-brand transition group-hover:bg-brand group-hover:text-white">
                   <Icon className="h-5 w-5" />
                 </span>
-                <h3 className="mt-3 text-sm font-bold text-ink">{title}</h3>
-                <p className="mt-1 text-xs leading-5 text-ink/50">{description}</p>
+                <h3 className="mt-3 text-sm font-bold text-ink">{t(title)}</h3>
+                <p className="mt-1 text-xs leading-5 text-ink/50">{t(description)}</p>
               </div>
             ))}
           </div>
 
           <Link
-            href="/about-us"
+            href={href('/about-us')}
             className="mt-9 inline-flex items-center gap-2 rounded-full bg-brand px-6 py-3 text-sm font-bold text-white shadow-[0_12px_30px_-14px_rgba(227,30,43,0.8)] transition hover:-translate-y-0.5 hover:bg-brand-dark"
           >
-            Discover our story
+            {t('Discover our story')}
             <ArrowRight className="h-4 w-4" />
           </Link>
         </div>

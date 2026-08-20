@@ -1,4 +1,7 @@
+'use client'
+
 import { Search, Puzzle, Rocket, SlidersHorizontal, Users } from "lucide-react";
+import { useLanguage } from './LanguageProvider'
 
 const steps = [
   {
@@ -34,8 +37,9 @@ const steps = [
 ];
 
 export default function Process() {
+  const { t, isRtl } = useLanguage()
   return (
-    <section className="relative overflow-hidden bg-ink py-20">
+    <section dir={isRtl ? 'rtl' : 'ltr'} className="relative overflow-hidden bg-ink py-20">
       <div
         className="pointer-events-none absolute inset-0 opacity-40"
         style={{
@@ -45,10 +49,10 @@ export default function Process() {
       />
       <div className="relative mx-auto max-w-6xl px-5 text-center lg:px-8">
         <span className="text-[11px] font-bold tracking-[0.2em] text-brand">
-          OUR PROCESS
+          {t('OUR PROCESS')}
         </span>
         <h2 className="mt-3 text-3xl font-extrabold text-white sm:text-4xl">
-          How We <span className="text-brand">Drive Your Success</span>
+          {t('How We')} <span className="text-brand">{t('Drive Your Success')}</span>
         </h2>
 
         <div className="relative mt-16 grid grid-cols-2 gap-y-12 sm:grid-cols-3 lg:grid-cols-5 lg:gap-y-0">
@@ -60,13 +64,13 @@ export default function Process() {
                 <Icon className="h-6 w-6" />
               </span>
               <span className="mt-4 text-[10px] font-bold tracking-widest text-brand/80">
-                {step}
+                {t(step)}
               </span>
               <h3 className="mt-1 text-[15px] font-bold text-white">
-                {title}
+                {t(title)}
               </h3>
               <p className="mt-2 max-w-[10rem] text-[12px] leading-relaxed text-white/50">
-                {desc}
+                {t(desc)}
               </p>
             </div>
           ))}
