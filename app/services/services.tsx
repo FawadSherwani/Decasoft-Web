@@ -101,9 +101,9 @@ const process = [
 
 export default function ServicesPage() {
   return (
-    <main className="overflow-hidden bg-white text-[#191922]">
+    <main className="services-page overflow-hidden bg-white text-[#191922]">
       <CourseAutoTranslate />
-      <section className="relative isolate bg-[#f8f5f3] px-5 py-20 sm:px-8 lg:py-28">
+      <section className="services-hero relative isolate bg-[#f8f5f3] px-5 py-20 sm:px-8 lg:py-28">
         <div className="absolute -start-32 top-20 -z-10 h-72 w-72 rounded-full bg-[#bf2227]/10 blur-3xl" />
         <div className="absolute -end-20 -top-20 -z-10 h-96 w-96 rounded-full bg-[#bf2227]/10 blur-3xl" />
         <div className="mx-auto grid max-w-7xl items-center gap-16 lg:grid-cols-[1.08fr_.92fr]">
@@ -154,7 +154,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <section id="services-grid" className="scroll-mt-24 px-5 py-20 sm:px-8 lg:py-28">
+      <section id="services-grid" className="services-capabilities scroll-mt-24 px-5 py-20 sm:px-8 lg:py-28">
         <div className="mx-auto max-w-7xl">
           <div className="grid gap-8 lg:grid-cols-[.7fr_1.3fr] lg:items-end">
             <div>
@@ -166,9 +166,9 @@ export default function ServicesPage() {
             </p>
           </div>
 
-          <div className="mt-14 grid overflow-hidden rounded-[2rem] border border-gray-200 bg-gray-200 gap-px sm:grid-cols-2 lg:grid-cols-4">
+          <div className="services-grid mt-14 grid overflow-hidden rounded-[2rem] border border-gray-200 bg-gray-200 gap-px sm:grid-cols-2 lg:grid-cols-4">
             {services.map(({ icon: Icon, number, title, description, tags, href }) => (
-              <Link key={title} href={href} className="group flex min-h-[330px] flex-col bg-white p-7 transition duration-300 hover:bg-[#1d1c24] sm:p-8">
+              <Link key={title} href={href} className="services-card group flex min-h-[330px] flex-col bg-white p-7 transition duration-300 hover:bg-[#1d1c24] sm:p-8">
                 <div className="flex items-start justify-between">
                   <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-red-50 text-[#bf2227] transition group-hover:bg-[#bf2227] group-hover:text-white"><Icon size={23} /></span>
                   <span className="text-xs font-black tracking-[.18em] text-gray-300 group-hover:text-white/30">{number}</span>
@@ -185,7 +185,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <section className="bg-[#1d1c24] px-5 py-20 text-white sm:px-8 lg:py-24">
+      <section className="services-process bg-[#1d1c24] px-5 py-20 text-white sm:px-8 lg:py-24">
         <div className="mx-auto max-w-7xl">
           <div className="grid gap-10 lg:grid-cols-[.72fr_1.28fr]">
             <div>
@@ -195,7 +195,7 @@ export default function ServicesPage() {
             </div>
             <div className="grid gap-px overflow-hidden rounded-2xl bg-white/10 sm:grid-cols-2">
               {process.map((item) => (
-                <article key={item.number} className="bg-[#25242d] p-7 sm:p-8">
+                <article key={item.number} className="services-process-card bg-[#25242d] p-7 sm:p-8">
                   <span className="text-sm font-black text-[#e95459]">{item.number}</span>
                   <h3 className="mt-4 text-xl font-extrabold">{item.title}</h3>
                   <p className="mt-3 text-sm leading-7 text-white/60">{item.text}</p>
@@ -206,7 +206,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <section className="px-5 py-20 sm:px-8 lg:py-28">
+      <section className="services-partner px-5 py-20 sm:px-8 lg:py-28">
         <div className="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-2">
           <div className="relative aspect-[4/3] overflow-hidden rounded-[2rem] bg-gray-100">
             <Image src="/web/outloud.png" alt="A website project delivered by Decasoft" fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover" />
@@ -225,7 +225,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <section className="px-5 pb-20 sm:px-8 lg:pb-28">
+      <section className="services-cta px-5 pb-20 sm:px-8 lg:pb-28">
         <div className="relative mx-auto max-w-7xl overflow-hidden rounded-[2rem] bg-[#bf2227] px-6 py-12 text-white sm:px-12 lg:flex lg:items-center lg:justify-between lg:px-16 lg:py-16">
           <div className="absolute -end-16 -top-24 h-72 w-72 rounded-full border-[40px] border-white/5" />
           <div className="relative max-w-2xl">

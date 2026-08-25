@@ -107,7 +107,7 @@ export default function ContactPage() {
             setCaptchaToken("");
             setCaptchaError(true);
           },
-          theme: "light",
+          theme: document.documentElement.classList.contains("dark") ? "dark" : "light",
         });
         setCaptchaError(false);
       } catch (error) {
@@ -467,7 +467,7 @@ export default function ContactPage() {
                   <div>
                     <div style={{ fontWeight: 700, fontSize: "0.86rem" }}>{tr("Pakistan")}</div>
                     <a href="tel:+923071116562" style={{ color: RED, fontWeight: 700, fontSize: "0.85rem", textDecoration: "none" }}>+92 307 111 6562</a>
-                    <div style={{ color: GRAY_TEXT, fontSize: "0.8rem" }}>info@decasoft.test</div>
+                    <div style={{ color: GRAY_TEXT, fontSize: "0.8rem" }}>info@decasofts.com</div>
                   </div>
                   <a href="tel:+923071116562" className="call-btn" aria-label="Call Pakistan office">
                     <PhoneIcon />
@@ -493,7 +493,7 @@ export default function ContactPage() {
             </div>
 
             {/* RIGHT: Form */}
-            <div style={{ flex: "1 1 460px", minWidth: 0, border: `1px solid ${BORDER}`, borderRadius: 14, padding: "2rem" }}>
+            <div className="contact-form-panel" style={{ flex: "1 1 460px", minWidth: 0, border: `1px solid ${BORDER}`, borderRadius: 14, padding: "2rem" }}>
               <div className="form-row">
                 <div className="cf-field">
                   <span className="cf-icon"><UserIcon /></span>
@@ -665,7 +665,7 @@ export default function ContactPage() {
                 </div>
                 <div className="loc-detail-row"><LocationIcon /><span>{tr("Block Z, Madina Town, Faisalabad, 38000, Punjab, Pakistan")}</span></div>
                 <div className="loc-detail-row"><PhoneIconGray /><span>+92 307 111 6562</span></div>
-                <div className="loc-detail-row"><MailIcon /><span>info@decasoft.test</span></div>
+                <div className="loc-detail-row"><MailIcon /><span>info@decasofts.com</span></div>
                 <a
                   className="view-map-btn"
                   href="https://www.google.com/maps/search/?api=1&query=Madina+Town+Faisalabad+Pakistan"

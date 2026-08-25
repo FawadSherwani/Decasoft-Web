@@ -633,7 +633,7 @@ export default function WebDevCoursePage() {
     'w-full border border-[#E4DFD4] bg-white rounded-lg px-4 py-3 text-sm text-[#1A1B23] placeholder:text-[#A6A29A] focus:outline-none focus:ring-2 focus:ring-[#bf2227]/30 focus:border-[#bf2227] transition-all'
 
   return (
-    <main className="bg-[#FAF8F3] text-[#1A1B23]" style={{ fontFamily: "'Inter', sans-serif" }}><CourseAutoTranslate />
+    <main className="course-detail-page bg-[#FAF8F3] text-[#1A1B23]" style={{ fontFamily: "'Inter', sans-serif" }}><CourseAutoTranslate />
       <style jsx global>{`
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
         .font-display {

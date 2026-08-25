@@ -78,7 +78,7 @@ export default function UiUxCoursePage() {
   const inputClass = 'w-full border border-[#E4DFD4] bg-white rounded-lg px-4 py-3 text-sm text-[#1A1B23] placeholder:text-[#A6A29A] focus:outline-none focus:ring-2 focus:ring-[#bf2227]/30 focus:border-[#bf2227] transition-all'
 
   return (
-    <main className="overflow-hidden bg-[#faf8f3] text-[#171820]"><CourseAutoTranslate />
+    <main className="course-detail-page overflow-hidden bg-[#faf8f3] text-[#171820]"><CourseAutoTranslate />
       <section className="relative">
         <div className="absolute inset-x-0 top-0 h-[520px] bg-[radial-gradient(circle_at_80%_20%,rgba(191,34,39,0.12),transparent_38%)]" />
         <div className="relative mx-auto grid max-w-7xl items-center gap-14 px-6 pb-20 pt-16 lg:grid-cols-[0.9fr_1.1fr] lg:pt-24">

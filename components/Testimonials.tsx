@@ -124,7 +124,7 @@ export default function Testimonials() {
 
   return (
     <section
-      className="py-20 bg-white"
+      className="home-testimonials py-20 bg-white"
       style={{ contentVisibility: 'auto', containIntrinsicSize: '0 450px' }} // ✅ skip off-screen
     >
       <div className="max-w-7xl mx-auto px-6">

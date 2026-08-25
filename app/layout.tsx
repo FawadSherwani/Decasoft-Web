@@ -39,8 +39,13 @@ export default async function RootLayout({
   const locale = isLocale(localeHeader) ? localeHeader : 'en'
 
   return (
-    <html lang={locale} dir={locale === 'ar' ? 'rtl' : 'ltr'}>
+    <html lang={locale} dir={locale === 'ar' ? 'rtl' : 'ltr'} suppressHydrationWarning>
       <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var t=localStorage.getItem('theme');var d=t==='dark'||(!t&&matchMedia('(prefers-color-scheme: dark)').matches);document.documentElement.classList.toggle('dark',d);document.documentElement.style.colorScheme=d?'dark':'light'}catch(e){}})()`,
+          }}
+        />
         <link
           rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
@@ -49,7 +54,7 @@ export default async function RootLayout({
       </head>
       <body
         suppressHydrationWarning
-        className="font-poppins bg-white text-gray-800 overflow-x-hidden"
+        className="font-poppins overflow-x-hidden"
       >
         <LanguageProvider locale={locale}>
           {children}

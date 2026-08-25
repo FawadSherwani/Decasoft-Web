@@ -49,7 +49,7 @@ export default function LogoBar() {
   const list = [...partners, ...partners];
 
   return (
-    <section className="border-y border-black/5 bg-white py-8 overflow-hidden">
+    <section className="home-logo-bar border-y border-black/5 bg-white py-8 overflow-hidden">
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
         <div className="flex w-max animate-marquee items-center gap-16">
           {list.map((p, i) => (

@@ -26,7 +26,7 @@ const strengths = [
 export default function HomeAbout() {
   const { t, href, isRtl } = useLanguage()
   return (
-    <section dir={isRtl ? 'rtl' : 'ltr'} className="relative overflow-hidden bg-cream py-20 sm:py-24">
+    <section dir={isRtl ? 'rtl' : 'ltr'} className="home-about relative overflow-hidden bg-cream py-20 sm:py-24">
       <div className="pointer-events-none absolute -start-24 top-12 h-72 w-72 rounded-full bg-brand/5 blur-3xl" />
       <div className="pointer-events-none absolute -end-24 bottom-0 h-80 w-80 rounded-full bg-brand/10 blur-3xl" />
 
@@ -43,7 +43,7 @@ export default function HomeAbout() {
             <div className="absolute inset-0 bg-gradient-to-t from-ink/35 via-transparent to-transparent" />
           </div>
 
-          <div className="absolute -bottom-6 end-4 rounded-2xl border border-white/70 bg-white/95 px-6 py-4 shadow-xl backdrop-blur sm:end-8">
+          <div className="home-about-badge absolute -bottom-6 end-4 rounded-2xl border border-white/70 bg-white/95 px-6 py-4 shadow-xl backdrop-blur sm:end-8">
             <p className="text-2xl font-black text-brand">{t('7+ Years')}</p>
             <p className="text-xs font-semibold text-ink/55">{t('Creating digital impact')}</p>
           </div>

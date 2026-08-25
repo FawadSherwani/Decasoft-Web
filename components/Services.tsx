@@ -69,7 +69,7 @@ const services = [
 export default function Services() {
   const { t, href: localizedHref, isRtl } = useLanguage()
   return (
-    <section dir={isRtl ? 'rtl' : 'ltr'} id="services" className="mx-auto max-w-7xl px-5 py-24 lg:px-8">
+    <section dir={isRtl ? 'rtl' : 'ltr'} id="services" className="home-services mx-auto max-w-7xl px-5 py-24 lg:px-8">
       <div className="mx-auto max-w-2xl text-center">
         <span className="text-[11px] font-bold tracking-[0.2em] text-brand">
           {t('OUR SERVICES')}
@@ -86,7 +86,7 @@ export default function Services() {
         {services.map(({ icon: Icon, title, desc, href }) => (
           <div
             key={title}
-            className="group rounded-xl border border-black/5 bg-white p-6 transition hover:-translate-y-1 hover:shadow-[0_20px_45px_-25px_rgba(227,30,43,0.4)]"
+            className="service-card group rounded-xl border border-black/5 bg-white p-6 transition hover:-translate-y-1 hover:shadow-[0_20px_45px_-25px_rgba(227,30,43,0.4)]"
           >
             <span className="grid h-11 w-11 place-items-center rounded-lg bg-brand/10 text-brand transition group-hover:bg-brand group-hover:text-white">
               <Icon className="h-5 w-5" />

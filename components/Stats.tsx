@@ -133,7 +133,7 @@ export default function Stats() {
 
   return (
     <section dir={isRtl ? 'rtl' : 'ltr'} ref={sectionRef} className="mx-auto -mt-1 max-w-7xl px-5 lg:px-8">
-      <div className="grid grid-cols-2 gap-6 rounded-2xl border border-black/5 bg-white px-8 py-8 shadow-[0_10px_40px_-20px_rgba(0,0,0,0.15)] sm:grid-cols-3 lg:grid-cols-5">
+      <div className="home-stats-card grid grid-cols-2 gap-6 rounded-2xl border border-black/5 bg-white px-8 py-8 shadow-[0_10px_40px_-20px_rgba(0,0,0,0.15)] sm:grid-cols-3 lg:grid-cols-5">
         {stats.map((stat) => (
           <StatItem key={stat.label} {...stat} label={t(stat.label)} active={active} />
         ))}

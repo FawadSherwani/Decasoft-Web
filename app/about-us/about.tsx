@@ -84,14 +84,14 @@ const solutions = [
 export default function AboutUs() {
   const { t, href, isRtl } = useLanguage()
   return (
-    <main className={`overflow-hidden bg-white text-[#191922] ${isRtl ? 'about-rtl text-right' : ''}`} dir={isRtl ? 'rtl' : 'ltr'}>
+    <main className={`about-page overflow-hidden bg-white text-[#191922] ${isRtl ? 'about-rtl text-right' : ''}`} dir={isRtl ? 'rtl' : 'ltr'}>
       <style jsx global>{`
         .about-rtl .uppercase { letter-spacing: 0 !important; }
         .about-rtl h1, .about-rtl h2, .about-rtl h3 { line-height: 1.3; }
         .about-rtl svg.lucide-arrow-right { transform: scaleX(-1); }
         .about-rtl input, .about-rtl textarea, .about-rtl select { text-align: right; }
       `}</style>
-      <section className="relative isolate bg-[#f8f5f3] px-5 py-20 sm:px-8 lg:py-28">
+      <section className="about-hero relative isolate bg-[#f8f5f3] px-5 py-20 sm:px-8 lg:py-28">
         <div className={`absolute top-20 -z-10 h-72 w-72 rounded-full bg-[#bf2227]/10 blur-3xl ${isRtl ? '-right-28' : '-left-28'}`} />
         <div className={`absolute -top-24 -z-10 h-96 w-96 rounded-full bg-[#bf2227]/10 blur-3xl ${isRtl ? '-left-24' : '-right-24'}`} />
         <div className="mx-auto grid max-w-7xl items-center gap-16 lg:grid-cols-[1.05fr_.95fr]">
@@ -142,7 +142,7 @@ export default function AboutUs() {
         </div>
       </section>
 
-      <section className="px-5 py-20 sm:px-8 lg:py-28">
+      <section className="about-story px-5 py-20 sm:px-8 lg:py-28">
         <div className="mx-auto grid max-w-7xl items-center gap-14 lg:grid-cols-2">
           <div className="relative mx-auto aspect-square w-full max-w-lg overflow-hidden rounded-[2rem] bg-[#f4f1ef] p-8 sm:p-12">
             <Image src="/about-img.png" alt="Decasoft digital solutions illustration" fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-contain p-8 sm:p-12" />
@@ -213,7 +213,7 @@ export default function AboutUs() {
         </div>
       </section>
 
-      <section className="px-5 py-20 sm:px-8 lg:py-28">
+      <section className="about-industries px-5 py-20 sm:px-8 lg:py-28">
         <div className="mx-auto max-w-7xl">
           <div className="mx-auto max-w-3xl text-center">
             <p className="text-sm font-bold uppercase tracking-[.2em] text-[#bf2227]">{t('Across industries')}</p>
@@ -250,7 +250,7 @@ export default function AboutUs() {
         </div>
       </section>
 
-      <section className="bg-[#f8f5f3] px-5 py-20 sm:px-8 lg:py-24">
+      <section className="about-partner bg-[#f8f5f3] px-5 py-20 sm:px-8 lg:py-24">
         <div className="mx-auto grid max-w-7xl items-center gap-10 lg:grid-cols-[1fr_.9fr]">
           <div>
             <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-red-50 text-[#bf2227]"><Users size={23} /></div>

@@ -7,6 +7,7 @@ import { ChevronDown, Languages, X } from 'lucide-react'
 import { usePathname } from 'next/navigation'
 import { useLanguage } from './LanguageProvider'
 import { stripLocale } from '@/lib/i18n'
+import ThemeToggle from './ThemeToggle'
 
 const navLinks = [
   { name: 'HOME', href: '/' },
@@ -120,7 +121,17 @@ export default function Navbar() {
             height={100}
             priority
             quality={85}
-            className="w-auto h-12 object-contain"
+            className="navbar-logo navbar-logo-light w-auto h-12 object-contain"
+          />
+          <Image
+            src="/Deca-Logo-white.png"
+            alt=""
+            width={200}
+            height={100}
+            priority
+            quality={85}
+            aria-hidden="true"
+            className="navbar-logo navbar-logo-dark hidden w-auto h-12 object-contain"
           />
         </Link>
 
@@ -155,12 +166,12 @@ export default function Navbar() {
               {link.subMenu && (
                 <>
                   <div className={`absolute top-full hidden group-hover:block w-full h-3 ${isRtl ? 'right-0' : 'left-0'}`} />
-                  <div className={`absolute top-[calc(100%+0.75rem)] hidden group-hover:block bg-white shadow-xl border border-gray-100 rounded-lg py-2 min-w-[250px] z-50 ${isRtl ? 'right-0' : 'left-0'}`}>
+                  <div className={`nav-dropdown absolute top-[calc(100%+0.75rem)] hidden group-hover:block bg-white shadow-xl border border-gray-100 rounded-lg py-2 min-w-[250px] z-50 ${isRtl ? 'right-0' : 'left-0'}`}>
                     {link.subMenu.map((sub) => (
                       <Link
                         key={sub.name}
                         href={href(sub.href)}
-                        className={`hover-underline block px-4 py-2.5 text-xs font-semibold hover:bg-red-50 hover:text-primary transition-colors border-l-2 ${
+                        className={`nav-dropdown-link block px-4 py-2.5 text-xs font-semibold hover:bg-red-50 hover:text-primary transition-colors border-l-2 ${
                           pathname === sub.href ? 'text-primary bg-red-50 border-primary' : 'border-transparent text-gray-600'
                         }`}
                       >
@@ -176,6 +187,7 @@ export default function Navbar() {
 
         {/* CTA + Hamburger */}
         <div className="flex items-center gap-3">
+          <ThemeToggle />
           <button
             type="button"
             onClick={() => switchLocale(locale === 'en' ? 'ar' : 'en')}
@@ -224,12 +236,12 @@ export default function Navbar() {
         <div className="flex justify-between items-center px-5 py-5 bg-gradient-to-r from-primary to-red-700">
           <Link href={href('/')} onClick={closeMenu}>
             <Image
-              src="/Deca_logo.png"
+              src="/Deca-Logo-white.png"
               alt="D'ECASOFT Logo"
               width={140}
               height={60}
               loading="lazy"
-              className="w-auto h-8 object-contain brightness-0 invert"
+              className="w-auto h-8 object-contain"
             />
           </Link>
           <button

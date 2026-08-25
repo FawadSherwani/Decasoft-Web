@@ -10,7 +10,7 @@ export default function Hero() {
     <section
       dir={isRtl ? 'rtl' : 'ltr'}
       id="home"
-      className="relative overflow-hidden bg-gradient-to-b from-cream to-white pb-16 pt-14 sm:pb-24 sm:pt-20"
+      className="home-hero relative overflow-hidden bg-gradient-to-b from-cream to-white pb-16 pt-14 sm:pb-24 sm:pt-20"
     >
       <div className="pointer-events-none absolute -top-24 end-0 h-96 w-96 rounded-full bg-brand/10 blur-3xl" />
 

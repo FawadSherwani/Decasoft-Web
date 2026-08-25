@@ -49,7 +49,7 @@ const trafficData = [
 
 export default function DashboardMock() {
   return (
-    <div className="relative mx-auto flex max-w-2xl overflow-hidden rounded-2xl border border-black/5 bg-white shadow-[0_30px_80px_-25px_rgba(227,30,43,0.35)]">
+    <div className="home-dashboard relative mx-auto flex max-w-2xl overflow-hidden rounded-2xl border border-black/5 bg-white shadow-[0_30px_80px_-25px_rgba(227,30,43,0.35)]">
       {/* side rail */}
       <div className="hidden w-14 flex-col items-center gap-6 bg-brand py-6 sm:flex">
         <LayoutGrid className="h-4.5 w-4.5 text-white/90" size={18} />
