@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import CourseAutoTranslate from "@/components/CourseAutoTranslate";
 
 const BG_RED = "#bf2227";
@@ -373,7 +374,7 @@ export default function Page() {
               {projects.map((p) => (
                 <button key={p.title} className="smp-card" onClick={() => setSelected(p)}>
                   <div className="smp-card-img-wrap">
-                    <img src={p.img} alt={p.title} />
+                    <Image src={p.img} alt={`${p.title} social media campaign`} width={800} height={500} />
                     <div className="smp-card-overlay"><span>View Case Study</span></div>
                   </div>
                   <div className="smp-card-body">
@@ -427,7 +428,7 @@ export default function Page() {
           <div className="smp-modal-backdrop" onClick={() => setSelected(null)}>
             <div className="smp-modal" onClick={(e) => e.stopPropagation()}>
               <button className="smp-modal-close" onClick={() => setSelected(null)} aria-label="Close">✕</button>
-              <img src={selected.img} alt={selected.title} />
+              <Image src={selected.img} alt={`${selected.title} campaign case study`} width={1200} height={800} />
               <div className="smp-modal-body">
                 <span className="smp-modal-tag">{selected.category}</span>
                 <h2>{selected.title}</h2>

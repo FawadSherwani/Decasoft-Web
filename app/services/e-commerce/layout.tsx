@@ -1,11 +1,3 @@
-import type { Metadata } from "next";
-
-export const metadata: Metadata = {
-  title: "E-Commerce Development Services | Decasofts",
-  description:
-    "Decasofts specializes in scalable e-commerce solutions including custom shopping carts, payment gateway integration, and conversion-optimized web stores. Based in Canada, UAE & Pakistan.",
-};
-
-export default function EcommerceLayout({ children }: { children: React.ReactNode }) {
-  return <>{children}</>;
-}
+import { createPageMetadata } from '@/lib/seo'
+export const metadata = createPageMetadata({ title: 'E-commerce & Shopify Services', description: 'Conversion-focused Shopify and custom e-commerce stores with secure payments, integrations, and scalable operations.', path: '/services/e-commerce' })
+export default function Layout({ children }: { children: React.ReactNode }) { return children }

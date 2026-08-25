@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import CourseAutoTranslate from "@/components/CourseAutoTranslate";
 
 const BG_RED = "#bf2227";
@@ -237,7 +238,7 @@ export default function Page() {
               {projects.map((p) => (
                 <button key={p.title} className="ld-card" onClick={() => setSelected(p)}>
                   <div className="ld-card-img-wrap">
-                    <img src={p.img} alt={p.title} />
+                    <Image src={p.img} alt={`${p.title} logo design`} width={600} height={400} />
                     <div className="ld-card-overlay"><span>View</span></div>
                   </div>
                   <div className="ld-card-body">
@@ -288,7 +289,7 @@ export default function Page() {
             <div className="ld-modal" onClick={(e) => e.stopPropagation()}>
               <button className="ld-modal-close" onClick={() => setSelected(null)} aria-label="Close">✕</button>
               <div className="ld-modal-img-wrap">
-                <img src={selected.img} alt={selected.title} />
+                <Image src={selected.img} alt={`${selected.title} logo design preview`} width={1000} height={700} />
               </div>
               <div className="ld-modal-body">
                 <h2>{selected.title}</h2>

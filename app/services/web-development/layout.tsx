@@ -1,11 +1,3 @@
-import type { Metadata } from "next";
-
-export const metadata: Metadata = {
-  title: "Web Development Services | Decasofts",
-  description:
-    "Decasofts offers innovative web development solutions including custom website design, WordPress, and Laravel development. Based in Dubai & Faisalabad, Pakistan.",
-};
-
-export default function WebDevelopmentLayout({ children }: { children: React.ReactNode }) {
-  return <>{children}</>;
-}
+import { createPageMetadata } from '@/lib/seo'
+export const metadata = createPageMetadata({ title: 'Web Development Services', description: 'Fast, responsive, conversion-focused websites and web applications engineered around your business goals.', path: '/services/web-development' })
+export default function Layout({ children }: { children: React.ReactNode }) { return children }

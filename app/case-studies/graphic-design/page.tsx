@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import CourseAutoTranslate from "@/components/CourseAutoTranslate";
 
 const BG_RED = "#bf2227";
@@ -242,7 +243,7 @@ export default function Page() {
               {projects.map((p) => (
                 <button key={p.img} className="gd-card" onClick={() => setSelected(p)}>
                   <div className="gd-card-img-wrap">
-                    <img src={p.img} alt={p.title} />
+                    <Image src={p.img} alt={`${p.title} graphic design project`} width={800} height={500} />
                     <div className="gd-card-overlay"><span>View</span></div>
                   </div>
                   <div className="gd-card-body">
@@ -291,7 +292,7 @@ export default function Page() {
           <div className="gd-modal-backdrop" onClick={() => setSelected(null)}>
             <div className="gd-modal" onClick={(e) => e.stopPropagation()}>
               <button className="gd-modal-close" onClick={() => setSelected(null)} aria-label="Close">✕</button>
-              <img className="gd-modal-img" src={selected.img} alt={selected.title} />
+              <Image className="gd-modal-img" src={selected.img} alt={`${selected.title} graphic design preview`} width={1200} height={800} />
               <div className="gd-modal-body">
                 <h2>{selected.title}</h2>
                 <Link href="/contact-us" className="gd-modal-cta">Start a Similar Project</Link>

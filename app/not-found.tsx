@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
+import Link from 'next/link'
 
 export default function NotFound() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
@@ -378,12 +379,12 @@ export default function NotFound() {
             The page you're looking for was moved, deleted, or never existed. Let's get you back on track.
           </p>
 
-          <a href="/" className="nf-btn hvr-shutter-out-horizontal">
+          <Link href="/" className="nf-btn hvr-shutter-out-horizontal">
             <svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true">
               <path d="M9 2.5L4 7.5L9 12.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
             <span>Go Home</span>
-          </a>
+          </Link>
 
           <div className="nf-status">
             <div className="nf-dot" />

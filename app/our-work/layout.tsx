@@ -1,10 +1,11 @@
-import type { Metadata } from 'next'
+import { createPageMetadata } from '@/lib/seo'
 
-export const metadata: Metadata = {
-  title: 'Our Work | Decasofts',
-  description: 'Portfolio of projects by Decasofts — coming soon.',
-}
+export const metadata = createPageMetadata({
+  title: 'Our Digital Work',
+  description: 'Browse selected digital products, websites, campaigns, creative projects, and client work delivered by D\'ECASOFT.',
+  path: '/our-work',
+})
 
 export default function OurWorkLayout({ children }: { children: React.ReactNode }) {
-  return <>{children}</>
+  return children
 }

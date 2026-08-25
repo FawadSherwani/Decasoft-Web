@@ -1,10 +1,3 @@
-import type { Metadata } from 'next'
-
-export const metadata: Metadata = {
-  title: "Mobile App Development Services | D'ECASOFT",
-  description: 'Professional iOS, Android, and cross-platform mobile app design and development services for growing businesses.',
-}
-
-export default function MobileAppDevelopmentLayout({ children }: { children: React.ReactNode }) {
-  return children
-}
+import { createPageMetadata } from '@/lib/seo'
+export const metadata = createPageMetadata({ title: 'Mobile App Development Services', description: 'Reliable iOS, Android, and cross-platform mobile applications designed for performance, usability, and scale.', path: '/services/mobile-app-development' })
+export default function Layout({ children }: { children: React.ReactNode }) { return children }

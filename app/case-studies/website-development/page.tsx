@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import CourseAutoTranslate from "@/components/CourseAutoTranslate";
 
 const BG_RED = "#bf2227";
@@ -341,7 +342,7 @@ export default function Page() {
                     {p.tags.map((t) => <span key={t}>{t}</span>)}
                   </div>
                   <div className="cs-card-img-wrap">
-                    <img src={p.img} alt={p.title} />
+                    <Image src={p.img} alt={`${p.title} website project`} width={800} height={500} />
                     <div className="cs-card-overlay"><span>View Case Study</span></div>
                   </div>
                 </button>
@@ -369,7 +370,7 @@ export default function Page() {
           <div className="cs-modal-backdrop" onClick={() => setSelected(null)}>
             <div className="cs-modal" onClick={(e) => e.stopPropagation()}>
               <button className="cs-modal-close" onClick={() => setSelected(null)} aria-label="Close">✕</button>
-              <img src={selected.img} alt={selected.title} />
+              <Image src={selected.img} alt={`${selected.title} website case study`} width={1200} height={800} />
               <div className="cs-modal-body">
                 <span className="cs-modal-tag">{selected.category}</span>
                 <h2>{selected.title}</h2>

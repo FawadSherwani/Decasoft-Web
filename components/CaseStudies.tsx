@@ -154,6 +154,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { AlignCenter } from "lucide-react";
 
 const BG_RED = "#bf2227";
@@ -569,7 +570,7 @@ export default function CaseStudiesTabs() {
                       style={{ width: "100%", height: "160px", objectFit: "cover", objectPosition: "center", display: "block" }}
                     />
                   ) : (
-                    <img src={p.img} alt={p.title} />
+                    <Image src={p.img} alt={`${p.title} case study`} width={800} height={500} />
                   )}
                   <div className="cst-card-overlay"><span>View Case Study</span></div>
                 </div>
@@ -611,7 +612,7 @@ export default function CaseStudiesTabs() {
                 className="cst-modal-media"
               />
             ) : (
-              <img src={selected.img} alt={selected.title} className="cst-modal-media" />
+              <Image src={selected.img} alt={`${selected.title} case study preview`} width={1200} height={800} className="cst-modal-media" />
             )}
 
             <div className="cst-modal-body">

@@ -10,6 +10,13 @@ import Testimonials from '@/components/Testimonials'
 import CtaBanner from '@/components/CTABanner'
 import Footer from '@/components/Footer'
 import { SpeedInsights } from "@vercel/speed-insights/next"
+import { createPageMetadata } from '@/lib/seo'
+
+export const metadata = createPageMetadata({
+  title: 'Digital Agency for Design, Development & Growth',
+  description: 'Grow your business with D\'ECASOFT web development, mobile apps, design, SEO, digital marketing, and e-commerce services.',
+  path: '/',
+})
 
 
 export default function Home() {

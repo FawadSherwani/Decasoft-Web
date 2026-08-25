@@ -1,18 +1,13 @@
-import type { Metadata } from 'next'
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+import Navbar from '@/components/Navbar'
+import Footer from '@/components/Footer'
+import { createPageMetadata } from '@/lib/seo'
 
-export const metadata: Metadata = {
-  title: "About D'ECASOFT | Strategy, Design & Technology",
-  description: 'Meet the team helping businesses grow through connected strategy, design, technology, and digital marketing.',
-}
+export const metadata = createPageMetadata({
+  title: 'About Our Digital Team',
+  description: 'Meet the D\'ECASOFT team connecting strategy, design, technology, and marketing to help ambitious businesses grow.',
+  path: '/about-us',
+})
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
-  return (
-    <>
-      <Navbar />
-      {children}
-      <Footer />
-    </>
-  );
+export default function AboutLayout({ children }: { children: React.ReactNode }) {
+  return <><Navbar />{children}<Footer /></>
 }

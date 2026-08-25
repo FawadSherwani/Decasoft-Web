@@ -2,6 +2,7 @@
 
 import React, { useState, useRef, useEffect } from "react";
 import Script from "next/script";
+import Image from "next/image";
 import { useLanguage } from "@/components/LanguageProvider";
 
 const ar: Record<string, string> = {
@@ -451,7 +452,7 @@ export default function ContactPage() {
                 <p style={{ fontWeight: 800, fontSize: "0.92rem", marginBottom: "0.8rem" }}>{tr("Contact Details")}</p>
 
                 <div className="contact-row">
-                  <div className="flag-box"><img src="https://flagcdn.com/w80/ae.png" alt="UAE flag" /></div>
+                  <div className="flag-box"><Image src="https://flagcdn.com/w80/ae.png" alt="Flag of the United Arab Emirates" width={80} height={60} /></div>
                   <div>
                     <div style={{ fontWeight: 700, fontSize: "0.86rem" }}>{tr("UAE")}</div>
                     <a href="tel:+971559411204" style={{ color: RED, fontWeight: 700, fontSize: "0.85rem", textDecoration: "none" }}>+971 55 941 1204</a>
@@ -463,7 +464,7 @@ export default function ContactPage() {
                 </div>
 
                 <div className="contact-row">
-                  <div className="flag-box"><img src="https://flagcdn.com/w80/pk.png" alt="Pakistan flag" /></div>
+                  <div className="flag-box"><Image src="https://flagcdn.com/w80/pk.png" alt="Flag of Pakistan" width={80} height={60} /></div>
                   <div>
                     <div style={{ fontWeight: 700, fontSize: "0.86rem" }}>{tr("Pakistan")}</div>
                     <a href="tel:+923071116562" style={{ color: RED, fontWeight: 700, fontSize: "0.85rem", textDecoration: "none" }}>+92 307 111 6562</a>
@@ -642,7 +643,7 @@ export default function ContactPage() {
             <div className="loc-grid">
               <div className="loc-office-card">
                 <div style={{ display: "flex", alignItems: "center", gap: "0.6rem", marginBottom: "1rem" }}>
-                  <div className="flag-box"><img src="https://flagcdn.com/w80/ae.png" alt="UAE flag" /></div>
+                  <div className="flag-box"><Image src="https://flagcdn.com/w80/ae.png" alt="Flag of the United Arab Emirates" width={80} height={60} /></div>
                   <span style={{ fontWeight: 800, fontSize: "0.95rem" }}>{tr("UAE Office")}</span>
                 </div>
                 <div className="loc-detail-row"><LocationIcon /><span>{tr("Dubai Municipality Building, Salah Al Din Street, Block A, 2nd floor, Office no 23, Al Muraqabat, Deira, Dubai")}</span></div>
@@ -660,7 +661,7 @@ export default function ContactPage() {
 
               <div className="loc-office-card">
                 <div style={{ display: "flex", alignItems: "center", gap: "0.6rem", marginBottom: "1rem" }}>
-                  <div className="flag-box"><img src="https://flagcdn.com/w80/pk.png" alt="Pakistan flag" /></div>
+                  <div className="flag-box"><Image src="https://flagcdn.com/w80/pk.png" alt="Flag of Pakistan" width={80} height={60} /></div>
                   <span style={{ fontWeight: 800, fontSize: "0.95rem" }}>{tr("Pakistan Office")}</span>
                 </div>
                 <div className="loc-detail-row"><LocationIcon /><span>{tr("Block Z, Madina Town, Faisalabad, 38000, Punjab, Pakistan")}</span></div>
@@ -688,7 +689,7 @@ export default function ContactPage() {
           <div className="services-card">
             <div className="services-grid">
               <div className="services-img">
-                <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80" alt="Team analyzing business data" />
+                <Image src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80" alt="Digital agency team collaborating on business strategy" width={800} height={533} />
               </div>
               <div className="services-text" style={{ position: "relative" }}>
                 <p style={{ color: RED, fontWeight: 700, fontSize: "0.82rem", marginBottom: "0.6rem" }}>{tr("Our Services")}</p>
