@@ -101,7 +101,7 @@ const testimonials = [
   { text: 'We hired Decasofts for digital marketing services, and the results were excellent. Their campaigns helped us reach a wider audience and grow our online presence effectively.', name: 'Liam Smith', role: 'UK' },
   { text: "Decasofts built our company's website, and it turned out fantastic. The design is modern, user-friendly, and responsive. Their team was professional and delivered on time.", name: 'Emily Johnson', role: 'USA' },
   { text: 'Decasofts did an amazing job on our website. Their team was very professional and understood exactly what we needed. Our new site looks great and works perfectly on all devices!', name: 'Jason L.', role: 'Client' },
-  { text: 'Decasofts handled our digital marketing with complete professionalism. Their SEO and social media campaigns brought visible growth. We noticed higher traffic and better engagement within weeks.', name: 'James Wilson', role: 'Canada' },
+  { text: 'Decasofts handled our digital marketing with complete professionalism. Their SEO and social media campaigns brought visible growth. We noticed higher traffic and better engagement within weeks.', name: 'James Wilson', role: 'UAE' },
   { text: 'We needed fresh branding and graphic design work. Decasofts delivered stunning logos, banners, and visuals. They perfectly captured our brand identity in every design.', name: 'Anna Rossi', role: 'Italy' },
   { text: "Our experience with Decasofts was smooth and professional. They handled our website development and SEO perfectly. We're seeing improved traffic and customer engagement.", name: 'Mateo García', role: 'Spain' },
   { text: 'Working with Decasofts was a great experience. They developed a beautiful, responsive website for our business. Their team was cooperative, creative, and quick to respond.', name: 'Olivia Brown', role: 'Australia' },
@@ -160,7 +160,7 @@ export default function Testimonials() {
                         </div>
                         <div>
                           <p className="font-bold text-sm text-gray-900">{t.name}</p>
-                          <p className="text-xs text-gray-400">{t.role}</p>
+                          <p className="text-xs text-gray-600">{t.role}</p>
                         </div>
                       </div>
                     </div>
@@ -179,8 +179,8 @@ export default function Testimonials() {
               role="tab"
               aria-selected={current === i}
               aria-label={`Go to slide ${i + 1}`}
-              className={`w-2.5 h-2.5 rounded-full border border-primary transition-colors ${current === i ? 'bg-primary' : 'bg-white'}`}
-            />
+              className="grid h-11 w-11 place-items-center rounded-full"
+            ><span className={`block h-2.5 w-2.5 rounded-full border border-primary transition-colors ${current === i ? 'bg-primary' : 'bg-white'}`} /></button>
           ))}
         </div>
       </div>

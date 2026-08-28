@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import { MessageCircle, Trophy } from 'lucide-react'
 
 // ✅ OPTIMIZED: AboutUs — lazy loading, fixed image sizes to prevent CLS
 export default function AboutUs() {
@@ -14,7 +15,7 @@ export default function AboutUs() {
 
           {/* Red badge */}
           <div className="bg-primary rounded-xl p-5 flex flex-col justify-center items-start min-h-[140px]">
-            <i className="fa-solid fa-trophy text-white text-3xl mb-2" aria-hidden="true"></i>
+            <Trophy className="mb-2 h-8 w-8 text-white" aria-hidden="true" />
             <p className="text-white font-bold text-base leading-tight">6 Years<br />Experience</p>
             <p className="text-red-200 text-xs mt-1">in Web Development Graphics & Digital Marketing</p>
           </div>
@@ -58,7 +59,7 @@ export default function AboutUs() {
 
           {/* WhatsApp button */}
           <div className=" absolute bottom-[-18px] left-1/2 -translate-x-1/2 bg-white shadow-xl rounded-full px-5 py-2.5 flex items-center gap-2 border border-gray-100 z-10 whitespace-nowrap">
-            <i className="fa-brands fa-whatsapp text-green-500 text-xl" aria-hidden="true"></i>
+            <MessageCircle className="h-5 w-5 text-green-600" aria-hidden="true" />
             <a href="https://wa.me/971559411204" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1">
               <span className="text-sm font-semibold text-gray-700">
                 Need Help?{' '}
@@ -80,7 +81,7 @@ export default function AboutUs() {
           </h2>
           <p className="text-gray-500 text-sm leading-relaxed mb-4">
             With over 10 years of experience in the industry, we have established ourselves as a trusted partner
-            for startups, small and medium-sized businesses, and large enterprises in Canada and beyond.
+            for startups, small and medium-sized businesses, and large enterprises across Pakistan and the UAE.
           </p>
           <p className="text-gray-500 text-sm leading-relaxed">
             With over 10 years of experience in the industry, we have established ourselves as a trusted partner

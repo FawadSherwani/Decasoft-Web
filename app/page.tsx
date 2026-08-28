@@ -8,8 +8,10 @@ import Process from '@/components/Process'
 import CaseStudies from '@/components/CaseStudies'
 import Testimonials from '@/components/Testimonials'
 import CtaBanner from '@/components/CTABanner'
+import ServiceHighlights from '@/components/ServiceHighlights'
+import FreeAudit from '@/components/FreeAudit'
+import TrustSection from '@/components/TrustSection'
 import Footer from '@/components/Footer'
-import { SpeedInsights } from "@vercel/speed-insights/next"
 import { createPageMetadata } from '@/lib/seo'
 
 export const metadata = createPageMetadata({
@@ -24,16 +26,18 @@ export default function Home() {
     <main className="home-page">
       <Navbar />
       <Hero />
+      <ServiceHighlights />
       <LogoBar />
       <Stats />
       <HomeAbout />
       <Services />
+      <FreeAudit />
       <Process />
       <CaseStudies />
       <Testimonials />
+      <TrustSection />
       <CtaBanner />
       <Footer />
-      <SpeedInsights />
     </main>
   )
 }

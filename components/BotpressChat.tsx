@@ -1,7 +1,7 @@
 'use client'
 
 import Script from 'next/script'
-import { useCallback, useState } from 'react'
+import { useCallback, useRef, useState } from 'react'
 import BotpressLauncher from './BotpressLauncher'
 
 declare global {
@@ -71,6 +71,8 @@ function hideNativeLauncher(attempt = 0) {
 
 export default function BotpressChat() {
   const [isReady, setIsReady] = useState(false)
+  const [shouldLoad, setShouldLoad] = useState(false)
+  const openWhenReady = useRef(false)
 
   const initializeBotpress = useCallback(() => {
     const botpress = window.botpress
@@ -80,6 +82,10 @@ export default function BotpressChat() {
     botpress.on('webchat:initialized', () => {
       setIsReady(true)
       hideNativeLauncher()
+      if (openWhenReady.current) {
+        openWhenReady.current = false
+        botpress.toggle()
+      }
     })
 
     if (!window.__decasoftBotpressInitialized) {
@@ -89,18 +95,18 @@ export default function BotpressChat() {
   }, [])
 
   const toggleChat = useCallback(() => {
-    if (isReady) window.botpress?.toggle()
+    if (isReady) {
+      window.botpress?.toggle()
+      return
+    }
+    openWhenReady.current = true
+    setShouldLoad(true)
   }, [isReady])
 
   return (
     <>
-      <Script
-        id="botpress-webchat"
-        src="https://cdn.botpress.cloud/webchat/v5.0/inject.js"
-        strategy="afterInteractive"
-        onReady={initializeBotpress}
-      />
-      <BotpressLauncher isReady={isReady} onToggle={toggleChat} />
+      {shouldLoad && <Script id="botpress-webchat" src="https://cdn.botpress.cloud/webchat/v5.0/inject.js" strategy="lazyOnload" onReady={initializeBotpress} />}
+      <BotpressLauncher isReady={isReady} isLoading={shouldLoad && !isReady} onToggle={toggleChat} />
     </>
   )
 }

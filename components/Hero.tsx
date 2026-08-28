@@ -1,6 +1,6 @@
 'use client'
 
-import { Phone, Play, Star } from "lucide-react";
+import { MessageCircle, Phone, Star } from "lucide-react";
 import DashboardMock from "./DashboardMock";
 import { useLanguage } from './LanguageProvider'
 
@@ -21,13 +21,10 @@ export default function Hero() {
             {t('RESULTS DRIVEN DIGITAL MARKETING AGENCY')}
           </span>
 
-          <h1 className="mt-5 text-[2.5rem] font-extrabold leading-[1.1] tracking-tight text-ink sm:text-5xl">
-            {t('We Drive Traffic.')}
-            <br />
-            {t('You Get')}
-            <br />
+          <h1 className="mt-5 text-[2.35rem] font-extrabold leading-[1.08] tracking-tight text-ink sm:text-5xl">
+            {t('We Help Businesses Generate More Leads, Sales & Revenue Through')}{' '}
             <span className="relative text-brand">
-              {t('Real Growth.')}
+              {t('Digital Marketing.')}
               <svg
                 className="absolute -bottom-2 start-0 w-40"
                 viewBox="0 0 160 10"
@@ -52,15 +49,18 @@ export default function Hero() {
               href="https://calendly.com/decasofts-appointment/meeting"
               className="flex items-center gap-2 rounded-md bg-brand px-6 py-3.5 text-[13px] font-bold text-white shadow-lg shadow-brand/30 transition hover:bg-brand-dark"
             >
-              {t('GET A FREE STRATEGY CALL')}
+              {t('BOOK A STRATEGY CALL')}
               <Phone className="h-4 w-4" />
             </a>
             <a
-              href={href('/case-studies')}
+              href={href('/contact-us#audit')}
               className="flex items-center gap-2 rounded-md border border-black/10 px-6 py-3.5 text-[13px] font-bold text-ink transition hover:border-brand hover:text-brand"
             >
-              {t('VIEW CASE STUDIES')}
-              <Play className="h-4 w-4" />
+              {t('GET FREE AUDIT')}
+              <Phone className="h-4 w-4" />
+            </a>
+            <a href="https://wa.me/971559411204?text=I%27d%20like%20to%20grow%20my%20business" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 rounded-md bg-[#25D366] px-6 py-3.5 text-[13px] font-bold text-white transition hover:bg-[#1ebe5d]">
+              {t('WHATSAPP US')} <MessageCircle className="h-4 w-4" />
             </a>
           </div>
 

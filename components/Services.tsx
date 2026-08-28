@@ -66,6 +66,13 @@ const services = [
   },
 ];
 
+const categories = [
+  { title: 'Grow Your Business', services: 'Meta Ads, Google Ads, SEO & Email Marketing' },
+  { title: 'Build Your Business', services: 'Websites, eCommerce & Mobile Apps' },
+  { title: 'Build Your Brand', services: 'Content, Videography & Social Media' },
+  { title: 'Build Your Identity', services: 'Brand Strategy, Logo & Graphic Design' },
+]
+
 export default function Services() {
   const { t, href: localizedHref, isRtl } = useLanguage()
   return (
@@ -83,6 +90,15 @@ export default function Services() {
       </div>
 
       <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        {categories.map((category) => (
+          <div key={category.title} className="rounded-xl bg-ink p-5 text-white">
+            <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-brand">{t(category.title)}</p>
+            <p className="mt-2 text-sm leading-relaxed text-white/70">{t(category.services)}</p>
+          </div>
+        ))}
+      </div>
+
+      <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
         {services.map(({ icon: Icon, title, desc, href }) => (
           <div
             key={title}
@@ -106,7 +122,7 @@ export default function Services() {
         ))}
       </div>
 
-      <div className="mt-10 text-center">
+      <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
         <Link
           href={localizedHref('/services')}
           className="inline-flex items-center gap-2 rounded-full bg-brand px-6 py-3 text-sm font-bold text-white transition hover:-translate-y-0.5 hover:shadow-lg"
@@ -114,6 +130,9 @@ export default function Services() {
           {t('View All Services')}
           <ArrowRight className="h-4 w-4" />
         </Link>
+        <a href="https://wa.me/971559411204?text=I%27m%20interested%20in%20your%20digital%20services" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full bg-[#25D366] px-6 py-3 text-sm font-bold text-white transition hover:-translate-y-0.5">
+          {t('Chat on WhatsApp')}
+        </a>
       </div>
     </section>
   );

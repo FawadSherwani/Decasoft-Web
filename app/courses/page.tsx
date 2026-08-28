@@ -86,7 +86,7 @@ const reviews = [
 
 const faqs = [
   { q: "What courses does DecaSofts offer?", a: "We offer Web Development, Social Media Marketing, SEO, Graphic Designing, Digital Marketing, and Video Editing — all taught by our in-house team who also build real client projects." },
-  { q: "Where are the classes held?", a: "Classes are held at our Faisalabad studio, with remote/online options available for students joining from Dubai, Canada, or elsewhere." },
+  { q: "Where are the classes held?", a: "Classes are held at our Faisalabad studio, with remote/online options available for students joining from Dubai or elsewhere." },
   { q: "Do I need any prior experience to join?", a: "No — every track is designed to take complete beginners from zero to job-ready, with hands-on projects at every stage." },
   { q: "How long is each training program?", a: "Program length varies by track, from 4-Week intensives (SEO, Video Editing) to 8-Week deep-dives (Web Development, Digital Marketing)." },
   { q: "Will I get a certificate after completion?", a: "Yes, every student who completes their course and final project receives a DecaSofts certificate of completion." },

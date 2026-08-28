@@ -103,7 +103,7 @@ export default function AboutUs() {
               {t('We bring strategy, creativity, and technology')} <span className="text-[#bf2227]">{t('into one team.')}</span>
             </h1>
             <p className="mt-6 max-w-2xl text-base leading-8 text-gray-600 sm:text-lg">
-              {t('Decasoft is a digital agency helping organizations build stronger brands, better customer experiences, and scalable digital products across Pakistan, the UAE, and Canada.')}
+              {t('Decasoft is a digital agency helping organizations build stronger brands, better customer experiences, and scalable digital products across Pakistan and the UAE.')}
             </p>
             <div className="mt-9 flex flex-wrap gap-4">
               <Link href={href('/contact-us')} className="inline-flex items-center gap-2 rounded-full bg-[#bf2227] px-7 py-3.5 text-sm font-extrabold text-white shadow-lg shadow-red-900/15 transition hover:-translate-y-0.5 hover:bg-[#a91d22]">
@@ -219,7 +219,7 @@ export default function AboutUs() {
             <p className="text-sm font-bold uppercase tracking-[.2em] text-[#bf2227]">{t('Across industries')}</p>
             <h2 className="mt-3 font-montserrat text-3xl font-black leading-tight sm:text-4xl lg:text-5xl">{t('Industries We Cover')}</h2>
             <p className="mx-auto mt-5 max-w-2xl leading-8 text-gray-600">{t('We combine proven digital practices with a practical understanding of the customers, constraints, and opportunities in each sector.')}</p>
-            <div className="mx-auto mt-7 inline-flex items-center gap-3 rounded-2xl bg-[#f8f5f3] px-5 py-4 text-sm font-bold"><Globe2 className="text-[#bf2227]" size={22} /> {t('Serving clients across Pakistan, UAE, and Canada')}</div>
+            <div className="mx-auto mt-7 inline-flex items-center gap-3 rounded-2xl bg-[#f8f5f3] px-5 py-4 text-sm font-bold"><Globe2 className="text-[#bf2227]" size={22} /> {t('Serving clients across Pakistan and the UAE')}</div>
           </div>
 
           <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">

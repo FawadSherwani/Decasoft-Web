@@ -6,7 +6,7 @@ import { useLanguage } from './LanguageProvider'
 export default function CtaBanner() {
   const { t, href, isRtl } = useLanguage()
   return (
-    <section dir={isRtl ? 'rtl' : 'ltr'} className="px-5 pb-16 lg:px-8">
+    <section dir={isRtl ? 'rtl' : 'ltr'} className="px-5 pb-16 pt-16 lg:px-8">
       <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-6 rounded-2xl bg-brand px-8 py-10 sm:flex-row">
         <div className={`flex items-center gap-4 text-center ${isRtl ? 'sm:text-right' : 'sm:text-left'}`}>
           <span className="hidden h-14 w-14 shrink-0 place-items-center rounded-full bg-white/15 sm:grid">

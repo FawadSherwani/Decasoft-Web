@@ -1,5 +1,6 @@
 import type { MetadataRoute } from 'next'
 import { SITE_URL } from '@/lib/seo'
+import { industryPages, seoPages } from '@/lib/growth-pages'
 
 const weeklyRoutes = ['/', '/about-us', '/contact-us', '/services', '/courses', '/case-studies', '/our-work']
 const monthlyRoutes = [
@@ -23,5 +24,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: new URL(path, SITE_URL).toString(), lastModified,
       changeFrequency: 'monthly' as const, priority: path === '/payments' ? 0.4 : 0.6,
     })),
+    ...industryPages.map(({ slug }) => ({ url: new URL(`/industries/${slug}`, SITE_URL).toString(), lastModified, changeFrequency: 'monthly' as const, priority: 0.7 })),
+    ...seoPages.map(({ slug }) => ({ url: new URL(`/locations/${slug}`, SITE_URL).toString(), lastModified, changeFrequency: 'monthly' as const, priority: 0.8 })),
   ]
 }

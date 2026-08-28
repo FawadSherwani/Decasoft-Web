@@ -269,6 +269,10 @@ export default function Page() {
         .cs-modal-stats .stat .lbl { font-size: 0.68rem; color: ${GRAY_TEXT}; text-transform: uppercase; letter-spacing: 0.5px; }
         .cs-modal-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 1.6rem; }
         .cs-modal-tags span { background: #fdeceb; color: ${BG_RED}; font-size: 0.74rem; font-weight: 700; padding: 5px 12px; border-radius: 20px; }
+        .cs-detail-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.8rem; margin-bottom: 1.5rem; }
+        .cs-detail { border: 1px solid ${BORDER}; border-radius: 10px; padding: 0.9rem; }
+        .cs-detail strong { display: block; margin-bottom: 0.3rem; color: ${BG_RED}; font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; }
+        .cs-detail span { color: ${GRAY_TEXT}; font-size: 0.8rem; line-height: 1.5; }
         .cs-modal-cta {
           display: inline-block; background: ${BG_RED}; color: ${WHITE};
           padding: 0.75rem 1.8rem; border-radius: 6px; font-weight: 700;
@@ -279,7 +283,7 @@ export default function Page() {
         @media (max-width: 650px) {
           .cs-grid { grid-template-columns: 1fr; }
           .cs-modal img { height: 200px; }
-          .cs-modal-stats { grid-template-columns: 1fr 1fr; }
+          .cs-modal-stats, .cs-detail-grid { grid-template-columns: 1fr; }
         }
       `}</style>
 
@@ -347,6 +351,16 @@ export default function Page() {
                 <span className="cs-modal-tag">{selected.category}</span>
                 <h2>{selected.title}</h2>
                 <p className="desc">{selected.fullDesc}</p>
+
+                <div className="cs-detail-grid">
+                  <div className="cs-detail"><strong>Client</strong><span>{selected.title}</span></div>
+                  <div className="cs-detail"><strong>Problem</strong><span>{selected.desc}</span></div>
+                  <div className="cs-detail"><strong>Strategy</strong><span>A focused {selected.category.toLowerCase()} solution aligned with the client&apos;s customer journey and growth goals.</span></div>
+                  <div className="cs-detail"><strong>Campaign</strong><span>{selected.tags.join(', ')}</span></div>
+                  <div className="cs-detail"><strong>Investment</strong><span>Confidential - available during consultation</span></div>
+                  <div className="cs-detail"><strong>Leads / Sales</strong><span>{selected.stats[0].value} {selected.stats[0].label}</span></div>
+                  <div className="cs-detail"><strong>Result</strong><span>{selected.stats.map(stat => `${stat.label}: ${stat.value}`).join(' · ')}</span></div>
+                </div>
 
                 <div className="cs-modal-stats">
                   {selected.stats.map((s) => (

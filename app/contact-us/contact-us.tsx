@@ -44,14 +44,13 @@ const phoneCountries = [
   { code: "bh", flag: "🇧🇭", name: "Bahrain", dial: "+973" },
   { code: "gb", flag: "🇬🇧", name: "United Kingdom", dial: "+44" },
   { code: "us", flag: "🇺🇸", name: "United States", dial: "+1" },
-  { code: "ca", flag: "🇨🇦", name: "Canada", dial: "+1" },
   { code: "in", flag: "🇮🇳", name: "India", dial: "+91" },
   { code: "au", flag: "🇦🇺", name: "Australia", dial: "+61" },
 ];
 
 const phoneLengths: Record<string, number[]> = {
   pk: [10], ae: [9], sa: [9], qa: [8], kw: [8], om: [8], bh: [8],
-  gb: [10], us: [10], ca: [10], in: [10], au: [9],
+  gb: [10], us: [10], in: [10], au: [9],
 };
 
 const isValidEmail = (email: string) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i.test(email.trim());
@@ -628,6 +627,9 @@ export default function ContactPage() {
               <button className="send-btn" onClick={handleSubmit} disabled={loading} style={{ opacity: loading ? 0.7 : 1, cursor: loading ? "not-allowed" : "pointer" }}>
                 {loading ? tr("SENDING...") : tr("SEND MESSAGE")}
               </button>
+              <a href="https://wa.me/971559411204?text=I%27d%20like%20to%20discuss%20my%20project" target="_blank" rel="noopener noreferrer" className="send-btn" style={{ display: "flex", alignItems: "center", justifyContent: "center", marginTop: "0.75rem", background: "#25D366", textDecoration: "none" }}>
+                {tr("CHAT ON WHATSAPP")}
+              </a>
             </div>
           </div>
         </section>

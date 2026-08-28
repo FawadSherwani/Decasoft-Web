@@ -630,7 +630,7 @@ export default function CaseStudiesTabs() {
               <div className="cst-modal-tags">
                 {selected.tags.map((t) => <span key={t}>{t}</span>)}
               </div>
-              <Link href="/contact" className="cst-modal-cta">Start a Similar Project</Link>
+              <Link href="/contact-us" className="cst-modal-cta">Start a Similar Project</Link>
             </div>
           </div>
         </div>

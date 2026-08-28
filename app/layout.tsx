@@ -1,22 +1,17 @@
 import type { Metadata } from 'next'
-import '@fontsource/poppins/300.css'
 import '@fontsource/poppins/400.css'
-import '@fontsource/poppins/500.css'
 import '@fontsource/poppins/600.css'
 import '@fontsource/poppins/700.css'
 import '@fontsource/poppins/800.css'
 import '@fontsource/poppins/900.css'
-import '@fontsource/montserrat/400.css'
-import '@fontsource/montserrat/600.css'
-import '@fontsource/montserrat/700.css'
 import '@fontsource/montserrat/800.css'
-import '@fontsource/montserrat/900.css'
 import 'hover.css/css/hover-min.css'
 import './globals.css'
 import { Analytics } from '@vercel/analytics/react'
 import { headers } from 'next/headers'
 import BotpressChat from '@/components/BotpressChat'
 import LanguageProvider from '@/components/LanguageProvider'
+import PageTransition from '@/components/PageTransition'
 import WhatsappFloat from '@/components/WhatsappFloat'
 import { isLocale } from '@/lib/i18n'
 import { DEFAULT_DESCRIPTION, SITE_NAME, SITE_URL } from '@/lib/seo'
@@ -47,11 +42,11 @@ export default async function RootLayout({ children }: { children: React.ReactNo
     <html lang={locale} dir={locale === 'ar' ? 'rtl' : 'ltr'} suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: `(function(){try{var t=localStorage.getItem('theme');var d=t==='dark'||(!t&&matchMedia('(prefers-color-scheme: dark)').matches);document.documentElement.classList.toggle('dark',d);document.documentElement.style.colorScheme=d?'dark':'light'}catch(e){}})()` }} />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossOrigin="anonymous" />
       </head>
       <body suppressHydrationWarning className="font-poppins overflow-x-hidden">
         <LanguageProvider locale={locale}>
-          {children}<Analytics /><BotpressChat /><WhatsappFloat />
+          <PageTransition>{children}</PageTransition>
+          <Analytics /><BotpressChat /><WhatsappFloat />
         </LanguageProvider>
       </body>
     </html>

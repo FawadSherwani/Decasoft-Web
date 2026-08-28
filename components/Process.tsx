@@ -69,7 +69,7 @@ export default function Process() {
               <h3 className="mt-1 text-[15px] font-bold text-white">
                 {t(title)}
               </h3>
-              <p className="mt-2 max-w-[10rem] text-[12px] leading-relaxed text-white/50">
+              <p className="mt-2 max-w-[10rem] text-[12px] leading-relaxed text-white/70">
                 {t(desc)}
               </p>
             </div>
