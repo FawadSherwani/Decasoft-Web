@@ -486,16 +486,6 @@ export default function LanguageProvider({ locale, children }: { locale: Locale;
     document.documentElement.lang = activeLocale
     document.documentElement.dir = activeLocale === 'ar' ? 'rtl' : 'ltr'
     document.cookie = `NEXT_LOCALE=${activeLocale}; path=/; max-age=31536000; SameSite=Lax`
-
-    const verticalPosition = window.scrollY
-    const resetHorizontalPosition = () => {
-      document.documentElement.scrollLeft = 0
-      document.body.scrollLeft = 0
-      window.scrollTo({ left: 0, top: verticalPosition, behavior: 'instant' })
-    }
-    resetHorizontalPosition()
-    const frame = requestAnimationFrame(resetHorizontalPosition)
-    return () => cancelAnimationFrame(frame)
   }, [activeLocale])
 
   const value = useMemo<LanguageContextValue>(() => ({
