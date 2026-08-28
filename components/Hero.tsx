@@ -45,16 +45,16 @@ export default function Hero() {
           </p>
 
           <div className="mt-8 flex flex-wrap items-center gap-4">
-            <a
+            {/* <a
               href="https://calendly.com/decasofts-appointment/meeting"
               className="flex items-center gap-2 rounded-md bg-brand px-6 py-3.5 text-[13px] font-bold text-white shadow-lg shadow-brand/30 transition hover:bg-brand-dark"
             >
               {t('BOOK A STRATEGY CALL')}
               <Phone className="h-4 w-4" />
-            </a>
+            </a> */}
             <a
               href={href('/contact-us#audit')}
-              className="flex items-center gap-2 rounded-md border border-black/10 px-6 py-3.5 text-[13px] font-bold text-ink transition hover:border-brand hover:text-brand"
+              className="flex items-center gap-2 rounded-md bg-brand px-6 py-3.5 text-[13px] font-bold text-white shadow-lg shadow-brand/30 transition hover:bg-brand-dark"
             >
               {t('GET FREE AUDIT')}
               <Phone className="h-4 w-4" />
