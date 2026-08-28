@@ -5,13 +5,11 @@ import '@fontsource/poppins/700.css'
 import '@fontsource/poppins/800.css'
 import '@fontsource/poppins/900.css'
 import '@fontsource/montserrat/800.css'
-import 'hover.css/css/hover-min.css'
 import './globals.css'
 import { Analytics } from '@vercel/analytics/react'
 import { headers } from 'next/headers'
 import BotpressChat from '@/components/BotpressChat'
 import LanguageProvider from '@/components/LanguageProvider'
-import PageTransition from '@/components/PageTransition'
 import WhatsappFloat from '@/components/WhatsappFloat'
 import { isLocale } from '@/lib/i18n'
 import { DEFAULT_DESCRIPTION, SITE_NAME, SITE_URL } from '@/lib/seo'
@@ -45,7 +43,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       </head>
       <body suppressHydrationWarning className="font-poppins overflow-x-hidden">
         <LanguageProvider locale={locale}>
-          <PageTransition>{children}</PageTransition>
+          {children}
           <Analytics /><BotpressChat /><WhatsappFloat />
         </LanguageProvider>
       </body>
